@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>最新安全洞察 | 深度文章 · 威脅分析 · 技術解析 — Hexion Networks</title>
+  <meta name="description" content="Hexion Networks 資安知識庫：深入解析 LIONIC NGFW、零信任架構、勒索軟體防禦、OT 資安、SEMI E187 合規等台灣企業最關心的資安議題。" />
+  <meta name="keywords" content="資安部落格, NGFW, 零信任, 勒索軟體, OT資安, SEMI E187, Hexion Networks, 資安知識庫" />
+  <meta name="robots" content="index, follow" /><link rel="canonical" href="https://hexionnetworks.com/blog/" />
+  <link rel="icon" href="/brand_assets/favicon.png" />
+  <meta property="og:title" content="資安知識庫 — Hexion Networks" />
+  <meta property="og:description" content="深度資安技術文章與威脅分析報告。" />
+  <meta property="og:url" content="https://hexionnetworks.com/blog/" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    .blog-filter-row{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:2.5rem}
+    .filter-btn{padding:0.4rem 1rem;border-radius:100px;font-size:0.75rem;font-weight:600;border:1px solid rgba(255,255,255,0.1);color:var(--silver);background:rgba(255,255,255,0.03);cursor:pointer;transition:all 0.2s;font-family:'Orbitron',monospace;letter-spacing:0.04em}
+    .filter-btn:hover,.filter-btn.active{background:rgba(250,88,34,0.1);border-color:rgba(250,88,34,0.35);color:var(--o)}
+    .blog-featured{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:3rem}
+    @media(max-width:768px){.blog-featured{grid-template-columns:1fr}}
+    .blog-featured-card{background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;transition:border-color 0.25s,transform 0.25s;display:flex;flex-direction:column}
+    .blog-featured-card:hover{border-color:rgba(250,88,34,0.3);transform:translateY(-4px)}
+    .blog-featured-card .ins-img{border-radius:0}
+  </style>
+</head>
+<body>
+<div class="topbar">
+  <a href="/contact/">聯絡我們</a>
+  <a href="/blog/" class="topbar-highlight">最新資安報告 →</a>
+</div>
+<nav>
+  <a href="/" class="nav-logo"><img src="/brand_assets/logo.png" alt="Hexion Networks" /></a>
+  <div class="nav-links">
+    <div class="nav-item">
+      <button>
+        產品
+        <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M8 11L3 6h10z"/></svg>
+      </button>
+      <div class="mega" style="width:560px;grid-template-columns:1fr 1fr">
+        <div class="mega-col" style="border-right:1px solid rgba(255,255,255,0.06)">
+          <div class="mega-label" style="color:var(--teal)">LIONIC NGFW 系列</div>
+          <a href="/products/pico-utm-100/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.15);color:var(--o)">IT</span>
+            Pico-NGFW 100
+          </a>
+          <a href="/products/dual-ark-utm-16/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(0,200,200,0.12);color:var(--teal)">IoT</span>
+            Dual Ark-NGFW 16
+          </a>
+          <a href="/products/tera-utm-12/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.12);color:#FF7A45">OT</span>
+            Tera-NGFW 12
+          </a>
+          <a href="/products/lionfilter-200/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(167,139,250,0.12);color:#A78BFA">NET</span>
+            Lionfilter 200
+          </a>
+        </div>
+        <div class="mega-col" style="background:rgba(61,220,151,0.025)">
+          <div class="mega-label" style="color:#3DDC97">EDR 端點偵測回應</div>
+          <a href="/products/endblock/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.15);color:#3DDC97">EDR</span>
+            Endblock
+          </a>
+          <a href="/products/teamt5/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.12);color:#3DDC97">TI</span>
+            TeamT5
+          </a>
+          <a href="/products/cycraft/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.1);color:#3DDC97">AI</span>
+            奧義智慧 CyCraft
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-item"><a href="/services/">服務</a></div>
+    <div class="nav-item" style="display:none"><a href="/research/">研究</a></div>
+    <div class="nav-item active"><a href="/blog/">部落格</a></div>
+    <div class="nav-item"><a href="/about/">關於</a></div>
+  </div>
+  <div class="nav-cta">
+    <a href="https://line.me/R/ti/p/@278zhddk" target="_blank" class="nav-line-btn">LINE 諮詢</a>
+    <a href="/contact/" class="btn btn-orange" style="padding:0.5rem 1.125rem;font-size:0.8125rem;">取得報價 →</a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-glow"></div>
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-inner reveal">
+    <div class="sec-tag" style="justify-content:center;margin-bottom:1rem">知識庫</div>
+    <h1>資安<span style="color:var(--o)">知識庫</span></h1>
+    <p>Hexion Networks 研究團隊分享最新威脅分析、技術深度解析與產業資安趨勢，協助企業洞悉威脅、超前防禦。</p>
+  </div>
+</section>
+
+<div style="background:var(--ink)">
+  <div class="content-sec">
+    <!-- FEATURED -->
+    <div class="reveal">
+      <div class="sec-tag">精選文章</div>
+      <h2 class="sec-h" style="margin-bottom:1.5rem">最新<span class="accent">深度報告</span></h2>
+    </div>
+    <div class="blog-featured reveal">
+      <a href="/blog/cybersecurity-trends-2026/" style="text-decoration:none" class="blog-featured-card">
+        <div class="ins-img">
+          <svg viewBox="0 0 580 280" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%">
+            <rect width="580" height="280" fill="#0A0A18"/>
+            <defs>
+              <pattern id="bf-g1" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0L0 0 0 40" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/></pattern>
+              <filter id="bf-blur1"><feGaussianBlur stdDeviation="8"/></filter>
+            </defs>
+            <rect width="580" height="280" fill="url(#bf-g1)"/>
+            <ellipse cx="290" cy="140" rx="240" ry="140" fill="rgba(250,88,34,0.06)" filter="url(#bf-blur1)"/>
+            <line x1="120" y1="100" x2="290" y2="140" stroke="rgba(250,88,34,0.25)" stroke-width="1" stroke-dasharray="4 3"/>
+            <line x1="420" y1="80" x2="290" y2="140" stroke="rgba(250,88,34,0.25)" stroke-width="1" stroke-dasharray="4 3"/>
+            <line x1="480" y1="180" x2="290" y2="140" stroke="rgba(250,88,34,0.2)" stroke-width="1" stroke-dasharray="4 3"/>
+            <line x1="80" y1="200" x2="290" y2="140" stroke="rgba(250,88,34,0.15)" stroke-width="1" stroke-dasharray="4 3"/>
+            <line x1="200" y1="50" x2="290" y2="140" stroke="rgba(0,200,200,0.2)" stroke-width="1" stroke-dasharray="4 3"/>
+            <line x1="500" y1="220" x2="290" y2="140" stroke="rgba(0,200,200,0.15)" stroke-width="1" stroke-dasharray="4 3"/>
+            <circle cx="120" cy="100" r="8" fill="rgba(255,68,68,0.15)" stroke="#FF4444" stroke-width="1.5"/>
+            <circle cx="120" cy="100" r="3" fill="#FF4444"/>
+            <circle cx="420" cy="80" r="7" fill="rgba(255,68,68,0.12)" stroke="#FF4444" stroke-width="1.5"/>
+            <circle cx="420" cy="80" r="2.5" fill="#FF4444"/>
+            <circle cx="480" cy="180" r="6" fill="rgba(250,88,34,0.15)" stroke="#FA5822" stroke-width="1.5"/>
+            <circle cx="480" cy="180" r="2.5" fill="#FA5822"/>
+            <circle cx="80" cy="200" r="5" fill="rgba(250,88,34,0.12)" stroke="#FA5822" stroke-width="1.5"/>
+            <circle cx="80" cy="200" r="2" fill="#FA5822"/>
+            <circle cx="200" cy="50" r="6" fill="rgba(0,200,200,0.12)" stroke="#00C8C8" stroke-width="1.5"/>
+            <circle cx="200" cy="50" r="2.5" fill="#00C8C8"/>
+            <circle cx="500" cy="220" r="5" fill="rgba(0,200,200,0.1)" stroke="#00C8C8" stroke-width="1"/>
+            <circle cx="500" cy="220" r="2" fill="#00C8C8"/>
+            <circle cx="290" cy="140" r="18" fill="rgba(250,88,34,0.1)" stroke="rgba(250,88,34,0.5)" stroke-width="1.5"/>
+            <circle cx="290" cy="140" r="10" fill="rgba(250,88,34,0.2)" stroke="rgba(250,88,34,0.6)" stroke-width="1"/>
+            <circle cx="290" cy="140" r="4" fill="#FA5822"/>
+            <rect x="16" y="200" width="148" height="64" rx="6" fill="rgba(17,17,30,0.9)" stroke="rgba(250,88,34,0.2)" stroke-width="0.75"/>
+            <text x="26" y="218" font-size="8" font-family="monospace" fill="rgba(250,88,34,0.8)">APT ACTIVITY (30D)</text>
+            <rect x="26" y="224" width="118" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
+            <rect x="26" y="224" width="82" height="6" rx="3" fill="rgba(255,68,68,0.5)"/>
+            <rect x="26" y="236" width="118" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
+            <rect x="26" y="236" width="55" height="6" rx="3" fill="rgba(250,88,34,0.5)"/>
+            <rect x="26" y="248" width="118" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
+            <rect x="26" y="248" width="95" height="6" rx="3" fill="rgba(0,200,200,0.4)"/>
+            <text x="26" y="262" font-size="7" font-family="monospace" fill="rgba(255,255,255,0.3)">+23% MoM</text>
+            <rect x="420" y="16" width="140" height="28" rx="5" fill="rgba(255,68,68,0.12)" stroke="rgba(255,68,68,0.3)" stroke-width="0.75"/>
+            <text x="490" y="33" font-size="9" font-family="monospace" fill="#FF4444" text-anchor="middle">CRITICAL ALERT</text>
+          </svg>
+        </div>
+        <div class="ins-body">
+          <span class="ins-tag">威脅報告</span>
+          <div class="ins-title lg">2026 年企業資安威脅趨勢全面分析：AI 攻擊、勒索軟體與 OT 威脅</div>
+          <div class="ins-meta">2026 年 3 月 10 日 &nbsp;·&nbsp; 閱讀需 8 分鐘</div>
+        </div>
+      </a>
+      <a href="/blog/zero-trust-implementation/" style="text-decoration:none" class="blog-featured-card">
+        <div class="ins-img">
+          <svg viewBox="0 0 260 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%">
+            <rect width="260" height="160" fill="#0D1A1A"/>
+            <defs><filter id="bf-blur2"><feGaussianBlur stdDeviation="8"/></filter></defs>
+            <ellipse cx="130" cy="80" rx="110" ry="80" fill="rgba(0,200,200,0.05)" filter="url(#bf-blur2)"/>
+            <path d="M130 30 L165 46 L165 78 Q165 108 130 122 Q95 108 95 78 L95 46 Z" fill="rgba(0,200,200,0.08)" stroke="rgba(0,200,200,0.4)" stroke-width="1.5"/>
+            <rect x="119" y="72" width="22" height="18" rx="3" fill="rgba(0,200,200,0.15)" stroke="#00C8C8" stroke-width="1.2"/>
+            <path d="M123 72 Q123 64 130 64 Q137 64 137 72" stroke="#00C8C8" stroke-width="1.5" fill="none"/>
+            <circle cx="130" cy="81" r="2.5" fill="#00C8C8"/>
+            <circle cx="130" cy="30" r="5" fill="rgba(0,200,200,0.15)" stroke="#00C8C8" stroke-width="1"/>
+            <circle cx="165" cy="62" r="5" fill="rgba(0,200,200,0.15)" stroke="#00C8C8" stroke-width="1"/>
+            <circle cx="152" cy="114" r="5" fill="rgba(0,200,200,0.15)" stroke="#00C8C8" stroke-width="1"/>
+            <line x1="130" y1="35" x2="130" y2="46" stroke="rgba(0,200,200,0.3)" stroke-width="0.75" stroke-dasharray="3 2"/>
+            <line x1="160" y1="66" x2="155" y2="72" stroke="rgba(0,200,200,0.3)" stroke-width="0.75" stroke-dasharray="3 2"/>
+            <rect x="10" y="130" width="80" height="20" rx="4" fill="rgba(0,200,200,0.08)" stroke="rgba(0,200,200,0.25)" stroke-width="0.75"/>
+            <text x="50" y="143" font-size="8" font-family="monospace" fill="#00C8C8" text-anchor="middle">ZERO TRUST</text>
+          </svg>
+        </div>
+        <div class="ins-body">
+          <span class="ins-tag" style="color:var(--teal)">技術指南</span>
+          <div class="ins-title lg">零信任架構實施路線圖：從規劃到落地</div>
+          <div class="ins-meta">2026 年 3 月 5 日 &nbsp;·&nbsp; 閱讀需 9 分鐘</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- FILTER -->
+    <div class="blog-filter-row reveal">
+      <button class="filter-btn active" onclick="filterBlog('all', this)">全部</button>
+      <button class="filter-btn" onclick="filterBlog('threat', this)">威脅分析</button>
+      <button class="filter-btn" onclick="filterBlog('guide', this)">技術指南</button>
+      <button class="filter-btn" onclick="filterBlog('compliance', this)">合規法規</button>
+      <button class="filter-btn" onclick="filterBlog('product', this)">產品解析</button>
+    </div>
+
+    <!-- ALL ARTICLES GRID -->
+    <div class="blog-grid reveal" id="blog-grid">
+
+      <!-- 1 勒索軟體 -->
+      <a href="/blog/ransomware-defense/" style="text-decoration:none" class="ins-card" data-cat="threat">
+        <div class="ins-img">
+          <svg viewBox="0 0 260 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%">
+            <defs><filter id="rw-blur"><feGaussianBlur stdDeviation="8"/></filter></defs>
+            <rect width="260" height="160" fill="#120A1E"/>
+            <ellipse cx="130" cy="80" rx="110" ry="80" fill="rgba(180,100,255,0.06)" filter="url(#rw-blur)"/>
+            <rect x="60" y="40" width="36" height="44" rx="3" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+            <path d="M72 55 L84 55M72 62 L84 62M72 69 L84 69" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+            <rect x="112" y="40" width="36" height="44" rx="3" fill="rgba(255,68,68,0.06)" stroke="rgba(255,68,68,0.4)" stroke-width="1"/>
+            <rect x="120" y="52" width="20" height="14" rx="2" fill="rgba(255,68,68,0.15)" stroke="rgba(255,68,68,0.4)" stroke-width="1"/>
+            <path d="M124 52v-4a6 6 0 0112 0v4" stroke="#FF4444" stroke-width="1.2" fill="none"/>
+            <circle cx="130" cy="59" r="2" fill="#FF4444"/>
+            <rect x="164" y="40" width="36" height="44" rx="3" fill="rgba(255,68,68,0.06)" stroke="rgba(255,68,68,0.4)" stroke-width="1"/>
+            <path d="M176 55 L188 55M176 62 L188 62" stroke="rgba(255,68,68,0.3)" stroke-width="1"/>
+            <path d="M130 96 L150 105 L150 120 Q150 132 130 138 Q110 132 110 120 L110 105 Z" fill="rgba(250,88,34,0.1)" stroke="rgba(250,88,34,0.5)" stroke-width="1.5"/>
+            <path d="M121 117 L127 123 L139 111" stroke="#FA5822" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M117 52 L143 72M143 52 L117 72" stroke="rgba(250,88,34,0.5)" stroke-width="1.5" stroke-linecap="round"/>
+            <rect x="10" y="10" width="94" height="20" rx="4" fill="rgba(255,68,68,0.1)" stroke="rgba(255,68,68,0.25)" stroke-width="0.75"/>
+            <text x="57" y="23" font-size="8" font-family="monospace" fill="#FF4444" text-anchor="middle">RANSOMWARE</text>
+          </svg>
+        </div>
+        <div class="ins-body">
+          <span class="ins-tag">案例研究</span>
+          <div class="ins-title">2026 年勒索軟體防禦完整策略：分層防護與應變計畫</div>
+          <div class="ins-meta">2026 年 2 月 28 日 &nbsp;·&nbsp; 閱讀需 7 分鐘</div>
+        </div>
+      </a>
+
+      <!-- 2 SEMI E187 -->
+      <a href="/blog/semi-e187-compliance/" style="text-decoration:none" class="ins-card" data-cat="compliance">
+        <div class="ins-img">
+          <svg viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%">
+            <defs>
+              <radialGradient id="sg1" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#00C8C8" stop-opacity="0.1"/><stop offset="100%" stop-color="#0A1414" stop-opacity="0"/></radialGradient>
+              <filter id="sf1"><feGaussianBlur stdDeviation="6"/></filter>
+              <pattern id="sp1" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0L0 0 0 32" fill="none" stroke="rgba(0,200,200,0.04)" stroke-width="0.5"/></pattern>
+            </defs>
+            <rect width="400" height="200" fill="#080F0F"/>
+            <rect width="400" height="200" fill="url(#sp1)"/>
+            <ellipse cx="200" cy="100" rx="180" ry="100" fill="url(#sg1)" filter="url(#sf1)"/>
+            <!-- Wafer hexagon grid -->
+            <g opacity="0.35" stroke="#00C8C8" stroke-width="0.75">
+              <path d="M170 60 L190 50 L210 60 L210 80 L190 90 L170 80Z"/>
+              <path d="M210 60 L230 50 L250 60 L250 80 L230 90 L210 80Z"/>
+              <path d="M190 90 L210 80 L230 90 L230 110 L210 120 L190 110Z"/>
+            </g>
+            <g opacity="0.6" stroke="#00C8C8" stroke-width="1">
+              <path d="M170 60 L190 50 L210 60 L210 80 L190 90 L170 80Z" fill="rgba(0,200,200,0.04)"/>
+            </g>
+            <!-- Compliance checklist -->
+            <rect x="22" y="38" width="120" height="130" rx="6" fill="rgba(10,20,20,0.9)" stroke="rgba(0,200,200,0.2)" stroke-width="1"/>
+            <text x="34" y="56" font-size="7.5" font-family="monospace" fill="rgba(0,200,200,0.7)">SEMI E187</text>
+            <line x1="22" y1="62" x2="142" y2="62" stroke="rgba(0,200,200,0.15)" stroke-width="0.75"/>
+            <g fill="none" stroke-width="1" stroke-linecap="round">
+              <circle cx="34" cy="76" r="5" stroke="#00C8C8" fill="rgba(0,200,200,0.15)"/><path d="M31 76l2 2 4-4" stroke="#00C8C8" stroke-width="1.2"/>
+              <text x="46" y="79" font-size="7" font-family="monospace" fill="rgba(255,255,255,0.5)">Network Isolation</text>
+              <circle cx="34" cy="96" r="5" stroke="#00C8C8" fill="rgba(0,200,200,0.15)"/><path d="M31 96l2 2 4-4" stroke="#00C8C8" stroke-width="1.2"/>
+              <text x="46" y="99" font-size="7" font-family="monospace" fill="rgba(255,255,255,0.5)">Patch Management</text>
+              <circle cx="34" cy="116" r="5" stroke="#00C8C8" fill="rgba(0,200,200,0.15)"/><path d="M31 116l2 2 4-4" stroke="#00C8C8" stroke-width="1.2"/>
+              <text x="46" y="119" font-size="7" font-family="monospace" fill="rgba(255,255,255,0.5)">Access Control</text>
+              <circle cx="34" cy="136" r="5" stroke="rgba(0,200,200,0.4)" fill="rgba(0,200,200,0.05)"/>
+              <text x="46" y="139" font-size="7" font-family="monospace" fill="rgba(255,255,255,0.3)">Incident Response</text>
+              <circle cx="34" cy="156" r="5" stroke="rgba(0,200,200,0.4)" fill="rgba(0,200,200,0.05)"/>
+              <text x="46" y="159" font-size="7" font-family="monospace" fill="rgba(255,255,255,0.3)">Audit Logging</text>
+            </g>
+            <!-- Progress bar -->
+            <rect x="280" y="148" width="110" height="34" rx="5" fill="rgba(10,20,20,0.9)" stroke="rgba(0,200,200,0.2)" stroke-width="0.75"/>
+            <text x="290" y="162" font-size="7" font-family="monospace" fill="rgba(0,200,200,0.7)">COMPLIANCE</text>
+            <rect x="290" y="167" width="90" height="6" rx="3" fill="rgba(255,255,255,0.05)"/>
+            <rect x="290" y="167" width="63" height="6" rx="3" fill="rgba(0,200,200,0.45)"/>
+            <text x="290" y="180" font-size="6.5" font-family="monospace" fill="rgba(255,255,255,0.3)">70% complete</text>
+            <!-- Tag -->
+            <rect x="270" y="12" width="118" height="22" rx="4" fill="rgba(0,200,200,0.08)" stroke="rgba(0,200,200,0.3)" stroke-width="0.75"/>
+            <text x="329" y="26" font-size="8" font-family="monospace" fill="#00C8C8" text-anchor="middle">SEMICONDUCTOR SEC.</text>
+          </svg>
+        </div>
+        <div class="ins-body">
+          <span class="ins-tag" style="color:var(--teal)">SEMI E187</span>
+          <div class="ins-title">SEMI E187 半導體資安標準完整導入流程</div>
+          <div class="ins-meta">2025-11-05 &nbsp;·&nbsp; 10 分鐘閱讀</div>
+        </div>
+      </a>
+
+      <!-- 3 DPI -->
+      <a href="/blog/dpi-deep-packet-inspection/" style="text-decoration:none" class="ins-card" data-cat="guide">
+        <div class="ins-img">
+          <svg viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%">
+            <defs>
+              <radialGradient id="dg1" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#FA5822" stop-opacity="0.1"/><stop offset="100%" stop-color="#0A0A14" stop-opacity="0"/></radialGradient>
+              <filter id="df1"><feGaussianBlur stdDeviation="6"/></filter>
+              <pattern id="dp1" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0L0 0 0 32" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/></pattern>
+            </defs>
+            <rect width="400" height="200" fill="#100C08"/>
+            <rect width="400" height="200" fill="url(#dp1)"/>
+            <ellipse cx="200" cy="100" rx="180" ry="100" fill="url(#dg1)" filter="url(#df1)"/>
+            <!-- Packet flow layers -->
+            <g>
+              <rect x="30" y="32" width="340" height="22" rx="3" fill="rgba(250,88,34,0.06)" stroke="rgba(250,88,34,0.25)" stroke-width="0.75"/>
+              <text x="42" y="46" font-size="7" font-family="monospace" fill="rgba(250,88,34,0.7)">L7 APPLICATION</text>
+              <rect x="30" y="58" width="340" height="22" rx="3" fill="rgba(250,88,34,0.05)" stroke="rgba(250,88,34,0.2)" stroke-width="0.75"/>
+              <text x="42" y="72" font-size="7" font-family="monospace" fill="rgba(250,88,34,0.55)">L6 PRESENTATION</text>
+              <rect x="30" y="84" width="340" height="22" rx="3" fill="rgba(250,88,34,0.04)" stroke="rgba(250,88,34,0.15)" stroke-width="0.75"/>
+              <text x="42" y="98" font-size="7" font-family="monospace" fill="rgba(250,88,34,0.45)">L5 SESSION</text>
+              <rect x="30" y="110" width="340" height="22" rx="3" fill="rgba(0,200,200,0.04)" stroke="rgba(0,200,200,0.15)" stroke-width="0.75"/>
+              <text x="42" y="124" font-size="7" font-family="monospace" fill="rgba(0,200,200,0.45)">L4 TRANSPORT — TCP/UDP</text>
+              <rect x="30" y="136" width="340" height="22" rx="3" fill="rgba(0,200,200,0.03)" stroke="rgba(0,200,200,0.1)" stroke-width="0.75"/>
+              <text x="42" y="150" font-size="7" font-family="monospace" fill="rgba(0,200,200,0.35)">L3 NETWORK — IP</text>
+            </g>
+            <!-- DPI scanner -->
+            <rect x="230" y="28" width="100" height="136" rx="3" fill="rgba(250,88,34,0.04)" stroke="rgba(250,88,34,0.35)" stroke-width="1"/>
+            <line x1="230" y1="68" x2="330" y2="68" stroke="rgba(250,88,34,0.6)" stroke-width="1.5">
+              <animateTransform attributeName="transform" type="translate" values="0,0;0,96;0,0" dur="3s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.8;0.2;0.8" dur="3s" repeatCount="indefinite"/>
+            </line>
+            <text x="280" y="44" font-size="7.5" font-family="monospace" fill="rgba(250,88,34,0.6)" text-anchor="middle">DPI ENGINE</text>
+            <!-- LIONIC badge -->
+            <rect x="240" y="148" width="80" height="20" rx="4" fill="rgba(250,88,34,0.1)" stroke="rgba(250,88,34,0.3)" stroke-width="0.75"/>
+            <text x="280" y="161" font-size="7.5" font-family="monospace" fill="#FA5822" text-anchor="middle">LIONIC v6</text>
+            <!-- Protocol stat -->
+            <rect x="12" y="164" width="110" height="28" rx="5" fill="rgba(10,8,6,0.92)" stroke="rgba(250,88,34,0.2)" stroke-width="0.75"/>
+            <text x="22" y="178" font-size="7" font-family="monospace" fill="rgba(250,88,34,0.7)">PROTOCOLS</text>
+            <text x="22" y="188" font-size="9" font-family="monospace" fill="#FA5822" font-weight="700">1,400+</text>
+            <!-- Tag -->
+            <rect x="270" y="12" width="118" height="22" rx="4" fill="rgba(250,88,34,0.08)" stroke="rgba(250,88,34,0.3)" stroke-width="0.75"/>
+            <text x="329" y="26" font-size="8" font-family="monospace" fill="#FA5822" text-anchor="middle">DEEP PKT INSPECT</text>
+          </svg>
+        </div>
+        <div class="ins-body">
+          <span class="ins-tag">DPI 技術</span>
+          <div class="ins-title">DPI 深度封包檢測技術解析：LIONIC 引擎如何識別 1400+ 協議</div>
+          <div class="ins-meta">2025-10-20 &nbsp;·&nbsp; 7 分鐘閱讀</div>
+        </div>
+      </a>
+
+      <!-- 4 OT/ICS -->
+      <a href="/blog/ot-ics-security-guide/" style="text-decoration:none" class="ins-card" data-cat="guide">
+        <div class="ins-img">
+          <svg viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%">
+            <defs>
+              <radialGradient id="og1" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#A78BFA" stop-opacity="0.1"/><stop offset="100%" stop-color="#0A0A14" stop-opacity="0"/></radialGradient>
+              <filter id="of1"><feGaussianBlur stdDeviation="6"/></filter>
+              <pattern id="opp1" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0L0 0 0 32" fill="none" stroke="rgba(167,139,250,0.04)" stroke-width="0.5"/></pattern>
+            </defs>
+            <rect width="400" height="200" fill="#0A0A14"/>
+            <rect width="400" height="200" fill="url(#opp1)"/>
+            <ellipse cx="200" cy="100" rx="180" ry="100" fill="url(#og1)" filter="url(#of1)"/>
+            <!-- Purdue model layers -->
+            <rect x="20" y="20" width="240" height="26" rx="4" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.4)" stroke-width="1"/>
+            <text x="32" y="36" font-size="7" font-family="monospace" fill="#A78BFA">L5 ENTERPRISE NETWORK</text>
+            <rect x="20" y="52" width="240" height="26" rx="4" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.3)" stroke-width="1"/>
+            <text x="32" y="68" font-size="7" font-family="monospace" fill="rgba(167,139,250,0.8)">L4 SITE BUSINESS PLANNING</text>
+            <rect x="20" y="84" width="240" height="26" rx="4" fill="rgba(167,139,250,0.05)" stroke="rgba(167,139,250,0.25)" stroke-width="1"/>
+            <text x="32" y="100" font-size="7" font-family="monospace" fill="rgba(167,139,250,0.65)">L3 SITE OPERATIONS — SCADA</text>
+            <rect x="20" y="116" width="240" height="26" rx="4" fill="rgba(250,88,34,0.05)" stroke="rgba(250,88,34,0.25)" stroke-width="1"/>
+            <text x="32" y="132" font-size="7" font-family="monospace" fill="rgba(250,88,34,0.65)">L2 CONTROL — PLC / HMI</text>
+            <rect x="20" y="148" width="240" height="26" rx="4" fill="rgba(250,88,34,0.07)" stroke="rgba(250,88,34,0.3)" stroke-width="1"/>
+            <text x="32" y="164" font-size="7" font-family="monospace" fill="rgba(250,88,34,0.8)">L1 FIELD — SENSORS / ACTUATORS</text>
+            <!-- Firewall icon between layers -->
+            <rect x="270" y="52" width="110" height="140" rx="6" fill="rgba(10,10,20,0.92)" stroke="rgba(167,139,250,0.2)" stroke-width="1"/>
+            <text x="325" y="70" font-size="7" font-family="monospace" fill="rgba(167,139,250,0.6)" text-anchor="middle">TERA-NGFW</text>
+            <line x1="280" y1="76" x2="370" y2="76" stroke="rgba(167,139,250,0.15)" stroke-width="0.75"/>
+            <path d="M310 100L340 113v18Q340 145 325 150Q310 145 310 131V113Z" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.5)" stroke-width="1.2"/>
+            <path d="M316 128l7 7 11-11" stroke="#A78BFA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="325" y="168" font-size="6.5" font-family="monospace" fill="rgba(167,139,250,0.5)" text-anchor="middle">OT PROTECTED</text>
+            <!-- Tag -->
+            <rect x="270" y="12" width="118" height="22" rx="4" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.3)" stroke-width="0.75"/>
+            <text x="329" y="26" font-size="8" font-family="monospace" fill="#A78BFA" text-anchor="middle">OT / ICS SECURITY</text>
+          </svg>
+        </div>
+        <div class="ins-body">
+          <span class="ins-tag" style="color:#A78BFA">OT / ICS</span>
+          <div class="ins-title">OT/ICS 工控資安完全指南：從 Purdue 模型到零信任 OT</div>
+          <div class="ins-meta">2025-10-08 &nbsp;·&nbsp; 11 分鐘閱讀</div>
+        </div>
+      </a>
+
+      <!-- 5 IoT -->
+      <a href="/blog/iot-security-challenges/" style="text-decoration:none" class="ins-card" data-cat="threat">
+        <div class="ins-img">
+          <svg viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%">
+            <defs>
+              <radialGradient id="ig1" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#FF4444" stop-opacity="0.1"/><stop offset="100%" stop-color="#0A0A14" stop-opacity="0"/></radialGradient>
+              <filter id="if1"><feGaussianBlur stdDeviation="6"/></filter>
+              <pattern id="ip1" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0L0 0 0 32" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/></pattern>
+            </defs>
+            <rect width="400" height="200" fill="#100808"/>
+            <rect width="400" height="200" fill="url(#ip1)"/>
+            <ellipse cx="200" cy="100" rx="180" ry="100" fill="url(#ig1)" filter="url(#if1)"/>
+            <!-- Central botnet node -->
+            <circle cx="200" cy="100" r="20" fill="rgba(255,68,68,0.1)" stroke="rgba(255,68,68,0.5)" stroke-width="1.5"/>
+            <circle cx="200" cy="100" r="12" fill="rgba(255,68,68,0.15)" stroke="rgba(255,68,68,0.7)" stroke-width="1"/>
+            <circle cx="200" cy="100" r="5" fill="#FF4444"/>
+            <!-- IoT device nodes -->
+            <g stroke-width="1">
+              <line x1="200" y1="80" x2="200" y2="44" stroke="rgba(255,68,68,0.35)" stroke-dasharray="4 3"/>
+              <circle cx="200" cy="36" r="10" fill="rgba(255,68,68,0.12)" stroke="#FF4444"/>
+              <text x="200" y="40" font-size="7" font-family="monospace" fill="#FF4444" text-anchor="middle">CAM</text>
+              <line x1="182" y1="88" x2="140" y2="60" stroke="rgba(255,68,68,0.3)" stroke-dasharray="4 3"/>
+              <circle cx="130" cy="54" r="10" fill="rgba(255,68,68,0.1)" stroke="rgba(255,68,68,0.6)"/>
+              <text x="130" y="58" font-size="7" font-family="monospace" fill="rgba(255,68,68,0.8)" text-anchor="middle">DVR</text>
+              <line x1="180" y1="100" x2="134" y2="100" stroke="rgba(255,68,68,0.3)" stroke-dasharray="4 3"/>
+              <circle cx="122" cy="100" r="10" fill="rgba(255,68,68,0.1)" stroke="rgba(255,68,68,0.5)"/>
+              <text x="122" y="104" font-size="7" font-family="monospace" fill="rgba(255,68,68,0.7)" text-anchor="middle">PLC</text>
+              <line x1="182" y1="112" x2="140" y2="142" stroke="rgba(250,88,34,0.3)" stroke-dasharray="4 3"/>
+              <circle cx="130" cy="150" r="10" fill="rgba(250,88,34,0.1)" stroke="rgba(250,88,34,0.5)"/>
+              <text x="130" y="154" font-size="7" font-family="monospace" fill="rgba(250,88,34,0.7)" text-anchor="middle">RTR</text>
+              <line x1="218" y1="112" x2="260" y2="142" stroke="rgba(250,88,34,0.3)" stroke-dasharray="4 3"/>
+              <circle cx="270" cy="150" r="10" fill="rgba(250,88,34,0.1)" stroke="rgba(250,88,34,0.5)"/>
+              <text x="270" y="154" font-size="7" font-family="monospace" fill="rgba(250,88,34,0.7)" text-anchor="middle">NAS</text>
+              <line x1="220" y1="100" x2="266" y2="100" stroke="rgba(255,68,68,0.3)" stroke-dasharray="4 3"/>
+              <circle cx="278" cy="100" r="10" fill="rgba(255,68,68,0.1)" stroke="rgba(255,68,68,0.5)"/>
+              <text x="278" y="104" font-size="7" font-family="monospace" fill="rgba(255,68,68,0.7)" text-anchor="middle">CAM</text>
+              <line x1="218" y1="88" x2="260" y2="60" stroke="rgba(255,68,68,0.3)" stroke-dasharray="4 3"/>
+              <circle cx="270" cy="54" r="10" fill="rgba(255,68,68,0.12)" stroke="#FF4444"/>
+              <text x="270" y="58" font-size="7" font-family="monospace" fill="#FF4444" text-anchor="middle">VoIP</text>
+            </g>
+            <!-- Mirai label -->
+            <rect x="12" y="160" width="116" height="30" rx="5" fill="rgba(15,8,8,0.9)" stroke="rgba(255,68,68,0.25)" stroke-width="0.75"/>
+            <text x="22" y="174" font-size="7" font-family="monospace" fill="rgba(255,68,68,0.7)">MIRAI BOTNET</text>
+            <text x="22" y="185" font-size="6.5" font-family="monospace" fill="rgba(255,255,255,0.3)">600K+ devices</text>
+            <!-- Tag -->
+            <rect x="270" y="12" width="118" height="22" rx="4" fill="rgba(255,68,68,0.08)" stroke="rgba(255,68,68,0.3)" stroke-width="0.75"/>
+            <text x="329" y="26" font-size="8" font-family="monospace" fill="#FF4444" text-anchor="middle">IoT THREAT MAP</text>
+          </svg>
+        </div>
+        <div class="ins-body">
+          <span class="ins-tag">IoT 資安</span>
+          <div class="ins-title">IoT 裝置資安挑戰：為什麼 IoT 是企業網路最薄弱的一環？</div>
+          <div class="ins-meta">2025-09-15 &nbsp;·&nbsp; 6 分鐘閱讀</div>
+        </div>
+      </a>
+
+      <!-- 6 供應鏈 -->
+      <a href="/blog/supply-chain-security/" style="text-decoration:none" class="ins-card" data-cat="threat">
+        <div class="ins-img">
+          <svg viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%">
+            <defs>
+              <radialGradient id="scg1" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#FA5822" stop-opacity="0.1"/><stop offset="100%" stop-color="#0A0A14" stop-opacity="0"/></radialGradient>
+              <filter id="scf1"><feGaussianBlur stdDeviation="6"/></filter>
+              <pattern id="scp1" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0L0 0 0 32" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/></pattern>
+            </defs>
+            <rect width="400" height="200" fill="#100A08"/>
+            <rect width="400" height="200" fill="url(#scp1)"/>
+            <ellipse cx="200" cy="100" rx="180" ry="100" fill="url(#scg1)" filter="url(#scf1)"/>
+            <!-- Supply chain pipeline -->
+            <line x1="50" y1="100" x2="350" y2="100" stroke="rgba(250,88,34,0.2)" stroke-width="2" stroke-dasharray="8 4"/>
+            <!-- Nodes -->
+            <g>
+              <circle cx="60" cy="100" r="18" fill="rgba(250,88,34,0.08)" stroke="rgba(250,88,34,0.4)" stroke-width="1.2"/>
+              <text x="60" y="97" font-size="6" font-family="monospace" fill="rgba(250,88,34,0.8)" text-anchor="middle">VENDOR</text>
+              <text x="60" y="107" font-size="6" font-family="monospace" fill="rgba(250,88,34,0.6)" text-anchor="middle">A</text>
+              <circle cx="140" cy="100" r="18" fill="rgba(250,88,34,0.08)" stroke="rgba(250,88,34,0.4)" stroke-width="1.2"/>
+              <text x="140" y="97" font-size="6" font-family="monospace" fill="rgba(250,88,34,0.8)" text-anchor="middle">BUILD</text>
+              <text x="140" y="107" font-size="6" font-family="monospace" fill="rgba(250,88,34,0.6)" text-anchor="middle">SYS</text>
+              <!-- Compromised node -->
+              <circle cx="220" cy="100" r="22" fill="rgba(255,68,68,0.15)" stroke="#FF4444" stroke-width="1.5"/>
+              <circle cx="220" cy="100" r="14" fill="rgba(255,68,68,0.2)" stroke="rgba(255,68,68,0.8)" stroke-width="1"/>
+              <path d="M213 93l14 14M227 93l-14 14" stroke="#FF4444" stroke-width="2" stroke-linecap="round"/>
+              <text x="220" y="134" font-size="6.5" font-family="monospace" fill="#FF4444" text-anchor="middle">COMPROMISED</text>
+              <circle cx="300" cy="100" r="18" fill="rgba(250,88,34,0.06)" stroke="rgba(250,88,34,0.3)" stroke-width="1.2"/>
+              <text x="300" y="97" font-size="6" font-family="monospace" fill="rgba(250,88,34,0.6)" text-anchor="middle">DEPLOY</text>
+              <text x="300" y="107" font-size="6" font-family="monospace" fill="rgba(250,88,34,0.4)" text-anchor="middle">TARGET</text>
+              <circle cx="360" cy="100" r="18" fill="rgba(250,88,34,0.06)" stroke="rgba(250,88,34,0.3)" stroke-width="1.2"/>
+              <text x="360" y="97" font-size="6" font-family="monospace" fill="rgba(250,88,34,0.6)" text-anchor="middle">PROD</text>
+              <text x="360" y="107" font-size="6" font-family="monospace" fill="rgba(250,88,34,0.4)" text-anchor="middle">ENV</text>
+            </g>
+            <!-- SolarWinds reference -->
+            <rect x="12" y="148" width="140" height="42" rx="5" fill="rgba(12,8,6,0.92)" stroke="rgba(250,88,34,0.2)" stroke-width="0.75"/>
+            <text x="22" y="163" font-size="7" font-family="monospace" fill="rgba(250,88,34,0.8)">ATTACK PATTERN</text>
+            <rect x="22" y="168" width="110" height="5" rx="2" fill="rgba(255,255,255,0.05)"/>
+            <rect x="22" y="168" width="88" height="5" rx="2" fill="rgba(255,68,68,0.4)"/>
+            <text x="22" y="183" font-size="6.5" font-family="monospace" fill="rgba(255,255,255,0.25)">SolarWinds pattern</text>
+            <!-- Tag -->
+            <rect x="260" y="12" width="128" height="22" rx="4" fill="rgba(250,88,34,0.08)" stroke="rgba(250,88,34,0.3)" stroke-width="0.75"/>
+            <text x="324" y="26" font-size="8" font-family="monospace" fill="#FA5822" text-anchor="middle">SUPPLY CHAIN ATK</text>
+          </svg>
+        </div>
+        <div class="ins-body">
+          <span class="ins-tag">供應鏈</span>
+          <div class="ins-title">供應鏈資安攻擊：SolarWinds 之後的新型態威脅</div>
+          <div class="ins-meta">2025-09-02 &nbsp;·&nbsp; 8 分鐘閱讀</div>
+        </div>
+      </a>
+
+      <!-- 7 URL 過濾 -->
+      <a href="/blog/url-filtering-technology/" style="text-decoration:none" class="ins-card" data-cat="product">
+        <div class="ins-img">
+          <svg viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%">
+            <defs>
+              <radialGradient id="ug1" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#A78BFA" stop-opacity="0.1"/><stop offset="100%" stop-color="#0A0A14" stop-opacity="0"/></radialGradient>
+              <filter id="uf1"><feGaussianBlur stdDeviation="6"/></filter>
+              <pattern id="up1" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0L0 0 0 32" fill="none" stroke="rgba(167,139,250,0.04)" stroke-width="0.5"/></pattern>
+            </defs>
+            <rect width="400" height="200" fill="#0C0A16"/>
+            <rect width="400" height="200" fill="url(#up1)"/>
+            <ellipse cx="200" cy="100" rx="180" ry="100" fill="url(#ug1)" filter="url(#uf1)"/>
+            <!-- Browser mockup -->
+            <rect x="20" y="24" width="230" height="154" rx="7" fill="rgba(20,18,30,0.95)" stroke="rgba(167,139,250,0.25)" stroke-width="1"/>
+            <rect x="20" y="24" width="230" height="30" rx="7" fill="rgba(30,26,46,0.95)"/>
+            <rect x="20" y="44" width="230" height="10" fill="rgba(30,26,46,0.95)"/>
+            <circle cx="34" cy="39" r="4" fill="rgba(255,68,68,0.5)"/>
+            <circle cx="48" cy="39" r="4" fill="rgba(250,88,34,0.5)"/>
+            <circle cx="62" cy="39" r="4" fill="rgba(61,220,151,0.4)"/>
+            <!-- URL bar -->
+            <rect x="76" y="33" width="158" height="14" rx="4" fill="rgba(10,8,20,0.8)" stroke="rgba(167,139,250,0.2)" stroke-width="0.75"/>
+            <text x="84" y="43" font-size="6.5" font-family="monospace" fill="rgba(167,139,250,0.6)">https://malicious-site.ru</text>
+            <!-- Page content blocked -->
+            <rect x="30" y="60" width="210" height="110" rx="4" fill="rgba(167,139,250,0.04)"/>
+            <circle cx="135" cy="95" r="22" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.4)" stroke-width="1.5"/>
+            <path d="M124 84l22 22M146 84l-22 22" stroke="#A78BFA" stroke-width="2.5" stroke-linecap="round"/>
+            <text x="135" y="128" font-size="8.5" font-family="monospace" fill="rgba(167,139,250,0.8)" text-anchor="middle">BLOCKED</text>
+            <text x="135" y="140" font-size="6.5" font-family="monospace" fill="rgba(255,255,255,0.25)" text-anchor="middle">Phishing / Malware</text>
+            <text x="135" y="155" font-size="6" font-family="monospace" fill="rgba(255,255,255,0.2)" text-anchor="middle">Lionfilter 200 — Category: THREAT</text>
+            <!-- Stats -->
+            <rect x="262" y="80" width="124" height="96" rx="6" fill="rgba(14,12,24,0.92)" stroke="rgba(167,139,250,0.2)" stroke-width="0.75"/>
+            <text x="272" y="96" font-size="7" font-family="monospace" fill="rgba(167,139,250,0.7)">FILTER STATS</text>
+            <line x1="262" y1="102" x2="386" y2="102" stroke="rgba(167,139,250,0.12)" stroke-width="0.75"/>
+            <text x="272" y="116" font-size="6.5" font-family="monospace" fill="rgba(255,255,255,0.3)">Blocked</text>
+            <text x="372" y="116" font-size="6.5" font-family="monospace" fill="#A78BFA" text-anchor="end">98.7%</text>
+            <text x="272" y="132" font-size="6.5" font-family="monospace" fill="rgba(255,255,255,0.3)">Categories</text>
+            <text x="372" y="132" font-size="6.5" font-family="monospace" fill="#A78BFA" text-anchor="end">120+</text>
+            <text x="272" y="148" font-size="6.5" font-family="monospace" fill="rgba(255,255,255,0.3)">HTTPS Inspect</text>
+            <text x="372" y="148" font-size="6.5" font-family="monospace" fill="rgba(61,220,151,0.8)" text-anchor="end">ON</text>
+            <text x="272" y="164" font-size="6.5" font-family="monospace" fill="rgba(255,255,255,0.3)">ML Model</text>
+            <text x="372" y="164" font-size="6.5" font-family="monospace" fill="rgba(61,220,151,0.8)" text-anchor="end">Active</text>
+            <!-- Tag -->
+            <rect x="262" y="28" width="124" height="44" rx="4" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.3)" stroke-width="0.75"/>
+            <text x="324" y="44" font-size="8" font-family="monospace" fill="#A78BFA" text-anchor="middle">LIONFILTER 200</text>
+            <text x="324" y="58" font-size="7" font-family="monospace" fill="rgba(167,139,250,0.5)" text-anchor="middle">URL FILTERING</text>
+          </svg>
+        </div>
+        <div class="ins-body">
+          <span class="ins-tag" style="color:#A78BFA">URL 過濾</span>
+          <div class="ins-title">URL 過濾技術深度解析：Lionfilter 200 如何守護網頁安全</div>
+          <div class="ins-meta">2025-08-18 &nbsp;·&nbsp; 5 分鐘閱讀</div>
+        </div>
+      </a>
+
+      <!-- 8 NGFW 選購 -->
+      <a href="/blog/utm-selection-guide/" style="text-decoration:none" class="ins-card" data-cat="guide">
+        <div class="ins-img">
+          <svg viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%">
+            <defs>
+              <radialGradient id="ng1" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#3DDC97" stop-opacity="0.1"/><stop offset="100%" stop-color="#0A0A14" stop-opacity="0"/></radialGradient>
+              <filter id="nf1"><feGaussianBlur stdDeviation="6"/></filter>
+              <pattern id="np1" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0L0 0 0 32" fill="none" stroke="rgba(61,220,151,0.04)" stroke-width="0.5"/></pattern>
+            </defs>
+            <rect width="400" height="200" fill="#080F0C"/>
+            <rect width="400" height="200" fill="url(#np1)"/>
+            <ellipse cx="200" cy="100" rx="180" ry="100" fill="url(#ng1)" filter="url(#nf1)"/>
+            <!-- Three product columns -->
+            <rect x="20" y="30" width="100" height="150" rx="6" fill="rgba(250,88,34,0.06)" stroke="rgba(250,88,34,0.3)" stroke-width="1"/>
+            <text x="70" y="50" font-size="7.5" font-family="monospace" fill="#FA5822" text-anchor="middle">PICO-NGFW</text>
+            <text x="70" y="62" font-size="6.5" font-family="monospace" fill="rgba(250,88,34,0.6)" text-anchor="middle">100</text>
+            <line x1="30" y1="70" x2="110" y2="70" stroke="rgba(250,88,34,0.15)" stroke-width="0.75"/>
+            <text x="30" y="84" font-size="6" font-family="monospace" fill="rgba(255,255,255,0.4)">Scenario: IT</text>
+            <text x="30" y="98" font-size="6" font-family="monospace" fill="rgba(255,255,255,0.3)">Throughput: 1G</text>
+            <text x="30" y="112" font-size="6" font-family="monospace" fill="rgba(255,255,255,0.3)">Ports: 5x GbE</text>
+            <text x="30" y="126" font-size="6" font-family="monospace" fill="rgba(255,255,255,0.3)">DPI: Full</text>
+            <text x="30" y="140" font-size="6" font-family="monospace" fill="rgba(255,255,255,0.3)">Size: Mini</text>
+            <rect x="150" y="30" width="100" height="150" rx="6" fill="rgba(0,200,200,0.06)" stroke="rgba(0,200,200,0.3)" stroke-width="1"/>
+            <text x="200" y="50" font-size="7" font-family="monospace" fill="#00C8C8" text-anchor="middle">DUAL ARK</text>
+            <text x="200" y="62" font-size="6.5" font-family="monospace" fill="rgba(0,200,200,0.6)" text-anchor="middle">NGFW 16</text>
+            <line x1="160" y1="70" x2="240" y2="70" stroke="rgba(0,200,200,0.15)" stroke-width="0.75"/>
+            <text x="160" y="84" font-size="6" font-family="monospace" fill="rgba(255,255,255,0.4)">Scenario: IoT</text>
+            <text x="160" y="98" font-size="6" font-family="monospace" fill="rgba(255,255,255,0.3)">Throughput: 2G</text>
+            <text x="160" y="112" font-size="6" font-family="monospace" fill="rgba(255,255,255,0.3)">Ports: 16x</text>
+            <text x="160" y="126" font-size="6" font-family="monospace" fill="rgba(255,255,255,0.3)">DPI: Full</text>
+            <text x="160" y="140" font-size="6" font-family="monospace" fill="rgba(255,255,255,0.3)">VLAN: Yes</text>
+            <rect x="280" y="30" width="100" height="150" rx="6" fill="rgba(61,220,151,0.08)" stroke="#3DDC97" stroke-width="1.2"/>
+            <text x="330" y="50" font-size="7.5" font-family="monospace" fill="#3DDC97" text-anchor="middle">TERA-NGFW</text>
+            <text x="330" y="62" font-size="6.5" font-family="monospace" fill="rgba(61,220,151,0.7)" text-anchor="middle">12</text>
+            <line x1="290" y1="70" x2="370" y2="70" stroke="rgba(61,220,151,0.2)" stroke-width="0.75"/>
+            <text x="290" y="84" font-size="6" font-family="monospace" fill="rgba(255,255,255,0.5)">Scenario: OT</text>
+            <text x="290" y="98" font-size="6" font-family="monospace" fill="rgba(255,255,255,0.4)">Throughput: 5G</text>
+            <text x="290" y="112" font-size="6" font-family="monospace" fill="rgba(255,255,255,0.4)">Ports: 12x SFP</text>
+            <text x="290" y="126" font-size="6" font-family="monospace" fill="rgba(255,255,255,0.4)">OT Proto: Yes</text>
+            <text x="290" y="140" font-size="6" font-family="monospace" fill="rgba(255,255,255,0.4)">Ruggedized</text>
+            <!-- Best pick badge -->
+            <rect x="282" y="155" width="96" height="18" rx="4" fill="rgba(61,220,151,0.15)" stroke="#3DDC97" stroke-width="0.75"/>
+            <text x="330" y="167" font-size="7" font-family="monospace" fill="#3DDC97" text-anchor="middle">OT BEST PICK</text>
+          </svg>
+        </div>
+        <div class="ins-body">
+          <span class="ins-tag" style="color:#3DDC97">選購指南</span>
+          <div class="ins-title">企業 NGFW 選購完整指南：IT、OT、IoT 場景各有最佳解</div>
+          <div class="ins-meta">2025-08-05 &nbsp;·&nbsp; 9 分鐘閱讀</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<div class="cta-band">
+  <div class="reveal">
+    <h2>想定期收到<span> 最新資安情報</span>？</h2>
+    <p>訂閱 Hexion Networks 月報，獲取台灣企業最新威脅趨勢分析。</p>
+  </div>
+  <div class="reveal reveal-delay-1" style="display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap">
+    
+    <a href="/contact/" class="btn btn-ghost">電子報訂閱</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div><a href="/"><img src="/brand_assets/logo.png" alt="Hexion Networks" style="height:36px;filter:brightness(0) invert(1);opacity:0.85" /></a><p class="footer-brand-desc">結合商業策略、品牌顧問、資訊科技與資安的整合型服務公司。</p></div>
+    <div><div class="f-col-title">產品</div><a href="/products/pico-utm-100/" class="f-link">Pico-NGFW 100</a><a href="/products/dual-ark-utm-16/" class="f-link">Dual Ark-NGFW 16</a><a href="/products/tera-utm-12/" class="f-link">Tera-NGFW 12</a><a href="/products/lionfilter-200/" class="f-link">Lionfilter 200</a><a href="/products/endblock/" class="f-link">Endblock</a><a href="/products/teamt5/" class="f-link">TeamT5</a><a href="/products/cycraft/" class="f-link">奧義智慧 CyCraft</a></div>
+    <div><div class="f-col-title">服務</div><a href="/services/" class="f-link">商業策略</a><a href="/services/" class="f-link">品牌顧問</a><a href="/services/" class="f-link">資安評估</a></div>
+    <div><div class="f-col-title">公司</div><a href="/about/" class="f-link">關於我們</a><a href="/blog/" class="f-link">部落格</a><a href="/contact/" class="f-link">聯絡我們</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 HEXION NETWORKS.</span>
+    <div class="footer-legal"><a href="#">隱私政策</a><a href="#">服務條款</a></div>
+  </div>
+</footer>
+
+<script>
+const ro=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target)}})},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+function filterBlog(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#blog-grid .blog-card').forEach(card=>{
+    card.style.display = (cat==='all'||card.dataset.cat===cat)?'':'none';
+  });
+}
+</script>
+</body></html>

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>服務項目 | 商業策略 · 品牌顧問 · 資安評估 — Hexion Networks</title>
+  <meta name="description" content="Hexion Networks 提供商業策略顧問、品牌顧問、資安評估、合規管理、數位轉型規劃等整合型服務，協助台灣企業建立數位韌性。" />
+  <meta name="robots" content="index, follow" /><link rel="canonical" href="https://hexionnetworks.com/services/" />
+  <link rel="icon" href="/brand_assets/favicon.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    .service-hero{position:relative;padding:9rem var(--px) 5rem;background:var(--ink);overflow:hidden}
+    .service-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 30%,rgba(250,88,34,0.1) 0%,transparent 70%);pointer-events:none}
+    .service-hero::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(250,88,34,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(250,88,34,0.04) 1px,transparent 1px);background-size:56px 56px;pointer-events:none}
+    .svc-big-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;margin-top:3rem}
+    @media(max-width:768px){.svc-big-grid{grid-template-columns:1fr}}
+    .svc-big-card{background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:2.5rem;transition:border-color 0.3s,transform 0.3s;position:relative;overflow:hidden}
+    .svc-big-card:hover{border-color:rgba(250,88,34,0.3);transform:translateY(-4px)}
+    .svc-big-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--o),transparent);transform:scaleX(0);transform-origin:left;transition:transform 0.35s cubic-bezier(0.22,1,0.36,1)}
+    .svc-big-card:hover::after{transform:scaleX(1)}
+    .svc-big-num{font-family:'Orbitron',monospace;font-size:3rem;font-weight:900;color:rgba(250,88,34,0.1);line-height:1;margin-bottom:1rem}
+    .svc-big-title{font-family:'Syne',sans-serif;font-size:1.375rem;font-weight:800;color:#fff;margin-bottom:0.75rem}
+    .svc-big-desc{font-size:0.9rem;color:var(--silver);line-height:1.75;margin-bottom:1.5rem}
+    .svc-items{list-style:none;display:flex;flex-direction:column;gap:0.5rem}
+    .svc-items li{font-size:0.8125rem;color:var(--fog);padding-left:1.25rem;position:relative}
+    .svc-items li::before{content:'→';position:absolute;left:0;color:var(--o)}
+    .process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+    @media(max-width:768px){.process-grid{grid-template-columns:1fr}}
+    .process-card{background:var(--ink-3);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:2rem;text-align:center}
+    .process-num{font-family:'Orbitron',monospace;font-size:1.75rem;font-weight:900;color:var(--o);margin-bottom:0.75rem}
+    .process-title{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:#fff;margin-bottom:0.5rem}
+    .process-desc{font-size:0.8125rem;color:var(--silver);line-height:1.65}
+  </style>
+</head>
+<body>
+<div class="topbar">
+  <a href="/contact/">聯絡我們</a>
+  <a href="/blog/" class="topbar-highlight">最新資安報告 →</a>
+</div>
+<nav>
+  <a href="/" class="nav-logo"><img src="/brand_assets/logo.png" alt="Hexion Networks" /></a>
+  <div class="nav-links">
+    <div class="nav-item">
+      <button>
+        產品
+        <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M8 11L3 6h10z"/></svg>
+      </button>
+      <div class="mega" style="width:560px;grid-template-columns:1fr 1fr">
+        <div class="mega-col" style="border-right:1px solid rgba(255,255,255,0.06)">
+          <div class="mega-label" style="color:var(--teal)">LIONIC NGFW 系列</div>
+          <a href="/products/pico-utm-100/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.15);color:var(--o)">IT</span>
+            Pico-NGFW 100
+          </a>
+          <a href="/products/dual-ark-utm-16/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(0,200,200,0.12);color:var(--teal)">IoT</span>
+            Dual Ark-NGFW 16
+          </a>
+          <a href="/products/tera-utm-12/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.12);color:#FF7A45">OT</span>
+            Tera-NGFW 12
+          </a>
+          <a href="/products/lionfilter-200/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(167,139,250,0.12);color:#A78BFA">NET</span>
+            Lionfilter 200
+          </a>
+        </div>
+        <div class="mega-col" style="background:rgba(61,220,151,0.025)">
+          <div class="mega-label" style="color:#3DDC97">EDR 端點偵測回應</div>
+          <a href="/products/endblock/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.15);color:#3DDC97">EDR</span>
+            Endblock
+          </a>
+          <a href="/products/teamt5/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.12);color:#3DDC97">TI</span>
+            TeamT5
+          </a>
+          <a href="/products/cycraft/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.1);color:#3DDC97">AI</span>
+            奧義智慧 CyCraft
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-item active"><a href="/services/">服務</a></div>
+    <div class="nav-item" style="display:none"><a href="/research/">研究</a></div>
+    <div class="nav-item"><a href="/blog/">部落格</a></div>
+    <div class="nav-item"><a href="/about/">關於</a></div>
+  </div>
+  <div class="nav-cta">
+    <a href="https://line.me/R/ti/p/@278zhddk" target="_blank" class="nav-line-btn">LINE 諮詢</a>
+    <a href="/contact/" class="btn btn-orange" style="padding:0.5rem 1.125rem;font-size:0.8125rem;">取得報價 →</a>
+  </div>
+</nav>
+
+<section class="service-hero">
+  <div style="max-width:760px;margin:0 auto;text-align:center;position:relative;z-index:2">
+    <div class="sec-tag reveal" style="justify-content:center">服務項目</div>
+    <h1 class="reveal reveal-delay-1" style="font-family:'Syne',sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:800;color:#fff;letter-spacing:-0.03em;margin-bottom:1.25rem;line-height:1.1">
+      整合型<span style="background:linear-gradient(90deg,#FA5822,#FF9A5C);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">顧問服務</span><br>從策略到執行
+    </h1>
+    <p class="reveal reveal-delay-2" style="font-size:1.125rem;color:rgba(255,255,255,0.55);line-height:1.7">
+      我們提供商業策略、品牌顧問、資安評估、合規管理與數位轉型的一站式整合服務，讓您的企業在每個層面都做好準備。
+    </p>
+  </div>
+</section>
+
+<!-- IMPACT METRICS -->
+<section style="padding:3.5rem var(--px);background:var(--ink-2);border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05)">
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;text-align:center">
+    <div class="reveal">
+      <div style="font-family:'Orbitron',monospace;font-size:clamp(2rem,4vw,3rem);font-weight:900;color:var(--o);line-height:1">+40%</div>
+      <div style="font-size:0.8125rem;color:var(--silver);margin-top:0.5rem;line-height:1.5">客戶平均業務成長幅度<br><span style="font-size:0.7rem;color:rgba(255,255,255,0.25)">first year engagement</span></div>
+    </div>
+    <div class="reveal" style="border-left:1px solid rgba(255,255,255,0.06);border-right:1px solid rgba(255,255,255,0.06)">
+      <div style="font-family:'Orbitron',monospace;font-size:clamp(2rem,4vw,3rem);font-weight:900;color:var(--teal);line-height:1">98%</div>
+      <div style="font-size:0.8125rem;color:var(--silver);margin-top:0.5rem;line-height:1.5">客戶滿意度與續約率<br><span style="font-size:0.7rem;color:rgba(255,255,255,0.25)">client satisfaction rate</span></div>
+    </div>
+    <div class="reveal">
+      <div style="font-family:'Orbitron',monospace;font-size:clamp(2rem,4vw,3rem);font-weight:900;color:#A78BFA;line-height:1">6週</div>
+      <div style="font-size:0.8125rem;color:var(--silver);margin-top:0.5rem;line-height:1.5">從策略規劃到方案落地<br><span style="font-size:0.7rem;color:rgba(255,255,255,0.25)">strategy to execution</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE SPOTLIGHT 1 — 商業策略 -->
+<section style="padding:7rem var(--px);background:var(--ink);border-bottom:1px solid rgba(255,255,255,0.04)">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center">
+    <div class="reveal">
+      <div style="font-family:'Orbitron',monospace;font-size:5rem;font-weight:900;color:rgba(250,88,34,0.07);line-height:1;margin-bottom:-1.5rem">01</div>
+      <div class="sec-tag" style="margin-bottom:1rem">商業策略 · 成長顧問</div>
+      <h2 style="font-family:'Syne',sans-serif;font-size:clamp(1.75rem,3vw,2.5rem);font-weight:800;color:#fff;letter-spacing:-0.03em;line-height:1.15;margin-bottom:1.25rem">讓策略成為<br><span style="color:var(--o)">真正的競爭武器</span></h2>
+      <p style="font-size:0.9375rem;color:var(--silver);line-height:1.8;margin-bottom:2rem">大多數企業缺的不是方向，而是把方向轉化為可執行計畫的能力。我們的商業策略服務從市場定位到營收模型，協助企業找到差異化優勢並快速落地。</p>
+      <div style="display:flex;flex-direction:column;gap:0.75rem">
+        <div style="display:flex;gap:0.875rem;align-items:flex-start">
+          <div style="width:5px;height:5px;border-radius:50%;background:var(--o);margin-top:0.45rem;flex-shrink:0"></div>
+          <div><span style="font-size:0.875rem;color:#fff;font-weight:600">市場定位與競爭策略</span><span style="font-size:0.8125rem;color:var(--silver);margin-left:0.5rem">識別差異化機會點</span></div>
+        </div>
+        <div style="display:flex;gap:0.875rem;align-items:flex-start">
+          <div style="width:5px;height:5px;border-radius:50%;background:var(--o);margin-top:0.45rem;flex-shrink:0"></div>
+          <div><span style="font-size:0.875rem;color:#fff;font-weight:600">營收模型優化</span><span style="font-size:0.8125rem;color:var(--silver);margin-left:0.5rem">設計可持續成長飛輪</span></div>
+        </div>
+        <div style="display:flex;gap:0.875rem;align-items:flex-start">
+          <div style="width:5px;height:5px;border-radius:50%;background:var(--o);margin-top:0.45rem;flex-shrink:0"></div>
+          <div><span style="font-size:0.875rem;color:#fff;font-weight:600">數位轉型路線圖</span><span style="font-size:0.8125rem;color:var(--silver);margin-left:0.5rem">從現況到目標的完整規劃</span></div>
+        </div>
+        <div style="display:flex;gap:0.875rem;align-items:flex-start">
+          <div style="width:5px;height:5px;border-radius:50%;background:var(--o);margin-top:0.45rem;flex-shrink:0"></div>
+          <div><span style="font-size:0.875rem;color:#fff;font-weight:600">投資優先級與 ROI 分析</span><span style="font-size:0.8125rem;color:var(--silver);margin-left:0.5rem">讓每一分預算都發揮最大效益</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal" style="transition-delay:.1s">
+      <svg viewBox="0 0 480 340" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%">
+        <defs>
+          <radialGradient id="sg-o" cx="50%" cy="60%" r="60%"><stop offset="0%" stop-color="#FA5822" stop-opacity="0.12"/><stop offset="100%" stop-color="#FA5822" stop-opacity="0"/></radialGradient>
+          <filter id="sg-blur"><feGaussianBlur stdDeviation="12"/></filter>
+          <pattern id="sg-grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="rgba(250,88,34,0.06)" stroke-width="0.5"/></pattern>
+        </defs>
+        <rect width="480" height="340" fill="#0D0D1A" rx="16"/>
+        <rect width="480" height="340" fill="url(#sg-grid)" rx="16"/>
+        <ellipse cx="240" cy="220" rx="220" ry="160" fill="url(#sg-o)" filter="url(#sg-blur)"/>
+        <!-- Y axis -->
+        <line x1="80" y1="40" x2="80" y2="270" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+        <!-- X axis -->
+        <line x1="80" y1="270" x2="440" y2="270" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+        <!-- Grid horizontals -->
+        <line x1="80" y1="200" x2="440" y2="200" stroke="rgba(255,255,255,0.04)" stroke-width="0.75" stroke-dasharray="4 4"/>
+        <line x1="80" y1="140" x2="440" y2="140" stroke="rgba(255,255,255,0.04)" stroke-width="0.75" stroke-dasharray="4 4"/>
+        <line x1="80" y1="80" x2="440" y2="80" stroke="rgba(255,255,255,0.04)" stroke-width="0.75" stroke-dasharray="4 4"/>
+        <!-- Bar chart: market growth -->
+        <rect x="110" y="210" width="40" height="60" rx="3" fill="rgba(250,88,34,0.2)" stroke="rgba(250,88,34,0.4)" stroke-width="1"/>
+        <rect x="170" y="180" width="40" height="90" rx="3" fill="rgba(250,88,34,0.3)" stroke="rgba(250,88,34,0.5)" stroke-width="1"/>
+        <rect x="230" y="140" width="40" height="130" rx="3" fill="rgba(250,88,34,0.4)" stroke="rgba(250,88,34,0.6)" stroke-width="1"/>
+        <rect x="290" y="90" width="40" height="180" rx="3" fill="rgba(250,88,34,0.55)" stroke="rgba(250,88,34,0.7)" stroke-width="1"/>
+        <rect x="350" y="55" width="40" height="215" rx="3" fill="rgba(250,88,34,0.7)" stroke="#FA5822" stroke-width="1.5"/>
+        <!-- Trend line -->
+        <polyline points="130,210 190,175 250,135 310,88 370,52" stroke="#FA5822" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <!-- Dots -->
+        <circle cx="130" cy="210" r="4" fill="#FA5822"/>
+        <circle cx="190" cy="175" r="4" fill="#FA5822"/>
+        <circle cx="250" cy="135" r="4" fill="#FA5822"/>
+        <circle cx="310" cy="88" r="4" fill="#FA5822"/>
+        <circle cx="370" cy="52" r="6" fill="#FA5822" stroke="rgba(250,88,34,0.3)" stroke-width="6"/>
+        <!-- Label on last bar -->
+        <rect x="340" y="20" width="80" height="24" rx="4" fill="rgba(250,88,34,0.15)" stroke="rgba(250,88,34,0.4)" stroke-width="0.75"/>
+        <text x="380" y="35" font-size="10" font-family="monospace" fill="#FA5822" text-anchor="middle" font-weight="bold">+40% YoY</text>
+        <!-- X labels -->
+        <text x="130" y="288" font-size="9" font-family="monospace" fill="rgba(255,255,255,0.25)" text-anchor="middle">Q1</text>
+        <text x="190" y="288" font-size="9" font-family="monospace" fill="rgba(255,255,255,0.25)" text-anchor="middle">Q2</text>
+        <text x="250" y="288" font-size="9" font-family="monospace" fill="rgba(255,255,255,0.25)" text-anchor="middle">Q3</text>
+        <text x="310" y="288" font-size="9" font-family="monospace" fill="rgba(255,255,255,0.25)" text-anchor="middle">Q4</text>
+        <text x="370" y="288" font-size="9" font-family="monospace" fill="rgba(250,88,34,0.7)" text-anchor="middle">Q5→</text>
+        <!-- Tag -->
+        <rect x="16" y="16" width="120" height="22" rx="4" fill="rgba(250,88,34,0.08)" stroke="rgba(250,88,34,0.25)" stroke-width="0.75"/>
+        <text x="76" y="30" font-size="8.5" font-family="monospace" fill="rgba(250,88,34,0.8)" text-anchor="middle">GROWTH STRATEGY</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE SPOTLIGHT 2 — 品牌重塑 -->
+<section style="padding:7rem var(--px);background:var(--ink-2);border-bottom:1px solid rgba(255,255,255,0.04)">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center">
+    <div class="reveal" style="transition-delay:.1s;order:1">
+      <svg viewBox="0 0 480 340" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%">
+        <defs>
+          <radialGradient id="br-g" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#00C8C8" stop-opacity="0.1"/><stop offset="100%" stop-color="#00C8C8" stop-opacity="0"/></radialGradient>
+          <filter id="br-blur"><feGaussianBlur stdDeviation="12"/></filter>
+          <pattern id="br-grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="rgba(0,200,200,0.05)" stroke-width="0.5"/></pattern>
+        </defs>
+        <rect width="480" height="340" fill="#080F14" rx="16"/>
+        <rect width="480" height="340" fill="url(#br-grid)" rx="16"/>
+        <ellipse cx="240" cy="170" rx="200" ry="160" fill="url(#br-g)" filter="url(#br-blur)"/>
+        <!-- Radar chart: brand axes -->
+        <polygon points="240,60 340,110 340,230 240,280 140,230 140,110" fill="none" stroke="rgba(0,200,200,0.12)" stroke-width="1"/>
+        <polygon points="240,90 315,127 315,213 240,250 165,213 165,127" fill="none" stroke="rgba(0,200,200,0.08)" stroke-width="0.75"/>
+        <polygon points="240,120 290,144 290,196 240,220 190,196 190,144" fill="none" stroke="rgba(0,200,200,0.06)" stroke-width="0.75"/>
+        <!-- Axes -->
+        <line x1="240" y1="60" x2="240" y2="280" stroke="rgba(0,200,200,0.1)" stroke-width="0.75"/>
+        <line x1="140" y1="110" x2="340" y2="230" stroke="rgba(0,200,200,0.1)" stroke-width="0.75"/>
+        <line x1="340" y1="110" x2="140" y2="230" stroke="rgba(0,200,200,0.1)" stroke-width="0.75"/>
+        <!-- Filled polygon: brand scores -->
+        <polygon points="240,80 325,135 310,222 240,258 170,222 155,135" fill="rgba(0,200,200,0.08)" stroke="#00C8C8" stroke-width="1.5"/>
+        <!-- Score dots -->
+        <circle cx="240" cy="80" r="5" fill="#00C8C8"/>
+        <circle cx="325" cy="135" r="5" fill="#00C8C8"/>
+        <circle cx="310" cy="222" r="5" fill="#00C8C8"/>
+        <circle cx="240" cy="258" r="5" fill="#00C8C8"/>
+        <circle cx="170" cy="222" r="5" fill="#00C8C8"/>
+        <circle cx="155" cy="135" r="5" fill="rgba(0,200,200,0.4)"/>
+        <!-- Labels -->
+        <text x="240" y="50" font-size="9" font-family="monospace" fill="rgba(0,200,200,0.7)" text-anchor="middle">識別度</text>
+        <text x="352" y="132" font-size="9" font-family="monospace" fill="rgba(0,200,200,0.7)">信任感</text>
+        <text x="352" y="235" font-size="9" font-family="monospace" fill="rgba(0,200,200,0.7)">轉換率</text>
+        <text x="240" y="296" font-size="9" font-family="monospace" fill="rgba(0,200,200,0.7)" text-anchor="middle">黏著度</text>
+        <text x="88" y="235" font-size="9" font-family="monospace" fill="rgba(0,200,200,0.7)">差異化</text>
+        <text x="88" y="132" font-size="9" font-family="monospace" fill="rgba(0,200,200,0.4)">覆蓋率</text>
+        <!-- Tag -->
+        <rect x="16" y="16" width="130" height="22" rx="4" fill="rgba(0,200,200,0.08)" stroke="rgba(0,200,200,0.2)" stroke-width="0.75"/>
+        <text x="81" y="30" font-size="8.5" font-family="monospace" fill="rgba(0,200,200,0.8)" text-anchor="middle">BRAND POSITIONING</text>
+      </svg>
+    </div>
+    <div class="reveal" style="order:2">
+      <div style="font-family:'Orbitron',monospace;font-size:5rem;font-weight:900;color:rgba(0,200,200,0.07);line-height:1;margin-bottom:-1.5rem">02</div>
+      <div class="sec-tag" style="color:var(--teal);border-color:rgba(0,200,200,0.3);margin-bottom:1rem">品牌重塑 · 市場定位</div>
+      <h2 style="font-family:'Syne',sans-serif;font-size:clamp(1.75rem,3vw,2.5rem);font-weight:800;color:#fff;letter-spacing:-0.03em;line-height:1.15;margin-bottom:1.25rem">讓品牌被<br><span style="color:var(--teal)">記住，被選擇</span></h2>
+      <p style="font-size:0.9375rem;color:var(--silver);line-height:1.8;margin-bottom:2rem">品牌不只是 Logo 或口號，而是客戶在選擇時腦中浮現的第一個名字。我們從品牌核心價值出發，重建一個有識別度、有信任感、能驅動轉換的品牌體系。</p>
+      <div style="display:flex;flex-direction:column;gap:0.75rem">
+        <div style="display:flex;gap:0.875rem;align-items:flex-start">
+          <div style="width:5px;height:5px;border-radius:50%;background:var(--teal);margin-top:0.45rem;flex-shrink:0"></div>
+          <div><span style="font-size:0.875rem;color:#fff;font-weight:600">品牌核心定位策略</span><span style="font-size:0.8125rem;color:var(--silver);margin-left:0.5rem">找到你獨特且難以複製的位置</span></div>
+        </div>
+        <div style="display:flex;gap:0.875rem;align-items:flex-start">
+          <div style="width:5px;height:5px;border-radius:50%;background:var(--teal);margin-top:0.45rem;flex-shrink:0"></div>
+          <div><span style="font-size:0.875rem;color:#fff;font-weight:600">品牌訊息架構設計</span><span style="font-size:0.8125rem;color:var(--silver);margin-left:0.5rem">從 USP 到全渠道溝通語言</span></div>
+        </div>
+        <div style="display:flex;gap:0.875rem;align-items:flex-start">
+          <div style="width:5px;height:5px;border-radius:50%;background:var(--teal);margin-top:0.45rem;flex-shrink:0"></div>
+          <div><span style="font-size:0.875rem;color:#fff;font-weight:600">視覺系統與品牌規範</span><span style="font-size:0.8125rem;color:var(--silver);margin-left:0.5rem">建立一致性品牌印象</span></div>
+        </div>
+        <div style="display:flex;gap:0.875rem;align-items:flex-start">
+          <div style="width:5px;height:5px;border-radius:50%;background:var(--teal);margin-top:0.45rem;flex-shrink:0"></div>
+          <div><span style="font-size:0.875rem;color:#fff;font-weight:600">危機公關與品牌保護</span><span style="font-size:0.8125rem;color:var(--silver);margin-left:0.5rem">在不確定中維護品牌資產</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE SPOTLIGHT 3 — 資安 & IT -->
+<section style="padding:7rem var(--px);background:var(--ink);border-bottom:1px solid rgba(255,255,255,0.04)">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center">
+    <div class="reveal">
+      <div style="font-family:'Orbitron',monospace;font-size:5rem;font-weight:900;color:rgba(255,68,68,0.07);line-height:1;margin-bottom:-1.5rem">03</div>
+      <div class="sec-tag" style="color:#FF6666;border-color:rgba(255,68,68,0.3);margin-bottom:1rem">資安策略 · IT 架構 · 合規</div>
+      <h2 style="font-family:'Syne',sans-serif;font-size:clamp(1.75rem,3vw,2.5rem);font-weight:800;color:#fff;letter-spacing:-0.03em;line-height:1.15;margin-bottom:1.25rem">防禦不是成本，<br><span style="color:#FF6666">是競爭優勢</span></h2>
+      <p style="font-size:0.9375rem;color:var(--silver);line-height:1.8;margin-bottom:2rem">我們整合資安策略設計、IT 架構規劃與法規合規輔導，從零信任架構到 SEMI E187 認證，協助企業建立真正有效的數位防禦能力，而非只是符合規定的表面工程。</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem">
+        <div style="background:rgba(255,68,68,0.04);border:1px solid rgba(255,68,68,0.12);border-radius:8px;padding:1rem">
+          <div style="font-size:0.75rem;font-family:'Orbitron',monospace;color:rgba(255,102,102,0.7);margin-bottom:0.375rem">資安評估</div>
+          <div style="font-size:0.8125rem;color:var(--silver)">現況稽核、弱點識別、修補優先排序</div>
+        </div>
+        <div style="background:rgba(255,68,68,0.04);border:1px solid rgba(255,68,68,0.12);border-radius:8px;padding:1rem">
+          <div style="font-size:0.75rem;font-family:'Orbitron',monospace;color:rgba(255,102,102,0.7);margin-bottom:0.375rem">零信任設計</div>
+          <div style="font-size:0.8125rem;color:var(--silver)">身份驗證、最小授權、持續監控</div>
+        </div>
+        <div style="background:rgba(255,68,68,0.04);border:1px solid rgba(255,68,68,0.12);border-radius:8px;padding:1rem">
+          <div style="font-size:0.75rem;font-family:'Orbitron',monospace;color:rgba(255,102,102,0.7);margin-bottom:0.375rem">合規輔導</div>
+          <div style="font-size:0.8125rem;color:var(--silver)">ISO 27001 / SEMI E187 / PDPA</div>
+        </div>
+        <div style="background:rgba(255,68,68,0.04);border:1px solid rgba(255,68,68,0.12);border-radius:8px;padding:1rem">
+          <div style="font-size:0.75rem;font-family:'Orbitron',monospace;color:rgba(255,102,102,0.7);margin-bottom:0.375rem">IT 架構</div>
+          <div style="font-size:0.8125rem;color:var(--silver)">雲端遷移、混合架構、系統整合</div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal" style="transition-delay:.1s">
+      <svg viewBox="0 0 480 340" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%">
+        <defs>
+          <radialGradient id="sec-g" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#FF4444" stop-opacity="0.1"/><stop offset="100%" stop-color="#FF4444" stop-opacity="0"/></radialGradient>
+          <filter id="sec-blur"><feGaussianBlur stdDeviation="12"/></filter>
+          <pattern id="sec-grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="rgba(255,68,68,0.05)" stroke-width="0.5"/></pattern>
+        </defs>
+        <rect width="480" height="340" fill="#140A0A" rx="16"/>
+        <rect width="480" height="340" fill="url(#sec-grid)" rx="16"/>
+        <ellipse cx="240" cy="170" rx="200" ry="160" fill="url(#sec-g)" filter="url(#sec-blur)"/>
+        <!-- Layered defense rings -->
+        <circle cx="240" cy="170" r="130" fill="none" stroke="rgba(255,68,68,0.08)" stroke-width="1.5"/>
+        <circle cx="240" cy="170" r="95" fill="none" stroke="rgba(255,68,68,0.12)" stroke-width="1.5"/>
+        <circle cx="240" cy="170" r="60" fill="none" stroke="rgba(255,68,68,0.18)" stroke-width="1.5"/>
+        <circle cx="240" cy="170" r="28" fill="rgba(255,68,68,0.06)" stroke="rgba(255,68,68,0.4)" stroke-width="2"/>
+        <!-- Asset at center -->
+        <rect x="228" y="158" width="24" height="24" rx="4" fill="rgba(255,68,68,0.15)" stroke="#FF4444" stroke-width="1.5"/>
+        <text x="240" y="174" font-size="10" font-family="monospace" fill="#FF4444" text-anchor="middle" font-weight="bold">DB</text>
+        <!-- Layer labels -->
+        <text x="240" y="104" font-size="8" font-family="monospace" fill="rgba(255,102,102,0.5)" text-anchor="middle">NETWORK</text>
+        <text x="240" y="132" font-size="8" font-family="monospace" fill="rgba(255,102,102,0.5)" text-anchor="middle">ENDPOINT</text>
+        <text x="240" y="152" font-size="8" font-family="monospace" fill="rgba(255,102,102,0.6)" text-anchor="middle">IDENTITY</text>
+        <!-- Threat indicators at edges -->
+        <circle cx="240" cy="40" r="8" fill="rgba(255,68,68,0.15)" stroke="#FF4444" stroke-width="1.5"/>
+        <text x="240" y="44" font-size="8" fill="#FF4444" text-anchor="middle">!</text>
+        <circle cx="370" cy="170" r="8" fill="rgba(255,68,68,0.15)" stroke="#FF4444" stroke-width="1.5"/>
+        <text x="370" y="174" font-size="8" fill="#FF4444" text-anchor="middle">!</text>
+        <circle cx="110" cy="170" r="8" fill="rgba(255,68,68,0.15)" stroke="#FF4444" stroke-width="1.5"/>
+        <text x="110" y="174" font-size="8" fill="#FF4444" text-anchor="middle">!</text>
+        <!-- Block arrows -->
+        <path d="M240 56 L240 72" stroke="rgba(255,68,68,0.4)" stroke-width="1.5" stroke-dasharray="3 2" marker-end="url(#arr)"/>
+        <path d="M355 170 L325 170" stroke="rgba(255,68,68,0.4)" stroke-width="1.5" stroke-dasharray="3 2"/>
+        <path d="M125 170 L155 170" stroke="rgba(255,68,68,0.4)" stroke-width="1.5" stroke-dasharray="3 2"/>
+        <!-- Blocked indicators -->
+        <rect x="220" y="82" width="40" height="14" rx="3" fill="rgba(61,220,151,0.15)" stroke="rgba(61,220,151,0.4)" stroke-width="0.75"/>
+        <text x="240" y="92" font-size="7" font-family="monospace" fill="#3DDC97" text-anchor="middle">BLOCKED</text>
+        <rect x="330" y="163" width="40" height="14" rx="3" fill="rgba(61,220,151,0.15)" stroke="rgba(61,220,151,0.4)" stroke-width="0.75"/>
+        <text x="350" y="173" font-size="7" font-family="monospace" fill="#3DDC97" text-anchor="middle">BLOCKED</text>
+        <!-- Tag -->
+        <rect x="16" y="16" width="120" height="22" rx="4" fill="rgba(255,68,68,0.08)" stroke="rgba(255,68,68,0.2)" stroke-width="0.75"/>
+        <text x="76" y="30" font-size="8.5" font-family="monospace" fill="rgba(255,102,102,0.8)" text-anchor="middle">ZERO TRUST</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE SERVE -->
+<section style="padding:6rem var(--px);background:var(--ink-2)">
+  <div class="reveal" style="margin-bottom:3rem">
+    <div class="sec-tag">適合場景</div>
+    <h2 class="sec-h">哪些企業最適合<span class="accent">我們的服務</span></h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem" class="reveal">
+    <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:1.75rem;transition:border-color 0.25s" onmouseover="this.style.borderColor='rgba(250,88,34,0.3)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.06)'">
+      <div style="font-family:'Orbitron',monospace;font-size:1.5rem;font-weight:700;color:rgba(250,88,34,0.3);margin-bottom:0.75rem">SME</div>
+      <div style="font-size:1rem;font-weight:700;color:#fff;font-family:'Syne',sans-serif;margin-bottom:0.5rem">中小企業轉型期</div>
+      <p style="font-size:0.8125rem;color:var(--silver);line-height:1.65">需要突破成長瓶頸，卻缺乏專職策略或資安人力的快速成長企業。</p>
+    </div>
+    <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:1.75rem;transition:border-color 0.25s" onmouseover="this.style.borderColor='rgba(0,200,200,0.3)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.06)'">
+      <div style="font-family:'Orbitron',monospace;font-size:1.5rem;font-weight:700;color:rgba(0,200,200,0.3);margin-bottom:0.75rem">MFG</div>
+      <div style="font-size:1rem;font-weight:700;color:#fff;font-family:'Syne',sans-serif;margin-bottom:0.5rem">製造業資安合規</div>
+      <p style="font-size:0.8125rem;color:var(--silver);line-height:1.65">面對 SEMI E187 或客戶要求，需要快速達到資安合規標準的製造廠商。</p>
+    </div>
+    <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:1.75rem;transition:border-color 0.25s" onmouseover="this.style.borderColor='rgba(167,139,250,0.3)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.06)'">
+      <div style="font-family:'Orbitron',monospace;font-size:1.5rem;font-weight:700;color:rgba(167,139,250,0.3);margin-bottom:0.75rem">TECH</div>
+      <div style="font-size:1rem;font-weight:700;color:#fff;font-family:'Syne',sans-serif;margin-bottom:0.5rem">科技新創品牌建立</div>
+      <p style="font-size:0.8125rem;color:var(--silver);line-height:1.65">有產品有技術但缺乏品牌定位，需要從零建立市場信任感的科技公司。</p>
+    </div>
+    <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:1.75rem;transition:border-color 0.25s" onmouseover="this.style.borderColor='rgba(61,220,151,0.3)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.06)'">
+      <div style="font-family:'Orbitron',monospace;font-size:1.5rem;font-weight:700;color:rgba(61,220,151,0.3);margin-bottom:0.75rem">FIN</div>
+      <div style="font-size:1rem;font-weight:700;color:#fff;font-family:'Syne',sans-serif;margin-bottom:0.5rem">金融與醫療機構</div>
+      <p style="font-size:0.8125rem;color:var(--silver);line-height:1.65">高度監管行業，需要兼顧嚴格合規要求與業務數位化轉型的企業。</p>
+    </div>
+    <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:1.75rem;transition:border-color 0.25s" onmouseover="this.style.borderColor='rgba(250,88,34,0.3)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.06)'">
+      <div style="font-family:'Orbitron',monospace;font-size:1.5rem;font-weight:700;color:rgba(250,88,34,0.3);margin-bottom:0.75rem">GOV</div>
+      <div style="font-size:1rem;font-weight:700;color:#fff;font-family:'Syne',sans-serif;margin-bottom:0.5rem">政府與公共事業</div>
+      <p style="font-size:0.8125rem;color:var(--silver);line-height:1.65">需要滿足政府資安規範，同時推動內部數位轉型的公部門或公共建設。</p>
+    </div>
+    <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:1.75rem;transition:border-color 0.25s" onmouseover="this.style.borderColor='rgba(255,122,69,0.3)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.06)'">
+      <div style="font-family:'Orbitron',monospace;font-size:1.5rem;font-weight:700;color:rgba(255,122,69,0.3);margin-bottom:0.75rem">OT</div>
+      <div style="font-size:1rem;font-weight:700;color:#fff;font-family:'Syne',sans-serif;margin-bottom:0.5rem">OT / ICS 工控環境</div>
+      <p style="font-size:0.8125rem;color:var(--silver);line-height:1.65">工廠、能源或關鍵基礎設施，需要在不停機前提下建立 OT 資安防護的企業。</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section style="padding:6rem var(--px);background:var(--ink-2)">
+  <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto">
+    <div class="sec-tag" style="justify-content:center">服務流程</div>
+    <h2 class="sec-h">透明、高效的<span class="accent">六步驟服務流程</span></h2>
+  </div>
+  <div class="process-grid reveal" style="max-width:1100px;margin-left:auto;margin-right:auto">
+    <div class="process-card">
+      <div class="process-num">01</div>
+      <div class="process-title">初步諮詢</div>
+      <p class="process-desc">免費 30 分鐘電話/LINE 諮詢，了解您的需求與痛點，初步評估適合的服務方向。</p>
+    </div>
+    <div class="process-card">
+      <div class="process-num">02</div>
+      <div class="process-title">現況評估</div>
+      <p class="process-desc">深入分析您的業務流程、IT 架構與現有資安措施，建立完整的現況基準線。</p>
+    </div>
+    <div class="process-card">
+      <div class="process-num">03</div>
+      <div class="process-title">提案規劃</div>
+      <p class="process-desc">根據評估結果制定客製化方案，包含清晰的時間表、里程碑與預算規劃。</p>
+    </div>
+    <div class="process-card">
+      <div class="process-num">04</div>
+      <div class="process-title">方案執行</div>
+      <p class="process-desc">由專屬顧問主導執行，確保每個環節符合規劃，並保持與您的團隊緊密溝通。</p>
+    </div>
+    <div class="process-card">
+      <div class="process-num">05</div>
+      <div class="process-title">驗收測試</div>
+      <p class="process-desc">完整驗收測試與文件交付，確保方案有效運作，所有問題在交付前解決。</p>
+    </div>
+    <div class="process-card">
+      <div class="process-num">06</div>
+      <div class="process-title">持續支援</div>
+      <p class="process-desc">提供後續技術支援、定期回顧與方案優化，確保長期服務效益最大化。</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-band">
+  <div class="reveal">
+    <h2>需要<span> 量身定制</span>的服務方案？</h2>
+    <p>讓我們的顧問團隊為您規劃最適合的解決方案。</p>
+  </div>
+  <div class="reveal reveal-delay-1" style="display:flex;gap:0.75rem;flex-wrap:wrap">
+    <a href="/contact/" class="btn btn-orange">預約免費諮詢</a>
+    
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div><a href="/"><img src="/brand_assets/logo.png" alt="Hexion Networks" style="height:36px;filter:brightness(0) invert(1);opacity:0.85" /></a><p class="footer-brand-desc">結合商業策略、品牌顧問、資訊科技與資安的整合型服務公司。</p></div>
+    <div><div class="f-col-title">產品</div><a href="/products/pico-utm-100/" class="f-link">Pico-NGFW 100</a><a href="/products/dual-ark-utm-16/" class="f-link">Dual Ark-NGFW 16</a><a href="/products/tera-utm-12/" class="f-link">Tera-NGFW 12</a><a href="/products/lionfilter-200/" class="f-link">Lionfilter 200</a><a href="/products/endblock/" class="f-link">Endblock</a><a href="/products/teamt5/" class="f-link">TeamT5</a><a href="/products/cycraft/" class="f-link">奧義智慧 CyCraft</a></div>
+    <div><div class="f-col-title">服務</div><a href="/services/" class="f-link">商業策略</a><a href="/services/" class="f-link">品牌顧問</a><a href="/services/" class="f-link">資安評估</a></div>
+    <div><div class="f-col-title">公司</div><a href="/about/" class="f-link">關於我們</a><a href="/blog/" class="f-link">部落格</a><a href="/contact/" class="f-link">聯絡我們</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 HEXION NETWORKS.</span>
+    <div class="footer-legal"><a href="#">隱私政策</a><a href="#">服務條款</a></div>
+  </div>
+</footer>
+
+<script>const ro=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target)}})},{threshold:0.08});document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));</script>
+</body></html>

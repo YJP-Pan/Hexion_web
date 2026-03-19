@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>研究報告 | APT 威脅分析 · 台灣資安趨勢 — Hexion Networks</title>
+  <meta name="description" content="Hexion Networks 研究報告：深入分析台灣 APT 威脅態勢、OT 資安現況、半導體合規要求。下載最新年度資安研究報告。" />
+  <meta name="keywords" content="APT威脅報告, 台灣資安研究, OT資安, SEMI E187, 製造業資安, Hexion Networks" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hexionnetworks.com/research/" />
+  <link rel="icon" href="/brand_assets/favicon.png" />
+  <meta property="og:title" content="研究報告 | APT 威脅分析 · 台灣資安趨勢 — Hexion Networks" />
+  <meta property="og:description" content="下載 Hexion Networks 最新資安研究報告，掌握台灣企業面臨的最新威脅態勢。" />
+  <meta property="og:url" content="https://hexionnetworks.com/research/" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    .research-featured { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-bottom:3rem; }
+    @media(max-width:768px){ .research-featured{grid-template-columns:1fr} }
+    .feat-report-card {
+      background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08);
+      border-radius:16px; padding:2.5rem; position:relative; overflow:hidden;
+      transition:border-color 0.25s, transform 0.25s;
+    }
+    .feat-report-card:hover { border-color:rgba(250,88,34,0.4); transform:translateY(-4px); }
+    .feat-report-card::before {
+      content:''; position:absolute; top:0; left:0; right:0; height:3px;
+      background:linear-gradient(90deg, var(--o), var(--o-lt));
+    }
+    .feat-report-glow {
+      position:absolute; top:-80px; right:-80px; width:300px; height:300px;
+      background:radial-gradient(circle, rgba(250,88,34,0.08) 0%, transparent 70%);
+      pointer-events:none;
+    }
+    .report-cat {
+      display:inline-flex; align-items:center; gap:5px;
+      padding:0.2rem 0.75rem; border-radius:100px;
+      border:1px solid rgba(250,88,34,0.35); background:rgba(250,88,34,0.08);
+      color:var(--o); font-size:0.6875rem; font-family:'Orbitron',monospace;
+      font-weight:700; letter-spacing:0.08em; text-transform:uppercase;
+      margin-bottom:1rem;
+    }
+    .report-cat.teal {
+      border-color:rgba(0,200,200,0.35); background:rgba(0,200,200,0.08); color:var(--teal);
+    }
+    .feat-report-title { font-family:'Syne',sans-serif; font-size:1.625rem; font-weight:800; color:var(--white); line-height:1.2; margin-bottom:1rem; }
+    .feat-report-desc { font-size:0.9375rem; color:var(--silver); line-height:1.75; margin-bottom:1.75rem; }
+    .report-meta-row { display:flex; align-items:center; gap:1.5rem; margin-bottom:1.5rem; font-size:0.8125rem; color:var(--silver); font-family:'Orbitron',monospace; }
+    .report-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+    @media(max-width:900px){ .report-grid{grid-template-columns:repeat(2,1fr)} }
+    @media(max-width:600px){ .report-grid{grid-template-columns:1fr} }
+    .report-card {
+      background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.07);
+      border-radius:12px; padding:1.75rem; position:relative; overflow:hidden;
+      transition:border-color 0.25s, transform 0.25s;
+      display:flex; flex-direction:column;
+    }
+    .report-card:hover { border-color:rgba(250,88,34,0.3); transform:translateY(-4px); }
+    .report-card-top { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:0.875rem; }
+    .report-title { font-family:'Syne',sans-serif; font-size:1.0625rem; font-weight:700; color:var(--white); line-height:1.35; margin-bottom:0.625rem; }
+    .report-date { font-family:'Orbitron',monospace; font-size:0.6875rem; color:var(--silver); margin-bottom:0.875rem; }
+    .report-excerpt { font-size:0.875rem; color:var(--silver); line-height:1.65; flex:1; margin-bottom:1.25rem; }
+    .download-btn {
+      display:inline-flex; align-items:center; gap:6px;
+      padding:0.5rem 1.125rem; border:1px solid rgba(250,88,34,0.4);
+      border-radius:6px; font-size:0.8125rem; font-weight:600;
+      color:var(--o); text-decoration:none; font-family:'Inter',sans-serif;
+      transition:background 0.2s, color 0.2s; width:fit-content;
+    }
+    .download-btn:hover { background:var(--o); color:#fff; border-color:var(--o); }
+    .download-btn svg { width:15px; height:15px; flex-shrink:0; }
+    .subscribe-box {
+      background:rgba(0,200,200,0.05); border:1px solid rgba(0,200,200,0.2);
+      border-radius:12px; padding:2rem; display:flex; gap:1rem; align-items:center; flex-wrap:wrap;
+    }
+    .subscribe-input {
+      flex:1; min-width:220px; background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.12); border-radius:6px;
+      padding:0.75rem 1rem; color:var(--white); font-family:'Inter',sans-serif;
+      font-size:0.875rem; outline:none;
+    }
+    .subscribe-input:focus { border-color:var(--teal); }
+    .subscribe-input::placeholder { color:var(--silver); }
+  </style>
+</head>
+<body>
+<div class="topbar">
+  <a href="/contact/">聯絡我們</a>
+  <a href="/blog/" class="topbar-highlight">最新資安報告 →</a>
+</div>
+<nav>
+  <a href="/" class="nav-logo"><img src="/brand_assets/logo.png" alt="Hexion Networks" /></a>
+  <div class="nav-links">
+    <div class="nav-item">
+      <button>
+        產品
+        <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M8 11L3 6h10z"/></svg>
+      </button>
+      <div class="mega" style="width:560px;grid-template-columns:1fr 1fr">
+        <div class="mega-col" style="border-right:1px solid rgba(255,255,255,0.06)">
+          <div class="mega-label" style="color:var(--teal)">LIONIC NGFW 系列</div>
+          <a href="/products/pico-utm-100/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.15);color:var(--o)">IT</span>
+            Pico-NGFW 100
+          </a>
+          <a href="/products/dual-ark-utm-16/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(0,200,200,0.12);color:var(--teal)">IoT</span>
+            Dual Ark-NGFW 16
+          </a>
+          <a href="/products/tera-utm-12/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.12);color:#FF7A45">OT</span>
+            Tera-NGFW 12
+          </a>
+          <a href="/products/lionfilter-200/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(167,139,250,0.12);color:#A78BFA">NET</span>
+            Lionfilter 200
+          </a>
+        </div>
+        <div class="mega-col" style="background:rgba(61,220,151,0.025)">
+          <div class="mega-label" style="color:#3DDC97">EDR 端點偵測回應</div>
+          <a href="/products/endblock/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.15);color:#3DDC97">EDR</span>
+            Endblock
+          </a>
+          <a href="/products/teamt5/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.12);color:#3DDC97">TI</span>
+            TeamT5
+          </a>
+          <a href="/products/cycraft/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.1);color:#3DDC97">AI</span>
+            奧義智慧 CyCraft
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-item"><a href="/services/">服務</a></div>
+    <div class="nav-item active"><a href="/research/">研究</a></div>
+    <div class="nav-item"><a href="/blog/">部落格</a></div>
+    <div class="nav-item"><a href="/about/">關於</a></div>
+  </div>
+  <div class="nav-cta">
+    <a href="https://line.me/R/ti/p/@278zhddk" target="_blank" class="nav-line-btn">LINE 諮詢</a>
+    <a href="/contact/" class="btn btn-orange" style="padding:0.5rem 1.125rem;font-size:0.8125rem;">取得報價 →</a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-glow"></div>
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-inner">
+    <div class="sec-tag reveal">研究報告</div>
+    <h1 class="reveal reveal-delay-1">APT 威脅分析<br /><span style="color:var(--o);">台灣資安趨勢</span></h1>
+    <p class="reveal reveal-delay-2">Hexion Networks 研究團隊持續追蹤台灣及全球資安威脅態勢，發布深度研究報告，協助企業掌握最新威脅動態與合規要求。</p>
+  </div>
+</section>
+
+<div class="content-sec">
+  <!-- Featured Reports -->
+  <div class="reveal">
+    <div class="sec-tag">精選報告</div>
+    <h2 class="sec-h">年度重點<span class="accent">研究成果</span></h2>
+    <p class="sec-p" style="margin-bottom:2.5rem;">我們最受關注的兩份旗艦報告，涵蓋台灣企業最關鍵的資安威脅與 OT 現況。</p>
+  </div>
+
+  <div class="research-featured">
+    <div class="feat-report-card reveal">
+      <div class="feat-report-glow"></div>
+      <div class="report-cat">APT 威脅分析</div>
+      <div class="feat-report-title">2026 台灣<br />APT 威脅報告</div>
+      <div class="feat-report-desc">深度分析針對台灣半導體、金融與政府機構的 APT 攻擊活動，包含 APT41、Lazarus Group 等組織的最新 TTP，以及 AI 驅動攻擊的全新態勢。</div>
+      <div class="report-meta-row">
+        <span>2026-01-15</span>
+        <span>·</span>
+        <span>48 頁</span>
+        <span>·</span>
+        <span>繁體中文</span>
+      </div>
+      <a href="/contact/" class="btn btn-orange">免費下載報告 →</a>
+    </div>
+    <div class="feat-report-card reveal reveal-delay-1">
+      <div class="feat-report-glow" style="background:radial-gradient(circle,rgba(0,200,200,0.08) 0%,transparent 70%);"></div>
+      <div class="report-cat teal">OT / ICS 研究</div>
+      <div class="feat-report-title">OT 資安現況<br />調查報告</div>
+      <div class="feat-report-desc">針對台灣製造業與關鍵基礎設施的 OT 資安成熟度調查，涵蓋 SEMI E187 合規缺口分析、IT/OT 融合風險評估，以及最佳實踐建議。</div>
+      <div class="report-meta-row">
+        <span>2025-11-30</span>
+        <span>·</span>
+        <span>36 頁</span>
+        <span>·</span>
+        <span>繁體中文</span>
+      </div>
+      <a href="/contact/" class="btn btn-teal">免費下載報告 →</a>
+    </div>
+  </div>
+
+  <!-- All Reports -->
+  <div class="reveal" style="margin-top:3rem;">
+    <div class="sec-tag">所有報告</div>
+    <h2 class="sec-h">完整<span class="accent">報告庫</span></h2>
+    <p class="sec-p" style="margin-bottom:2.5rem;">持續更新的研究報告涵蓋威脅分析、合規指南、技術研究等多個面向。</p>
+  </div>
+
+  <div class="report-grid">
+    <div class="report-card reveal">
+      <div class="report-card-top">
+        <div class="report-cat" style="margin-bottom:0;">製造業</div>
+      </div>
+      <div class="report-title">台灣製造業資安現況分析 2026</div>
+      <div class="report-date">2026-02-10</div>
+      <div class="report-excerpt">針對台灣 500 家製造業者進行的資安成熟度調查，揭露 IT/OT 融合的主要風險點、SEMI E187 合規現況，以及最常見的攻擊入侵路徑。</div>
+      <a href="/contact/" class="download-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>
+        下載報告
+      </a>
+    </div>
+
+    <div class="report-card reveal reveal-delay-1">
+      <div class="report-card-top">
+        <div class="report-cat" style="margin-bottom:0;">金融業</div>
+      </div>
+      <div class="report-title">金融業 APT 威脅態勢報告</div>
+      <div class="report-date">2025-12-20</div>
+      <div class="report-excerpt">深度分析 2025 年針對台灣銀行、保險及證券業的 APT 攻擊，包括 BEC 詐騙進化、SWIFT 系統攻擊手法，以及金管會最新合規要求對應措施。</div>
+      <a href="/contact/" class="download-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>
+        下載報告
+      </a>
+    </div>
+
+    <div class="report-card reveal reveal-delay-2">
+      <div class="report-card-top">
+        <div class="report-cat" style="margin-bottom:0;">合規研究</div>
+      </div>
+      <div class="report-title">SEMI E187 合規現況調查</div>
+      <div class="report-date">2025-11-05</div>
+      <div class="report-excerpt">調查台灣半導體廠商對 SEMI E187 標準的導入進度，識別常見合規缺口，提供系統性的合規路線圖與技術對應建議，協助廠商達成供應商稽核要求。</div>
+      <a href="/contact/" class="download-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>
+        下載報告
+      </a>
+    </div>
+
+    <div class="report-card reveal">
+      <div class="report-card-top">
+        <div class="report-cat teal" style="margin-bottom:0;">技術研究</div>
+      </div>
+      <div class="report-title">IoT 設備安全漏洞研究</div>
+      <div class="report-date">2025-10-15</div>
+      <div class="report-excerpt">對 200+ 種企業常用 IoT 設備進行安全漏洞分析，揭露最常見的韌體漏洞類型、通訊協議弱點，以及企業 IoT 網段隔離的最佳實踐架構。</div>
+      <a href="/contact/" class="download-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>
+        下載報告
+      </a>
+    </div>
+
+    <div class="report-card reveal reveal-delay-1">
+      <div class="report-card-top">
+        <div class="report-cat" style="margin-bottom:0;">風險框架</div>
+      </div>
+      <div class="report-title">供應鏈資安風險評估框架</div>
+      <div class="report-date">2025-09-20</div>
+      <div class="report-excerpt">針對台灣製造業供應鏈提出系統性的資安風險評估方法論，涵蓋廠商評級、合約要求、第三方稽核流程，以及事件回應協調機制的建立指南。</div>
+      <a href="/contact/" class="download-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>
+        下載報告
+      </a>
+    </div>
+
+    <div class="report-card reveal reveal-delay-2">
+      <div class="report-card-top">
+        <div class="report-cat teal" style="margin-bottom:0;">架構指南</div>
+      </div>
+      <div class="report-title">零信任架構導入成熟度模型</div>
+      <div class="report-date">2025-08-30</div>
+      <div class="report-excerpt">為台灣企業量身打造的零信任成熟度評估模型，提供從初始階段到進階實施的五級路線圖，並附有針對製造業、金融業的行業客製化建議。</div>
+      <a href="/contact/" class="download-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>
+        下載報告
+      </a>
+    </div>
+  </div>
+
+  <!-- Subscribe CTA -->
+  <div style="margin-top:4rem;" class="reveal">
+    <div class="subscribe-box">
+      <div style="flex:1;min-width:260px;">
+        <div class="sec-tag" style="margin-bottom:0.5rem;">訂閱研究報告</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:800;color:var(--white);margin-bottom:0.375rem;">第一時間收到最新報告</div>
+        <div style="font-size:0.875rem;color:var(--silver);">每月一封精華摘要，不發廣告，隨時可取消訂閱。</div>
+      </div>
+      <div style="display:flex;gap:0.75rem;flex-wrap:wrap;align-items:center;flex:1;min-width:300px;">
+        <input type="email" class="subscribe-input" placeholder="your@company.com" />
+        <a href="/contact/" class="btn btn-teal">訂閱 →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA Band -->
+<section class="cta-band reveal">
+  <div>
+    <h2>需要<span>客製化</span>研究服務？</h2>
+    <p>我們的研究團隊可協助您進行針對性的威脅情報分析與資安現況評估。</p>
+  </div>
+  <div class="cta-band-btns">
+    <a href="/contact/" class="btn btn-orange">立即聯絡我們 →</a>
+    <a href="/blog/" class="btn btn-ghost">閱讀部落格文章</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div><a href="/"><img src="/brand_assets/logo.png" alt="Hexion Networks" style="height:36px;filter:brightness(0) invert(1);opacity:0.85" /></a><p class="footer-brand-desc">結合商業策略、品牌顧問、資訊科技與資安的整合型服務公司。</p></div>
+    <div><div class="f-col-title">產品</div><a href="/products/pico-utm-100/" class="f-link">Pico-NGFW 100</a><a href="/products/dual-ark-utm-16/" class="f-link">Dual Ark-NGFW 16</a><a href="/products/tera-utm-12/" class="f-link">Tera-NGFW 12</a><a href="/products/lionfilter-200/" class="f-link">Lionfilter 200</a><a href="/products/endblock/" class="f-link">Endblock</a><a href="/products/teamt5/" class="f-link">TeamT5</a><a href="/products/cycraft/" class="f-link">奧義智慧 CyCraft</a></div>
+    <div><div class="f-col-title">服務</div><a href="/services/" class="f-link">商業策略</a><a href="/services/" class="f-link">品牌顧問</a><a href="/services/" class="f-link">資安評估</a></div>
+    <div><div class="f-col-title">公司</div><a href="/about/" class="f-link">關於我們</a><a href="/blog/" class="f-link">部落格</a><a href="/contact/" class="f-link">聯絡我們</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 HEXION NETWORKS.</span>
+    <div class="footer-legal"><a href="#">隱私政策</a><a href="#">服務條款</a></div>
+  </div>
+</footer>
+
+<script>const ro=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target)}})},{threshold:0.08});document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));</script>
+</body>
+</html>

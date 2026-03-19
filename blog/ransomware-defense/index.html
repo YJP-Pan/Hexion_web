@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>勒索軟體防禦全攻略：從預防到快速恢復的完整策略 | Hexion Networks 資安部落格</title>
+  <meta name="description" content="全面解析勒索軟體攻擊手法，涵蓋 RaaS 演進、3-2-1-1-0 備份策略、EDR 防禦、網路分段與事件回應計畫，並附台灣製造業實際案例分析。" />
+  <meta name="keywords" content="勒索軟體防禦,RaaS,勒索攻擊,3-2-1備份,EDR,事件回應,台灣資安,雙重勒索" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hexionnetworks.com/blog/ransomware-defense/" />
+  <meta property="og:title" content="勒索軟體防禦全攻略：從預防到快速恢復的完整策略 | Hexion Networks" />
+  <meta property="og:description" content="全面解析勒索軟體攻擊手法，涵蓋 RaaS 演進、3-2-1-1-0 備份策略、EDR 防禦與事件回應計畫。" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://hexionnetworks.com/blog/ransomware-defense/" />
+  <link rel="icon" href="/brand_assets/favicon.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"勒索軟體防禦全攻略：從預防到快速恢復的完整策略","datePublished":"2025-11-28","dateModified":"2025-11-28","author":{"@type":"Organization","name":"Hexion Networks"},"publisher":{"@type":"Organization","name":"Hexion Networks","url":"https://hexionnetworks.com"},"url":"https://hexionnetworks.com/blog/ransomware-defense/"}</script>
+</head>
+<body>
+<div class="topbar">
+  <a href="/contact/">聯絡我們</a>
+  <a href="/blog/" class="topbar-highlight">最新資安報告 →</a>
+</div>
+<nav>
+  <a href="/" class="nav-logo"><img src="/brand_assets/logo.png" alt="Hexion Networks" /></a>
+  <div class="nav-links">
+    <div class="nav-item">
+      <button>
+        產品
+        <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M8 11L3 6h10z"/></svg>
+      </button>
+      <div class="mega" style="width:560px;grid-template-columns:1fr 1fr">
+        <div class="mega-col" style="border-right:1px solid rgba(255,255,255,0.06)">
+          <div class="mega-label" style="color:var(--teal)">LIONIC NGFW 系列</div>
+          <a href="/products/pico-utm-100/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.15);color:var(--o)">IT</span>
+            Pico-NGFW 100
+          </a>
+          <a href="/products/dual-ark-utm-16/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(0,200,200,0.12);color:var(--teal)">IoT</span>
+            Dual Ark-NGFW 16
+          </a>
+          <a href="/products/tera-utm-12/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.12);color:#FF7A45">OT</span>
+            Tera-NGFW 12
+          </a>
+          <a href="/products/lionfilter-200/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(167,139,250,0.12);color:#A78BFA">NET</span>
+            Lionfilter 200
+          </a>
+        </div>
+        <div class="mega-col" style="background:rgba(61,220,151,0.025)">
+          <div class="mega-label" style="color:#3DDC97">EDR 端點偵測回應</div>
+          <a href="/products/endblock/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.15);color:#3DDC97">EDR</span>
+            Endblock
+          </a>
+          <a href="/products/teamt5/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.12);color:#3DDC97">TI</span>
+            TeamT5
+          </a>
+          <a href="/products/cycraft/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.1);color:#3DDC97">AI</span>
+            奧義智慧 CyCraft
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-item"><a href="/services/">服務</a></div>
+    <div class="nav-item" style="display:none"><a href="/research/">研究</a></div>
+    <div class="nav-item active"><a href="/blog/">部落格</a></div>
+    <div class="nav-item"><a href="/about/">關於</a></div>
+  </div>
+  <div class="nav-cta">
+    <a href="https://line.me/R/ti/p/@278zhddk" target="_blank" class="nav-line-btn">LINE 諮詢</a>
+    <a href="/contact/" class="btn btn-orange" style="padding:0.5rem 1.125rem;font-size:0.8125rem;">取得報價 →</a>
+  </div>
+</nav>
+
+<div class="page-hero" style="padding-bottom:3rem">
+  <div style="padding:0 var(--px)">
+    <div class="reveal" style="display:flex;gap:0.5rem;margin-bottom:1.5rem;flex-wrap:wrap">
+      <a href="/blog/" style="color:var(--silver);font-size:0.8rem;text-decoration:none">部落格</a>
+      <span style="color:var(--silver);font-size:0.8rem">/</span>
+      <span style="color:var(--o);font-size:0.8rem">威脅分析</span>
+    </div>
+    <div class="reveal">
+      <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(250,88,34,0.1);border:1px solid rgba(250,88,34,0.3);border-radius:4px;padding:0.25rem 0.75rem;font-family:'Orbitron',monospace;font-size:0.65rem;color:#FA5822;letter-spacing:0.1em;margin-bottom:1.25rem">威脅分析</div>
+      <h1 style="font-family:'Syne',sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.025em;line-height:1.15;margin-bottom:1.25rem">勒索軟體防禦全攻略：從預防到快速恢復的完整策略</h1>
+      <p style="color:var(--silver);font-size:1.0625rem;line-height:1.7;margin-bottom:2rem">RaaS 商業化讓任何人都能發動精密的勒索攻擊。本文深入解析攻擊手法演進，提供台灣企業從預防、偵測到快速業務恢復的完整防禦框架。</p>
+      <div style="display:flex;align-items:center;gap:1.5rem;color:var(--silver);font-size:0.8125rem;border-top:1px solid var(--ink-4);padding-top:1.5rem;flex-wrap:wrap">
+        <span>Hexion Networks 資安研究團隊</span>
+        <span>·</span>
+        <span>2025-11-28</span>
+        <span>·</span>
+        <span>9 分鐘閱讀</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="padding:3rem var(--px) 5rem">
+  <div class="reveal" style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:12px;overflow:hidden;margin-bottom:3rem;aspect-ratio:16/7;display:flex;align-items:center;justify-content:center">
+    <svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+      <defs>
+        <radialGradient id="rw-bg" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="#FA5822" stop-opacity="0.1"/><stop offset="100%" stop-color="#0A0A14" stop-opacity="0"/></radialGradient>
+      </defs>
+      <rect width="800" height="350" fill="#0A0A14"/>
+      <rect width="800" height="350" fill="url(#rw-bg)"/>
+      <!-- Attack chain -->
+      <!-- Stage labels -->
+      <text x="400" y="30" text-anchor="middle" font-family="Orbitron,monospace" font-size="9" fill="#FA5822" letter-spacing="3">RANSOMWARE ATTACK CHAIN + DEFENSE LAYERS</text>
+      <!-- Chain nodes -->
+      <rect x="30" y="80" width="100" height="50" rx="6" fill="rgba(250,88,34,0.12)" stroke="#FA5822" stroke-width="1"/>
+      <text x="80" y="101" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#FA5822" font-weight="600">初始存取</text>
+      <text x="80" y="117" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#8B8BA8">釣魚 / 漏洞</text>
+      <line x1="130" y1="105" x2="165" y2="105" stroke="#FA5822" stroke-width="1.5" marker-end="url(#arr)"/>
+      <rect x="165" y="80" width="100" height="50" rx="6" fill="rgba(250,88,34,0.12)" stroke="#FA5822" stroke-width="1"/>
+      <text x="215" y="101" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#FA5822" font-weight="600">建立據點</text>
+      <text x="215" y="117" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#8B8BA8">後門 / C2</text>
+      <line x1="265" y1="105" x2="300" y2="105" stroke="#FA5822" stroke-width="1.5"/>
+      <rect x="300" y="80" width="100" height="50" rx="6" fill="rgba(250,88,34,0.12)" stroke="#FA5822" stroke-width="1"/>
+      <text x="350" y="101" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#FA5822" font-weight="600">橫向移動</text>
+      <text x="350" y="117" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#8B8BA8">LotL / 竊取</text>
+      <line x1="400" y1="105" x2="435" y2="105" stroke="#FA5822" stroke-width="1.5"/>
+      <rect x="435" y="80" width="100" height="50" rx="6" fill="rgba(250,88,34,0.12)" stroke="#FA5822" stroke-width="1"/>
+      <text x="485" y="101" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#FA5822" font-weight="600">資料竊取</text>
+      <text x="485" y="117" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#8B8BA8">雙重勒索</text>
+      <line x1="535" y1="105" x2="570" y2="105" stroke="#FA5822" stroke-width="1.5"/>
+      <rect x="570" y="80" width="100" height="50" rx="6" fill="rgba(250,88,34,0.2)" stroke="#FA5822" stroke-width="1.5"/>
+      <text x="620" y="101" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#FA5822" font-weight="700">加密部署</text>
+      <text x="620" y="117" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#8B8BA8">所有設備</text>
+      <!-- Defense layers below -->
+      <rect x="30" y="175" width="100" height="45" rx="5" fill="rgba(0,200,200,0.08)" stroke="#00C8C8" stroke-width="1"/>
+      <text x="80" y="196" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#00C8C8" font-weight="600">Email 安全</text>
+      <text x="80" y="210" text-anchor="middle" font-family="Inter,sans-serif" font-size="6.5" fill="#8B8BA8">Web 過濾 · MFA</text>
+      <rect x="165" y="175" width="100" height="45" rx="5" fill="rgba(0,200,200,0.08)" stroke="#00C8C8" stroke-width="1"/>
+      <text x="215" y="196" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#00C8C8" font-weight="600">EDR 防護</text>
+      <text x="215" y="210" text-anchor="middle" font-family="Inter,sans-serif" font-size="6.5" fill="#8B8BA8">行為偵測</text>
+      <rect x="300" y="175" width="100" height="45" rx="5" fill="rgba(0,200,200,0.08)" stroke="#00C8C8" stroke-width="1"/>
+      <text x="350" y="196" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#00C8C8" font-weight="600">微分段</text>
+      <text x="350" y="210" text-anchor="middle" font-family="Inter,sans-serif" font-size="6.5" fill="#8B8BA8">PAM · SIEM</text>
+      <rect x="435" y="175" width="100" height="45" rx="5" fill="rgba(0,200,200,0.08)" stroke="#00C8C8" stroke-width="1"/>
+      <text x="485" y="196" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#00C8C8" font-weight="600">DLP 資料保護</text>
+      <text x="485" y="210" text-anchor="middle" font-family="Inter,sans-serif" font-size="6.5" fill="#8B8BA8">加密 · 分類</text>
+      <rect x="570" y="175" width="100" height="45" rx="5" fill="rgba(0,200,200,0.08)" stroke="#00C8C8" stroke-width="1"/>
+      <text x="620" y="196" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#00C8C8" font-weight="600">3-2-1-1-0</text>
+      <text x="620" y="210" text-anchor="middle" font-family="Inter,sans-serif" font-size="6.5" fill="#8B8BA8">備份恢復</text>
+      <!-- Vertical connectors -->
+      <line x1="80" y1="130" x2="80" y2="175" stroke="#00C8C8" stroke-width="0.75" stroke-dasharray="3,2" opacity="0.5"/>
+      <line x1="215" y1="130" x2="215" y2="175" stroke="#00C8C8" stroke-width="0.75" stroke-dasharray="3,2" opacity="0.5"/>
+      <line x1="350" y1="130" x2="350" y2="175" stroke="#00C8C8" stroke-width="0.75" stroke-dasharray="3,2" opacity="0.5"/>
+      <line x1="485" y1="130" x2="485" y2="175" stroke="#00C8C8" stroke-width="0.75" stroke-dasharray="3,2" opacity="0.5"/>
+      <line x1="620" y1="130" x2="620" y2="175" stroke="#00C8C8" stroke-width="0.75" stroke-dasharray="3,2" opacity="0.5"/>
+      <!-- Labels -->
+      <text x="400" y="255" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#8B8BA8">▲ 攻擊鏈（上）　▼ 防禦層（下）</text>
+      <!-- IR section -->
+      <rect x="220" y="280" width="360" height="48" rx="7" fill="rgba(250,88,34,0.07)" stroke="rgba(250,88,34,0.3)" stroke-width="1"/>
+      <text x="400" y="302" text-anchor="middle" font-family="Orbitron,monospace" font-size="8" fill="#FA5822" font-weight="700">事件回應計畫 (IRP)</text>
+      <text x="400" y="318" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#8B8BA8">隔離 · 鑑識 · 通報 · 恢復 · 事後改善</text>
+    </svg>
+  </div>
+
+  <div class="reveal" style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+    <p>勒索軟體已從早期的無差別大規模攻擊，演進為高度精準、分工明確的「商業化服務」體系。RaaS（Ransomware as a Service）模式的成熟，讓即使缺乏技術能力的犯罪分子也能發動複雜的勒索攻擊。2025 年，全球勒索軟體攻擊造成的損失估計超過 300 億美元，台灣的製造業和金融業是重點攻擊目標。</p>
+    <p style="margin-top:1rem">更令人憂慮的是，「雙重勒索」和「三重勒索」策略的普及，使得「擁有好的備份就能抵抗勒索軟體」的舊有觀念徹底失效。攻擊者在加密資料前先竊取敏感資料，威脅公開於暗網，讓受害者陷入兩難困境。</p>
+  </div>
+
+  <div class="reveal" style="margin-top:2.5rem">
+    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)"><span style="color:#FA5822">RaaS 攻擊生態系</span>與台灣受害現況</h2>
+    <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+      <p>現代 RaaS 生態系統由三個主要角色組成：RaaS 開發者負責維護勒索軟體程式碼和受害者談判介面；存取經紀人（IAB）專門入侵企業網路並販售存取權限（通常在暗網論壇以 500 至 50,000 美元不等的價格出售）；附屬成員（Affiliates）購買存取權限，在受害者網路中橫向移動、竊取資料後部署勒索軟體，可獲得贖金的 70-80%。</p>
+      <p style="margin-top:1rem">Hexion Networks 威脅情報顯示，2025 年多個 RaaS 組織針對台灣製造業採用特殊策略：攻擊時機選在重要客戶交貨期前，以最大化時間壓力；勒索信同時提供繁體中文版本；優先攻擊資安較弱的供應商，利用其對大型客戶的 VPN 或 RDP 存取權限橫向滲透。</p>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:2.5rem">
+    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)">第一防線：<span style="color:#FA5822">阻止初始存取</span></h2>
+    <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+      <p>絕大多數勒索軟體攻擊從釣魚郵件、漏洞利用或 RDP 暴力破解開始。阻止初始存取是最具成本效益的防禦策略：</p>
+      <ul style="margin-top:1rem;list-style:none;padding:0;display:flex;flex-direction:column;gap:0.75rem">
+        <li style="display:flex;gap:0.75rem"><span style="color:#00C8C8;flex-shrink:0;font-weight:700">→</span><div><strong style="color:var(--white)">電子郵件安全閘道：</strong>部署具備沙盒分析（Sandbox）能力的郵件安全閘道，對所有可執行附件和 URL 進行動態分析，而非僅依賴靜態特徵碼偵測。</div></li>
+        <li style="display:flex;gap:0.75rem"><span style="color:#00C8C8;flex-shrink:0;font-weight:700">→</span><div><strong style="color:var(--white)">漏洞管理：</strong>建立系統化的漏洞管理程序，對面向網際網路的服務（VPN、RDP、Exchange、Citrix）的高危漏洞在 72 小時內完成修補。</div></li>
+        <li style="display:flex;gap:0.75rem"><span style="color:#00C8C8;flex-shrink:0;font-weight:700">→</span><div><strong style="color:var(--white)">多因素驗證：</strong>對所有遠端存取入口（VPN、RDP、Web 應用程式）強制啟用 MFA，是阻止憑證竊取後的未授權登入最有效的控制措施。</div></li>
+        <li style="display:flex;gap:0.75rem"><span style="color:#00C8C8;flex-shrink:0;font-weight:700">→</span><div><strong style="color:var(--white)">攻擊面縮減：</strong>關閉不必要的面向網際網路服務，將 RDP 限制在 VPN 後方，使用非標準埠不足以提供保護。</div></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:2.5rem">
+    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)">第二防線：<span style="color:#FA5822">偵測並阻止橫向移動</span></h2>
+    <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+      <p>即使初始存取防線失守，阻止攻擊者橫向移動和竊取資料仍能大幅降低損失。端點偵測與回應（EDR）是這個階段的核心工具，能夠偵測異常的進程執行、可疑的 PowerShell 腳本、異常的帳號登入行為，並在攻擊者部署勒索軟體前自動隔離受感染的端點。</p>
+      <p style="margin-top:1rem">網路微分段能夠限制橫向移動的範圍，即使一個工作站被感染，也無法輕易擴散至伺服器區或 OT 環境。特權帳號管理（PAM）則能防止攻擊者取得域管理員（Domain Admin）權限——一旦失去 DA 權限，大規模部署勒索軟體的難度將呈指數級上升。</p>
+      <div style="background:rgba(250,88,34,0.06);border-left:3px solid #FA5822;border-radius:0 8px 8px 0;padding:1rem 1.25rem;margin-top:1.25rem">
+        <div style="font-family:'Syne',sans-serif;font-size:0.875rem;font-weight:700;color:#FA5822;margin-bottom:0.5rem">關鍵指標</div>
+        <p style="font-size:0.9375rem;color:var(--fog)">研究顯示，勒索軟體攻擊者平均在初始存取後 4.5 天才部署加密工具。這意味著企業有足夠的時間窗口（若部署了適當的偵測工具）在加密發生前發現並遏制攻擊。EDR 的平均偵測時間（MTTD）是評估這個能力的關鍵指標。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:2.5rem">
+    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)">第三防線：<span style="color:#FA5822">3-2-1-1-0 備份策略</span></h2>
+    <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+      <p>即使前兩道防線失守，良好的備份策略仍能確保業務快速恢復。現代備份最佳實踐已從傳統的 3-2-1 策略升級為 3-2-1-1-0 策略：</p>
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1.25rem;margin-top:1rem">
+        <div style="display:grid;grid-template-columns:auto 1fr;gap:0.5rem 1rem;font-size:0.9375rem">
+          <span style="font-family:'Orbitron',monospace;color:#FA5822;font-size:1.25rem;font-weight:700">3</span><div style="color:var(--fog);padding-top:0.2rem">份備份副本（包含原始資料）</div>
+          <span style="font-family:'Orbitron',monospace;color:#FA5822;font-size:1.25rem;font-weight:700">2</span><div style="color:var(--fog);padding-top:0.2rem">種不同的儲存媒體（例如磁碟陣列 + 磁帶/雲端）</div>
+          <span style="font-family:'Orbitron',monospace;color:#FA5822;font-size:1.25rem;font-weight:700">1</span><div style="color:var(--fog);padding-top:0.2rem">份離站備份（異地機房或雲端）</div>
+          <span style="font-family:'Orbitron',monospace;color:#FA5822;font-size:1.25rem;font-weight:700">1</span><div style="color:var(--fog);padding-top:0.2rem">份離線備份（Air-Gap，實體斷網防止勒索軟體感染備份）</div>
+          <span style="font-family:'Orbitron',monospace;color:#00C8C8;font-size:1.25rem;font-weight:700">0</span><div style="color:var(--fog);padding-top:0.2rem">個備份錯誤（定期驗證備份完整性和可恢復性）</div>
+        </div>
+      </div>
+      <p style="margin-top:1rem">不可變備份（Immutable Backup）是防止勒索軟體感染備份的關鍵技術。主流雲端儲存服務（AWS S3 Object Lock、Azure Immutable Blob Storage）提供原生的不可變儲存功能。台灣企業應特別注意備份和主要系統使用相同 Active Directory 的問題——一旦 AD 遭入侵，備份管理平台也可能同時被感染。</p>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:2.5rem">
+    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)">遭受攻擊後的<span style="color:#FA5822">事件回應步驟</span></h2>
+    <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+      <p>若不幸遭到勒索軟體攻擊，正確的初始回應至關重要。建議立即採取以下步驟：</p>
+      <ol style="margin-top:1rem;padding-left:1.25rem;list-style:decimal;display:flex;flex-direction:column;gap:0.75rem">
+        <li><strong style="color:var(--white)">立即隔離受感染系統</strong>，切斷網路連線以防止進一步擴散（優先隔離，而非關機，以保留記憶體中的攻擊跡證）</li>
+        <li><strong style="color:var(--white)">保留記憶體快照與系統映像</strong>，供後續鑑識分析使用</li>
+        <li><strong style="color:var(--white)">通知資安事件回應團隊與法務部門</strong>，評估法律義務和通報要求</li>
+        <li><strong style="color:var(--white)">評估備份完整性</strong>，確認可恢復的資料範圍和預計恢復時間</li>
+        <li><strong style="color:var(--white)">依法向主管機關通報</strong>（金融業 72 小時、個資外洩 72 小時）</li>
+        <li><strong style="color:var(--white)">在法律顧問建議下評估是否與攻擊者溝通</strong>——切勿未經諮詢直接支付贖金</li>
+      </ol>
+      <div style="background:rgba(250,88,34,0.06);border-left:3px solid #FA5822;border-radius:0 8px 8px 0;padding:1rem 1.25rem;margin-top:1.25rem">
+        <p style="font-size:0.9375rem;color:var(--fog)">「勒索軟體防禦的本質是韌性（Resilience），而非單純的阻止。假設最終可能被攻擊成功，更重要的是確保能在最短時間內以最小損失恢復業務運作。」</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--ink-4);display:flex;gap:0.5rem;flex-wrap:wrap">
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">勒索軟體</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">RaaS</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">3-2-1-1-0 備份</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">EDR</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">事件回應</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">台灣製造業</span>
+  </div>
+
+  <div class="reveal" style="margin-top:3rem;background:linear-gradient(135deg,rgba(250,88,34,0.08),rgba(0,200,200,0.04));border:1px solid rgba(250,88,34,0.2);border-radius:12px;padding:2rem">
+    <div style="font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:0.75rem">需要專業資安建議？</div>
+    <p style="color:var(--silver);margin-bottom:1.5rem">立即聯絡 Hexion Networks，獲取針對貴公司量身訂製的資安評估與解決方案。</p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap">
+      <a href="/contact/" class="btn btn-orange">免費諮詢</a>
+      
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div><a href="/"><img src="/brand_assets/logo.png" alt="Hexion Networks" style="height:36px;filter:brightness(0) invert(1);opacity:0.85" /></a><p class="footer-brand-desc">結合商業策略、品牌顧問、資訊科技與資安的整合型服務公司。</p></div>
+    <div><div class="f-col-title">產品</div><a href="/products/pico-utm-100/" class="f-link">Pico-NGFW 100</a><a href="/products/dual-ark-utm-16/" class="f-link">Dual Ark-NGFW 16</a><a href="/products/tera-utm-12/" class="f-link">Tera-NGFW 12</a><a href="/products/lionfilter-200/" class="f-link">Lionfilter 200</a><a href="/products/endblock/" class="f-link">Endblock</a><a href="/products/teamt5/" class="f-link">TeamT5</a><a href="/products/cycraft/" class="f-link">奧義智慧 CyCraft</a></div>
+    <div><div class="f-col-title">服務</div><a href="/services/" class="f-link">商業策略</a><a href="/services/" class="f-link">品牌顧問</a><a href="/services/" class="f-link">資安評估</a></div>
+    <div><div class="f-col-title">公司</div><a href="/about/" class="f-link">關於我們</a><a href="/blog/" class="f-link">部落格</a><a href="/contact/" class="f-link">聯絡我們</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 HEXION NETWORKS.</span>
+    <div class="footer-legal"><a href="#">隱私政策</a><a href="#">服務條款</a></div>
+  </div>
+</footer>
+
+<script>const ro=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target)}})},{threshold:0.08});document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));</script>
+</body></html>

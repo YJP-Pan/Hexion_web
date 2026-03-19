@@ -1,0 +1,49 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//d/UserData/Desktop/Hexion/brand_assets/**)",
+      "Read(//d/UserData/Documents/Hexion/**)",
+      "WebFetch(domain:www.paloaltonetworks.tw)",
+      "Read(//d D:/UserData/Pictures/**)",
+      "Bash(node screenshot.mjs https://www.paloaltonetworks.tw/ palo-alto-taiwan)",
+      "Bash(npx puppeteer-core:*)",
+      "Bash(cp \"D:/UserData/Documents/Hexion/serve.mjs\" \"D:/UserData/Pictures/Hexion/serve.mjs\")",
+      "Bash(cp \"D:/UserData/Documents/Hexion/screenshot.mjs\" \"D:/UserData/Pictures/Hexion/screenshot.mjs\")",
+      "Bash(cp \"D:/UserData/Documents/Hexion/package.json\" \"D:/UserData/Pictures/Hexion/package.json\")",
+      "Bash(cp \"D:/UserData/Documents/Hexion/package-lock.json\" \"D:/UserData/Pictures/Hexion/package-lock.json\")",
+      "Bash(node screenshot.mjs http://localhost:3000 homepage)",
+      "Bash(node screenshot.mjs http://localhost:3000/about/ about)",
+      "Bash(node screenshot.mjs http://localhost:3000/blog/ blog)",
+      "Bash(node screenshot.mjs http://localhost:3000/contact/ contact)",
+      "Bash(node screenshot.mjs http://localhost:3000/products/ products)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/about/)",
+      "Bash(node screenshot.mjs http://localhost:3000/products/tera-utm-12/ tera)",
+      "Bash(node screenshot.mjs http://localhost:3000/solutions/finance/ finance)",
+      "Bash(node screenshot.mjs http://localhost:3000/blog/cybersecurity-trends-2026/ blog-article)",
+      "Bash(node screenshot.mjs http://localhost:3000/products/dual-ark-utm-16/ dual-ark)",
+      "Bash(node screenshot.mjs http://localhost:3000/solutions/manufacturing/ manufacturing)",
+      "Read(//c/Users/peter.pan/.claude/projects/d--UserData-Pictures-Hexion/**)",
+      "Bash(python sync_header_footer.py)",
+      "Bash(node sync_header_footer.mjs)",
+      "Bash(for f:*)",
+      "Bash(do)",
+      "Bash(sed -i 's/max-width:800px;margin:0 auto;//g' \"$f\")",
+      "Bash(sed -i 's/max-width: 800px; margin: 0 auto;//g' \"$f\")",
+      "Bash(echo \"done: $f\")",
+      "Bash(node screenshot-section.mjs http://localhost:3000/ 4800 home-insights)",
+      "Bash(node screenshot-section.mjs http://localhost:3000/ 5600 home-insights2)",
+      "Bash(node screenshot-section.mjs http://localhost:3000/ 6800 home-insightcards)",
+      "Bash(node update_nav_footer.mjs)",
+      "Bash(node remove_line_extras.mjs)",
+      "Bash(node screenshot.mjs http://localhost:3000/services/ services)",
+      "Bash(node screenshot-section.mjs http://localhost:3000/ 0 home-nav)",
+      "Bash(node -e \":*)",
+      "Bash(node screenshot.mjs http://localhost:3000/services/ svc2)",
+      "Bash(node screenshot.mjs http://localhost:3000/about/ about2)",
+      "Bash(node screenshot.mjs http://localhost:3000/blog/ blog2)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\peter.pan\\.claude\\projects\\d--UserData-Pictures-Hexion"
+    ]
+  }
+}

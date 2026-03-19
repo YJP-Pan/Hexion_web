@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SEMI E187 半導體資安標準完整導入流程 — Hexion Networks</title>
+  <meta name="description" content="SEMI E187 半導體設備資安標準完整導入指南：涵蓋四大面向合規要求、常見缺口分析，以及系統性導入路線圖。" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hexionnetworks.com/blog/semi-e187-compliance/" />
+  <link rel="icon" href="/brand_assets/favicon.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    .article-meta{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:2rem;}
+    .article-meta-item{font-family:'Orbitron',monospace;font-size:0.75rem;color:var(--silver);}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem;}
+    @media(max-width:768px){.related-grid{grid-template-columns:1fr}}
+    .share-section{border-top:1px solid rgba(255,255,255,0.07);border-bottom:1px solid rgba(255,255,255,0.07);padding:2rem 0;margin:3rem 0;display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center;}
+    .share-label{font-family:'Orbitron',monospace;font-size:0.75rem;color:var(--silver);text-transform:uppercase;letter-spacing:0.1em;}
+    .compliance-table{width:100%;border-collapse:collapse;margin:1.5rem 0;}
+    .compliance-table th{background:rgba(0,200,200,0.1);border:1px solid rgba(255,255,255,0.08);padding:0.75rem 1rem;text-align:left;font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--teal);letter-spacing:0.06em;}
+    .compliance-table td{border:1px solid rgba(255,255,255,0.06);padding:0.75rem 1rem;font-size:0.875rem;color:var(--fog);vertical-align:top;}
+    .compliance-table tr:hover td{background:rgba(0,200,200,0.03);}
+    .status-hi{color:#FA5822;font-weight:700;}
+    .status-mid{color:#FFB347;font-weight:700;}
+    .status-lo{color:#00C8C8;font-weight:700;}
+  </style>
+</head>
+<body>
+<div class="topbar">
+  <a href="/contact/">聯絡我們</a>
+  <a href="/blog/" class="topbar-highlight">最新資安報告 →</a>
+</div>
+<nav>
+  <a href="/" class="nav-logo"><img src="/brand_assets/logo.png" alt="Hexion Networks" /></a>
+  <div class="nav-links">
+    <div class="nav-item">
+      <button>
+        產品
+        <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M8 11L3 6h10z"/></svg>
+      </button>
+      <div class="mega" style="width:560px;grid-template-columns:1fr 1fr">
+        <div class="mega-col" style="border-right:1px solid rgba(255,255,255,0.06)">
+          <div class="mega-label" style="color:var(--teal)">LIONIC NGFW 系列</div>
+          <a href="/products/pico-utm-100/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.15);color:var(--o)">IT</span>
+            Pico-NGFW 100
+          </a>
+          <a href="/products/dual-ark-utm-16/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(0,200,200,0.12);color:var(--teal)">IoT</span>
+            Dual Ark-NGFW 16
+          </a>
+          <a href="/products/tera-utm-12/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.12);color:#FF7A45">OT</span>
+            Tera-NGFW 12
+          </a>
+          <a href="/products/lionfilter-200/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(167,139,250,0.12);color:#A78BFA">NET</span>
+            Lionfilter 200
+          </a>
+        </div>
+        <div class="mega-col" style="background:rgba(61,220,151,0.025)">
+          <div class="mega-label" style="color:#3DDC97">EDR 端點偵測回應</div>
+          <a href="/products/endblock/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.15);color:#3DDC97">EDR</span>
+            Endblock
+          </a>
+          <a href="/products/teamt5/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.12);color:#3DDC97">TI</span>
+            TeamT5
+          </a>
+          <a href="/products/cycraft/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.1);color:#3DDC97">AI</span>
+            奧義智慧 CyCraft
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-item"><a href="/services/">服務</a></div>
+    <div class="nav-item" style="display:none"><a href="/research/">研究</a></div>
+    <div class="nav-item active"><a href="/blog/">部落格</a></div>
+    <div class="nav-item"><a href="/about/">關於</a></div>
+  </div>
+  <div class="nav-cta">
+    <a href="https://line.me/R/ti/p/@278zhddk" target="_blank" class="nav-line-btn">LINE 諮詢</a>
+    <a href="/contact/" class="btn btn-orange" style="padding:0.5rem 1.125rem;font-size:0.8125rem;">取得報價 →</a>
+  </div>
+</nav>
+
+<section class="page-hero" style="padding-bottom:3rem;">
+  <div class="page-hero-glow" style="background:radial-gradient(ellipse 60% 60% at 50% 40%,rgba(0,200,200,0.1) 0%,transparent 70%);"></div>
+  <div class="page-hero-grid" style="background-image:linear-gradient(rgba(0,200,200,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,200,200,0.04) 1px,transparent 1px);background-size:48px 48px;"></div>
+  <div class="page-hero-inner">
+    <div class="breadcrumb reveal" style="text-align:center;margin-bottom:1rem;"><a href="/">首頁</a><span>/</span><a href="/blog/">部落格</a><span>/</span>SEMI E187 合規指南</div>
+    <span class="article-tag reveal" style="background:rgba(0,200,200,0.1);border-color:rgba(0,200,200,0.25);color:var(--teal);">合規指南</span>
+    <h1 class="reveal reveal-delay-1" style="font-size:clamp(2rem,5vw,3.25rem);margin-top:0.75rem;">SEMI E187 半導體資安標準<br /><span style="color:var(--teal);">完整導入流程</span></h1>
+  </div>
+</section>
+
+<div class="article-body">
+  <div class="article-meta reveal">
+    <span class="article-meta-item">2025-11-05</span>
+    <span class="article-meta-item" style="margin-left:1.5rem;">10 分鐘閱讀</span>
+    <span class="article-meta-item" style="margin-left:1.5rem;">Hexion Networks OT 資安團隊</span>
+  </div>
+
+  <p>SEMI E187 是半導體產業設備資安的重要標準，正式名稱為「Specification for Cybersecurity of Fab Equipment」。隨著台積電、三星等晶圓代工廠將 SEMI E187 合規列為供應商資格要求，台灣的半導體設備商與材料廠商面臨空前的合規壓力。本文提供從評估到導入的系統性指南，協助廠商有效規劃合規路線圖。</p>
+
+  <h2>什麼是 SEMI E187？</h2>
+  <p>SEMI E187 由國際半導體產業協會（SEMI）制定，於 2022 年正式發布，專門針對半導體製造設備的資安要求。與一般 IT 安全標準不同，SEMI E187 充分考量了 OT 環境的特殊性：設備必須 24/7 運作、不能輕易停機、韌體更新有嚴格限制等。</p>
+  <p>SEMI E187 涵蓋四大核心面向，每個面向都有具體的技術要求，缺一不可：</p>
+  <ul>
+    <li><strong>面向一：作業系統安全（OS Security）</strong>——設備軟體強化與漏洞管理</li>
+    <li><strong>面向二：網路安全（Network Security）</strong>——設備通訊加密與網路隔離</li>
+    <li><strong>面向三：端點保護（Endpoint Protection）</strong>——惡意程式防護與應用程式控制</li>
+    <li><strong>面向四：安全監控（Security Monitoring）</strong>——日誌管理與異常事件告警</li>
+  </ul>
+
+  <h2>面向一：作業系統安全</h2>
+  <p>這是 SEMI E187 中最基礎也最難實施的面向，因為許多半導體設備使用 Windows 7 甚至更老的作業系統，廠商已停止安全更新。具體要求包括：</p>
+  <ul>
+    <li>停用不必要的 OS 功能和服務（如 Telnet、FTP、SMBv1）</li>
+    <li>強制執行強密碼政策（最低 12 位元，定期更換）</li>
+    <li>實施最小權限原則（每個帳號僅擁有執行其功能所需的最低權限）</li>
+    <li>建立帳號稽核機制，記錄所有登入活動</li>
+    <li>定期進行漏洞評估，對高危漏洞訂定修補時程</li>
+  </ul>
+  <p>針對無法升級 OS 的設備，可採用應用程式白名單（如 Endblock）作為補償控制措施，阻止任何未經授權的程式執行，實現「虛擬修補」的效果。</p>
+
+  <h2>面向二：網路安全</h2>
+  <p>SEMI E187 要求設備必須能夠在獨立的網路區段中運作，並對外部通訊進行嚴格控制：</p>
+  <ul>
+    <li>設備必須支援網路分段部署（不得與企業 IT 網路直接互通）</li>
+    <li>遠端維護連線必須使用加密協議（禁止 Telnet，要求 SSH 或 HTTPS）</li>
+    <li>設備應配置本地防火牆，限制不必要的網路連線</li>
+    <li>對所有遠端存取實施多因子驗證或強認證機制</li>
+    <li>定期稽核所有具備遠端存取權限的帳號</li>
+  </ul>
+
+  <h2>面向三：端點保護</h2>
+  <p>在無法安裝傳統防毒軟體的設備上，SEMI E187 接受以下替代方案：應用程式白名單機制（阻止未授權程式執行）、USB 儲存媒體的嚴格存取控制（限制或全面禁用）、惡意程式掃描在離線模式執行（不影響生產）。</p>
+  <p>建議廠商在導入 E187 之前，先針對所有設備進行一次全面的惡意程式掃描，確保在建立白名單之前環境是乾淨的。</p>
+
+  <h2>面向四：安全監控</h2>
+  <p>所有設備必須能夠產生安全日誌，並支援日誌集中收集與分析：</p>
+  <ul>
+    <li>系統登入/登出紀錄（含失敗嘗試）</li>
+    <li>重要配置變更紀錄</li>
+    <li>安全事件告警（異常登入、服務中斷等）</li>
+    <li>遠端存取紀錄（含存取者身份與時間戳記）</li>
+  </ul>
+  <p>日誌保存期限最少 90 天，高風險事件紀錄建議保存 1 年。日誌必須能夠匯出至集中式 SIEM 或 Syslog 伺服器，以便稽核時提供完整的可追溯性。</p>
+
+  <h2>台灣廠商常見的合規缺口</h2>
+  <p>根據 Hexion Networks 對台灣半導體設備廠商進行的合規評估，以下是最常見的缺口項目：</p>
+
+  <table class="compliance-table">
+    <tr><th>合規面向</th><th>常見缺口</th><th>嚴重度</th></tr>
+    <tr><td>作業系統安全</td><td>使用停止支援的 Windows 7/XP 且無補償控制措施</td><td><span class="status-hi">高</span></td></tr>
+    <tr><td>作業系統安全</td><td>預設帳號未停用，密碼為廠商出廠預設值</td><td><span class="status-hi">高</span></td></tr>
+    <tr><td>網路安全</td><td>設備直接連接 IT 網路，無有效的網路分段措施</td><td><span class="status-hi">高</span></td></tr>
+    <tr><td>網路安全</td><td>遠端維護使用明文協議（Telnet、FTP）</td><td><span class="status-hi">高</span></td></tr>
+    <tr><td>端點保護</td><td>設備 USB 埠未管控，可任意接入未經授權的儲存裝置</td><td><span class="status-mid">中</span></td></tr>
+    <tr><td>安全監控</td><td>未設定日誌集中收集，本機日誌空間不足導致紀錄遺失</td><td><span class="status-mid">中</span></td></tr>
+    <tr><td>安全監控</td><td>無即時告警機制，資安事件發現嚴重延遲</td><td><span class="status-lo">低</span></td></tr>
+  </table>
+
+  <h2>系統性導入路線圖（12 個月）</h2>
+
+  <h3>第一階段（第 1-2 個月）：評估與盤點</h3>
+  <ul>
+    <li>進行完整的 OT 資產盤點，建立所有設備清單（含 OS 版本、韌體版本、網路連線方式）</li>
+    <li>對照 SEMI E187 四大面向進行詳細缺口分析，評分每個要求項目的現況</li>
+    <li>依據缺口嚴重度與修補難度排定優先順序</li>
+    <li>評估預算需求並取得管理層支持，制定專案時程</li>
+  </ul>
+
+  <h3>第二階段（第 3-6 個月）：高風險缺口修補</h3>
+  <ul>
+    <li>部署工業防火牆（如 Dual Ark NGFW），實施 IT/OT 網路分段</li>
+    <li>停用所有設備的 Telnet/FTP 服務，強制使用 SSH 進行遠端維護</li>
+    <li>更改所有預設密碼，建立密碼複雜度政策</li>
+    <li>對無法升級 OS 的設備部署應用程式白名單（如 Endblock）</li>
+    <li>實施 USB 存取控制或停用未使用的 USB 埠</li>
+  </ul>
+
+  <h3>第三階段（第 7-9 個月）：監控體系建立</h3>
+  <ul>
+    <li>部署日誌集中管理系統（Syslog Server 或輕量級 SIEM）</li>
+    <li>設定關鍵安全事件的即時告警（登入失敗、配置變更、服務中斷）</li>
+    <li>建立設備安全狀態儀表板，提供單一視窗檢視</li>
+    <li>進行第一次內部合規稽核，驗證改善成效</li>
+  </ul>
+
+  <h3>第四階段（第 10-12 個月）：稽核準備與交付</h3>
+  <ul>
+    <li>整理完整的合規文件包（政策文件、程序文件、稽核記錄、矯正預防報告）</li>
+    <li>進行預稽核演練，識別殘餘缺口並進行補強</li>
+    <li>準備供客戶稽核的展示環境與技術文件</li>
+    <li>訓練相關人員回應稽核問題</li>
+  </ul>
+
+  <blockquote>「SEMI E187 合規不是一次性的認證，而是持續的安全管理過程。通過稽核只是起點，之後需要持續維護合規狀態並應對新的威脅與標準更新。E187 v2 已在規劃中，合規要求只會更嚴格。」</blockquote>
+
+  <p>Hexion Networks 提供完整的 SEMI E187 合規評估與導入服務，包括現場評估、缺口分析報告、技術解決方案建議，以及稽核準備全程支援。歡迎聯繫我們的 OT 資安顧問，了解針對貴公司設備環境的客製化合規方案。</p>
+
+  <div class="share-section">
+    <span class="share-label">分享文章</span>
+    
+    <a href="https://twitter.com/intent/tweet?text=SEMI+E187半導體資安標準完整導入流程&url=https://hexionnetworks.com/blog/semi-e187-compliance/" target="_blank" class="btn btn-ghost" style="font-size:0.8125rem;padding:0.45rem 1rem;">分享至 Twitter</a>
+  </div>
+</div>
+
+<div class="content-sec" style="padding-top:0;">
+  <div class="sec-tag">相關文章</div>
+  <h3 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--white);margin-bottom:0;">您可能也感興趣</h3>
+  <div class="related-grid">
+    <a href="/blog/ot-ics-security-guide/" class="blog-card" style="text-decoration:none;"><div class="blog-body"><div class="blog-date">2025-10-08</div><div class="blog-title">OT/ICS 工控資安完全指南</div><div class="blog-excerpt">製造業 OT 環境的完整資安防護策略與實作方法。</div><span class="blog-read-more">閱讀全文 →</span></div></a>
+    <a href="/solutions/manufacturing/" class="blog-card" style="text-decoration:none;"><div class="blog-body"><div class="blog-date">解決方案</div><div class="blog-title">製造業 OT 資安解決方案</div><div class="blog-excerpt">符合 SEMI E187 與 IEC 62443 的完整防護方案。</div><span class="blog-read-more">了解更多 →</span></div></a>
+    <a href="/research/" class="blog-card" style="text-decoration:none;"><div class="blog-body"><div class="blog-date">研究報告</div><div class="blog-title">SEMI E187 合規現況調查</div><div class="blog-excerpt">台灣半導體廠商合規現況與缺口深度分析報告。</div><span class="blog-read-more">下載報告 →</span></div></a>
+  </div>
+</div>
+
+<section class="cta-band reveal">
+  <div><h2>需要 <span>SEMI E187</span> 合規協助？</h2><p>我們的 OT 資安專家提供完整的評估到導入服務，協助您通過客戶供應鏈稽核。</p></div>
+  <div class="cta-band-btns"><a href="/contact/" class="btn btn-teal">預約免費評估 →</a><a href="/solutions/manufacturing/" class="btn btn-ghost">製造業解決方案</a></div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div><a href="/"><img src="/brand_assets/logo.png" alt="Hexion Networks" style="height:36px;filter:brightness(0) invert(1);opacity:0.85" /></a><p class="footer-brand-desc">結合商業策略、品牌顧問、資訊科技與資安的整合型服務公司。</p></div>
+    <div><div class="f-col-title">產品</div><a href="/products/pico-utm-100/" class="f-link">Pico-NGFW 100</a><a href="/products/dual-ark-utm-16/" class="f-link">Dual Ark-NGFW 16</a><a href="/products/tera-utm-12/" class="f-link">Tera-NGFW 12</a><a href="/products/lionfilter-200/" class="f-link">Lionfilter 200</a><a href="/products/endblock/" class="f-link">Endblock</a><a href="/products/teamt5/" class="f-link">TeamT5</a><a href="/products/cycraft/" class="f-link">奧義智慧 CyCraft</a></div>
+    <div><div class="f-col-title">服務</div><a href="/services/" class="f-link">商業策略</a><a href="/services/" class="f-link">品牌顧問</a><a href="/services/" class="f-link">資安評估</a></div>
+    <div><div class="f-col-title">公司</div><a href="/about/" class="f-link">關於我們</a><a href="/blog/" class="f-link">部落格</a><a href="/contact/" class="f-link">聯絡我們</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 HEXION NETWORKS.</span>
+    <div class="footer-legal"><a href="#">隱私政策</a><a href="#">服務條款</a></div>
+  </div>
+</footer>
+
+<script>const ro=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target)}})},{threshold:0.08});document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));</script>
+</body>
+</html>

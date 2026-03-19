@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>深度封包檢測（DPI）技術解析：如何辨識隱藏在流量中的威脅 | Hexion Networks 資安部落格</title>
+  <meta name="description" content="DPI 是現代 NGFW 的核心技術，本文深入解析 LIONIC DPI 引擎如何在高速流量中精準辨識 1400+ 種協議與威脅，並提供企業部署實務建議。" />
+  <meta name="keywords" content="深度封包檢測,DPI,NGFW,LIONIC,Layer 7,SSL inspection,封包分析,防火牆,資安" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hexionnetworks.com/blog/dpi-deep-packet-inspection/" />
+  <meta property="og:title" content="深度封包檢測（DPI）技術解析：如何辨識隱藏在流量中的威脅 | Hexion Networks" />
+  <meta property="og:description" content="DPI 是現代 NGFW 的核心技術，本文深入解析 LIONIC DPI 引擎如何在高速流量中精準辨識 1400+ 種協議與威脅，並提供企業部署實務建議。" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://hexionnetworks.com/blog/dpi-deep-packet-inspection/" />
+  <link rel="icon" href="/brand_assets/favicon.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"深度封包檢測（DPI）技術解析：如何辨識隱藏在流量中的威脅","datePublished":"2025-10-20","dateModified":"2025-10-20","author":{"@type":"Organization","name":"Hexion Networks"},"publisher":{"@type":"Organization","name":"Hexion Networks","url":"https://hexionnetworks.com"},"url":"https://hexionnetworks.com/blog/dpi-deep-packet-inspection/"}</script>
+</head>
+<body>
+<div class="topbar">
+  <a href="/contact/">聯絡我們</a>
+  <a href="/blog/" class="topbar-highlight">最新資安報告 →</a>
+</div>
+<nav>
+  <a href="/" class="nav-logo"><img src="/brand_assets/logo.png" alt="Hexion Networks" /></a>
+  <div class="nav-links">
+    <div class="nav-item">
+      <button>
+        產品
+        <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M8 11L3 6h10z"/></svg>
+      </button>
+      <div class="mega" style="width:560px;grid-template-columns:1fr 1fr">
+        <div class="mega-col" style="border-right:1px solid rgba(255,255,255,0.06)">
+          <div class="mega-label" style="color:var(--teal)">LIONIC NGFW 系列</div>
+          <a href="/products/pico-utm-100/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.15);color:var(--o)">IT</span>
+            Pico-NGFW 100
+          </a>
+          <a href="/products/dual-ark-utm-16/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(0,200,200,0.12);color:var(--teal)">IoT</span>
+            Dual Ark-NGFW 16
+          </a>
+          <a href="/products/tera-utm-12/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.12);color:#FF7A45">OT</span>
+            Tera-NGFW 12
+          </a>
+          <a href="/products/lionfilter-200/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(167,139,250,0.12);color:#A78BFA">NET</span>
+            Lionfilter 200
+          </a>
+        </div>
+        <div class="mega-col" style="background:rgba(61,220,151,0.025)">
+          <div class="mega-label" style="color:#3DDC97">EDR 端點偵測回應</div>
+          <a href="/products/endblock/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.15);color:#3DDC97">EDR</span>
+            Endblock
+          </a>
+          <a href="/products/teamt5/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.12);color:#3DDC97">TI</span>
+            TeamT5
+          </a>
+          <a href="/products/cycraft/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.1);color:#3DDC97">AI</span>
+            奧義智慧 CyCraft
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-item"><a href="/services/">服務</a></div>
+    <div class="nav-item" style="display:none"><a href="/research/">研究</a></div>
+    <div class="nav-item active"><a href="/blog/">部落格</a></div>
+    <div class="nav-item"><a href="/about/">關於</a></div>
+  </div>
+  <div class="nav-cta">
+    <a href="https://line.me/R/ti/p/@278zhddk" target="_blank" class="nav-line-btn">LINE 諮詢</a>
+    <a href="/contact/" class="btn btn-orange" style="padding:0.5rem 1.125rem;font-size:0.8125rem;">取得報價 →</a>
+  </div>
+</nav>
+
+<div class="page-hero" style="padding-bottom:3rem">
+  <div style="padding:0 var(--px)">
+    <div class="reveal" style="display:flex;gap:0.5rem;margin-bottom:1.5rem">
+      <a href="/blog/" style="color:var(--silver);font-size:0.8rem;text-decoration:none">部落格</a>
+      <span style="color:var(--silver);font-size:0.8rem">/</span>
+      <span style="color:var(--o);font-size:0.8rem">產品解析</span>
+    </div>
+    <div class="reveal">
+      <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(250,88,34,0.1);border:1px solid rgba(250,88,34,0.3);border-radius:4px;padding:0.25rem 0.75rem;font-family:'Orbitron',monospace;font-size:0.65rem;color:#FA5822;letter-spacing:0.1em;margin-bottom:1.25rem">產品解析</div>
+      <h1 style="font-family:'Syne',sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.025em;line-height:1.15;margin-bottom:1.25rem">深度封包檢測（DPI）技術解析：如何辨識隱藏在流量中的威脅</h1>
+      <p style="color:var(--silver);font-size:1.0625rem;line-height:1.7;margin-bottom:2rem">DPI 是現代 NGFW 的核心技術，但它究竟如何在高速流量中精準辨識威脅？本文深入解析 LIONIC DPI 引擎的運作原理與企業部署建議。</p>
+      <div style="display:flex;align-items:center;gap:1.5rem;color:var(--silver);font-size:0.8125rem;border-top:1px solid var(--ink-4);padding-top:1.5rem">
+        <span>Hexion Networks 資安研究團隊</span><span>·</span><span>2025 年 10 月 20 日</span><span>·</span><span>7 分鐘閱讀</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="padding:3rem var(--px) 5rem">
+
+  <!-- SVG Banner -->
+  <div class="reveal" style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:12px;overflow:hidden;margin-bottom:3rem;aspect-ratio:16/7;display:flex;align-items:center;justify-content:center">
+    <svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+      <defs>
+        <linearGradient id="dpi-bg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#0A0A14"/>
+          <stop offset="100%" stop-color="#11111E"/>
+        </linearGradient>
+        <linearGradient id="dpi-orange" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#FA5822"/>
+          <stop offset="100%" stop-color="#FF7A45"/>
+        </linearGradient>
+        <linearGradient id="dpi-teal" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#00C8C8"/>
+          <stop offset="100%" stop-color="#00A0A0"/>
+        </linearGradient>
+        <filter id="dpi-glow">
+          <feGaussianBlur stdDeviation="3" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+      <rect width="800" height="350" fill="url(#dpi-bg)"/>
+      <!-- Packet stream arrows on left -->
+      <g opacity="0.9">
+        <rect x="20" y="60" width="80" height="26" rx="4" fill="#1A1A2C" stroke="#2E2E46" stroke-width="1"/>
+        <text x="60" y="78" text-anchor="middle" font-family="monospace" font-size="9" fill="#8B8BA8">PKT #1</text>
+        <rect x="20" y="100" width="80" height="26" rx="4" fill="#1A1A2C" stroke="#2E2E46" stroke-width="1"/>
+        <text x="60" y="118" text-anchor="middle" font-family="monospace" font-size="9" fill="#8B8BA8">PKT #2</text>
+        <rect x="20" y="140" width="80" height="26" rx="4" fill="#1A1A2C" stroke="#FA5822" stroke-width="1"/>
+        <text x="60" y="158" text-anchor="middle" font-family="monospace" font-size="9" fill="#FA5822">MALWARE</text>
+        <rect x="20" y="180" width="80" height="26" rx="4" fill="#1A1A2C" stroke="#2E2E46" stroke-width="1"/>
+        <text x="60" y="198" text-anchor="middle" font-family="monospace" font-size="9" fill="#8B8BA8">PKT #4</text>
+        <rect x="20" y="220" width="80" height="26" rx="4" fill="#1A1A2C" stroke="#2E2E46" stroke-width="1"/>
+        <text x="60" y="238" text-anchor="middle" font-family="monospace" font-size="9" fill="#8B8BA8">PKT #5</text>
+        <!-- Flow arrows -->
+        <line x1="100" y1="73" x2="160" y2="73" stroke="#2E2E46" stroke-width="1.5" marker-end="url(#arr)"/>
+        <line x1="100" y1="113" x2="160" y2="113" stroke="#2E2E46" stroke-width="1.5"/>
+        <line x1="100" y1="153" x2="160" y2="153" stroke="#FA5822" stroke-width="1.5" opacity="0.7"/>
+        <line x1="100" y1="193" x2="160" y2="193" stroke="#2E2E46" stroke-width="1.5"/>
+        <line x1="100" y1="233" x2="160" y2="233" stroke="#2E2E46" stroke-width="1.5"/>
+      </g>
+      <!-- DPI Engine block -->
+      <rect x="160" y="40" width="220" height="230" rx="10" fill="#11111E" stroke="#FA5822" stroke-width="1.5" filter="url(#dpi-glow)"/>
+      <rect x="160" y="40" width="220" height="36" rx="10" fill="rgba(250,88,34,0.15)"/>
+      <text x="270" y="63" text-anchor="middle" font-family="'Orbitron',monospace" font-size="11" fill="#FA5822" letter-spacing="1">DPI ENGINE</text>
+      <!-- Layer labels inside DPI -->
+      <text x="185" y="105" font-family="monospace" font-size="9" fill="#8B8BA8">Layer 3 →</text>
+      <rect x="240" y="91" width="110" height="20" rx="3" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="295" y="105" text-anchor="middle" font-family="monospace" font-size="9" fill="#C4C4D8">IP / Protocol</text>
+
+      <text x="185" y="138" font-family="monospace" font-size="9" fill="#8B8BA8">Layer 4 →</text>
+      <rect x="240" y="124" width="110" height="20" rx="3" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="295" y="138" text-anchor="middle" font-family="monospace" font-size="9" fill="#C4C4D8">TCP / UDP Port</text>
+
+      <text x="185" y="171" font-family="monospace" font-size="9" fill="#8B8BA8">Layer 7 →</text>
+      <rect x="240" y="157" width="110" height="20" rx="3" fill="#1A1A2C" stroke="#00C8C8"/>
+      <text x="295" y="171" text-anchor="middle" font-family="monospace" font-size="9" fill="#00C8C8">App Signature</text>
+
+      <text x="185" y="204" font-family="monospace" font-size="9" fill="#8B8BA8">Pattern →</text>
+      <rect x="240" y="190" width="110" height="20" rx="3" fill="#1A1A2C" stroke="#00C8C8"/>
+      <text x="295" y="204" text-anchor="middle" font-family="monospace" font-size="9" fill="#00C8C8">Threat DB Match</text>
+
+      <text x="185" y="237" font-family="monospace" font-size="9" fill="#8B8BA8">Behavior →</text>
+      <rect x="240" y="223" width="110" height="20" rx="3" fill="#1A1A2C" stroke="#FA5822"/>
+      <text x="295" y="237" text-anchor="middle" font-family="monospace" font-size="9" fill="#FA5822">Anomaly Score</text>
+
+      <!-- Classification outputs on right -->
+      <g>
+        <rect x="440" y="55" width="100" height="28" rx="5" fill="rgba(0,200,200,0.1)" stroke="#00C8C8" stroke-width="1"/>
+        <text x="490" y="73" text-anchor="middle" font-family="monospace" font-size="9" fill="#00C8C8">HTTP/HTTPS ✓</text>
+        <line x1="380" y1="100" x2="440" y2="69" stroke="#00C8C8" stroke-width="1" stroke-dasharray="3,2" opacity="0.5"/>
+
+        <rect x="440" y="105" width="100" height="28" rx="5" fill="rgba(0,200,200,0.1)" stroke="#00C8C8" stroke-width="1"/>
+        <text x="490" y="123" text-anchor="middle" font-family="monospace" font-size="9" fill="#00C8C8">P2P / VoIP ✓</text>
+        <line x1="380" y1="140" x2="440" y2="119" stroke="#00C8C8" stroke-width="1" stroke-dasharray="3,2" opacity="0.5"/>
+
+        <rect x="440" y="155" width="100" height="28" rx="5" fill="rgba(250,88,34,0.15)" stroke="#FA5822" stroke-width="1.5"/>
+        <text x="490" y="173" text-anchor="middle" font-family="monospace" font-size="9" fill="#FA5822">MALWARE ✗</text>
+        <line x1="380" y1="153" x2="440" y2="169" stroke="#FA5822" stroke-width="1.5" opacity="0.8"/>
+
+        <rect x="440" y="205" width="100" height="28" rx="5" fill="rgba(0,200,200,0.1)" stroke="#00C8C8" stroke-width="1"/>
+        <text x="490" y="223" text-anchor="middle" font-family="monospace" font-size="9" fill="#00C8C8">Streaming ✓</text>
+        <line x1="380" y1="193" x2="440" y2="219" stroke="#00C8C8" stroke-width="1" stroke-dasharray="3,2" opacity="0.5"/>
+      </g>
+      <!-- ALLOW / BLOCK -->
+      <rect x="580" y="75" width="90" height="32" rx="6" fill="rgba(0,200,200,0.15)" stroke="#00C8C8" stroke-width="1.5"/>
+      <text x="625" y="95" text-anchor="middle" font-family="'Orbitron',monospace" font-size="10" fill="#00C8C8">ALLOW</text>
+      <line x1="540" y1="69" x2="580" y2="91" stroke="#00C8C8" stroke-width="1" opacity="0.6"/>
+      <line x1="540" y1="119" x2="580" y2="91" stroke="#00C8C8" stroke-width="1" opacity="0.6"/>
+      <line x1="540" y1="219" x2="580" y2="91" stroke="#00C8C8" stroke-width="1" opacity="0.6"/>
+
+      <rect x="580" y="165" width="90" height="32" rx="6" fill="rgba(250,88,34,0.2)" stroke="#FA5822" stroke-width="1.5"/>
+      <text x="625" y="185" text-anchor="middle" font-family="'Orbitron',monospace" font-size="10" fill="#FA5822">BLOCK</text>
+      <line x1="540" y1="169" x2="580" y2="181" stroke="#FA5822" stroke-width="1.5" opacity="0.8"/>
+
+      <!-- Bottom label -->
+      <text x="400" y="320" text-anchor="middle" font-family="'Orbitron',monospace" font-size="10" fill="#2E2E46" letter-spacing="2">LIONIC DPI — 1400+ PROTOCOL SIGNATURES</text>
+    </svg>
+  </div>
+
+  <!-- Section 1 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">什麼是 DPI？傳統防火牆 vs 深度封包檢測</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">傳統防火牆採用的是「淺層」封包過濾（Shallow Packet Inspection），只檢查封包標頭中的來源 IP、目的 IP、連接埠號碼以及傳輸協議（TCP/UDP）。這種方式速度快、資源需求低，但隨著現代攻擊手法的演進，僅靠標頭資訊已完全無法應對威脅。</p>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">深度封包檢測（Deep Packet Inspection，DPI）則進一步深入封包的 Payload（資料承載部分），分析第 7 層（應用層）的實際內容。這代表 DPI 不只知道「誰在和誰說話」，更知道「他們在說什麼」。無論攻擊者如何偽裝連接埠（例如透過非標準埠位使用 HTTP），DPI 引擎都能識別真正的應用程式協議。</p>
+    <p style="color:var(--silver);line-height:1.8">在現代次世代防火牆（NGFW）架構中，DPI 是入侵偵測/防禦（IDS/IPS）、應用程式識別、惡意軟體掃描、URL 過濾等所有進階安全功能的技術基礎。少了 DPI，其餘的安全層就像是沒有地基的建築物。</p>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">DPI 核心技術：特徵比對、行為分析與統計分析</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1.25rem">現代 DPI 引擎並非單一技術，而是多種檢測方法的融合：</p>
+    <div style="display:flex;flex-direction:column;gap:1rem">
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1.25rem">
+        <div style="font-weight:600;color:var(--white);margin-bottom:0.5rem">1. 特徵比對（Signature-Based Matching）</div>
+        <p style="color:var(--silver);line-height:1.75;font-size:0.9375rem">透過預先建立的協議特徵資料庫，識別已知的應用程式與惡意軟體。LIONIC DPI 引擎維護超過 1,400 種協議特徵，涵蓋從 HTTP、HTTPS、QUIC 到 BitTorrent、Telnet、RDP 等各類應用。特徵比對速度最快，但需要持續更新才能應對新型威脅。</p>
+      </div>
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1.25rem">
+        <div style="font-weight:600;color:var(--white);margin-bottom:0.5rem">2. 行為分析（Behavioral Analysis）</div>
+        <p style="color:var(--silver);line-height:1.75;font-size:0.9375rem">不依賴已知特徵，而是觀察連線的行為模式。例如某個連線在短時間內對大量 IP 發出相同請求，或是某個服務突然開始傳輸異常大量的資料，都可能觸發行為分析告警。這種方法能偵測零時差（Zero-day）攻擊。</p>
+      </div>
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1.25rem">
+        <div style="font-weight:600;color:var(--white);margin-bottom:0.5rem">3. 統計分析（Statistical Analysis）</div>
+        <p style="color:var(--silver);line-height:1.75;font-size:0.9375rem">分析流量的統計特徵，如封包大小分佈、封包間隔時間、流量方向性等。即使攻擊者對協議進行混淆，統計特徵往往仍會洩露其真實身份。例如，加密的指揮控制（C2）通訊往往呈現周期性的 Beacon 模式，統計分析可有效識別。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">LIONIC DPI 引擎優勢：1400+ 協議、硬體加速、低延遲</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">Hexion Networks 的 Pico-NGFW 與 Tera-NGFW 系列採用台灣 LIONIC 公司開發的 DPI 引擎，在台灣資安市場中佔有獨特優勢：</p>
+    <ul style="color:var(--silver);line-height:1.8;padding-left:1.5rem;margin-bottom:1rem">
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">1,400+ 種協議識別：</strong>涵蓋主流商業應用、工業協議（Modbus、DNP3）、即時通訊、P2P、串流媒體等，並持續更新以因應新興服務。</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">硬體加速架構：</strong>利用 FPGA 與多核心 ASIC 進行封包解析，避免純軟體方案在高流量下的 CPU 瓶頸，確保防護啟用後吞吐量不大幅下降。</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">低延遲設計：</strong>單向封包延遲低於 1ms，適合對延遲敏感的工業控制、VoIP 及即時交易環境。</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">本地化威脅情報：</strong>針對台灣常見的 APT 組織及攻擊手法進行特徵優化，在標準國際特徵庫之外提供額外防護層。</li>
+    </ul>
+  </div>
+
+  <!-- Section 4 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">SSL/TLS 加密流量的挑戰</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">根據業界統計，目前超過 90% 的網路流量已採用 TLS 加密。這對 DPI 帶來了根本性的挑戰：若無法解密，DPI 引擎所有的 Layer 7 檢測能力都將形同虛設。攻擊者正是利用這一點，將惡意軟體傳輸隱藏在合法的 HTTPS 連線中。</p>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">解決方案是 SSL/TLS 解密（SSL Inspection）。防火牆作為「中間人（Man-in-the-Middle）」，對外建立一條加密連線，對內解密後交由 DPI 引擎檢查，再重新加密轉發給客戶端。但這帶來幾個實務問題：</p>
+    <ul style="color:var(--silver);line-height:1.8;padding-left:1.5rem;margin-bottom:1rem">
+      <li style="margin-bottom:0.5rem">效能影響：SSL 解密是計算密集型操作，對硬體要求高</li>
+      <li style="margin-bottom:0.5rem">憑證管理：需在所有端點部署企業自簽憑證</li>
+      <li style="margin-bottom:0.5rem">隱私考量：金融、醫療等敏感流量需排除在解密範圍外</li>
+      <li style="margin-bottom:0.5rem">TLS 1.3 挑戰：完美前向保密（PFS）使部分解密方法失效</li>
+    </ul>
+    <p style="color:var(--silver);line-height:1.8">Hexion 建議企業採取「選擇性解密」策略：對高風險分類（雲端儲存、匿名代理、未知網站）啟用解密，對已知安全的金融機構、醫療系統排除解密，在安全性與效能/隱私之間取得平衡。</p>
+  </div>
+
+  <!-- Section 5 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">企業部署 DPI 的實務建議</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">對於準備導入或升級 DPI 能力的企業，Hexion 資安顧問團隊根據台灣中大型企業的部署經驗，整理以下實務建議：</p>
+    <ol style="color:var(--silver);line-height:1.8;padding-left:1.5rem">
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">先評估流量基線：</strong>在啟用 DPI 前，先以監控模式（Monitor Mode）運行 2-4 週，了解企業正常流量的應用程式分佈，避免誤封關鍵業務流量。</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">分階段啟用功能：</strong>建議先啟用應用識別，再逐步開啟 IPS、惡意軟體掃描，最後才啟用 SSL 解密，讓 IT 團隊有時間處理每個階段的誤報（False Positive）。</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">硬體選型要留餘量：</strong>啟用完整 DPI 功能後，吞吐量通常降至裸機規格的 30-50%，選型時務必以實際使用情境下的防護吞吐量（Threat Protection Throughput）為準，而非無防護的最大吞吐量。</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">定期更新特徵庫：</strong>DPI 的效力高度依賴特徵庫的更新頻率，建議啟用自動更新，確保對最新威脅的識別能力。</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">整合 SIEM 日誌：</strong>DPI 產生的應用層日誌是威脅獵捕（Threat Hunting）的寶貴資料來源，應接入 SIEM 系統進行關聯分析。</li>
+    </ol>
+  </div>
+
+  <!-- Section 6 - Highlight Box -->
+  <div class="reveal" style="margin-bottom:2.5rem;background:rgba(0,200,200,0.05);border:1px solid rgba(0,200,200,0.2);border-radius:12px;padding:2rem">
+    <div style="font-family:'Orbitron',monospace;font-size:0.7rem;letter-spacing:0.1em;color:var(--teal);margin-bottom:1rem">DPI 效能指標參考</div>
+    <div style="font-family:'Syne',sans-serif;font-size:1.125rem;font-weight:700;margin-bottom:1.25rem">評估 DPI 引擎時，這些數字才是關鍵</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem">
+      <div style="background:var(--ink-2);border-radius:8px;padding:1rem">
+        <div style="font-family:'Orbitron',monospace;font-size:1.25rem;color:#FA5822;font-weight:700">1,400+</div>
+        <div style="color:var(--silver);font-size:0.875rem;margin-top:0.25rem">協議識別種類（LIONIC 引擎）</div>
+      </div>
+      <div style="background:var(--ink-2);border-radius:8px;padding:1rem">
+        <div style="font-family:'Orbitron',monospace;font-size:1.25rem;color:#FA5822;font-weight:700">&lt;1ms</div>
+        <div style="color:var(--silver);font-size:0.875rem;margin-top:0.25rem">單向封包最大延遲</div>
+      </div>
+      <div style="background:var(--ink-2);border-radius:8px;padding:1rem">
+        <div style="font-family:'Orbitron',monospace;font-size:1.25rem;color:#FA5822;font-weight:700">~40%</div>
+        <div style="color:var(--silver);font-size:0.875rem;margin-top:0.25rem">啟用全功能後的效能保留率</div>
+      </div>
+      <div style="background:var(--ink-2);border-radius:8px;padding:1rem">
+        <div style="font-family:'Orbitron',monospace;font-size:1.25rem;color:#FA5822;font-weight:700">每日</div>
+        <div style="color:var(--silver);font-size:0.875rem;margin-top:0.25rem">建議特徵庫更新頻率</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tags -->
+  <div class="reveal" style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--ink-4);display:flex;gap:0.5rem;flex-wrap:wrap">
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">深度封包檢測</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">DPI</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">NGFW</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">LIONIC</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">SSL Inspection</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">Layer 7</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">IPS</span>
+  </div>
+
+  <!-- CTA -->
+  <div class="reveal" style="margin-top:3rem;background:linear-gradient(135deg,rgba(250,88,34,0.08),rgba(0,200,200,0.04));border:1px solid rgba(250,88,34,0.2);border-radius:12px;padding:2rem">
+    <div style="font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:0.75rem">需要專業資安建議？</div>
+    <p style="color:var(--silver);margin-bottom:1.5rem">立即聯絡 Hexion Networks，獲取針對貴公司量身訂製的資安評估與解決方案。</p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap">
+      <a href="/contact/" class="btn btn-orange">免費諮詢</a>
+      
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div><a href="/"><img src="/brand_assets/logo.png" alt="Hexion Networks" style="height:36px;filter:brightness(0) invert(1);opacity:0.85" /></a><p class="footer-brand-desc">結合商業策略、品牌顧問、資訊科技與資安的整合型服務公司。</p></div>
+    <div><div class="f-col-title">產品</div><a href="/products/pico-utm-100/" class="f-link">Pico-NGFW 100</a><a href="/products/dual-ark-utm-16/" class="f-link">Dual Ark-NGFW 16</a><a href="/products/tera-utm-12/" class="f-link">Tera-NGFW 12</a><a href="/products/lionfilter-200/" class="f-link">Lionfilter 200</a><a href="/products/endblock/" class="f-link">Endblock</a><a href="/products/teamt5/" class="f-link">TeamT5</a><a href="/products/cycraft/" class="f-link">奧義智慧 CyCraft</a></div>
+    <div><div class="f-col-title">服務</div><a href="/services/" class="f-link">商業策略</a><a href="/services/" class="f-link">品牌顧問</a><a href="/services/" class="f-link">資安評估</a></div>
+    <div><div class="f-col-title">公司</div><a href="/about/" class="f-link">關於我們</a><a href="/blog/" class="f-link">部落格</a><a href="/contact/" class="f-link">聯絡我們</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 HEXION NETWORKS.</span>
+    <div class="footer-legal"><a href="#">隱私政策</a><a href="#">服務條款</a></div>
+  </div>
+</footer>
+
+<script>const ro=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target)}})},{threshold:0.08});document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));</script>
+</body></html>

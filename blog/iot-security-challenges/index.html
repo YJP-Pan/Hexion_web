@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IoT 裝置資安管理：如何保護企業中的萬物聯網設備 | Hexion Networks 資安部落格</title>
+  <meta name="description" content="企業 IoT 設備數量爆炸性成長，但多數設備安全設計薄弱。本文提供實務的 IoT 資安管理框架，協助企業透過網路分段與異常偵測有效降低風險。" />
+  <meta name="keywords" content="IoT資安,物聯網安全,網路分段,資產盤點,醫療IoT,OT安全,NGFW,防火牆" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hexionnetworks.com/blog/iot-security-challenges/" />
+  <meta property="og:title" content="IoT 裝置資安管理：如何保護企業中的萬物聯網設備 | Hexion Networks" />
+  <meta property="og:description" content="企業 IoT 設備數量爆炸性成長，但多數設備安全設計薄弱。本文提供實務的 IoT 資安管理框架，協助企業有效降低風險。" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://hexionnetworks.com/blog/iot-security-challenges/" />
+  <link rel="icon" href="/brand_assets/favicon.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"IoT 裝置資安管理：如何保護企業中的萬物聯網設備","datePublished":"2025-09-15","dateModified":"2025-09-15","author":{"@type":"Organization","name":"Hexion Networks"},"publisher":{"@type":"Organization","name":"Hexion Networks","url":"https://hexionnetworks.com"},"url":"https://hexionnetworks.com/blog/iot-security-challenges/"}</script>
+</head>
+<body>
+<div class="topbar">
+  <a href="/contact/">聯絡我們</a>
+  <a href="/blog/" class="topbar-highlight">最新資安報告 →</a>
+</div>
+<nav>
+  <a href="/" class="nav-logo"><img src="/brand_assets/logo.png" alt="Hexion Networks" /></a>
+  <div class="nav-links">
+    <div class="nav-item">
+      <button>
+        產品
+        <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M8 11L3 6h10z"/></svg>
+      </button>
+      <div class="mega" style="width:560px;grid-template-columns:1fr 1fr">
+        <div class="mega-col" style="border-right:1px solid rgba(255,255,255,0.06)">
+          <div class="mega-label" style="color:var(--teal)">LIONIC NGFW 系列</div>
+          <a href="/products/pico-utm-100/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.15);color:var(--o)">IT</span>
+            Pico-NGFW 100
+          </a>
+          <a href="/products/dual-ark-utm-16/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(0,200,200,0.12);color:var(--teal)">IoT</span>
+            Dual Ark-NGFW 16
+          </a>
+          <a href="/products/tera-utm-12/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.12);color:#FF7A45">OT</span>
+            Tera-NGFW 12
+          </a>
+          <a href="/products/lionfilter-200/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(167,139,250,0.12);color:#A78BFA">NET</span>
+            Lionfilter 200
+          </a>
+        </div>
+        <div class="mega-col" style="background:rgba(61,220,151,0.025)">
+          <div class="mega-label" style="color:#3DDC97">EDR 端點偵測回應</div>
+          <a href="/products/endblock/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.15);color:#3DDC97">EDR</span>
+            Endblock
+          </a>
+          <a href="/products/teamt5/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.12);color:#3DDC97">TI</span>
+            TeamT5
+          </a>
+          <a href="/products/cycraft/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.1);color:#3DDC97">AI</span>
+            奧義智慧 CyCraft
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-item"><a href="/services/">服務</a></div>
+    <div class="nav-item" style="display:none"><a href="/research/">研究</a></div>
+    <div class="nav-item active"><a href="/blog/">部落格</a></div>
+    <div class="nav-item"><a href="/about/">關於</a></div>
+  </div>
+  <div class="nav-cta">
+    <a href="https://line.me/R/ti/p/@278zhddk" target="_blank" class="nav-line-btn">LINE 諮詢</a>
+    <a href="/contact/" class="btn btn-orange" style="padding:0.5rem 1.125rem;font-size:0.8125rem;">取得報價 →</a>
+  </div>
+</nav>
+
+<div class="page-hero" style="padding-bottom:3rem">
+  <div style="padding:0 var(--px)">
+    <div class="reveal" style="display:flex;gap:0.5rem;margin-bottom:1.5rem">
+      <a href="/blog/" style="color:var(--silver);font-size:0.8rem;text-decoration:none">部落格</a>
+      <span style="color:var(--silver);font-size:0.8rem">/</span>
+      <span style="color:var(--o);font-size:0.8rem">技術指南</span>
+    </div>
+    <div class="reveal">
+      <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(250,88,34,0.1);border:1px solid rgba(250,88,34,0.3);border-radius:4px;padding:0.25rem 0.75rem;font-family:'Orbitron',monospace;font-size:0.65rem;color:#FA5822;letter-spacing:0.1em;margin-bottom:1.25rem">技術指南</div>
+      <h1 style="font-family:'Syne',sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.025em;line-height:1.15;margin-bottom:1.25rem">IoT 裝置資安管理：如何保護企業中的萬物聯網設備</h1>
+      <p style="color:var(--silver);font-size:1.0625rem;line-height:1.7;margin-bottom:2rem">企業內 IoT 設備數量爆炸性成長，但多數設備安全設計薄弱。本文提供實務的 IoT 資安管理框架，協助企業有效降低風險。</p>
+      <div style="display:flex;align-items:center;gap:1.5rem;color:var(--silver);font-size:0.8125rem;border-top:1px solid var(--ink-4);padding-top:1.5rem">
+        <span>Hexion Networks 資安研究團隊</span><span>·</span><span>2025 年 9 月 15 日</span><span>·</span><span>6 分鐘閱讀</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="padding:3rem var(--px) 5rem">
+
+  <!-- SVG Banner -->
+  <div class="reveal" style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:12px;overflow:hidden;margin-bottom:3rem;aspect-ratio:16/7;display:flex;align-items:center;justify-content:center">
+    <svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+      <defs>
+        <linearGradient id="iot-bg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#0A0A14"/>
+          <stop offset="100%" stop-color="#11111E"/>
+        </linearGradient>
+      </defs>
+      <rect width="800" height="350" fill="url(#iot-bg)"/>
+      <!-- IoT Zone -->
+      <rect x="20" y="50" width="175" height="250" rx="10" fill="rgba(250,88,34,0.05)" stroke="rgba(250,88,34,0.3)" stroke-width="1" stroke-dasharray="5,3"/>
+      <text x="107" y="75" text-anchor="middle" font-family="'Orbitron',monospace" font-size="9" fill="#FA5822" letter-spacing="1">IoT ZONE</text>
+      <!-- IoT device icons -->
+      <rect x="35" y="90" width="55" height="22" rx="3" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="62" y="105" text-anchor="middle" font-family="monospace" font-size="8" fill="#8B8BA8">IP Camera</text>
+      <rect x="105" y="90" width="55" height="22" rx="3" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="132" y="105" text-anchor="middle" font-family="monospace" font-size="8" fill="#8B8BA8">Sensor</text>
+      <rect x="35" y="130" width="55" height="22" rx="3" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="62" y="145" text-anchor="middle" font-family="monospace" font-size="8" fill="#8B8BA8">Printer</text>
+      <rect x="105" y="130" width="55" height="22" rx="3" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="132" y="145" text-anchor="middle" font-family="monospace" font-size="8" fill="#8B8BA8">HVAC</text>
+      <rect x="35" y="170" width="55" height="22" rx="3" fill="#1A1A2C" stroke="#FA5822" stroke-width="1"/>
+      <text x="62" y="185" text-anchor="middle" font-family="monospace" font-size="8" fill="#FA5822">Badge Rdr</text>
+      <rect x="105" y="170" width="55" height="22" rx="3" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="132" y="185" text-anchor="middle" font-family="monospace" font-size="8" fill="#8B8BA8">PLC</text>
+      <rect x="70" y="220" width="60" height="22" rx="3" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="100" y="235" text-anchor="middle" font-family="monospace" font-size="8" fill="#8B8BA8">Smart TV</text>
+      <!-- NGFW center -->
+      <rect x="240" y="120" width="120" height="110" rx="10" fill="#11111E" stroke="#FA5822" stroke-width="1.5"/>
+      <text x="300" y="148" text-anchor="middle" font-family="'Orbitron',monospace" font-size="10" fill="#FA5822">NGFW</text>
+      <text x="300" y="166" text-anchor="middle" font-family="monospace" font-size="8" fill="#8B8BA8">Segmentation</text>
+      <text x="300" y="182" text-anchor="middle" font-family="monospace" font-size="8" fill="#8B8BA8">Policy Enforce</text>
+      <text x="300" y="198" text-anchor="middle" font-family="monospace" font-size="8" fill="#00C8C8">Anomaly Detect</text>
+      <text x="300" y="214" text-anchor="middle" font-family="monospace" font-size="8" fill="#00C8C8">DPI + IPS</text>
+      <!-- Arrows IoT → NGFW -->
+      <line x1="195" y1="175" x2="240" y2="175" stroke="#FA5822" stroke-width="1.5" stroke-dasharray="4,2" opacity="0.7"/>
+      <!-- Corp Zone -->
+      <rect x="410" y="50" width="175" height="100" rx="10" fill="rgba(0,200,200,0.05)" stroke="rgba(0,200,200,0.3)" stroke-width="1" stroke-dasharray="5,3"/>
+      <text x="497" y="73" text-anchor="middle" font-family="'Orbitron',monospace" font-size="9" fill="#00C8C8" letter-spacing="1">CORP ZONE</text>
+      <rect x="425" y="82" width="65" height="18" rx="3" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="457" y="95" text-anchor="middle" font-family="monospace" font-size="8" fill="#C4C4D8">Servers</text>
+      <rect x="505" y="82" width="65" height="18" rx="3" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="537" y="95" text-anchor="middle" font-family="monospace" font-size="8" fill="#C4C4D8">Workstns</text>
+      <rect x="425" y="112" width="145" height="18" rx="3" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="497" y="125" text-anchor="middle" font-family="monospace" font-size="8" fill="#C4C4D8">ERP / AD / Database</text>
+      <!-- Guest Zone -->
+      <rect x="410" y="200" width="175" height="100" rx="10" fill="rgba(139,139,168,0.05)" stroke="rgba(139,139,168,0.25)" stroke-width="1" stroke-dasharray="5,3"/>
+      <text x="497" y="223" text-anchor="middle" font-family="'Orbitron',monospace" font-size="9" fill="#8B8BA8" letter-spacing="1">GUEST ZONE</text>
+      <rect x="430" y="235" width="135" height="18" rx="3" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="497" y="248" text-anchor="middle" font-family="monospace" font-size="8" fill="#8B8BA8">Mobile / Visitor WiFi</text>
+      <rect x="430" y="265" width="135" height="18" rx="3" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="497" y="278" text-anchor="middle" font-family="monospace" font-size="8" fill="#8B8BA8">Contractor Devices</text>
+      <!-- Arrows NGFW → Zones -->
+      <line x1="360" y1="155" x2="410" y2="105" stroke="#00C8C8" stroke-width="1.5" opacity="0.7"/>
+      <line x1="360" y1="195" x2="410" y2="248" stroke="#8B8BA8" stroke-width="1" stroke-dasharray="3,2" opacity="0.5"/>
+      <!-- Isolated label -->
+      <rect x="610" y="155" width="110" height="30" rx="5" fill="rgba(250,88,34,0.15)" stroke="#FA5822" stroke-width="1.5"/>
+      <text x="665" y="174" text-anchor="middle" font-family="'Orbitron',monospace" font-size="9" fill="#FA5822">ISOLATED ✗</text>
+      <line x1="585" y1="170" x2="610" y2="170" stroke="#FA5822" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.7"/>
+      <text x="400" y="325" text-anchor="middle" font-family="'Orbitron',monospace" font-size="9" fill="#2E2E46" letter-spacing="2">IoT NETWORK SEGMENTATION — ZERO TRUST MODEL</text>
+    </svg>
+  </div>
+
+  <!-- Section 1 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">企業 IoT 資安現況</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">根據 Gartner 預測，2025 年全球聯網 IoT 設備數量已突破 300 億台。台灣企業同樣面臨 IoT 設備急速擴張的挑戰：工廠的感測器與 PLC、醫院的醫療器材、辦公室的 IP 攝影機與智慧門禁、零售業的 POS 機與數位看板，這些設備正以前所未有的速度接入企業網路。</p>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">問題在於，IoT 設備的安全設計往往遠遠落後於 IT 設備。許多廠商的優先考量是縮短上市時間與降低成本，資安常常是事後才想到的功能。這造成了一個矛盾的局面：企業最難防護的設備，卻擁有最直接的實體存取能力（攝影機、門禁）或最敏感的資料（醫療監控器、工業感測器）。</p>
+    <p style="color:var(--silver);line-height:1.8">2021 年的 Oldsmar 自來水廠駭客攻擊事件、2023 年台灣半導體廠供應商 IoT 入侵事件，都清楚說明了 IoT 資安不是可選項，而是企業安全的關鍵環節。</p>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">IoT 設備三大結構性弱點</h2>
+    <div style="display:flex;flex-direction:column;gap:1rem">
+      <div style="background:var(--ink-2);border-left:3px solid #FA5822;padding:1.25rem 1.5rem;border-radius:0 8px 8px 0">
+        <div style="font-weight:600;color:var(--white);margin-bottom:0.5rem">預設憑證從未變更</div>
+        <p style="color:var(--silver);line-height:1.75;font-size:0.9375rem">大量 IoT 設備出廠時使用相同的預設帳號密碼（如 admin/admin、root/1234），而 IT 部門往往未將這些設備納入密碼管理政策。Shodan 搜尋引擎可輕易找到數以萬計暴露在網際網路上、仍使用預設憑證的台灣企業設備。</p>
+      </div>
+      <div style="background:var(--ink-2);border-left:3px solid #FA5822;padding:1.25rem 1.5rem;border-radius:0 8px 8px 0">
+        <div style="font-weight:600;color:var(--white);margin-bottom:0.5rem">韌體無法更新或廠商不再支援</div>
+        <p style="color:var(--silver);line-height:1.75;font-size:0.9375rem">許多 IoT 設備的更新機制設計不良，或廠商已停止提供安全補丁（End of Life）。一旦發現漏洞，這些設備只能繼續暴露在風險中，直到被替換。在預算有限的中小企業環境中，替換週期往往長達 5-10 年。</p>
+      </div>
+      <div style="background:var(--ink-2);border-left:3px solid #FA5822;padding:1.25rem 1.5rem;border-radius:0 8px 8px 0">
+        <div style="font-weight:600;color:var(--white);margin-bottom:0.5rem">明文通訊與弱加密</div>
+        <p style="color:var(--silver);line-height:1.75;font-size:0.9375rem">部分 IoT 設備仍使用 Telnet、HTTP、FTP 等明文協議進行管理與資料傳輸，或使用已知弱演算法（如 MD5、RC4）。攻擊者只需在網路上進行封包擷取（Packet Capture），即可獲取完整的管理憑證與業務資料。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">資產盤點與識別：不知道存在，就無法保護</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">IoT 資安管理的第一步是知道網路上有什麼。這聽起來簡單，但在實務中往往是最大的挑戰。影子 IT（Shadow IT）現象在 IoT 領域尤為嚴重，部門主管常在未通報 IT 的情況下自行購買並連接智慧設備。</p>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">有效的資產盤點方法包括：</p>
+    <ul style="color:var(--silver);line-height:1.8;padding-left:1.5rem;margin-bottom:1rem">
+      <li style="margin-bottom:0.5rem"><strong style="color:var(--white)">被動網路探索：</strong>透過 NGFW 或網路感測器分析流量，識別設備的 MAC 地址廠牌、行為特徵，無需主動掃描，不影響敏感設備運作</li>
+      <li style="margin-bottom:0.5rem"><strong style="color:var(--white)">主動掃描：</strong>使用 Nmap、Nessus 等工具定期掃描，但需注意部分老舊 IoT 設備無法承受掃描負載</li>
+      <li style="margin-bottom:0.5rem"><strong style="color:var(--white)">DHCP 日誌分析：</strong>從 DHCP 伺服器記錄中追蹤新設備的加入事件</li>
+      <li style="margin-bottom:0.5rem"><strong style="color:var(--white)">802.1X 網路存取控制：</strong>要求所有設備在接入前進行身份驗證，自動建立設備清單</li>
+    </ul>
+    <p style="color:var(--silver);line-height:1.8">資產清單應包含：設備名稱與型號、韌體版本、管理介面位置、業務功能、風險等級、以及負責人。這份清單是後續所有 IoT 安全工作的基礎。</p>
+  </div>
+
+  <!-- Section 4 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">網路分段策略：隔離而非信任</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">網路分段（Network Segmentation）是 IoT 安全最有效的技術控制措施之一。核心原則是：即使 IoT 設備被入侵，也無法橫向移動（Lateral Movement）到企業核心網路。</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:1rem">
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1rem">
+        <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#FA5822;margin-bottom:0.5rem">ZONE 1</div>
+        <div style="font-weight:600;color:var(--white);margin-bottom:0.35rem">IoT 隔離區</div>
+        <p style="color:var(--silver);font-size:0.85rem">攝影機、感測器、印表機、HVAC，僅允許必要的管理流量，禁止橫向通訊</p>
+      </div>
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1rem">
+        <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#00C8C8;margin-bottom:0.5rem">ZONE 2</div>
+        <div style="font-weight:600;color:var(--white);margin-bottom:0.35rem">企業核心區</div>
+        <p style="color:var(--silver);font-size:0.85rem">伺服器、工作站、ERP、AD，嚴格限制來自 IoT 區的流量</p>
+      </div>
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1rem">
+        <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#8B8BA8;margin-bottom:0.5rem">ZONE 3</div>
+        <div style="font-weight:600;color:var(--white);margin-bottom:0.35rem">訪客網路區</div>
+        <p style="color:var(--silver);font-size:0.85rem">訪客 WiFi、承包商設備，與所有內部網路完全隔離</p>
+      </div>
+    </div>
+    <p style="color:var(--silver);line-height:1.8">在 NGFW 上為每個區域定義嚴格的存取控制政策（ACL），並設定「預設拒絕（Default Deny）」規則，只允許明確需要的流量通過，所有其他通訊一律封鎖。</p>
+  </div>
+
+  <!-- Section 5 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">醫療院所 IoT 的特殊挑戰</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">醫療環境的 IoT 安全（通常稱為 IoMT，Internet of Medical Things）面臨比一般企業更嚴峻的挑戰：</p>
+    <ul style="color:var(--silver);line-height:1.8;padding-left:1.5rem;margin-bottom:1rem">
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">設備可用性優先於安全性：</strong>心臟監視器、呼吸器等生命維持設備不能輕易重啟或進行安全更新，任何干擾都可能危及患者生命。資安措施必須在不影響醫療功能的前提下實施。</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">法規遵循：</strong>台灣醫療機構受個資法、醫療法保護，健保資料的外洩可能引發嚴重法律責任。同時需符合 HIPAA 等國際標準以利合作。</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">設備生命週期極長：</strong>醫療設備動輒使用 15-20 年，許多仍在運行 Windows XP 或更老的作業系統，早已無法接受安全更新。</li>
+    </ul>
+    <p style="color:var(--silver);line-height:1.8">Hexion 建議醫療院所採用「設備微隔離（Device Micro-segmentation）」方法：為每台高風險醫療設備建立獨立的虛擬防火牆規則，只允許設備與其對應的醫院資訊系統（HIS）通訊，完全禁止與其他設備或網際網路的直接連線。</p>
+  </div>
+
+  <!-- Section 6 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">異常行為偵測：IoT 威脅的最後防線</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">即使做好分段與存取控制，IoT 設備仍可能被用作發動攻擊的跳板。異常行為偵測是識別已受入侵設備的關鍵機制。</p>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">IoT 設備的行為通常高度可預測：一台 IP 攝影機應該只與 NVR（網路錄影機）通訊；一台溫濕度感測器只應將資料回傳給固定的收集伺服器。任何偏離這個「正常行為基線」的活動都應觸發告警，例如：</p>
+    <ul style="color:var(--silver);line-height:1.8;padding-left:1.5rem;margin-bottom:1rem">
+      <li style="margin-bottom:0.5rem">設備突然開始掃描其他 IP 位址（可能是僵屍網路橫向擴散行為）</li>
+      <li style="margin-bottom:0.5rem">向未知外部 IP 發起連線（可能是 C2 指揮控制通訊）</li>
+      <li style="margin-bottom:0.5rem">異常時間的高流量（凌晨的大量上傳可能是資料竊取）</li>
+      <li style="margin-bottom:0.5rem">嘗試使用非預期的協議或連接埠</li>
+    </ul>
+    <p style="color:var(--silver);line-height:1.8">Hexion 的 NGFW 整合行為基線建立功能，能自動學習每個 IoT 設備的正常通訊模式，並在偵測到異常時即時告警與隔離，無需人工定義每條規則。</p>
+  </div>
+
+  <!-- Section 7 - Info Box -->
+  <div class="reveal" style="margin-bottom:2.5rem;background:rgba(0,200,200,0.05);border:1px solid rgba(0,200,200,0.2);border-radius:12px;padding:2rem">
+    <div style="font-family:'Orbitron',monospace;font-size:0.7rem;letter-spacing:0.1em;color:var(--teal);margin-bottom:1rem">BEST PRACTICE</div>
+    <div style="font-family:'Syne',sans-serif;font-size:1.125rem;font-weight:700;margin-bottom:1.25rem">IoT 安全管理 5 步驟</div>
+    <ol style="color:var(--silver);line-height:1.8;padding-left:1.5rem">
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">完整資產盤點：</strong>使用被動發現工具建立所有 IoT 設備清單，包含韌體版本與風險等級</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">網路分段隔離：</strong>依照設備功能與風險等級建立獨立 VLAN，透過 NGFW 嚴格控制跨區流量</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">憑證管理強化：</strong>立即變更所有預設密碼，建立 IoT 設備的密碼管理政策與定期輪換機制</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">韌體更新管理：</strong>建立 IoT 設備韌體更新追蹤機制，對無法更新的設備實施補償控制措施（Compensating Controls）</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">持續監控與回應：</strong>啟用行為基線監控，訂閱廠商漏洞通報，建立 IoT 設備事件回應程序</li>
+    </ol>
+  </div>
+
+  <!-- Tags -->
+  <div class="reveal" style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--ink-4);display:flex;gap:0.5rem;flex-wrap:wrap">
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">IoT 安全</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">網路分段</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">醫療資安</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">資產盤點</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">零信任</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">NGFW</span>
+  </div>
+
+  <!-- CTA -->
+  <div class="reveal" style="margin-top:3rem;background:linear-gradient(135deg,rgba(250,88,34,0.08),rgba(0,200,200,0.04));border:1px solid rgba(250,88,34,0.2);border-radius:12px;padding:2rem">
+    <div style="font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:0.75rem">需要專業資安建議？</div>
+    <p style="color:var(--silver);margin-bottom:1.5rem">立即聯絡 Hexion Networks，獲取針對貴公司量身訂製的資安評估與解決方案。</p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap">
+      <a href="/contact/" class="btn btn-orange">免費諮詢</a>
+      
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div><a href="/"><img src="/brand_assets/logo.png" alt="Hexion Networks" style="height:36px;filter:brightness(0) invert(1);opacity:0.85" /></a><p class="footer-brand-desc">結合商業策略、品牌顧問、資訊科技與資安的整合型服務公司。</p></div>
+    <div><div class="f-col-title">產品</div><a href="/products/pico-utm-100/" class="f-link">Pico-NGFW 100</a><a href="/products/dual-ark-utm-16/" class="f-link">Dual Ark-NGFW 16</a><a href="/products/tera-utm-12/" class="f-link">Tera-NGFW 12</a><a href="/products/lionfilter-200/" class="f-link">Lionfilter 200</a><a href="/products/endblock/" class="f-link">Endblock</a><a href="/products/teamt5/" class="f-link">TeamT5</a><a href="/products/cycraft/" class="f-link">奧義智慧 CyCraft</a></div>
+    <div><div class="f-col-title">服務</div><a href="/services/" class="f-link">商業策略</a><a href="/services/" class="f-link">品牌顧問</a><a href="/services/" class="f-link">資安評估</a></div>
+    <div><div class="f-col-title">公司</div><a href="/about/" class="f-link">關於我們</a><a href="/blog/" class="f-link">部落格</a><a href="/contact/" class="f-link">聯絡我們</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 HEXION NETWORKS.</span>
+    <div class="footer-legal"><a href="#">隱私政策</a><a href="#">服務條款</a></div>
+  </div>
+</footer>
+
+<script>const ro=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target)}})},{threshold:0.08});document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));</script>
+</body></html>

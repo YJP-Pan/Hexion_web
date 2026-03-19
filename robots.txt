@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hexionnetworks.com/sitemap.xml
+
+# Hexion Networks
+# https://hexionnetworks.com
