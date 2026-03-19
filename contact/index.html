@@ -20,6 +20,8 @@
     .contact-info-val{font-size:0.9rem;color:var(--fog);line-height:1.5}
     .line-cta-box{background:rgba(6,199,85,0.08);border:1px solid rgba(6,199,85,0.25);border-radius:16px;padding:2rem;text-align:center;margin-top:2rem}
     .line-qr-placeholder{width:120px;height:120px;background:rgba(6,199,85,0.1);border:2px solid rgba(6,199,85,0.3);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:1rem auto;font-family:'Orbitron',monospace;font-size:0.625rem;color:rgba(6,199,85,0.6);text-align:center;letter-spacing:0.05em}
+    .form-name-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    @media(max-width:600px){.form-name-row{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -99,28 +101,32 @@
     <div class="contact-form-wrap reveal">
       <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:#fff;margin-bottom:0.5rem">傳送訊息給我們</h2>
       <p style="font-size:0.875rem;color:var(--silver);margin-bottom:2rem">我們通常在 1 個工作天內回覆。緊急需求請直接使用 LINE。</p>
-      <form class="contact-form" onsubmit="handleSubmit(event)">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+      <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+        <input type="hidden" name="access_key" value="16419233-1203-41a6-97b8-0d1b4edb467c" />
+        <input type="hidden" name="subject" value="Hexion 網站聯絡表單" />
+        <input type="hidden" name="from_name" value="Hexion Networks 官網" />
+        <input type="checkbox" name="botcheck" style="display:none" />
+        <div class="form-name-row">
           <div class="form-group">
             <label class="form-label">姓名 *</label>
-            <input type="text" class="form-input" placeholder="王小明" required />
+            <input type="text" name="name" class="form-input" placeholder="王小明" required />
           </div>
           <div class="form-group">
             <label class="form-label">公司名稱</label>
-            <input type="text" class="form-input" placeholder="XX 科技有限公司" />
+            <input type="text" name="company" class="form-input" placeholder="XX 科技有限公司" />
           </div>
         </div>
         <div class="form-group">
           <label class="form-label">電子郵件 *</label>
-          <input type="email" class="form-input" placeholder="you@company.com" required />
+          <input type="email" name="email" class="form-input" placeholder="you@company.com" required />
         </div>
         <div class="form-group">
           <label class="form-label">電話</label>
-          <input type="tel" class="form-input" placeholder="0912-345-678" />
+          <input type="tel" name="phone" class="form-input" placeholder="0912-345-678" />
         </div>
         <div class="form-group">
           <label class="form-label">諮詢項目 *</label>
-          <select class="form-select" required>
+          <select name="inquiry" class="form-select" required>
             <option value="">請選擇</option>
             <option>LIONIC NGFW 設備報價</option>
             <option>TeamT5 威脅情報</option>
@@ -135,13 +141,14 @@
         </div>
         <div class="form-group">
           <label class="form-label">訊息內容 *</label>
-          <textarea class="form-textarea" placeholder="請描述您的需求，例如：公司規模、目前資安痛點、預算範圍等..." required></textarea>
+          <textarea name="message" class="form-textarea" placeholder="請描述您的需求，例如：公司規模、目前資安痛點、預算範圍等..." required></textarea>
         </div>
-        <button type="submit" class="btn btn-orange" style="width:100%;justify-content:center;padding:0.875rem;font-size:0.9375rem">
+        <button type="submit" id="submitBtn" class="btn btn-orange" style="width:100%;justify-content:center;padding:0.875rem;font-size:0.9375rem">
           送出訊息
           <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8.5 3.5L13 8l-4.5 4.5-.707-.707L11.086 8.5H3v-1h8.086L7.793 4.207z"/></svg>
         </button>
-        <p style="font-size:0.75rem;color:var(--silver);text-align:center;margin-top:0.75rem">提交即同意我們的隱私政策。您的資料絕不會分享給第三方。</p>
+        <p id="formMsg" style="font-size:0.875rem;text-align:center;margin-top:0.75rem;display:none"></p>
+        <p style="font-size:0.75rem;color:var(--silver);text-align:center;margin-top:0.5rem">提交即同意我們的隱私政策。您的資料絕不會分享給第三方。</p>
       </form>
     </div>
 
@@ -198,6 +205,34 @@
 <script>
 const ro=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target)}})},{threshold:0.08});
 document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
-function handleSubmit(e){e.preventDefault();const btn=e.target.querySelector('[type=submit]');btn.textContent='訊息已送出 ✓';btn.style.background='#06C755';btn.disabled=true;}
+async function handleSubmit(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  const msg = document.getElementById('formMsg');
+  btn.disabled = true;
+  btn.textContent = '傳送中...';
+  const data = new FormData(e.target);
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
+    const json = await res.json();
+    if (json.success) {
+      btn.textContent = '訊息已送出 ✓';
+      btn.style.background = '#06C755';
+      msg.textContent = '感謝您的來信！我們將在 1 個工作天內回覆。';
+      msg.style.color = '#06C755';
+      msg.style.display = 'block';
+      e.target.reset();
+    } else {
+      throw new Error(json.message);
+    }
+  } catch (err) {
+    btn.textContent = '送出訊息';
+    btn.disabled = false;
+    btn.style.background = '';
+    msg.textContent = '送出失敗，請稍後再試或直接寄信至 support@hexionnetworks.com';
+    msg.style.color = '#FA5822';
+    msg.style.display = 'block';
+  }
+}
 </script>
 </body></html>

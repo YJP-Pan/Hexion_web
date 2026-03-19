@@ -813,10 +813,14 @@ footer { background: var(--ink-2); padding: 4.5rem var(--px) 2rem; }
   .utm-inner{grid-template-columns:1fr;gap:2rem}
   .blog-grid{grid-template-columns:1fr}
 }
+@media(max-width:768px){
+  .edr-sec-inner{grid-template-columns:1fr!important;gap:2.5rem!important}
+}
 @media(max-width:600px){
   .prod-showcase{grid-template-columns:1fr}
   .stats-band{grid-template-columns:1fr}
 }
+.edr-sec-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative;z-index:2;}
 
 /* ── SERVICES GRID ── */
 .svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3rem; }
