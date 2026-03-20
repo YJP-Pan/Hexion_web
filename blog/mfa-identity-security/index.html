@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hexion 合續科技｜商業品牌與資訊科技顧問｜Business & Technology Consulting</title>
+  <meta name="description" content="全面解析多因素驗證（MFA）技術：從 OTP 簡訊、TOTP App 到 FIDO2 無密碼驗證，並說明 MFA 繞過攻擊手法與企業導入策略。" />
+  <meta name="keywords" content="MFA,多因素驗證,FIDO2,無密碼,身分安全,OTP,WebAuthn,台灣資安,零信任" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hexionnetworks.com/blog/mfa-identity-security/" />
+  <meta property="og:title" content="多因素驗證（MFA）全解析：從 OTP 到無密碼驗證的身分安全策略 | Hexion Networks" />
+  <meta property="og:description" content="全面解析 MFA 技術演進、MFA 繞過攻擊手法，以及企業如何選擇並導入正確的身分驗證策略。" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://hexionnetworks.com/blog/mfa-identity-security/" />
+  <link rel="icon" href="/brand_assets/favicon.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"多因素驗證（MFA）全解析：從 OTP 到無密碼驗證的身分安全策略","datePublished":"2025-08-18","dateModified":"2025-08-18","author":{"@type":"Organization","name":"Hexion Networks"},"publisher":{"@type":"Organization","name":"Hexion Networks","url":"https://hexionnetworks.com"},"url":"https://hexionnetworks.com/blog/mfa-identity-security/"}</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-78TQ277930"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-78TQ277930');
+</script>
+</head>
+<body>
+<div id="page-loader"><img src="/brand_assets/logo.png" alt="" class="loader-logo" /><div class="loader-ring-wrap"><div class="loader-ring loader-ring-outer"></div><div class="loader-ring loader-ring-inner"></div><div class="loader-dot"></div></div></div>
+<div class="topbar">
+  <a href="/contact/">聯絡我們</a>
+  <a href="/blog/" class="topbar-highlight">最新資安報告 →</a>
+</div>
+<nav>
+  <a href="/" class="nav-logo"><img src="/brand_assets/logo.png" alt="Hexion Networks" /></a>
+  <div class="nav-links">
+    <div class="nav-item">
+      <button>
+        產品
+        <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M8 11L3 6h10z"/></svg>
+      </button>
+      <div class="mega" style="width:560px;grid-template-columns:1fr 1fr">
+        <div class="mega-col" style="border-right:1px solid rgba(255,255,255,0.06)">
+          <div class="mega-label" style="color:var(--teal)">LIONIC NGFW 系列</div>
+          <a href="/products/pico-utm-100/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.15);color:var(--o)">IT</span>
+            Pico-NGFW 100
+          </a>
+          <a href="/products/dual-ark-utm-16/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(0,200,200,0.12);color:var(--teal)">IoT</span>
+            Dual Ark-NGFW 16
+          </a>
+          <a href="/products/tera-utm-12/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.12);color:#FF7A45">OT</span>
+            Tera-NGFW 12
+          </a>
+          <a href="/products/lionfilter-200/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(167,139,250,0.12);color:#A78BFA">NET</span>
+            Lionfilter 200
+          </a>
+        </div>
+        <div class="mega-col" style="background:rgba(61,220,151,0.025)">
+          <div class="mega-label" style="color:#3DDC97">EDR 端點偵測回應</div>
+          <a href="/products/endblock/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.15);color:#3DDC97">EDR</span>
+            Endblock
+          </a>
+          <a href="/products/teamt5/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.12);color:#3DDC97">TI</span>
+            TeamT5
+          </a>
+          <a href="/products/cycraft/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.1);color:#3DDC97">AI</span>
+            奧義智慧 CyCraft
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-item"><a href="/services/">服務</a></div>
+    <div class="nav-item" style="display:none"><a href="/research/">研究</a></div>
+    <div class="nav-item active"><a href="/blog/">部落格</a></div>
+    <div class="nav-item"><a href="/about/">關於</a></div>
+  </div>
+  <div class="nav-cta">
+    <a href="https://line.me/R/ti/p/@278zhddk" target="_blank" class="nav-line-btn">LINE 諮詢</a>
+    <a href="/contact/" class="btn btn-orange" style="padding:0.5rem 1.125rem;font-size:0.8125rem;">取得報價 →</a>
+  </div>
+</nav>
+
+<div class="page-hero" style="padding-bottom:3rem">
+  <div style="padding:0 var(--px)">
+    <div class="reveal" style="display:flex;gap:0.5rem;margin-bottom:1.5rem;flex-wrap:wrap">
+      <a href="/blog/" style="color:var(--silver);font-size:0.8rem;text-decoration:none">部落格</a>
+      <span style="color:var(--silver);font-size:0.8rem">/</span>
+      <span style="color:var(--teal);font-size:0.8rem">技術指南</span>
+    </div>
+    <div class="reveal">
+      <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(0,200,200,0.1);border:1px solid rgba(0,200,200,0.3);border-radius:4px;padding:0.25rem 0.75rem;font-family:'Orbitron',monospace;font-size:0.65rem;color:#00C8C8;letter-spacing:0.1em;margin-bottom:1.25rem">技術指南</div>
+      <h1 style="font-family:'Syne',sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.025em;line-height:1.15;margin-bottom:1.25rem">多因素驗證（MFA）全解析：從 OTP 到無密碼驗證的身分安全策略</h1>
+      <p style="color:var(--silver);font-size:1.0625rem;line-height:1.7;margin-bottom:2rem">密碼已死，但繼承者並非同等安全。本文解析各種 MFA 技術的安全強度與攻擊者的繞過手法，幫助企業選擇真正能防禦現代威脅的身分驗證策略。</p>
+      <div style="display:flex;align-items:center;gap:1.5rem;color:var(--silver);font-size:0.8125rem;border-top:1px solid var(--ink-4);padding-top:1.5rem;flex-wrap:wrap">
+        <span>Hexion Networks 資安研究團隊</span>
+        <span>·</span>
+        <span>2025-08-18</span>
+        <span>·</span>
+        <span>7 分鐘閱讀</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="padding:3rem var(--px) 5rem">
+  <div class="reveal" style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:12px;overflow:hidden;margin-bottom:3rem;aspect-ratio:16/7;display:flex;align-items:center;justify-content:center">
+    <svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+      <defs>
+        <radialGradient id="mfa-bg" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="#00C8C8" stop-opacity="0.08"/><stop offset="100%" stop-color="#0A0A14" stop-opacity="0"/></radialGradient>
+      </defs>
+      <rect width="800" height="350" fill="#0A1414"/>
+      <rect width="800" height="350" fill="url(#mfa-bg)"/>
+      <text x="400" y="30" text-anchor="middle" font-family="Orbitron,monospace" font-size="9" fill="#00C8C8" letter-spacing="3">MFA STRENGTH SPECTRUM</text>
+      <!-- Security level bar -->
+      <rect x="40" y="300" width="720" height="6" rx="3" fill="rgba(255,255,255,0.05)"/>
+      <rect x="40" y="300" width="720" height="6" rx="3" fill="url(#mfa-grad)"/>
+      <defs>
+        <linearGradient id="mfa-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#FF4444"/>
+          <stop offset="35%" stop-color="#FA5822"/>
+          <stop offset="65%" stop-color="#00C8C8"/>
+          <stop offset="100%" stop-color="#3DDC97"/>
+        </linearGradient>
+      </defs>
+      <text x="40" y="322" font-family="Inter,sans-serif" font-size="7" fill="#8B8BA8">較低安全性</text>
+      <text x="760" y="322" font-family="Inter,sans-serif" font-size="7" fill="#8B8BA8" text-anchor="end">抗釣魚安全性</text>
+
+      <!-- SMS OTP -->
+      <rect x="40" y="55" width="130" height="220" rx="6" fill="rgba(255,68,68,0.06)" stroke="rgba(255,68,68,0.35)" stroke-width="1"/>
+      <text x="105" y="78" text-anchor="middle" font-family="Orbitron,monospace" font-size="7.5" fill="#FF4444">SMS OTP</text>
+      <line x1="40" y1="88" x2="170" y2="88" stroke="rgba(255,68,68,0.15)" stroke-width="0.75"/>
+      <text x="55" y="104" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(255,255,255,0.4)">易用性：★★★★★</text>
+      <text x="55" y="118" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(255,68,68,0.7)">風險：SIM Swap</text>
+      <text x="55" y="132" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(255,68,68,0.6)">風險：SS7 攔截</text>
+      <text x="55" y="146" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(255,68,68,0.6)">風險：AiTM 釣魚</text>
+      <rect x="55" y="240" width="70" height="20" rx="4" fill="rgba(255,68,68,0.15)" stroke="rgba(255,68,68,0.4)" stroke-width="0.75"/>
+      <text x="90" y="253" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#FF4444">可被繞過</text>
+
+      <!-- TOTP App -->
+      <rect x="185" y="55" width="130" height="220" rx="6" fill="rgba(250,88,34,0.06)" stroke="rgba(250,88,34,0.35)" stroke-width="1"/>
+      <text x="250" y="78" text-anchor="middle" font-family="Orbitron,monospace" font-size="7.5" fill="#FA5822">TOTP APP</text>
+      <line x1="185" y1="88" x2="315" y2="88" stroke="rgba(250,88,34,0.15)" stroke-width="0.75"/>
+      <text x="200" y="104" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(255,255,255,0.4)">易用性：★★★★</text>
+      <text x="200" y="118" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(250,88,34,0.5)">風險：AiTM 釣魚</text>
+      <text x="200" y="132" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(250,88,34,0.5)">風險：MFA 疲勞</text>
+      <text x="200" y="146" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(61,220,151,0.6)">優：無 SIM 風險</text>
+      <rect x="200" y="240" width="70" height="20" rx="4" fill="rgba(250,88,34,0.15)" stroke="rgba(250,88,34,0.4)" stroke-width="0.75"/>
+      <text x="235" y="253" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#FA5822">部分可繞過</text>
+
+      <!-- Push Notification -->
+      <rect x="330" y="55" width="130" height="220" rx="6" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.35)" stroke-width="1"/>
+      <text x="395" y="72" text-anchor="middle" font-family="Orbitron,monospace" font-size="7" fill="#A78BFA">PUSH NOTIFY</text>
+      <text x="395" y="85" text-anchor="middle" font-family="Orbitron,monospace" font-size="6.5" fill="rgba(167,139,250,0.7)">(Number Match)</text>
+      <line x1="330" y1="93" x2="460" y2="93" stroke="rgba(167,139,250,0.15)" stroke-width="0.75"/>
+      <text x="345" y="108" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(255,255,255,0.4)">易用性：★★★★</text>
+      <text x="345" y="122" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(167,139,250,0.5)">風險：MFA 疲勞</text>
+      <text x="345" y="136" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(61,220,151,0.6)">優：情境資訊顯示</text>
+      <text x="345" y="150" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(61,220,151,0.6)">優：數字比對防護</text>
+      <rect x="345" y="240" width="80" height="20" rx="4" fill="rgba(167,139,250,0.15)" stroke="rgba(167,139,250,0.4)" stroke-width="0.75"/>
+      <text x="385" y="253" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#A78BFA">較難繞過</text>
+
+      <!-- Hardware Key -->
+      <rect x="475" y="55" width="130" height="220" rx="6" fill="rgba(0,200,200,0.06)" stroke="rgba(0,200,200,0.35)" stroke-width="1"/>
+      <text x="540" y="78" text-anchor="middle" font-family="Orbitron,monospace" font-size="7.5" fill="#00C8C8">HW SECURITY KEY</text>
+      <line x1="475" y1="88" x2="605" y2="88" stroke="rgba(0,200,200,0.15)" stroke-width="0.75"/>
+      <text x="490" y="104" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(255,255,255,0.4)">易用性：★★★</text>
+      <text x="490" y="118" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(61,220,151,0.6)">優：抗釣魚</text>
+      <text x="490" y="132" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(61,220,151,0.6)">優：FIDO2 標準</text>
+      <text x="490" y="146" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(250,88,34,0.5)">成本：較高</text>
+      <rect x="490" y="240" width="80" height="20" rx="4" fill="rgba(0,200,200,0.15)" stroke="rgba(0,200,200,0.4)" stroke-width="0.75"/>
+      <text x="530" y="253" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#00C8C8">抗釣魚</text>
+
+      <!-- Passkey -->
+      <rect x="620" y="55" width="140" height="220" rx="6" fill="rgba(61,220,151,0.08)" stroke="#3DDC97" stroke-width="1.2"/>
+      <text x="690" y="78" text-anchor="middle" font-family="Orbitron,monospace" font-size="7.5" fill="#3DDC97">PASSKEY</text>
+      <text x="690" y="90" text-anchor="middle" font-family="Orbitron,monospace" font-size="6.5" fill="rgba(61,220,151,0.7)">(FIDO2/WebAuthn)</text>
+      <line x1="620" y1="98" x2="760" y2="98" stroke="rgba(61,220,151,0.2)" stroke-width="0.75"/>
+      <text x="635" y="113" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(255,255,255,0.5)">易用性：★★★★★</text>
+      <text x="635" y="127" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(61,220,151,0.8)">優：無密碼</text>
+      <text x="635" y="141" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(61,220,151,0.8)">優：抗釣魚</text>
+      <text x="635" y="155" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(61,220,151,0.7)">優：生物辨識</text>
+      <rect x="635" y="240" width="100" height="20" rx="4" fill="rgba(61,220,151,0.15)" stroke="#3DDC97" stroke-width="0.75"/>
+      <text x="685" y="253" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#3DDC97">最高安全性</text>
+    </svg>
+  </div>
+
+  <div class="reveal" style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+    <p>微軟的遙測數據顯示，啟用 MFA 的帳號遭到入侵的機率比未啟用的帳號低 99.9%。這個數字讓 MFA 看起來像是萬靈丹——但攻擊者早已發展出多種繞過 MFA 的技術，讓「有 MFA」和「MFA 真的有效」之間存在關鍵差異。</p>
+    <p style="margin-top:1rem">身分驗證的核心邏輯是：知道的（密碼）、擁有的（手機/硬體金鑰）、是你的（生物特徵）三者中至少結合兩種。但各種實作方式在安全強度上差異懸殊，選錯了 MFA 方法，可能給了企業虛假的安全感。</p>
+  </div>
+
+  <div class="reveal" style="margin-top:2.5rem">
+    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)"><span style="color:#FA5822">攻擊者如何繞過 MFA</span>：你需要知道的四種手法</h2>
+    <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+      <p>了解攻擊手法才能選擇正確的防禦工具：</p>
+      <ul style="margin-top:1rem;list-style:none;padding:0;display:flex;flex-direction:column;gap:1rem">
+        <li style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1rem 1.25rem">
+          <div style="font-weight:700;color:var(--white);margin-bottom:0.375rem">① AiTM（中間人釣魚）攻擊</div>
+          <p style="font-size:0.9375rem;color:var(--fog)">攻擊者架設代理釣魚網站，即時轉發目標輸入的帳密和 OTP 給真實網站，並竊取登入 Session Cookie。SMS OTP 和 TOTP App 均無法防禦此手法。Microsoft 和 Google 的帳號已被此技術大規模攻擊。</p>
+        </li>
+        <li style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1rem 1.25rem">
+          <div style="font-weight:700;color:var(--white);margin-bottom:0.375rem">② MFA 疲勞攻擊（MFA Fatigue / Push Bombing）</div>
+          <p style="font-size:0.9375rem;color:var(--fog)">攻擊者取得密碼後，持續觸發 Push 驗證通知，直到目標因煩躁或誤以為是自己操作而點選「允許」。Uber 在 2022 年的入侵事件就是通過此手法。啟用「數字比對（Number Match）」可有效降低此風險。</p>
+        </li>
+        <li style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1rem 1.25rem">
+          <div style="font-weight:700;color:var(--white);margin-bottom:0.375rem">③ SIM 卡劫持（SIM Swapping）</div>
+          <p style="font-size:0.9375rem;color:var(--fog)">攻擊者通過社交工程欺騙電信業者，將受害者的電話號碼轉移至攻擊者控制的 SIM 卡，從而接收所有 SMS OTP。這是 SMS-based MFA 的根本弱點，在台灣也有案例發生。</p>
+        </li>
+        <li style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1rem 1.25rem">
+          <div style="font-weight:700;color:var(--white);margin-bottom:0.375rem">④ 社交工程繞過 MFA 重設流程</div>
+          <p style="font-size:0.9375rem;color:var(--fog)">攻擊者偽冒 IT 支援人員，通過電話或郵件欺騙目標完成「帳號驗證」，從而觸發 MFA 重設並接管帳號。Twilio 和 Cloudflare 在 2022 年均遭受此類攻擊（Cloudflare 因部署硬體金鑰成功抵禦）。</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:2.5rem">
+    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)"><span style="color:#00C8C8">FIDO2 / Passkey</span>：真正抗釣魚的驗證標準</h2>
+    <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+      <p>FIDO2（Fast Identity Online 2.0）標準結合 WebAuthn 協議，提供目前最強的抗釣魚驗證機制。其核心原理是「網域綁定」：驗證過程使用來自裝置的加密簽章，簽章中包含合法網域資訊。即使攻擊者建立了外觀完全相同的釣魚網站，驗證也無法在錯誤的網域上完成。</p>
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1.25rem;margin-top:1rem">
+        <div style="font-family:'Syne',sans-serif;font-size:0.9375rem;font-weight:700;margin-bottom:1rem">Passkey 的三種形式</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;font-size:0.9rem">
+          <div><strong style="color:#3DDC97">Platform Passkey（平台金鑰）</strong><p style="color:var(--fog);margin-top:0.375rem">儲存在裝置安全晶片（iPhone Face ID、Android 指紋、Windows Hello），免費且便利，是未來主流。</p></div>
+          <div><strong style="color:#00C8C8">Hardware Security Key（硬體金鑰）</strong><p style="color:var(--fog);margin-top:0.375rem">YubiKey 等實體 USB/NFC 裝置，最高安全性，適合高權限帳號和高風險場景。</p></div>
+          <div><strong style="color:#A78BFA">Cross-Device（跨裝置）</strong><p style="color:var(--fog);margin-top:0.375rem">用手機掃描 QR Code 確認桌面登入，兼顧安全性與便利性，無需購買額外設備。</p></div>
+        </div>
+      </div>
+      <div style="background:rgba(0,200,200,0.06);border-left:3px solid #00C8C8;border-radius:0 8px 8px 0;padding:1rem 1.25rem;margin-top:1.25rem">
+        <div style="font-family:'Syne',sans-serif;font-size:0.875rem;font-weight:700;color:#00C8C8;margin-bottom:0.5rem">Google 內部案例</div>
+        <p style="font-size:0.9375rem;color:var(--fog)">Google 在 2017 年要求所有員工使用硬體安全金鑰後，員工帳號的接管事件降為零。即使員工被釣魚郵件誘騙至惡意網站並輸入密碼，硬體金鑰的網域綁定機制也阻止了任何未授權登入。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:2.5rem">
+    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)">企業 MFA 導入<span style="color:#00C8C8">分層策略</span></h2>
+    <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+      <p>並非所有帳號都需要相同強度的保護，根據帳號風險等級制定分層策略是務實的做法：</p>
+      <div style="display:flex;flex-direction:column;gap:0.75rem;margin-top:1.25rem">
+        <div style="display:grid;grid-template-columns:160px 1fr;gap:1rem;align-items:start;background:rgba(255,68,68,0.04);border:1px solid rgba(255,68,68,0.2);border-radius:8px;padding:1rem">
+          <div><span style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#FF4444">CRITICAL</span><br/><span style="font-size:0.85rem;color:var(--fog)">系統管理員、域控、雲端 Root</span></div>
+          <div style="font-size:0.9rem;color:var(--fog)">硬體安全金鑰（FIDO2）+ 條件式存取策略（僅允許受管理裝置、特定 IP 範圍）</div>
+        </div>
+        <div style="display:grid;grid-template-columns:160px 1fr;gap:1rem;align-items:start;background:rgba(250,88,34,0.04);border:1px solid rgba(250,88,34,0.2);border-radius:8px;padding:1rem">
+          <div><span style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#FA5822">HIGH</span><br/><span style="font-size:0.85rem;color:var(--fog)">高管、財務、HR、開發者</span></div>
+          <div style="font-size:0.9rem;color:var(--fog)">Passkey 或硬體金鑰優先；TOTP App 作為備用；禁用 SMS OTP</div>
+        </div>
+        <div style="display:grid;grid-template-columns:160px 1fr;gap:1rem;align-items:start;background:rgba(0,200,200,0.04);border:1px solid rgba(0,200,200,0.2);border-radius:8px;padding:1rem">
+          <div><span style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#00C8C8">STANDARD</span><br/><span style="font-size:0.85rem;color:var(--fog)">一般員工帳號</span></div>
+          <div style="font-size:0.9rem;color:var(--fog)">啟用數字比對的 Push 驗證或 TOTP App；逐步遷移至 Passkey</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--ink-4);display:flex;gap:0.5rem;flex-wrap:wrap">
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">MFA</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">FIDO2</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">Passkey</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">身分安全</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">AiTM 攻擊</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">零信任</span>
+  </div>
+
+  <div class="reveal" style="margin-top:3rem;background:linear-gradient(135deg,rgba(0,200,200,0.08),rgba(250,88,34,0.04));border:1px solid rgba(0,200,200,0.2);border-radius:12px;padding:2rem">
+    <div style="font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:0.75rem">需要專業資安建議？</div>
+    <p style="color:var(--silver);margin-bottom:1.5rem">立即聯絡 Hexion Networks，協助評估貴公司的身分安全現況，規劃最適合的 MFA 升級路線。</p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap">
+      <a href="/contact/" class="btn btn-orange">免費諮詢</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div><a href="/"><img src="/brand_assets/logo.png" alt="Hexion Networks" style="height:36px;filter:brightness(0) invert(1);opacity:0.85" /></a><p class="footer-brand-desc">結合商業策略、品牌顧問、資訊科技與資安的整合型服務公司。</p></div>
+    <div><div class="f-col-title">產品</div><a href="/products/pico-utm-100/" class="f-link">Pico-NGFW 100</a><a href="/products/dual-ark-utm-16/" class="f-link">Dual Ark-NGFW 16</a><a href="/products/tera-utm-12/" class="f-link">Tera-NGFW 12</a><a href="/products/lionfilter-200/" class="f-link">Lionfilter 200</a><a href="/products/endblock/" class="f-link">Endblock</a><a href="/products/teamt5/" class="f-link">TeamT5</a><a href="/products/cycraft/" class="f-link">奧義智慧 CyCraft</a></div>
+    <div><div class="f-col-title">服務</div><a href="/services/" class="f-link">商業策略</a><a href="/services/" class="f-link">品牌顧問</a><a href="/services/" class="f-link">資安評估</a></div>
+    <div><div class="f-col-title">公司</div><a href="/about/" class="f-link">關於我們</a><a href="/blog/" class="f-link">部落格</a><a href="/contact/" class="f-link">聯絡我們</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 HEXION NETWORKS.</span>
+    <div class="footer-legal"><a href="#">隱私政策</a><a href="#">服務條款</a></div>
+  </div>
+</footer>
+
+<script>const ro=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target)}})},{threshold:0.08});document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));</script>
+<script>var _ls=Date.now();window.addEventListener("load",function(){var l=document.getElementById("page-loader");if(!l)return;var elapsed=Date.now()-_ls,wait=Math.max(0,800-elapsed);setTimeout(function(){l.classList.add("out");setTimeout(function(){l.remove()},520)},wait)});</script>
+</body></html>

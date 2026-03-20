@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hexion 合續科技｜商業品牌與資訊科技顧問｜Business & Technology Consulting</title>
+  <meta name="description" content="解析企業上雲後最常見的資安設定錯誤：從 S3 公開存取、IAM 過度授權到未加密儲存，並提供 CSPM 工具與雲端資安治理的完整指南。" />
+  <meta name="keywords" content="雲端資安,設定錯誤,CSPM,AWS,Azure,IAM,S3,雲端安全,台灣企業,共同責任模型" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hexionnetworks.com/blog/cloud-security-misconfigurations/" />
+  <meta property="og:title" content="雲端資安治理：企業上雲後最常見的設定錯誤與防範指南 | Hexion Networks" />
+  <meta property="og:description" content="解析企業上雲後最常見的資安設定錯誤，並提供 CSPM 工具與雲端資安治理的完整策略。" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://hexionnetworks.com/blog/cloud-security-misconfigurations/" />
+  <link rel="icon" href="/brand_assets/favicon.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"雲端資安治理：企業上雲後最常見的設定錯誤與防範指南","datePublished":"2025-08-05","dateModified":"2025-08-05","author":{"@type":"Organization","name":"Hexion Networks"},"publisher":{"@type":"Organization","name":"Hexion Networks","url":"https://hexionnetworks.com"},"url":"https://hexionnetworks.com/blog/cloud-security-misconfigurations/"}</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-78TQ277930"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-78TQ277930');
+</script>
+</head>
+<body>
+<div id="page-loader"><img src="/brand_assets/logo.png" alt="" class="loader-logo" /><div class="loader-ring-wrap"><div class="loader-ring loader-ring-outer"></div><div class="loader-ring loader-ring-inner"></div><div class="loader-dot"></div></div></div>
+<div class="topbar">
+  <a href="/contact/">聯絡我們</a>
+  <a href="/blog/" class="topbar-highlight">最新資安報告 →</a>
+</div>
+<nav>
+  <a href="/" class="nav-logo"><img src="/brand_assets/logo.png" alt="Hexion Networks" /></a>
+  <div class="nav-links">
+    <div class="nav-item">
+      <button>
+        產品
+        <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M8 11L3 6h10z"/></svg>
+      </button>
+      <div class="mega" style="width:560px;grid-template-columns:1fr 1fr">
+        <div class="mega-col" style="border-right:1px solid rgba(255,255,255,0.06)">
+          <div class="mega-label" style="color:var(--teal)">LIONIC NGFW 系列</div>
+          <a href="/products/pico-utm-100/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.15);color:var(--o)">IT</span>
+            Pico-NGFW 100
+          </a>
+          <a href="/products/dual-ark-utm-16/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(0,200,200,0.12);color:var(--teal)">IoT</span>
+            Dual Ark-NGFW 16
+          </a>
+          <a href="/products/tera-utm-12/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.12);color:#FF7A45">OT</span>
+            Tera-NGFW 12
+          </a>
+          <a href="/products/lionfilter-200/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(167,139,250,0.12);color:#A78BFA">NET</span>
+            Lionfilter 200
+          </a>
+        </div>
+        <div class="mega-col" style="background:rgba(61,220,151,0.025)">
+          <div class="mega-label" style="color:#3DDC97">EDR 端點偵測回應</div>
+          <a href="/products/endblock/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.15);color:#3DDC97">EDR</span>
+            Endblock
+          </a>
+          <a href="/products/teamt5/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.12);color:#3DDC97">TI</span>
+            TeamT5
+          </a>
+          <a href="/products/cycraft/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.1);color:#3DDC97">AI</span>
+            奧義智慧 CyCraft
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-item"><a href="/services/">服務</a></div>
+    <div class="nav-item" style="display:none"><a href="/research/">研究</a></div>
+    <div class="nav-item active"><a href="/blog/">部落格</a></div>
+    <div class="nav-item"><a href="/about/">關於</a></div>
+  </div>
+  <div class="nav-cta">
+    <a href="https://line.me/R/ti/p/@278zhddk" target="_blank" class="nav-line-btn">LINE 諮詢</a>
+    <a href="/contact/" class="btn btn-orange" style="padding:0.5rem 1.125rem;font-size:0.8125rem;">取得報價 →</a>
+  </div>
+</nav>
+
+<div class="page-hero" style="padding-bottom:3rem">
+  <div style="padding:0 var(--px)">
+    <div class="reveal" style="display:flex;gap:0.5rem;margin-bottom:1.5rem;flex-wrap:wrap">
+      <a href="/blog/" style="color:var(--silver);font-size:0.8rem;text-decoration:none">部落格</a>
+      <span style="color:var(--silver);font-size:0.8rem">/</span>
+      <span style="color:var(--teal);font-size:0.8rem">技術指南</span>
+    </div>
+    <div class="reveal">
+      <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(0,200,200,0.1);border:1px solid rgba(0,200,200,0.3);border-radius:4px;padding:0.25rem 0.75rem;font-family:'Orbitron',monospace;font-size:0.65rem;color:#00C8C8;letter-spacing:0.1em;margin-bottom:1.25rem">技術指南</div>
+      <h1 style="font-family:'Syne',sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.025em;line-height:1.15;margin-bottom:1.25rem">雲端資安治理：企業上雲後最常見的設定錯誤與防範指南</h1>
+      <p style="color:var(--silver);font-size:1.0625rem;line-height:1.7;margin-bottom:2rem">雲端資料外洩事件中，超過 80% 源於設定錯誤而非零日漏洞。本文解析企業最常見的雲端設定錯誤、共同責任模型的誤解，以及如何建立持續的雲端資安治理機制。</p>
+      <div style="display:flex;align-items:center;gap:1.5rem;color:var(--silver);font-size:0.8125rem;border-top:1px solid var(--ink-4);padding-top:1.5rem;flex-wrap:wrap">
+        <span>Hexion Networks 資安研究團隊</span>
+        <span>·</span>
+        <span>2025-08-05</span>
+        <span>·</span>
+        <span>9 分鐘閱讀</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="padding:3rem var(--px) 5rem">
+  <div class="reveal" style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:12px;overflow:hidden;margin-bottom:3rem;aspect-ratio:16/7;display:flex;align-items:center;justify-content:center">
+    <svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+      <defs>
+        <radialGradient id="cloud-bg" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="#3DDC97" stop-opacity="0.07"/><stop offset="100%" stop-color="#0A0A14" stop-opacity="0"/></radialGradient>
+      </defs>
+      <rect width="800" height="350" fill="#080F0C"/>
+      <rect width="800" height="350" fill="url(#cloud-bg)"/>
+      <text x="400" y="30" text-anchor="middle" font-family="Orbitron,monospace" font-size="9" fill="#3DDC97" letter-spacing="3">CLOUD SHARED RESPONSIBILITY MODEL</text>
+
+      <!-- Provider responsible -->
+      <rect x="40" y="50" width="340" height="260" rx="6" fill="rgba(61,220,151,0.04)" stroke="rgba(61,220,151,0.2)" stroke-width="1"/>
+      <text x="210" y="73" text-anchor="middle" font-family="Orbitron,monospace" font-size="8" fill="#3DDC97">雲端供應商負責</text>
+      <rect x="60" y="85" width="300" height="28" rx="4" fill="rgba(61,220,151,0.08)" stroke="rgba(61,220,151,0.25)" stroke-width="0.75"/>
+      <text x="210" y="103" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="rgba(61,220,151,0.8)">實體資料中心安全</text>
+      <rect x="60" y="119" width="300" height="28" rx="4" fill="rgba(61,220,151,0.08)" stroke="rgba(61,220,151,0.25)" stroke-width="0.75"/>
+      <text x="210" y="137" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="rgba(61,220,151,0.8)">硬體與網路基礎設施</text>
+      <rect x="60" y="153" width="300" height="28" rx="4" fill="rgba(61,220,151,0.08)" stroke="rgba(61,220,151,0.25)" stroke-width="0.75"/>
+      <text x="210" y="171" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="rgba(61,220,151,0.8)">虛擬化層 / 超管理器安全</text>
+      <rect x="60" y="187" width="300" height="28" rx="4" fill="rgba(61,220,151,0.06)" stroke="rgba(61,220,151,0.2)" stroke-width="0.75"/>
+      <text x="210" y="205" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="rgba(61,220,151,0.6)">受管服務的作業系統修補</text>
+
+      <!-- Customer responsible -->
+      <rect x="420" y="50" width="340" height="260" rx="6" fill="rgba(250,88,34,0.04)" stroke="rgba(250,88,34,0.25)" stroke-width="1"/>
+      <text x="590" y="73" text-anchor="middle" font-family="Orbitron,monospace" font-size="8" fill="#FA5822">企業客戶負責</text>
+      <rect x="440" y="85" width="300" height="28" rx="4" fill="rgba(255,68,68,0.1)" stroke="rgba(255,68,68,0.35)" stroke-width="0.75"/>
+      <text x="590" y="103" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#FF4444">資料分類與存取控制 ← 最常出錯</text>
+      <rect x="440" y="119" width="300" height="28" rx="4" fill="rgba(250,88,34,0.08)" stroke="rgba(250,88,34,0.3)" stroke-width="0.75"/>
+      <text x="590" y="137" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="rgba(250,88,34,0.8)">IAM 權限設定與管理</text>
+      <rect x="440" y="153" width="300" height="28" rx="4" fill="rgba(250,88,34,0.08)" stroke="rgba(250,88,34,0.3)" stroke-width="0.75"/>
+      <text x="590" y="171" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="rgba(250,88,34,0.8)">網路安全群組與防火牆規則</text>
+      <rect x="440" y="187" width="300" height="28" rx="4" fill="rgba(250,88,34,0.08)" stroke="rgba(250,88,34,0.3)" stroke-width="0.75"/>
+      <text x="590" y="205" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="rgba(250,88,34,0.8)">靜態與傳輸中資料加密</text>
+      <rect x="440" y="221" width="300" height="28" rx="4" fill="rgba(250,88,34,0.08)" stroke="rgba(250,88,34,0.3)" stroke-width="0.75"/>
+      <text x="590" y="239" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="rgba(250,88,34,0.8)">稽核日誌與監控</text>
+      <rect x="440" y="255" width="300" height="28" rx="4" fill="rgba(250,88,34,0.06)" stroke="rgba(250,88,34,0.2)" stroke-width="0.75"/>
+      <text x="590" y="273" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="rgba(250,88,34,0.6)">應用程式層安全</text>
+
+      <!-- VS divider -->
+      <text x="400" y="185" text-anchor="middle" font-family="Orbitron,monospace" font-size="11" fill="rgba(255,255,255,0.2)" font-weight="700">VS</text>
+
+      <!-- Bottom CSPM banner -->
+      <rect x="40" y="325" width="720" height="20" rx="4" fill="rgba(0,200,200,0.06)" stroke="rgba(0,200,200,0.2)" stroke-width="0.75"/>
+      <text x="400" y="338" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="rgba(0,200,200,0.7)">CSPM（雲端安全狀態管理）工具可自動掃描右欄所有設定項目的合規性</text>
+    </svg>
+  </div>
+
+  <div class="reveal" style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+    <p>Gartner 預測，2025 年 99% 的雲端資安事故責任歸咎於客戶，而非雲端服務供應商。這個驚人的數字背後是一個普遍的誤解：許多企業認為「上了 AWS / Azure 就很安全」，卻忽略了雲端採用「共同責任模型（Shared Responsibility Model）」——雲端供應商負責雲端「基礎設施」的安全，客戶負責在雲端上「運行內容」的安全。</p>
+    <p style="margin-top:1rem">2024 年台灣多起知名企業客戶資料外洩事件，最終調查都指向同一原因：S3 Bucket 設定為公開存取、API 金鑰洩露至 GitHub、或過度寬鬆的 IAM 權限。這些都不是零日漏洞，而是可預防的設定錯誤。</p>
+  </div>
+
+  <div class="reveal" style="margin-top:2.5rem">
+    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)"><span style="color:#FA5822">六大最常見</span>雲端設定錯誤</h2>
+    <div style="display:flex;flex-direction:column;gap:1rem">
+      <div style="background:var(--ink-2);border:1px solid rgba(255,68,68,0.2);border-radius:8px;padding:1.25rem">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem">
+          <strong style="color:var(--white)">① 物件儲存公開存取（S3/Blob 公開）</strong>
+          <span style="font-family:'Orbitron',monospace;font-size:0.65rem;color:#FF4444;background:rgba(255,68,68,0.1);padding:0.2rem 0.5rem;border-radius:3px">高風險</span>
+        </div>
+        <p style="font-size:0.9375rem;color:var(--fog)">將 S3 Bucket 或 Azure Blob 設定為公開讀取，導致所有人可匿名存取資料。常見原因是開發人員為測試方便臨時開放，卻忘記在上線後關閉。AWS 現提供「Block Public Access」的帳號層級開關，應在所有生產環境帳號上強制啟用。</p>
+      </div>
+      <div style="background:var(--ink-2);border:1px solid rgba(255,68,68,0.2);border-radius:8px;padding:1.25rem">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem">
+          <strong style="color:var(--white)">② IAM 過度授權（違反最小權限原則）</strong>
+          <span style="font-family:'Orbitron',monospace;font-size:0.65rem;color:#FF4444;background:rgba(255,68,68,0.1);padding:0.2rem 0.5rem;border-radius:3px">高風險</span>
+        </div>
+        <p style="font-size:0.9375rem;color:var(--fog)">為了方便而給予 Administrator 權限，或使用 `*:*` 的萬用 IAM Policy。一旦具備此權限的 IAM 金鑰洩露，攻擊者可完全接管整個雲端帳號。應使用 AWS IAM Access Analyzer 定期審查並移除未使用的權限。</p>
+      </div>
+      <div style="background:var(--ink-2);border:1px solid rgba(250,88,34,0.2);border-radius:8px;padding:1.25rem">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem">
+          <strong style="color:var(--white)">③ 機密洩露至程式碼儲存庫</strong>
+          <span style="font-family:'Orbitron',monospace;font-size:0.65rem;color:#FA5822;background:rgba(250,88,34,0.1);padding:0.2rem 0.5rem;border-radius:3px">高風險</span>
+        </div>
+        <p style="font-size:0.9375rem;color:var(--fog)">開發人員將 AWS Access Key、資料庫密碼、API Token 直接寫入程式碼，並推送至公開或私有 GitHub 倉庫。GitGuardian 統計顯示，每年在 GitHub 上被掃描到的機密超過 1,000 萬個。應使用環境變數、AWS Secrets Manager 或 Azure Key Vault 管理機密。</p>
+      </div>
+      <div style="background:var(--ink-2);border:1px solid rgba(250,88,34,0.2);border-radius:8px;padding:1.25rem">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem">
+          <strong style="color:var(--white)">④ 網路安全群組規則過度開放</strong>
+          <span style="font-family:'Orbitron',monospace;font-size:0.65rem;color:#FA5822;background:rgba(250,88,34,0.1);padding:0.2rem 0.5rem;border-radius:3px">中高風險</span>
+        </div>
+        <p style="font-size:0.9375rem;color:var(--fog)">資料庫的 Security Group 允許 0.0.0.0/0（全球 IP）存取 3306、5432 等資料庫埠，或 SSH（22）和 RDP（3389）直接暴露於公網。應限制資料庫僅允許應用程式伺服器的 IP 存取，管理員存取必須通過 Bastion Host 或 VPN。</p>
+      </div>
+      <div style="background:var(--ink-2);border:1px solid rgba(0,200,200,0.2);border-radius:8px;padding:1.25rem">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem">
+          <strong style="color:var(--white)">⑤ 未啟用日誌記錄與監控</strong>
+          <span style="font-family:'Orbitron',monospace;font-size:0.65rem;color:#00C8C8;background:rgba(0,200,200,0.1);padding:0.2rem 0.5rem;border-radius:3px">中風險</span>
+        </div>
+        <p style="font-size:0.9375rem;color:var(--fog)">未啟用 AWS CloudTrail、Azure Monitor Logs 或 GCP Cloud Audit Logs，導致發生資安事件後無從追查攻擊軌跡和存取範圍。稽核日誌本身也應儲存在獨立的、具防寫保護的儲存空間，防止攻擊者入侵後清除痕跡。</p>
+      </div>
+      <div style="background:var(--ink-2);border:1px solid rgba(0,200,200,0.2);border-radius:8px;padding:1.25rem">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem">
+          <strong style="color:var(--white)">⑥ 未啟用靜態資料加密</strong>
+          <span style="font-family:'Orbitron',monospace;font-size:0.65rem;color:#00C8C8;background:rgba(0,200,200,0.1);padding:0.2rem 0.5rem;border-radius:3px">中風險</span>
+        </div>
+        <p style="font-size:0.9375rem;color:var(--fog)">資料庫磁碟（EBS、RDS）、物件儲存（S3）和備份未啟用加密，在雲端供應商內部人員或物理存取的情況下存在洩露風險。現代雲端服務加密幾乎是免費且透明的，應設定為預設啟用。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:2.5rem">
+    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)"><span style="color:#3DDC97">CSPM</span>：讓雲端設定合規性自動化</h2>
+    <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+      <p>雲端安全狀態管理（CSPM，Cloud Security Posture Management）工具能持續掃描雲端環境中的設定，比對安全最佳實踐和合規基準（CIS Benchmark、ISO 27001、個資法），並自動化產生修復建議。</p>
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1.25rem;margin-top:1rem">
+        <div style="font-family:'Syne',sans-serif;font-size:0.9375rem;font-weight:700;margin-bottom:1rem">CSPM 核心功能</div>
+        <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:0.625rem;font-size:0.9375rem;color:var(--fog)">
+          <li style="display:flex;gap:0.75rem"><span style="color:#3DDC97;font-weight:700;flex-shrink:0">→</span><div><strong style="color:var(--white)">持續可見性：</strong>跨 AWS、Azure、GCP 的所有資源設定集中可視，自動識別公開暴露的資源</div></li>
+          <li style="display:flex;gap:0.75rem"><span style="color:#3DDC97;font-weight:700;flex-shrink:0">→</span><div><strong style="color:var(--white)">合規性評分：</strong>自動評估目前環境對 CIS、NIST、SOC 2、GDPR 等框架的合規程度，生成可審計的報告</div></li>
+          <li style="display:flex;gap:0.75rem"><span style="color:#3DDC97;font-weight:700;flex-shrink:0">→</span><div><strong style="color:var(--white)">偏移偵測：</strong>當設定從安全基準偏移（例如有人手動關閉了公開存取封鎖）時即時告警</div></li>
+          <li style="display:flex;gap:0.75rem"><span style="color:#3DDC97;font-weight:700;flex-shrink:0">→</span><div><strong style="color:var(--white)">自動修復：</strong>對已知風險設定提供自動化修復腳本，部分工具支援一鍵修復</div></li>
+        </ul>
+      </div>
+      <div style="background:rgba(61,220,151,0.06);border-left:3px solid #3DDC97;border-radius:0 8px 8px 0;padding:1rem 1.25rem;margin-top:1.25rem">
+        <div style="font-family:'Syne',sans-serif;font-size:0.875rem;font-weight:700;color:#3DDC97;margin-bottom:0.5rem">起點建議</div>
+        <p style="font-size:0.9375rem;color:var(--fog)">許多雲端供應商提供原生的免費 CSPM 功能——AWS Security Hub（整合 GuardDuty）、Azure Security Center、GCP Security Command Center——是企業雲端資安治理的最低基準，應在第一天就啟用，而非等到發生事故再回頭設定。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:2.5rem">
+    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)">建立<span style="color:#3DDC97">雲端安全基準</span>：Landing Zone 設計原則</h2>
+    <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+      <p>在新帳號建立之初就植入安全設計，比事後修補更高效。以下是雲端 Landing Zone（登陸區）的安全設計原則：</p>
+      <ol style="margin-top:1rem;padding-left:1.25rem;list-style:decimal;display:flex;flex-direction:column;gap:0.75rem">
+        <li><strong style="color:var(--white)">帳號隔離策略：</strong>生產、測試、開發使用獨立雲端帳號，限制跨帳號存取，避免開發環境的問題影響生產</li>
+        <li><strong style="color:var(--white)">服務控制政策（SCP）：</strong>在組織層級強制套用安全政策，例如禁止關閉 CloudTrail、禁止建立公開 S3 Bucket，即使帳號管理員也無法繞過</li>
+        <li><strong style="color:var(--white)">集中日誌帳號：</strong>建立獨立的日誌帳號，所有帳號的 CloudTrail 日誌集中儲存並啟用不可變保護</li>
+        <li><strong style="color:var(--white)">IAM 身分中心（SSO）：</strong>使用 AWS IAM Identity Center 或 Azure AD 統一管理人員存取，避免各帳號散落的長效 IAM 金鑰</li>
+        <li><strong style="color:var(--white)">Infrastructure as Code（IaC）：</strong>使用 Terraform、CloudFormation 管理所有資源，納入版本控制，並在 CI/CD 中加入安全掃描步驟</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--ink-4);display:flex;gap:0.5rem;flex-wrap:wrap">
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">雲端資安</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">CSPM</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">IAM</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">S3 設定</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">共同責任模型</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">Landing Zone</span>
+  </div>
+
+  <div class="reveal" style="margin-top:3rem;background:linear-gradient(135deg,rgba(61,220,151,0.08),rgba(0,200,200,0.04));border:1px solid rgba(61,220,151,0.2);border-radius:12px;padding:2rem">
+    <div style="font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:0.75rem">需要專業資安建議？</div>
+    <p style="color:var(--silver);margin-bottom:1.5rem">立即聯絡 Hexion Networks，獲取針對貴公司雲端環境的資安評估與 CSPM 導入建議。</p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap">
+      <a href="/contact/" class="btn btn-orange">免費諮詢</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div><a href="/"><img src="/brand_assets/logo.png" alt="Hexion Networks" style="height:36px;filter:brightness(0) invert(1);opacity:0.85" /></a><p class="footer-brand-desc">結合商業策略、品牌顧問、資訊科技與資安的整合型服務公司。</p></div>
+    <div><div class="f-col-title">產品</div><a href="/products/pico-utm-100/" class="f-link">Pico-NGFW 100</a><a href="/products/dual-ark-utm-16/" class="f-link">Dual Ark-NGFW 16</a><a href="/products/tera-utm-12/" class="f-link">Tera-NGFW 12</a><a href="/products/lionfilter-200/" class="f-link">Lionfilter 200</a><a href="/products/endblock/" class="f-link">Endblock</a><a href="/products/teamt5/" class="f-link">TeamT5</a><a href="/products/cycraft/" class="f-link">奧義智慧 CyCraft</a></div>
+    <div><div class="f-col-title">服務</div><a href="/services/" class="f-link">商業策略</a><a href="/services/" class="f-link">品牌顧問</a><a href="/services/" class="f-link">資安評估</a></div>
+    <div><div class="f-col-title">公司</div><a href="/about/" class="f-link">關於我們</a><a href="/blog/" class="f-link">部落格</a><a href="/contact/" class="f-link">聯絡我們</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 HEXION NETWORKS.</span>
+    <div class="footer-legal"><a href="#">隱私政策</a><a href="#">服務條款</a></div>
+  </div>
+</footer>
+
+<script>const ro=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target)}})},{threshold:0.08});document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));</script>
+<script>var _ls=Date.now();window.addEventListener("load",function(){var l=document.getElementById("page-loader");if(!l)return;var elapsed=Date.now()-_ls,wait=Math.max(0,800-elapsed);setTimeout(function(){l.classList.add("out");setTimeout(function(){l.remove()},520)},wait)});</script>
+</body></html>

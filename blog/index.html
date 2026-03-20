@@ -285,54 +285,41 @@
         </div>
       </a>
 
-      <!-- 3 DPI -->
-      <a href="/blog/dpi-deep-packet-inspection/" style="text-decoration:none" class="ins-card" data-cat="guide">
+      <!-- 3 社交工程 -->
+      <a href="/blog/social-engineering-attacks/" style="text-decoration:none" class="ins-card" data-cat="threat">
         <div class="ins-img">
           <svg viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%">
             <defs>
-              <radialGradient id="dg1" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#FA5822" stop-opacity="0.1"/><stop offset="100%" stop-color="#0A0A14" stop-opacity="0"/></radialGradient>
-              <filter id="df1"><feGaussianBlur stdDeviation="6"/></filter>
-              <pattern id="dp1" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0L0 0 0 32" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/></pattern>
+              <radialGradient id="seg1" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#FA5822" stop-opacity="0.1"/><stop offset="100%" stop-color="#0A0A14" stop-opacity="0"/></radialGradient>
+              <filter id="sef1"><feGaussianBlur stdDeviation="6"/></filter>
             </defs>
             <rect width="400" height="200" fill="#100C08"/>
-            <rect width="400" height="200" fill="url(#dp1)"/>
-            <ellipse cx="200" cy="100" rx="180" ry="100" fill="url(#dg1)" filter="url(#df1)"/>
-            <!-- Packet flow layers -->
-            <g>
-              <rect x="30" y="32" width="340" height="22" rx="3" fill="rgba(250,88,34,0.06)" stroke="rgba(250,88,34,0.25)" stroke-width="0.75"/>
-              <text x="42" y="46" font-size="7" font-family="monospace" fill="rgba(250,88,34,0.7)">L7 APPLICATION</text>
-              <rect x="30" y="58" width="340" height="22" rx="3" fill="rgba(250,88,34,0.05)" stroke="rgba(250,88,34,0.2)" stroke-width="0.75"/>
-              <text x="42" y="72" font-size="7" font-family="monospace" fill="rgba(250,88,34,0.55)">L6 PRESENTATION</text>
-              <rect x="30" y="84" width="340" height="22" rx="3" fill="rgba(250,88,34,0.04)" stroke="rgba(250,88,34,0.15)" stroke-width="0.75"/>
-              <text x="42" y="98" font-size="7" font-family="monospace" fill="rgba(250,88,34,0.45)">L5 SESSION</text>
-              <rect x="30" y="110" width="340" height="22" rx="3" fill="rgba(0,200,200,0.04)" stroke="rgba(0,200,200,0.15)" stroke-width="0.75"/>
-              <text x="42" y="124" font-size="7" font-family="monospace" fill="rgba(0,200,200,0.45)">L4 TRANSPORT — TCP/UDP</text>
-              <rect x="30" y="136" width="340" height="22" rx="3" fill="rgba(0,200,200,0.03)" stroke="rgba(0,200,200,0.1)" stroke-width="0.75"/>
-              <text x="42" y="150" font-size="7" font-family="monospace" fill="rgba(0,200,200,0.35)">L3 NETWORK — IP</text>
-            </g>
-            <!-- DPI scanner -->
-            <rect x="230" y="28" width="100" height="136" rx="3" fill="rgba(250,88,34,0.04)" stroke="rgba(250,88,34,0.35)" stroke-width="1"/>
-            <line x1="230" y1="68" x2="330" y2="68" stroke="rgba(250,88,34,0.6)" stroke-width="1.5">
-              <animateTransform attributeName="transform" type="translate" values="0,0;0,96;0,0" dur="3s" repeatCount="indefinite"/>
-              <animate attributeName="opacity" values="0.8;0.2;0.8" dur="3s" repeatCount="indefinite"/>
-            </line>
-            <text x="280" y="44" font-size="7.5" font-family="monospace" fill="rgba(250,88,34,0.6)" text-anchor="middle">DPI ENGINE</text>
-            <!-- LIONIC badge -->
-            <rect x="240" y="148" width="80" height="20" rx="4" fill="rgba(250,88,34,0.1)" stroke="rgba(250,88,34,0.3)" stroke-width="0.75"/>
-            <text x="280" y="161" font-size="7.5" font-family="monospace" fill="#FA5822" text-anchor="middle">LIONIC v6</text>
-            <!-- Protocol stat -->
-            <rect x="12" y="164" width="110" height="28" rx="5" fill="rgba(10,8,6,0.92)" stroke="rgba(250,88,34,0.2)" stroke-width="0.75"/>
-            <text x="22" y="178" font-size="7" font-family="monospace" fill="rgba(250,88,34,0.7)">PROTOCOLS</text>
-            <text x="22" y="188" font-size="9" font-family="monospace" fill="#FA5822" font-weight="700">1,400+</text>
+            <ellipse cx="200" cy="100" rx="180" ry="100" fill="url(#seg1)" filter="url(#sef1)"/>
+            <!-- Email icon -->
+            <rect x="30" y="50" width="100" height="70" rx="5" fill="rgba(250,88,34,0.06)" stroke="rgba(250,88,34,0.35)" stroke-width="1"/>
+            <path d="M30 60 L80 90 L130 60" stroke="rgba(250,88,34,0.5)" stroke-width="1.2" fill="none"/>
+            <text x="80" y="140" font-size="6.5" font-family="monospace" fill="rgba(250,88,34,0.6)" text-anchor="middle">PHISHING</text>
+            <!-- Hook -->
+            <path d="M200 40 Q200 20 220 20 Q240 20 240 40 L240 100" stroke="rgba(250,88,34,0.6)" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path d="M230 95 L240 110 L250 95" stroke="rgba(250,88,34,0.7)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <circle cx="270" cy="120" r="18" fill="rgba(255,68,68,0.1)" stroke="rgba(255,68,68,0.5)" stroke-width="1.2"/>
+            <text x="270" y="124" font-size="7.5" font-family="monospace" fill="#FF4444" text-anchor="middle">TARGET</text>
+            <!-- Deepfake label -->
+            <rect x="290" y="30" width="98" height="36" rx="4" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.35)" stroke-width="0.75"/>
+            <text x="339" y="47" font-size="7" font-family="monospace" fill="#A78BFA" text-anchor="middle">AI DEEPFAKE</text>
+            <text x="339" y="59" font-size="6" font-family="monospace" fill="rgba(167,139,250,0.5)" text-anchor="middle">Voice Clone</text>
+            <!-- BEC tag -->
+            <rect x="12" y="158" width="88" height="22" rx="4" fill="rgba(255,68,68,0.1)" stroke="rgba(255,68,68,0.3)" stroke-width="0.75"/>
+            <text x="56" y="172" font-size="7.5" font-family="monospace" fill="#FF4444" text-anchor="middle">BEC FRAUD</text>
             <!-- Tag -->
-            <rect x="270" y="12" width="118" height="22" rx="4" fill="rgba(250,88,34,0.08)" stroke="rgba(250,88,34,0.3)" stroke-width="0.75"/>
-            <text x="329" y="26" font-size="8" font-family="monospace" fill="#FA5822" text-anchor="middle">DEEP PKT INSPECT</text>
+            <rect x="270" y="155" width="118" height="22" rx="4" fill="rgba(250,88,34,0.08)" stroke="rgba(250,88,34,0.3)" stroke-width="0.75"/>
+            <text x="329" y="169" font-size="8" font-family="monospace" fill="#FA5822" text-anchor="middle">SOCIAL ENG.</text>
           </svg>
         </div>
         <div class="ins-body">
-          <span class="ins-tag">DPI 技術</span>
-          <div class="ins-title">DPI 深度封包檢測技術解析：LIONIC 引擎如何識別 1400+ 協議</div>
-          <div class="ins-meta">2025-10-20 &nbsp;·&nbsp; 7 分鐘閱讀</div>
+          <span class="ins-tag">威脅分析</span>
+          <div class="ins-title">社交工程攻擊完全解析：從釣魚郵件到 AI 深偽的新型威脅</div>
+          <div class="ins-meta">2025-10-20 &nbsp;·&nbsp; 8 分鐘閱讀</div>
         </div>
       </a>
 
@@ -486,108 +473,84 @@
         </div>
       </a>
 
-      <!-- 7 URL 過濾 -->
-      <a href="/blog/url-filtering-technology/" style="text-decoration:none" class="ins-card" data-cat="product">
+      <!-- 7 MFA 身分安全 -->
+      <a href="/blog/mfa-identity-security/" style="text-decoration:none" class="ins-card" data-cat="guide">
         <div class="ins-img">
           <svg viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%">
             <defs>
-              <radialGradient id="ug1" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#A78BFA" stop-opacity="0.1"/><stop offset="100%" stop-color="#0A0A14" stop-opacity="0"/></radialGradient>
-              <filter id="uf1"><feGaussianBlur stdDeviation="6"/></filter>
-              <pattern id="up1" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0L0 0 0 32" fill="none" stroke="rgba(167,139,250,0.04)" stroke-width="0.5"/></pattern>
+              <radialGradient id="mfag1" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#00C8C8" stop-opacity="0.1"/><stop offset="100%" stop-color="#0A1414" stop-opacity="0"/></radialGradient>
+              <filter id="mfaf1"><feGaussianBlur stdDeviation="6"/></filter>
             </defs>
-            <rect width="400" height="200" fill="#0C0A16"/>
-            <rect width="400" height="200" fill="url(#up1)"/>
-            <ellipse cx="200" cy="100" rx="180" ry="100" fill="url(#ug1)" filter="url(#uf1)"/>
-            <!-- Browser mockup -->
-            <rect x="20" y="24" width="230" height="154" rx="7" fill="rgba(20,18,30,0.95)" stroke="rgba(167,139,250,0.25)" stroke-width="1"/>
-            <rect x="20" y="24" width="230" height="30" rx="7" fill="rgba(30,26,46,0.95)"/>
-            <rect x="20" y="44" width="230" height="10" fill="rgba(30,26,46,0.95)"/>
-            <circle cx="34" cy="39" r="4" fill="rgba(255,68,68,0.5)"/>
-            <circle cx="48" cy="39" r="4" fill="rgba(250,88,34,0.5)"/>
-            <circle cx="62" cy="39" r="4" fill="rgba(61,220,151,0.4)"/>
-            <!-- URL bar -->
-            <rect x="76" y="33" width="158" height="14" rx="4" fill="rgba(10,8,20,0.8)" stroke="rgba(167,139,250,0.2)" stroke-width="0.75"/>
-            <text x="84" y="43" font-size="6.5" font-family="monospace" fill="rgba(167,139,250,0.6)">https://malicious-site.ru</text>
-            <!-- Page content blocked -->
-            <rect x="30" y="60" width="210" height="110" rx="4" fill="rgba(167,139,250,0.04)"/>
-            <circle cx="135" cy="95" r="22" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.4)" stroke-width="1.5"/>
-            <path d="M124 84l22 22M146 84l-22 22" stroke="#A78BFA" stroke-width="2.5" stroke-linecap="round"/>
-            <text x="135" y="128" font-size="8.5" font-family="monospace" fill="rgba(167,139,250,0.8)" text-anchor="middle">BLOCKED</text>
-            <text x="135" y="140" font-size="6.5" font-family="monospace" fill="rgba(255,255,255,0.25)" text-anchor="middle">Phishing / Malware</text>
-            <text x="135" y="155" font-size="6" font-family="monospace" fill="rgba(255,255,255,0.2)" text-anchor="middle">Lionfilter 200 — Category: THREAT</text>
-            <!-- Stats -->
-            <rect x="262" y="80" width="124" height="96" rx="6" fill="rgba(14,12,24,0.92)" stroke="rgba(167,139,250,0.2)" stroke-width="0.75"/>
-            <text x="272" y="96" font-size="7" font-family="monospace" fill="rgba(167,139,250,0.7)">FILTER STATS</text>
-            <line x1="262" y1="102" x2="386" y2="102" stroke="rgba(167,139,250,0.12)" stroke-width="0.75"/>
-            <text x="272" y="116" font-size="6.5" font-family="monospace" fill="rgba(255,255,255,0.3)">Blocked</text>
-            <text x="372" y="116" font-size="6.5" font-family="monospace" fill="#A78BFA" text-anchor="end">98.7%</text>
-            <text x="272" y="132" font-size="6.5" font-family="monospace" fill="rgba(255,255,255,0.3)">Categories</text>
-            <text x="372" y="132" font-size="6.5" font-family="monospace" fill="#A78BFA" text-anchor="end">120+</text>
-            <text x="272" y="148" font-size="6.5" font-family="monospace" fill="rgba(255,255,255,0.3)">HTTPS Inspect</text>
-            <text x="372" y="148" font-size="6.5" font-family="monospace" fill="rgba(61,220,151,0.8)" text-anchor="end">ON</text>
-            <text x="272" y="164" font-size="6.5" font-family="monospace" fill="rgba(255,255,255,0.3)">ML Model</text>
-            <text x="372" y="164" font-size="6.5" font-family="monospace" fill="rgba(61,220,151,0.8)" text-anchor="end">Active</text>
+            <rect width="400" height="200" fill="#080F0F"/>
+            <ellipse cx="200" cy="100" rx="180" ry="100" fill="url(#mfag1)" filter="url(#mfaf1)"/>
+            <!-- Shield with key -->
+            <path d="M130 40 L170 55 L170 95 Q170 125 130 135 Q90 125 90 95 L90 55 Z" fill="rgba(0,200,200,0.08)" stroke="rgba(0,200,200,0.5)" stroke-width="1.5"/>
+            <circle cx="130" cy="85" r="12" fill="rgba(0,200,200,0.12)" stroke="#00C8C8" stroke-width="1.2"/>
+            <rect x="123" y="90" width="14" height="10" rx="2" fill="rgba(0,200,200,0.2)" stroke="#00C8C8" stroke-width="1"/>
+            <path d="M126 90 Q126 83 130 83 Q134 83 134 90" stroke="#00C8C8" stroke-width="1.2" fill="none"/>
+            <!-- MFA levels -->
+            <rect x="200" y="28" width="90" height="24" rx="4" fill="rgba(255,68,68,0.1)" stroke="rgba(255,68,68,0.4)" stroke-width="0.75"/>
+            <text x="245" y="43" font-size="7" font-family="monospace" fill="#FF4444" text-anchor="middle">SMS OTP ✗</text>
+            <rect x="200" y="58" width="90" height="24" rx="4" fill="rgba(250,88,34,0.08)" stroke="rgba(250,88,34,0.3)" stroke-width="0.75"/>
+            <text x="245" y="73" font-size="7" font-family="monospace" fill="#FA5822" text-anchor="middle">TOTP APP ~</text>
+            <rect x="200" y="88" width="90" height="24" rx="4" fill="rgba(0,200,200,0.08)" stroke="rgba(0,200,200,0.35)" stroke-width="0.75"/>
+            <text x="245" y="103" font-size="7" font-family="monospace" fill="#00C8C8" text-anchor="middle">HW KEY ✓</text>
+            <rect x="200" y="118" width="90" height="24" rx="4" fill="rgba(61,220,151,0.12)" stroke="#3DDC97" stroke-width="1"/>
+            <text x="245" y="133" font-size="7" font-family="monospace" fill="#3DDC97" text-anchor="middle">PASSKEY ✓✓</text>
+            <!-- FIDO2 badge -->
+            <rect x="305" y="88" width="82" height="54" rx="5" fill="rgba(61,220,151,0.08)" stroke="#3DDC97" stroke-width="0.75"/>
+            <text x="346" y="107" font-size="7.5" font-family="monospace" fill="#3DDC97" text-anchor="middle">FIDO2</text>
+            <text x="346" y="120" font-size="6.5" font-family="monospace" fill="rgba(61,220,151,0.6)" text-anchor="middle">WebAuthn</text>
+            <text x="346" y="133" font-size="6" font-family="monospace" fill="rgba(61,220,151,0.5)" text-anchor="middle">Anti-Phishing</text>
             <!-- Tag -->
-            <rect x="262" y="28" width="124" height="44" rx="4" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.3)" stroke-width="0.75"/>
-            <text x="324" y="44" font-size="8" font-family="monospace" fill="#A78BFA" text-anchor="middle">LIONFILTER 200</text>
-            <text x="324" y="58" font-size="7" font-family="monospace" fill="rgba(167,139,250,0.5)" text-anchor="middle">URL FILTERING</text>
+            <rect x="270" y="155" width="118" height="22" rx="4" fill="rgba(0,200,200,0.08)" stroke="rgba(0,200,200,0.3)" stroke-width="0.75"/>
+            <text x="329" y="169" font-size="8" font-family="monospace" fill="#00C8C8" text-anchor="middle">MFA / PASSKEY</text>
           </svg>
         </div>
         <div class="ins-body">
-          <span class="ins-tag" style="color:#A78BFA">URL 過濾</span>
-          <div class="ins-title">URL 過濾技術深度解析：Lionfilter 200 如何守護網頁安全</div>
-          <div class="ins-meta">2025-08-18 &nbsp;·&nbsp; 5 分鐘閱讀</div>
+          <span class="ins-tag" style="color:var(--teal)">技術指南</span>
+          <div class="ins-title">多因素驗證（MFA）全解析：從 OTP 到無密碼驗證的身分安全策略</div>
+          <div class="ins-meta">2025-08-18 &nbsp;·&nbsp; 7 分鐘閱讀</div>
         </div>
       </a>
 
-      <!-- 8 NGFW 選購 -->
-      <a href="/blog/utm-selection-guide/" style="text-decoration:none" class="ins-card" data-cat="guide">
+      <!-- 8 雲端資安 -->
+      <a href="/blog/cloud-security-misconfigurations/" style="text-decoration:none" class="ins-card" data-cat="guide">
         <div class="ins-img">
           <svg viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%">
             <defs>
-              <radialGradient id="ng1" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#3DDC97" stop-opacity="0.1"/><stop offset="100%" stop-color="#0A0A14" stop-opacity="0"/></radialGradient>
-              <filter id="nf1"><feGaussianBlur stdDeviation="6"/></filter>
-              <pattern id="np1" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0L0 0 0 32" fill="none" stroke="rgba(61,220,151,0.04)" stroke-width="0.5"/></pattern>
+              <radialGradient id="cloudg1" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#3DDC97" stop-opacity="0.1"/><stop offset="100%" stop-color="#0A0A14" stop-opacity="0"/></radialGradient>
+              <filter id="cloudf1"><feGaussianBlur stdDeviation="6"/></filter>
             </defs>
             <rect width="400" height="200" fill="#080F0C"/>
-            <rect width="400" height="200" fill="url(#np1)"/>
-            <ellipse cx="200" cy="100" rx="180" ry="100" fill="url(#ng1)" filter="url(#nf1)"/>
-            <!-- Three product columns -->
-            <rect x="20" y="30" width="100" height="150" rx="6" fill="rgba(250,88,34,0.06)" stroke="rgba(250,88,34,0.3)" stroke-width="1"/>
-            <text x="70" y="50" font-size="7.5" font-family="monospace" fill="#FA5822" text-anchor="middle">PICO-NGFW</text>
-            <text x="70" y="62" font-size="6.5" font-family="monospace" fill="rgba(250,88,34,0.6)" text-anchor="middle">100</text>
-            <line x1="30" y1="70" x2="110" y2="70" stroke="rgba(250,88,34,0.15)" stroke-width="0.75"/>
-            <text x="30" y="84" font-size="6" font-family="monospace" fill="rgba(255,255,255,0.4)">Scenario: IT</text>
-            <text x="30" y="98" font-size="6" font-family="monospace" fill="rgba(255,255,255,0.3)">Throughput: 1G</text>
-            <text x="30" y="112" font-size="6" font-family="monospace" fill="rgba(255,255,255,0.3)">Ports: 5x GbE</text>
-            <text x="30" y="126" font-size="6" font-family="monospace" fill="rgba(255,255,255,0.3)">DPI: Full</text>
-            <text x="30" y="140" font-size="6" font-family="monospace" fill="rgba(255,255,255,0.3)">Size: Mini</text>
-            <rect x="150" y="30" width="100" height="150" rx="6" fill="rgba(0,200,200,0.06)" stroke="rgba(0,200,200,0.3)" stroke-width="1"/>
-            <text x="200" y="50" font-size="7" font-family="monospace" fill="#00C8C8" text-anchor="middle">DUAL ARK</text>
-            <text x="200" y="62" font-size="6.5" font-family="monospace" fill="rgba(0,200,200,0.6)" text-anchor="middle">NGFW 16</text>
-            <line x1="160" y1="70" x2="240" y2="70" stroke="rgba(0,200,200,0.15)" stroke-width="0.75"/>
-            <text x="160" y="84" font-size="6" font-family="monospace" fill="rgba(255,255,255,0.4)">Scenario: IoT</text>
-            <text x="160" y="98" font-size="6" font-family="monospace" fill="rgba(255,255,255,0.3)">Throughput: 2G</text>
-            <text x="160" y="112" font-size="6" font-family="monospace" fill="rgba(255,255,255,0.3)">Ports: 16x</text>
-            <text x="160" y="126" font-size="6" font-family="monospace" fill="rgba(255,255,255,0.3)">DPI: Full</text>
-            <text x="160" y="140" font-size="6" font-family="monospace" fill="rgba(255,255,255,0.3)">VLAN: Yes</text>
-            <rect x="280" y="30" width="100" height="150" rx="6" fill="rgba(61,220,151,0.08)" stroke="#3DDC97" stroke-width="1.2"/>
-            <text x="330" y="50" font-size="7.5" font-family="monospace" fill="#3DDC97" text-anchor="middle">TERA-NGFW</text>
-            <text x="330" y="62" font-size="6.5" font-family="monospace" fill="rgba(61,220,151,0.7)" text-anchor="middle">12</text>
-            <line x1="290" y1="70" x2="370" y2="70" stroke="rgba(61,220,151,0.2)" stroke-width="0.75"/>
-            <text x="290" y="84" font-size="6" font-family="monospace" fill="rgba(255,255,255,0.5)">Scenario: OT</text>
-            <text x="290" y="98" font-size="6" font-family="monospace" fill="rgba(255,255,255,0.4)">Throughput: 5G</text>
-            <text x="290" y="112" font-size="6" font-family="monospace" fill="rgba(255,255,255,0.4)">Ports: 12x SFP</text>
-            <text x="290" y="126" font-size="6" font-family="monospace" fill="rgba(255,255,255,0.4)">OT Proto: Yes</text>
-            <text x="290" y="140" font-size="6" font-family="monospace" fill="rgba(255,255,255,0.4)">Ruggedized</text>
-            <!-- Best pick badge -->
-            <rect x="282" y="155" width="96" height="18" rx="4" fill="rgba(61,220,151,0.15)" stroke="#3DDC97" stroke-width="0.75"/>
-            <text x="330" y="167" font-size="7" font-family="monospace" fill="#3DDC97" text-anchor="middle">OT BEST PICK</text>
+            <ellipse cx="200" cy="100" rx="180" ry="100" fill="url(#cloudg1)" filter="url(#cloudf1)"/>
+            <!-- Cloud shape -->
+            <path d="M120 120 Q100 120 100 100 Q100 82 118 80 Q120 60 145 60 Q160 45 180 55 Q195 40 220 50 Q245 40 255 60 Q275 62 278 82 Q295 86 292 105 Q290 120 270 120 Z" fill="rgba(61,220,151,0.06)" stroke="rgba(61,220,151,0.4)" stroke-width="1.2"/>
+            <!-- Misconfig X marks -->
+            <circle cx="148" cy="90" r="10" fill="rgba(255,68,68,0.15)" stroke="rgba(255,68,68,0.5)" stroke-width="1"/>
+            <path d="M143 85l10 10M153 85l-10 10" stroke="#FF4444" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="200" cy="82" r="10" fill="rgba(255,68,68,0.12)" stroke="rgba(255,68,68,0.4)" stroke-width="1"/>
+            <path d="M195 77l10 10M205 77l-10 10" stroke="#FF4444" stroke-width="1.5" stroke-linecap="round"/>
+            <!-- Bucket open -->
+            <rect x="230" y="70" width="34" height="30" rx="3" fill="rgba(255,68,68,0.1)" stroke="rgba(255,68,68,0.4)" stroke-width="1"/>
+            <text x="247" y="90" font-size="6" font-family="monospace" fill="#FF4444" text-anchor="middle">PUBLIC</text>
+            <!-- CSPM shield -->
+            <rect x="290" y="50" width="90" height="110" rx="6" fill="rgba(10,20,14,0.92)" stroke="rgba(61,220,151,0.3)" stroke-width="0.75"/>
+            <text x="335" y="68" font-size="7" font-family="monospace" fill="rgba(61,220,151,0.7)" text-anchor="middle">CSPM</text>
+            <line x1="298" y1="74" x2="372" y2="74" stroke="rgba(61,220,151,0.15)" stroke-width="0.75"/>
+            <text x="300" y="88" font-size="6" font-family="monospace" fill="rgba(255,68,68,0.7)">S3 Public !</text>
+            <text x="300" y="102" font-size="6" font-family="monospace" fill="rgba(255,68,68,0.6)">IAM * !</text>
+            <text x="300" y="116" font-size="6" font-family="monospace" fill="rgba(250,88,34,0.6)">No MFA !</text>
+            <text x="300" y="130" font-size="6" font-family="monospace" fill="rgba(61,220,151,0.6)">Logs: OK</text>
+            <text x="300" y="144" font-size="6" font-family="monospace" fill="rgba(61,220,151,0.6)">Encrypt: OK</text>
+            <!-- Tag -->
+            <rect x="12" y="155" width="118" height="22" rx="4" fill="rgba(61,220,151,0.08)" stroke="rgba(61,220,151,0.3)" stroke-width="0.75"/>
+            <text x="71" y="169" font-size="8" font-family="monospace" fill="#3DDC97" text-anchor="middle">CLOUD SECURITY</text>
           </svg>
         </div>
         <div class="ins-body">
-          <span class="ins-tag" style="color:#3DDC97">選購指南</span>
-          <div class="ins-title">企業 NGFW 選購完整指南：IT、OT、IoT 場景各有最佳解</div>
+          <span class="ins-tag" style="color:#3DDC97">技術指南</span>
+          <div class="ins-title">雲端資安治理：企業上雲後最常見的設定錯誤與防範指南</div>
           <div class="ins-meta">2025-08-05 &nbsp;·&nbsp; 9 分鐘閱讀</div>
         </div>
       </a>
