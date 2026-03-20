@@ -13,7 +13,7 @@
   <meta property="og:url" content="https://hexionnetworks.com/blog/ot-ics-security-guide/" />
   <link rel="icon" href="/brand_assets/favicon.png" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/style.css" />
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"OT/ICS 資安防護指南：工廠自動化時代的資安挑戰與對策","datePublished":"2025-10-08","dateModified":"2025-10-08","author":{"@type":"Organization","name":"Hexion Networks"},"publisher":{"@type":"Organization","name":"Hexion Networks","url":"https://hexionnetworks.com"},"url":"https://hexionnetworks.com/blog/ot-ics-security-guide/"}</script>
 <!-- Google tag (gtag.js) -->
@@ -96,7 +96,7 @@
     </div>
     <div class="reveal">
       <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(250,88,34,0.1);border:1px solid rgba(250,88,34,0.3);border-radius:4px;padding:0.25rem 0.75rem;font-family:'Orbitron',monospace;font-size:0.65rem;color:#FA5822;letter-spacing:0.1em;margin-bottom:1.25rem">技術指南</div>
-      <h1 style="font-family:'Inter', sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.025em;line-height:1.15;margin-bottom:1.25rem">OT/ICS 資安防護指南：工廠自動化時代的資安挑戰與對策</h1>
+      <h1 style="font-family:'Syne',sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.025em;line-height:1.15;margin-bottom:1.25rem">OT/ICS 資安防護指南：工廠自動化時代的資安挑戰與對策</h1>
       <p style="color:var(--silver);font-size:1.0625rem;line-height:1.7;margin-bottom:2rem">隨著工廠 IT/OT 融合加速，工業控制系統面臨前所未有的資安威脅。本指南從 Purdue 模型到 IEC 62443，提供台灣製造業完整 OT 資安路線圖。</p>
       <div style="display:flex;align-items:center;gap:1.5rem;color:var(--silver);font-size:0.8125rem;border-top:1px solid var(--ink-4);padding-top:1.5rem">
         <span>Hexion Networks 資安研究團隊</span><span>·</span><span>2025 年 10 月 8 日</span><span>·</span><span>9 分鐘閱讀</span>
@@ -158,7 +158,7 @@
 
   <!-- Section 1 -->
   <div class="reveal" style="margin-bottom:2.5rem">
-    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">OT/ICS 環境的獨特性</h2>
+    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">OT/ICS 環境的獨特性</h2>
     <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">OT（Operational Technology，操作技術）與 ICS（Industrial Control Systems，工業控制系統）環境的資安挑戰，與傳統 IT 環境有根本性的不同。在 IT 世界，資安優先順序是機密性（Confidentiality）、完整性（Integrity）、可用性（Availability），即 CIA 三角。但在 OT 世界，這個順序完全顛倒：可用性永遠是第一優先，任何導致生產線停機或設備異常的資安措施都可能被拒絕。</p>
     <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">OT 環境中的設備，如 PLC（可程式邏輯控制器）、RTU（遠端終端單元）、HMI（人機介面），通常具有以下特點：設計使用壽命長達 15-30 年、無法輕易停機進行更新、使用專有工業協議、計算資源有限難以支援傳統資安代理程式。</p>
     <p style="color:var(--silver);line-height:1.8">台灣作為全球製造業重鎮，擁有大量半導體、電子、精密機械工廠，這些設施一旦遭受攻擊，不僅影響企業本身，更可能對全球供應鏈造成嚴重衝擊。這也使台灣製造業成為國家級 APT 組織的高價值攻擊目標。</p>
@@ -166,7 +166,7 @@
 
   <!-- Section 2 -->
   <div class="reveal" style="margin-bottom:2.5rem">
-    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">IT/OT 融合帶來的新威脅</h2>
+    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">IT/OT 融合帶來的新威脅</h2>
     <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">過去，OT 網路依賴「空氣隔離（Air Gap）」保持安全——與外部網路實體隔離。但智慧製造、工業 4.0 的推動，以及 COVID-19 後遠端監控需求的爆發，正在快速侵蝕這道最後的防線。</p>
     <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">IT/OT 融合帶來的主要風險：</p>
     <ul style="color:var(--silver);line-height:1.8;padding-left:1.5rem;margin-bottom:1rem">
@@ -180,7 +180,7 @@
 
   <!-- Section 3 -->
   <div class="reveal" style="margin-bottom:2.5rem">
-    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">Purdue 模型與網路分層架構</h2>
+    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">Purdue 模型與網路分層架構</h2>
     <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">Purdue 模型（Purdue Enterprise Reference Architecture，PERA）是 OT/IT 網路分層設計的標準參考框架，將工業網路劃分為 Level 0 到 Level 5 共六層：</p>
     <div style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:1rem">
       <div style="background:var(--ink-2);border-left:3px solid #FA5822;padding:1rem 1.25rem;border-radius:0 8px 8px 0">
@@ -209,7 +209,7 @@
 
   <!-- Section 4 -->
   <div class="reveal" style="margin-bottom:2.5rem">
-    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">工業協議安全：Modbus、DNP3 與 OPC-UA</h2>
+    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">工業協議安全：Modbus、DNP3 與 OPC-UA</h2>
     <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">工業控制系統使用的專有協議，在設計之初完全不考慮資安。了解這些協議的弱點，是制定防護策略的基礎：</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem">
       <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1.25rem">
@@ -229,7 +229,7 @@
 
   <!-- Section 5 -->
   <div class="reveal" style="margin-bottom:2.5rem">
-    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">IEC 62443 標準概覽</h2>
+    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">IEC 62443 標準概覽</h2>
     <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">IEC 62443 是工業自動化與控制系統（IACS）的國際資安標準系列，分為四大部分，涵蓋從組織政策到設備技術要求的完整框架：</p>
     <ul style="color:var(--silver);line-height:1.8;padding-left:1.5rem;margin-bottom:1rem">
       <li style="margin-bottom:0.5rem"><strong style="color:var(--white)">IEC 62443-2：</strong>組織安全政策與程序要求，包含資產管理、供應商管理等</li>
@@ -241,7 +241,7 @@
 
   <!-- Section 6 -->
   <div class="reveal" style="margin-bottom:2.5rem">
-    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">SEMI E187：半導體廠的特殊資安要求</h2>
+    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">SEMI E187：半導體廠的特殊資安要求</h2>
     <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">SEMI E187 是專為半導體製造設備（如晶圓機台）制定的資安規範，於 2022 年正式生效。該標準對半導體設備廠商提出明確要求，包括：</p>
     <ul style="color:var(--silver);line-height:1.8;padding-left:1.5rem;margin-bottom:1rem">
       <li style="margin-bottom:0.5rem">作業系統鎖固（OS Hardening）：關閉不必要的服務與連接埠</li>
@@ -255,7 +255,7 @@
 
   <!-- Section 7 -->
   <div class="reveal" style="margin-bottom:2.5rem">
-    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">三階段 OT 資安實施路徑</h2>
+    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">三階段 OT 資安實施路徑</h2>
     <div style="display:flex;flex-direction:column;gap:1rem">
       <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:10px;padding:1.5rem">
         <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.75rem">
@@ -294,7 +294,7 @@
 
   <!-- CTA -->
   <div class="reveal" style="margin-top:3rem;background:linear-gradient(135deg,rgba(250,88,34,0.08),rgba(0,200,200,0.04));border:1px solid rgba(250,88,34,0.2);border-radius:12px;padding:2rem">
-    <div style="font-family:'Inter', sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:0.75rem">需要專業資安建議？</div>
+    <div style="font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:0.75rem">需要專業資安建議？</div>
     <p style="color:var(--silver);margin-bottom:1.5rem">建議聯絡專業資安顧問，獲取針對貴公司量身訂製的 OT 資安評估。</p>
     <div style="display:flex;gap:1rem;flex-wrap:wrap">
       <a href="/contact/" class="btn btn-orange">免費諮詢</a>

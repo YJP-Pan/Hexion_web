@@ -13,7 +13,7 @@
   <meta property="og:url" content="https://hexionnetworks.com/blog/mfa-identity-security/" />
   <link rel="icon" href="/brand_assets/favicon.png" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/style.css" />
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"多因素驗證（MFA）全解析：從 OTP 到無密碼驗證的身分安全策略","datePublished":"2025-08-18","dateModified":"2025-08-18","author":{"@type":"Organization","name":"Hexion Networks"},"publisher":{"@type":"Organization","name":"Hexion Networks","url":"https://hexionnetworks.com"},"url":"https://hexionnetworks.com/blog/mfa-identity-security/"}</script>
 <!-- Google tag (gtag.js) -->
@@ -96,7 +96,7 @@
     </div>
     <div class="reveal">
       <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(0,200,200,0.1);border:1px solid rgba(0,200,200,0.3);border-radius:4px;padding:0.25rem 0.75rem;font-family:'Orbitron',monospace;font-size:0.65rem;color:#00C8C8;letter-spacing:0.1em;margin-bottom:1.25rem">技術指南</div>
-      <h1 style="font-family:'Inter', sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.025em;line-height:1.15;margin-bottom:1.25rem">多因素驗證（MFA）全解析：從 OTP 到無密碼驗證的身分安全策略</h1>
+      <h1 style="font-family:'Syne',sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.025em;line-height:1.15;margin-bottom:1.25rem">多因素驗證（MFA）全解析：從 OTP 到無密碼驗證的身分安全策略</h1>
       <p style="color:var(--silver);font-size:1.0625rem;line-height:1.7;margin-bottom:2rem">密碼已死，但繼承者並非同等安全。本文解析各種 MFA 技術的安全強度與攻擊者的繞過手法，幫助企業選擇真正能防禦現代威脅的身分驗證策略。</p>
       <div style="display:flex;align-items:center;gap:1.5rem;color:var(--silver);font-size:0.8125rem;border-top:1px solid var(--ink-4);padding-top:1.5rem;flex-wrap:wrap">
         <span>Hexion Networks 資安研究團隊</span>
@@ -197,7 +197,7 @@
   </div>
 
   <div class="reveal" style="margin-top:2.5rem">
-    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)"><span style="color:#FA5822">攻擊者如何繞過 MFA</span>：你需要知道的四種手法</h2>
+    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)"><span style="color:#FA5822">攻擊者如何繞過 MFA</span>：你需要知道的四種手法</h2>
     <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
       <p>了解攻擊手法才能選擇正確的防禦工具：</p>
       <ul style="margin-top:1rem;list-style:none;padding:0;display:flex;flex-direction:column;gap:1rem">
@@ -222,11 +222,11 @@
   </div>
 
   <div class="reveal" style="margin-top:2.5rem">
-    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)"><span style="color:#00C8C8">FIDO2 / Passkey</span>：真正抗釣魚的驗證標準</h2>
+    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)"><span style="color:#00C8C8">FIDO2 / Passkey</span>：真正抗釣魚的驗證標準</h2>
     <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
       <p>FIDO2（Fast Identity Online 2.0）標準結合 WebAuthn 協議，提供目前最強的抗釣魚驗證機制。其核心原理是「網域綁定」：驗證過程使用來自裝置的加密簽章，簽章中包含合法網域資訊。即使攻擊者建立了外觀完全相同的釣魚網站，驗證也無法在錯誤的網域上完成。</p>
       <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1.25rem;margin-top:1rem">
-        <div style="font-family:'Inter', sans-serif;font-size:0.9375rem;font-weight:700;margin-bottom:1rem">Passkey 的三種形式</div>
+        <div style="font-family:'Syne',sans-serif;font-size:0.9375rem;font-weight:700;margin-bottom:1rem">Passkey 的三種形式</div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;font-size:0.9rem">
           <div><strong style="color:#3DDC97">Platform Passkey（平台金鑰）</strong><p style="color:var(--fog);margin-top:0.375rem">儲存在裝置安全晶片（iPhone Face ID、Android 指紋、Windows Hello），免費且便利，是未來主流。</p></div>
           <div><strong style="color:#00C8C8">Hardware Security Key（硬體金鑰）</strong><p style="color:var(--fog);margin-top:0.375rem">YubiKey 等實體 USB/NFC 裝置，最高安全性，適合高權限帳號和高風險場景。</p></div>
@@ -234,14 +234,14 @@
         </div>
       </div>
       <div style="background:rgba(0,200,200,0.06);border-left:3px solid #00C8C8;border-radius:0 8px 8px 0;padding:1rem 1.25rem;margin-top:1.25rem">
-        <div style="font-family:'Inter', sans-serif;font-size:0.875rem;font-weight:700;color:#00C8C8;margin-bottom:0.5rem">Google 內部案例</div>
+        <div style="font-family:'Syne',sans-serif;font-size:0.875rem;font-weight:700;color:#00C8C8;margin-bottom:0.5rem">Google 內部案例</div>
         <p style="font-size:0.9375rem;color:var(--fog)">Google 在 2017 年要求所有員工使用硬體安全金鑰後，員工帳號的接管事件降為零。即使員工被釣魚郵件誘騙至惡意網站並輸入密碼，硬體金鑰的網域綁定機制也阻止了任何未授權登入。</p>
       </div>
     </div>
   </div>
 
   <div class="reveal" style="margin-top:2.5rem">
-    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)">企業 MFA 導入<span style="color:#00C8C8">分層策略</span></h2>
+    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)">企業 MFA 導入<span style="color:#00C8C8">分層策略</span></h2>
     <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
       <p>並非所有帳號都需要相同強度的保護，根據帳號風險等級制定分層策略是務實的做法：</p>
       <div style="display:flex;flex-direction:column;gap:0.75rem;margin-top:1.25rem">
@@ -271,7 +271,7 @@
   </div>
 
   <div class="reveal" style="margin-top:3rem;background:linear-gradient(135deg,rgba(0,200,200,0.08),rgba(250,88,34,0.04));border:1px solid rgba(0,200,200,0.2);border-radius:12px;padding:2rem">
-    <div style="font-family:'Inter', sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:0.75rem">需要專業資安建議？</div>
+    <div style="font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:0.75rem">需要專業資安建議？</div>
     <p style="color:var(--silver);margin-bottom:1.5rem">立即聯絡 Hexion Networks，協助評估貴公司的身分安全現況，規劃最適合的 MFA 升級路線。</p>
     <div style="display:flex;gap:1rem;flex-wrap:wrap">
       <a href="/contact/" class="btn btn-orange">免費諮詢</a>
