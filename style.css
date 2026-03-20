@@ -20,7 +20,7 @@
   --fog:    #C4C4D8;
   --white:  #F8F8FC;
   --red:    #FF4444;
-  --px:     clamp(2rem, 7vw, 7.5rem);
+  --px:     clamp(2rem, 8vw, 10rem);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
