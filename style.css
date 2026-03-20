@@ -33,6 +33,47 @@ body {
   overflow-x: hidden;
 }
 
+/* ── PAGE LOADER ── */
+#page-loader {
+  position: fixed; inset: 0; z-index: 99999;
+  background: #07070F;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
+  transition: opacity 0.5s cubic-bezier(0.22,1,0.36,1), transform 0.5s cubic-bezier(0.22,1,0.36,1);
+}
+#page-loader.out {
+  opacity: 0; transform: scale(1.03); pointer-events: none;
+}
+.loader-logo { height: 36px; opacity: 0; animation: loaderFadeIn 0.4s 0.1s forwards; }
+.loader-ring-wrap {
+  position: relative; width: 56px; height: 56px;
+  opacity: 0; animation: loaderFadeIn 0.4s 0.2s forwards;
+}
+.loader-ring {
+  position: absolute; inset: 0; border-radius: 50%;
+  border: 1.5px solid transparent;
+}
+.loader-ring-outer {
+  border-top-color: #FA5822; border-right-color: rgba(250,88,34,0.2);
+  border-bottom-color: rgba(250,88,34,0.1); border-left-color: rgba(250,88,34,0.15);
+  animation: loaderSpin 0.9s linear infinite;
+}
+.loader-ring-inner {
+  inset: 10px;
+  border-top-color: transparent; border-right-color: rgba(250,88,34,0.5);
+  border-bottom-color: transparent; border-left-color: transparent;
+  animation: loaderSpin 0.6s linear infinite reverse;
+}
+.loader-dot {
+  position: absolute; top: 50%; left: 50%;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #FA5822; box-shadow: 0 0 10px #FA5822;
+  transform: translate(-50%,-50%);
+  animation: loaderPulse 0.9s ease-in-out infinite;
+}
+@keyframes loaderSpin { to { transform: rotate(360deg); } }
+@keyframes loaderFadeIn { to { opacity: 1; } }
+@keyframes loaderPulse { 0%,100%{opacity:0.5;transform:translate(-50%,-50%) scale(0.8)} 50%{opacity:1;transform:translate(-50%,-50%) scale(1.2)} }
+
 /* ── GRAIN OVERLAY ── */
 body::before {
   content:''; position:fixed; inset:0; pointer-events:none; z-index:9999;

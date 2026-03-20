@@ -51,6 +51,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+<div id="page-loader"><img src="/brand_assets/logo.png" alt="" class="loader-logo" /><div class="loader-ring-wrap"><div class="loader-ring loader-ring-outer"></div><div class="loader-ring loader-ring-inner"></div><div class="loader-dot"></div></div></div>
 
 <!-- Topbar -->
 <div class="topbar">
@@ -1345,5 +1346,6 @@ document.addEventListener('mousemove', e => { glow.style.left = e.clientX + 'px'
 // ── Insight cards position fix for ::before pseudo ──
 document.querySelectorAll('.ins-card').forEach(c => c.style.position = 'relative');
 </script>
+<script>window.addEventListener("load",function(){var l=document.getElementById("page-loader");if(l){l.classList.add("out");setTimeout(function(){l.remove()},520)}});</script>
 </body>
 </html>

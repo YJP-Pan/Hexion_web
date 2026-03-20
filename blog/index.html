@@ -25,6 +25,7 @@
   </style>
 </head>
 <body>
+<div id="page-loader"><img src="/brand_assets/logo.png" alt="" class="loader-logo" /><div class="loader-ring-wrap"><div class="loader-ring loader-ring-outer"></div><div class="loader-ring loader-ring-inner"></div><div class="loader-dot"></div></div></div>
 <div class="topbar">
   <a href="/contact/">聯絡我們</a>
   <a href="/blog/" class="topbar-highlight">最新資安報告 →</a>
@@ -622,4 +623,5 @@ function filterBlog(cat, btn) {
   });
 }
 </script>
+<script>window.addEventListener("load",function(){var l=document.getElementById("page-loader");if(l){l.classList.add("out");setTimeout(function(){l.remove()},520)}});</script>
 </body></html>
