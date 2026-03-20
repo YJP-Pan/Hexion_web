@@ -236,5 +236,5 @@ async function handleSubmit(e) {
   }
 }
 </script>
-<script>window.addEventListener("load",function(){var l=document.getElementById("page-loader");if(l){l.classList.add("out");setTimeout(function(){l.remove()},520)}});</script>
+<script>var _ls=Date.now();window.addEventListener("load",function(){var l=document.getElementById("page-loader");if(!l)return;var elapsed=Date.now()-_ls,wait=Math.max(0,800-elapsed);setTimeout(function(){l.classList.add("out");setTimeout(function(){l.remove()},520)},wait)});</script>
 </body></html>
