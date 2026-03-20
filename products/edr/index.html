@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hexion 合續科技｜商業品牌與資訊科技顧問｜Business & Technology Consulting</title>
+  <meta name="description" content="EDR 端點偵測回應解決方案 — Hexion Networks 代理 TeamT5 ThreatVision、奧義智慧 CyCraft AIR、Endblock EDR，三大方案對應不同企業需求。" />
+  <meta name="keywords" content="EDR, 端點偵測回應, TeamT5, CyCraft, Endblock, 資安, Hexion Networks" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hexionnetworks.com/products/edr/" />
+  <link rel="icon" href="/brand_assets/favicon.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    :root{--accent:#3DDC97;--accent-rgb:61,220,151}
+
+    .edr-hero-badge {
+      display:inline-flex;align-items:center;gap:0.5rem;
+      border:1px solid rgba(61,220,151,0.4);background:rgba(61,220,151,0.08);
+      color:#3DDC97;font-family:'Orbitron',monospace;font-size:0.7rem;
+      font-weight:700;letter-spacing:0.12em;padding:0.35rem 0.875rem;
+      border-radius:999px;margin-bottom:1.25rem;
+    }
+    .edr-hero-badge-dot {
+      width:6px;height:6px;border-radius:50%;background:#3DDC97;
+      box-shadow:0 0 8px #3DDC97;animation:pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+
+    /* What is EDR section */
+    .edr-explainer {
+      max-width:960px;margin:0 auto;padding:5rem 1.5rem;
+    }
+    .edr-flow {
+      display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3rem;
+    }
+    @media(max-width:768px){.edr-flow{grid-template-columns:1fr 1fr;}}
+    @media(max-width:480px){.edr-flow{grid-template-columns:1fr;}}
+    .edr-flow-step {
+      background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);
+      border-radius:12px;padding:1.5rem 1.25rem;text-align:center;
+      transition:border-color 0.2s,transform 0.2s;
+    }
+    .edr-flow-step:hover{border-color:rgba(61,220,151,0.3);transform:translateY(-2px);}
+    .edr-flow-icon {
+      width:48px;height:48px;border-radius:12px;margin:0 auto 1rem;
+      display:flex;align-items:center;justify-content:center;
+      background:rgba(61,220,151,0.1);border:1px solid rgba(61,220,151,0.2);
+    }
+    .edr-flow-num {
+      font-family:'Orbitron',monospace;font-size:0.65rem;color:rgba(61,220,151,0.5);
+      letter-spacing:0.1em;margin-bottom:0.5rem;
+    }
+    .edr-flow-title {font-family:'Syne',sans-serif;font-size:0.95rem;font-weight:700;color:#fff;margin-bottom:0.4rem;}
+    .edr-flow-desc {font-size:0.78rem;color:rgba(255,255,255,0.45);line-height:1.6;}
+
+    /* Product cards */
+    .edr-products {
+      max-width:1100px;margin:0 auto;padding:0 1.5rem 6rem;
+    }
+    .edr-cards {
+      display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem;
+    }
+    @media(max-width:900px){.edr-cards{grid-template-columns:1fr;max-width:480px;margin-left:auto;margin-right:auto;}}
+    .edr-card {
+      background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.08);
+      border-radius:16px;padding:2rem;display:flex;flex-direction:column;
+      transition:border-color 0.2s,transform 0.2s,box-shadow 0.2s;position:relative;overflow:hidden;
+    }
+    .edr-card:hover{transform:translateY(-4px);}
+    .edr-card-glow{position:absolute;top:-40px;left:50%;transform:translateX(-50%);width:200px;height:200px;border-radius:50%;opacity:0.08;filter:blur(40px);pointer-events:none;}
+    .edr-card-badge {
+      display:inline-flex;align-items:center;gap:0.4rem;
+      font-family:'Orbitron',monospace;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;
+      padding:0.3rem 0.75rem;border-radius:999px;border:1px solid;margin-bottom:1.5rem;
+    }
+    .edr-card-name {font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:#fff;line-height:1.2;margin-bottom:0.5rem;}
+    .edr-card-sub {font-size:0.8rem;color:rgba(255,255,255,0.4);margin-bottom:1rem;letter-spacing:0.04em;}
+    .edr-card-desc {font-size:0.85rem;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:1.5rem;flex:1;}
+    .edr-card-tags {display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.75rem;}
+    .edr-tag {
+      font-size:0.7rem;padding:0.2rem 0.6rem;border-radius:4px;
+      background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);
+      color:rgba(255,255,255,0.5);
+    }
+    .edr-card-btn {
+      display:inline-flex;align-items:center;justify-content:center;gap:0.4rem;
+      font-family:'Orbitron',monospace;font-size:0.75rem;font-weight:700;
+      padding:0.65rem 1.25rem;border-radius:8px;border:1px solid;
+      text-decoration:none;transition:opacity 0.2s,transform 0.15s;
+    }
+    .edr-card-btn:hover{opacity:0.85;transform:translateX(2px);}
+
+    /* Divider */
+    .section-divider{width:48px;height:3px;border-radius:2px;background:#3DDC97;margin:0 auto 1.25rem;}
+
+    /* Why EDR */
+    .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem;}
+    @media(max-width:768px){.why-grid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:480px){.why-grid{grid-template-columns:1fr;}}
+    .why-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:1.25rem;}
+    .why-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:rgba(61,220,151,0.1);border:1px solid rgba(61,220,151,0.2);margin-bottom:0.875rem;}
+    .why-title{font-size:0.875rem;font-weight:700;color:#fff;margin-bottom:0.4rem;}
+    .why-desc{font-size:0.775rem;color:rgba(255,255,255,0.45);line-height:1.6;}
+  </style>
+</head>
+<body>
+<div class="topbar">
+  <a href="/contact/">聯絡我們</a>
+  <a href="/blog/" class="topbar-highlight">最新資安報告 →</a>
+</div>
+<nav>
+  <a href="/" class="nav-logo"><img src="/brand_assets/logo.png" alt="Hexion Networks" /></a>
+  <div class="nav-links">
+    <div class="nav-item active">
+      <button>
+        產品
+        <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M8 11L3 6h10z"/></svg>
+      </button>
+      <div class="mega" style="width:560px;grid-template-columns:1fr 1fr">
+        <div class="mega-col" style="border-right:1px solid rgba(255,255,255,0.06)">
+          <div class="mega-label" style="color:var(--teal)">LIONIC NGFW 系列</div>
+          <a href="/products/pico-utm-100/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.15);color:var(--o)">IT</span>
+            Pico-NGFW 100
+          </a>
+          <a href="/products/dual-ark-utm-16/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(0,200,200,0.12);color:var(--teal)">IoT</span>
+            Dual Ark-NGFW 16
+          </a>
+          <a href="/products/tera-utm-12/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.12);color:#FF7A45">OT</span>
+            Tera-NGFW 12
+          </a>
+          <a href="/products/lionfilter-200/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(167,139,250,0.12);color:#A78BFA">NET</span>
+            Lionfilter 200
+          </a>
+        </div>
+        <div class="mega-col" style="background:rgba(61,220,151,0.025)">
+          <div class="mega-label" style="color:#3DDC97">EDR 端點偵測回應</div>
+          <a href="/products/endblock/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.15);color:#3DDC97">EDR</span>
+            Endblock
+          </a>
+          <a href="/products/teamt5/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.12);color:#3DDC97">TI</span>
+            TeamT5
+          </a>
+          <a href="/products/cycraft/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.1);color:#3DDC97">AI</span>
+            奧義智慧 CyCraft
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-item"><a href="/services/">服務</a></div>
+    <div class="nav-item" style="display:none"><a href="/research/">研究</a></div>
+    <div class="nav-item"><a href="/blog/">部落格</a></div>
+    <div class="nav-item"><a href="/about/">關於</a></div>
+  </div>
+  <div class="nav-cta">
+    <a href="https://line.me/R/ti/p/@278zhddk" target="_blank" class="nav-line-btn">LINE 諮詢</a>
+    <a href="/contact/" class="btn btn-orange" style="padding:0.5rem 1.125rem;font-size:0.8125rem;">取得報價 →</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="prod-hero">
+  <div class="prod-hero-glow" style="background:radial-gradient(ellipse 60% 50% at 60% 40%,rgba(61,220,151,0.1) 0%,transparent 70%)"></div>
+  <div class="prod-hero-grid" style="background-image:linear-gradient(rgba(61,220,151,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(61,220,151,0.03) 1px,transparent 1px);background-size:48px 48px"></div>
+  <div class="prod-hero-content reveal">
+    <div class="prod-breadcrumb"><a href="/">首頁</a> / <a href="/products/">產品</a> / EDR 端點防護</div>
+    <div class="edr-hero-badge">
+      <span class="edr-hero-badge-dot"></span>
+      ENDPOINT DETECTION & RESPONSE
+    </div>
+    <div class="prod-hero-title">EDR<br><span class="accent" style="color:#3DDC97">端點偵測回應</span></div>
+    <p class="prod-hero-tagline">當攻擊突破邊界，EDR 是最後一道防線。</p>
+    <p class="prod-hero-desc">傳統防毒軟體對無檔案攻擊、橫向移動、記憶體注入束手無策。EDR 持續監控端點行為，在威脅造成損害前即時偵測、隔離、回應——將攻擊影響範圍降至最低。Hexion Networks 代理三大 EDR 方案，依需求規模精準配置。</p>
+    <div style="display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap">
+      <a href="#products" class="btn" style="background:#3DDC97;color:#07070F;border:none;font-weight:700;padding:0.75rem 1.5rem;border-radius:8px;font-size:0.9rem;transition:opacity 0.2s;text-decoration:none" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">查看方案比較</a>
+      <a href="/contact/" class="btn btn-ghost">預約諮詢</a>
+    </div>
+  </div>
+  <div class="prod-hero-visual" style="display:flex;align-items:center;justify-content:center;">
+    <svg viewBox="0 0 400 340" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:85%;max-width:380px;">
+      <defs>
+        <radialGradient id="edrHeroGlow"><stop offset="0%" stop-color="#3DDC97" stop-opacity="0.15"/><stop offset="100%" stop-color="#3DDC97" stop-opacity="0"/></radialGradient>
+        <filter id="edrHeroBlur"><feGaussianBlur stdDeviation="12"/></filter>
+      </defs>
+      <ellipse cx="200" cy="170" rx="170" ry="140" fill="url(#edrHeroGlow)" filter="url(#edrHeroBlur)"/>
+      <!-- Shield -->
+      <path d="M200 55 L270 85 L270 155 Q270 210 200 240 Q130 210 130 155 L130 85 Z" fill="rgba(61,220,151,0.07)" stroke="rgba(61,220,151,0.4)" stroke-width="1.5"/>
+      <path d="M200 75 L252 99 L252 155 Q252 198 200 222 Q148 198 148 155 L148 99 Z" fill="rgba(61,220,151,0.04)" stroke="rgba(61,220,151,0.2)" stroke-width="1"/>
+      <!-- Checkmark -->
+      <path d="M175 155 L192 172 L225 138" stroke="#3DDC97" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Orbiting dots -->
+      <circle cx="200" cy="44" r="5" fill="#3DDC97" opacity="0.8"/>
+      <circle cx="284" cy="100" r="4" fill="#3DDC97" opacity="0.5"/>
+      <circle cx="116" cy="100" r="4" fill="#3DDC97" opacity="0.5"/>
+      <circle cx="200" cy="260" r="5" fill="#3DDC97" opacity="0.6"/>
+      <!-- Labels -->
+      <rect x="78" y="132" width="48" height="18" rx="4" fill="rgba(61,220,151,0.1)" stroke="rgba(61,220,151,0.3)" stroke-width="0.75"/>
+      <text x="102" y="144" text-anchor="middle" font-family="Inter" font-size="6.5" fill="rgba(61,220,151,0.9)" font-weight="600">DETECT</text>
+      <rect x="274" y="132" width="48" height="18" rx="4" fill="rgba(61,220,151,0.1)" stroke="rgba(61,220,151,0.3)" stroke-width="0.75"/>
+      <text x="298" y="144" text-anchor="middle" font-family="Inter" font-size="6.5" fill="rgba(61,220,151,0.9)" font-weight="600">RESPOND</text>
+      <rect x="174" y="268" width="52" height="18" rx="4" fill="rgba(61,220,151,0.1)" stroke="rgba(61,220,151,0.3)" stroke-width="0.75"/>
+      <text x="200" y="280" text-anchor="middle" font-family="Inter" font-size="6.5" fill="rgba(61,220,151,0.9)" font-weight="600">ISOLATE</text>
+      <!-- Threat nodes blocked -->
+      <circle cx="66" cy="200" r="10" fill="rgba(255,80,80,0.12)" stroke="rgba(255,80,80,0.4)" stroke-width="1"/>
+      <text x="66" y="204" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,80,80,0.8)">✕</text>
+      <circle cx="334" cy="200" r="10" fill="rgba(255,80,80,0.12)" stroke="rgba(255,80,80,0.4)" stroke-width="1"/>
+      <text x="334" y="204" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,80,80,0.8)">✕</text>
+      <circle cx="66" cy="140" r="10" fill="rgba(255,80,80,0.1)" stroke="rgba(255,80,80,0.3)" stroke-width="1"/>
+      <text x="66" y="144" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,80,80,0.7)">✕</text>
+      <!-- Lines from threats to shield edge -->
+      <line x1="76" y1="200" x2="128" y2="175" stroke="rgba(61,220,151,0.15)" stroke-width="0.75" stroke-dasharray="3 3"/>
+      <line x1="324" y1="200" x2="272" y2="175" stroke="rgba(61,220,151,0.15)" stroke-width="0.75" stroke-dasharray="3 3"/>
+    </svg>
+  </div>
+</div>
+
+<!-- What is EDR -->
+<section style="background:rgba(255,255,255,0.015);border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);">
+  <div class="edr-explainer">
+    <div style="text-align:center;margin-bottom:1rem;">
+      <div class="section-divider"></div>
+      <div class="sec-tag reveal" style="color:#3DDC97;border-color:rgba(61,220,151,0.3);display:inline-flex;">什麼是 EDR？</div>
+      <h2 class="sec-h reveal" style="margin-top:0.75rem;">端點上的持續監控與<br><span style="color:#3DDC97">即時威脅回應</span></h2>
+      <p class="sec-p reveal" style="max-width:640px;margin:0 auto;">EDR（Endpoint Detection & Response）在每一台裝置上持續收集行為遙測數據，透過 AI 與規則引擎分析異常，並在攻擊擴散前自動回應——這是傳統防毒、防火牆無法覆蓋的最後防線。</p>
+    </div>
+    <div class="edr-flow reveal">
+      <div class="edr-flow-step">
+        <div class="edr-flow-num">01</div>
+        <div class="edr-flow-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#3DDC97" stroke-width="1.5"/><path d="M12 7v5l3 3" stroke="#3DDC97" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="edr-flow-title">持續收集</div>
+        <div class="edr-flow-desc">即時擷取程序、網路連線、登錄機碼、檔案操作等行為遙測資料</div>
+      </div>
+      <div class="edr-flow-step">
+        <div class="edr-flow-num">02</div>
+        <div class="edr-flow-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" stroke="#3DDC97" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="edr-flow-title">威脅偵測</div>
+        <div class="edr-flow-desc">AI 行為分析搭配 MITRE ATT&CK 框架，識別無檔案攻擊、橫向移動等高級威脅</div>
+      </div>
+      <div class="edr-flow-step">
+        <div class="edr-flow-num">03</div>
+        <div class="edr-flow-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.5 5.5L20 9l-4 4 1 6-5-2.5L7 19l1-6-4-4 5.5-1.5z" stroke="#3DDC97" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="edr-flow-title">調查分析</div>
+        <div class="edr-flow-desc">自動重建完整攻擊鏈，提供根因分析，大幅縮短 MTTD / MTTR</div>
+      </div>
+      <div class="edr-flow-step">
+        <div class="edr-flow-num">04</div>
+        <div class="edr-flow-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4M12 3a9 9 0 1 0 0 18A9 9 0 0 0 12 3z" stroke="#3DDC97" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="edr-flow-title">即時回應</div>
+        <div class="edr-flow-desc">自動隔離受感染端點、終止惡意程序、清除威脅，阻止橫向擴散</div>
+      </div>
+    </div>
+
+    <!-- Why EDR -->
+    <div style="margin-top:4rem;text-align:center;">
+      <h3 style="font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;color:#fff;margin-bottom:0.5rem;">為什麼傳統防護不夠？</h3>
+      <p style="font-size:0.85rem;color:rgba(255,255,255,0.45);margin-bottom:0;">現代攻擊者已能繞過防火牆與防毒，EDR 填補了這個關鍵空白。</p>
+    </div>
+    <div class="why-grid reveal">
+      <div class="why-card">
+        <div class="why-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2L4 7v5c0 5.25 3.5 9.74 8 11 4.5-1.26 8-5.75 8-11V7z" stroke="#3DDC97" stroke-width="1.5"/></svg></div>
+        <div class="why-title">無檔案攻擊</div>
+        <div class="why-desc">惡意程式碼直接注入記憶體，不留磁碟痕跡，傳統防毒完全看不見</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M17 8l4 4-4 4M7 8l-4 4 4 4M14 4l-4 16" stroke="#3DDC97" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <div class="why-title">橫向移動</div>
+        <div class="why-desc">攻擊者潛伏數週，緩慢在網路中橫向擴散，邊界防護無法察覺</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#3DDC97" stroke-width="1.5"/><path d="M12 8v4M12 16h.01" stroke="#3DDC97" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <div class="why-title">供應鏈滲透</div>
+        <div class="why-desc">透過可信任軟體更新植入後門，簽名驗證無法偵測行為異常</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zM8 12h8M12 8v8" stroke="#3DDC97" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <div class="why-title">勒索軟體</div>
+        <div class="why-desc">加密行為在毫秒內展開，唯有行為偵測才能在擴散前阻斷</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z" stroke="#3DDC97" stroke-width="1.5"/><path d="M12 12h.01" stroke="#3DDC97" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="why-title">內部威脅</div>
+        <div class="why-desc">具備合法憑證的內部人員異常操作，唯有行為基線才能偵測</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2S9.6 4 8 6.4a13.6 13.6 0 0 0-5 0C1.4 4 .5 6.8.5 6.8A4.2 4.2 0 0 0 0 10c-.1 1.2.4 2.3 1.3 3.2C1.3 18.6 4 19.7 6.8 20c-.6.6-.6 1-.5 2V21" stroke="#3DDC97" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="why-title">APT 持續性威脅</div>
+        <div class="why-desc">國家級攻擊者長期潛伏，需要持續行為監控才能識別 TTP 模式</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Product Cards -->
+<section id="products">
+  <div class="edr-products">
+    <div style="text-align:center;padding-top:5rem;margin-bottom:0.5rem;">
+      <div class="section-divider"></div>
+      <div class="sec-tag reveal" style="color:#3DDC97;border-color:rgba(61,220,151,0.3);display:inline-flex;">三大 EDR 方案</div>
+      <h2 class="sec-h reveal" style="margin-top:0.75rem;">依需求選擇<span style="color:#3DDC97">最適合的方案</span></h2>
+      <p class="sec-p reveal" style="max-width:560px;margin:0 auto;">Hexion Networks 代理三家各具特色的 EDR 廠商，無論企業規模、預算、IT 成熟度，都有對應方案。</p>
+    </div>
+    <div class="edr-cards reveal">
+
+      <!-- Endblock -->
+      <div class="edr-card" style="border-color:rgba(61,220,151,0.15);" onmouseover="this.style.borderColor='rgba(61,220,151,0.4)';this.style.boxShadow='0 16px 48px rgba(61,220,151,0.08)'" onmouseout="this.style.borderColor='rgba(61,220,151,0.15)';this.style.boxShadow='none'">
+        <div class="edr-card-glow" style="background:#3DDC97;"></div>
+        <div class="edr-card-badge" style="color:#3DDC97;border-color:rgba(61,220,151,0.35);background:rgba(61,220,151,0.08);">
+          <span style="width:5px;height:5px;border-radius:50%;background:#3DDC97;box-shadow:0 0 6px #3DDC97;"></span>
+          EDR · 行為防護
+        </div>
+        <div class="edr-card-name">Endblock</div>
+        <div class="edr-card-sub">Enterprise EDR — 輕量高效</div>
+        <div class="edr-card-desc">超輕量代理（&lt;1% CPU）結合即時行為分析，不依賴病毒碼即可阻斷勒索軟體、無檔案攻擊與橫向移動。適合資源有限但需要企業級防護的中小企業。</div>
+        <div class="edr-card-tags">
+          <span class="edr-tag">勒索軟體阻斷</span>
+          <span class="edr-tag">無檔案攻擊防護</span>
+          <span class="edr-tag">輕量代理</span>
+          <span class="edr-tag">行為分析</span>
+          <span class="edr-tag">自動隔離</span>
+        </div>
+        <a href="/products/endblock/" class="edr-card-btn" style="color:#3DDC97;border-color:rgba(61,220,151,0.35);background:rgba(61,220,151,0.06);">
+          深入了解 Endblock
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M8.5 3.5L13 8l-4.5 4.5-.707-.707L11.086 8.5H3v-1h8.086L7.793 4.207z"/></svg>
+        </a>
+      </div>
+
+      <!-- TeamT5 -->
+      <div class="edr-card" style="border-color:rgba(61,220,151,0.1);" onmouseover="this.style.borderColor='rgba(100,200,255,0.4)';this.style.boxShadow='0 16px 48px rgba(100,200,255,0.06)'" onmouseout="this.style.borderColor='rgba(61,220,151,0.1)';this.style.boxShadow='none'">
+        <div class="edr-card-glow" style="background:#64C8FF;"></div>
+        <div class="edr-card-badge" style="color:#64C8FF;border-color:rgba(100,200,255,0.35);background:rgba(100,200,255,0.08);">
+          <span style="width:5px;height:5px;border-radius:50%;background:#64C8FF;box-shadow:0 0 6px #64C8FF;"></span>
+          TI · 威脅情報
+        </div>
+        <div class="edr-card-name">TeamT5</div>
+        <div class="edr-card-sub">ThreatVision — 亞太 APT 情報</div>
+        <div class="edr-card-desc">深耕亞太地區超過 10 年的威脅情報平台，專注追蹤針對台灣的 APT 攻擊者。提供即時 IOC 訂閱、攻擊者 TTP 分析與威脅獵捕服務，適合需要主動防禦的企業。</div>
+        <div class="edr-card-tags">
+          <span class="edr-tag">APT 追蹤</span>
+          <span class="edr-tag">IOC 情報訂閱</span>
+          <span class="edr-tag">威脅獵捕</span>
+          <span class="edr-tag">亞太威脅視角</span>
+          <span class="edr-tag">TTP 分析</span>
+        </div>
+        <a href="/products/teamt5/" class="edr-card-btn" style="color:#64C8FF;border-color:rgba(100,200,255,0.35);background:rgba(100,200,255,0.06);">
+          深入了解 TeamT5
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M8.5 3.5L13 8l-4.5 4.5-.707-.707L11.086 8.5H3v-1h8.086L7.793 4.207z"/></svg>
+        </a>
+      </div>
+
+      <!-- CyCraft -->
+      <div class="edr-card" style="border-color:rgba(167,139,250,0.1);" onmouseover="this.style.borderColor='rgba(167,139,250,0.4)';this.style.boxShadow='0 16px 48px rgba(167,139,250,0.06)'" onmouseout="this.style.borderColor='rgba(167,139,250,0.1)';this.style.boxShadow='none'">
+        <div class="edr-card-glow" style="background:#A78BFA;"></div>
+        <div class="edr-card-badge" style="color:#A78BFA;border-color:rgba(167,139,250,0.35);background:rgba(167,139,250,0.08);">
+          <span style="width:5px;height:5px;border-radius:50%;background:#A78BFA;box-shadow:0 0 6px #A78BFA;"></span>
+          AI · 自動化調查
+        </div>
+        <div class="edr-card-name">奧義智慧</div>
+        <div class="edr-card-sub">CyCraft AIR — AI 驅動資安</div>
+        <div class="edr-card-desc">以 AI 自動化資安調查，將事件回應時間縮短 80%。提供全端點可視性、完整攻擊鏈重建與自動化鑑識報告，適合 SOC 團隊或需要 MDR 服務的企業。</div>
+        <div class="edr-card-tags">
+          <span class="edr-tag">AI 自動調查</span>
+          <span class="edr-tag">攻擊鏈重建</span>
+          <span class="edr-tag">MDR 服務</span>
+          <span class="edr-tag">MITRE ATT&CK</span>
+          <span class="edr-tag">自動鑑識報告</span>
+        </div>
+        <a href="/products/cycraft/" class="edr-card-btn" style="color:#A78BFA;border-color:rgba(167,139,250,0.35);background:rgba(167,139,250,0.06);">
+          深入了解 CyCraft
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M8.5 3.5L13 8l-4.5 4.5-.707-.707L11.086 8.5H3v-1h8.086L7.793 4.207z"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="border-top:1px solid rgba(255,255,255,0.06);padding:5rem 1.5rem;text-align:center;">
+  <div style="max-width:600px;margin:0 auto;" class="reveal">
+    <div class="section-divider"></div>
+    <h2 class="sec-h" style="margin-top:0.75rem;">不確定哪個方案<span style="color:#3DDC97">最適合你？</span></h2>
+    <p class="sec-p" style="max-width:480px;margin:0 auto 2rem;">我們的資安顧問會評估你的環境規模、現有工具與威脅曝險，推薦最適合的 EDR 組合方案。</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="/contact/" class="btn" style="background:#3DDC97;color:#07070F;border:none;font-weight:700;padding:0.75rem 1.75rem;border-radius:8px;font-size:0.9rem;transition:opacity 0.2s;text-decoration:none" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">預約免費顧問諮詢</a>
+      <a href="https://line.me/R/ti/p/@278zhddk" target="_blank" class="btn btn-ghost">LINE 直接諮詢</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="/brand_assets/logo.png" alt="Hexion Networks" style="height:28px;margin-bottom:0.75rem;" />
+      <p>整合商業策略、品牌顧問、<br/>資訊科技與資安的全方位服務</p>
+      <a href="https://line.me/R/ti/p/@278zhddk" target="_blank" class="footer-line-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        LINE @278zhddk
+      </a>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h4>產品</h4>
+        <a href="/products/pico-utm-100/">Pico-NGFW 100</a>
+        <a href="/products/dual-ark-utm-16/">Dual Ark-NGFW 16</a>
+        <a href="/products/tera-utm-12/">Tera-NGFW 12</a>
+        <a href="/products/lionfilter-200/">Lionfilter 200</a>
+        <a href="/products/edr/">EDR 方案</a>
+      </div>
+      <div class="footer-col">
+        <h4>服務</h4>
+        <a href="/services/">商業策略顧問</a>
+        <a href="/services/">品牌顧問</a>
+        <a href="/services/">資安評估</a>
+        <a href="/services/">數位轉型</a>
+      </div>
+      <div class="footer-col">
+        <h4>資源</h4>
+        <a href="/blog/">部落格</a>
+        <a href="/about/">關於我們</a>
+        <a href="/contact/">聯絡我們</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Hexion Networks. All rights reserved.</span>
+    <span>LIONIC 授權經銷商 · 台灣資安整合服務</span>
+  </div>
+</footer>
+
+<script>
+// Reveal on scroll
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); revealObserver.unobserve(e.target); } });
+}, { threshold: 0.1 });
+revealEls.forEach(el => revealObserver.observe(el));
+
+// Nav dropdown
+document.querySelectorAll('.nav-item > button').forEach(btn => {
+  btn.addEventListener('click', e => {
+    const item = btn.closest('.nav-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+    e.stopPropagation();
+  });
+});
+document.addEventListener('click', () => document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('open')));
+</script>
+</body>
+</html>
