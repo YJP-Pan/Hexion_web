@@ -13,7 +13,7 @@
   <meta property="og:url" content="https://hexionnetworks.com/blog/zero-trust-implementation/" />
   <link rel="icon" href="/brand_assets/favicon.png" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/style.css" />
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"零信任架構實作指南：台灣企業如何分階段導入 Zero Trust","datePublished":"2025-12-10","dateModified":"2025-12-10","author":{"@type":"Organization","name":"Hexion Networks"},"publisher":{"@type":"Organization","name":"Hexion Networks","url":"https://hexionnetworks.com"},"url":"https://hexionnetworks.com/blog/zero-trust-implementation/"}</script>
 <!-- Google tag (gtag.js) -->
@@ -96,7 +96,7 @@
     </div>
     <div class="reveal">
       <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(250,88,34,0.1);border:1px solid rgba(250,88,34,0.3);border-radius:4px;padding:0.25rem 0.75rem;font-family:'Orbitron',monospace;font-size:0.65rem;color:#FA5822;letter-spacing:0.1em;margin-bottom:1.25rem">技術指南</div>
-      <h1 style="font-family:'Syne',sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.025em;line-height:1.15;margin-bottom:1.25rem">零信任架構實作指南：台灣企業如何分階段導入 Zero Trust</h1>
+      <h1 style="font-family:'Inter', sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.025em;line-height:1.15;margin-bottom:1.25rem">零信任架構實作指南：台灣企業如何分階段導入 Zero Trust</h1>
       <p style="color:var(--silver);font-size:1.0625rem;line-height:1.7;margin-bottom:2rem">「永不信任，持續驗證」不只是口號，更是現代企業資安的設計哲學。本指南提供台灣企業從評估到全面實施的完整零信任導入路徑，兼顧效益與可行性。</p>
       <div style="display:flex;align-items:center;gap:1.5rem;color:var(--silver);font-size:0.8125rem;border-top:1px solid var(--ink-4);padding-top:1.5rem;flex-wrap:wrap">
         <span>Hexion Networks 資安研究團隊</span>
@@ -161,7 +161,7 @@
   </div>
 
   <div class="reveal" style="margin-top:2.5rem">
-    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)">零信任的<span style="color:#FA5822">核心原則</span>與 NIST 標準</h2>
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)">零信任的<span style="color:#FA5822">核心原則</span>與 NIST 標準</h2>
     <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
       <p>根據 NIST SP 800-207 標準，零信任架構建立在三個核心租戶之上：其一，所有資料來源和計算服務皆視為資源，包含個人設備和雲端服務；其二，所有通訊皆需保護，無論網路位置（內網和外網的請求同等對待）；其三，對每個資源的存取在每個連線階段動態授予，且僅授予最小必要權限。</p>
       <p style="margin-top:1rem">美國 CISA 則以五大柱面（Pillars）描述零信任的實施範圍：身份（Identity）、設備（Device）、網路（Network）、應用程式（Application/Workload）、資料（Data）。每個柱面都有從「傳統」到「進階」到「最佳化」的成熟度等級，為企業提供循序漸進的實施路徑。</p>
@@ -169,12 +169,12 @@
   </div>
 
   <div class="reveal" style="margin-top:2.5rem">
-    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)">第一階段：<span style="color:#FA5822">身份識別強化</span>（1–3 個月）</h2>
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)">第一階段：<span style="color:#FA5822">身份識別強化</span>（1–3 個月）</h2>
     <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
       <p>零信任的起點永遠是身份。在台灣企業環境中，身份識別強化通常涉及以下工作：整合企業 Active Directory 與雲端身份平台（如 Microsoft Entra ID 或 Okta）、強制啟用多因素驗證（MFA），以及建立特權帳號管理（PAM）機制。</p>
       <p style="margin-top:1rem">許多台灣企業在這個階段面臨遺留應用程式的 MFA 整合問題。對於無法原生支援現代身份驗證協定的系統，可以透過 SAML 或 OIDC 代理閘道實現 MFA 保護。FIDO2 硬體金鑰是目前最能抵抗釣魚攻擊的 MFA 方案，建議優先用於特權帳號和系統管理員。此階段應完成特權帳號清查，識別所有高權限帳號並制定管控策略，包括即時（Just-in-Time）存取授予和 Session 錄影稽核。</p>
       <div style="background:rgba(0,200,200,0.06);border-left:3px solid #00C8C8;border-radius:0 8px 8px 0;padding:1rem 1.25rem;margin-top:1.25rem">
-        <div style="font-family:'Syne',sans-serif;font-size:0.875rem;font-weight:700;color:#00C8C8;margin-bottom:0.5rem">第一階段里程碑</div>
+        <div style="font-family:'Inter', sans-serif;font-size:0.875rem;font-weight:700;color:#00C8C8;margin-bottom:0.5rem">第一階段里程碑</div>
         <ul style="font-size:0.9375rem;color:var(--fog);list-style:disc;padding-left:1.1rem;line-height:1.9">
           <li>所有特權帳號強制啟用 FIDO2 或 Authenticator App MFA</li>
           <li>完成身份目錄統一管理，清理逾期與孤立帳號</li>
@@ -186,7 +186,7 @@
   </div>
 
   <div class="reveal" style="margin-top:2.5rem">
-    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)">第二階段：<span style="color:#FA5822">設備安全驗證</span>與端點管理（3–6 個月）</h2>
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)">第二階段：<span style="color:#FA5822">設備安全驗證</span>與端點管理（3–6 個月）</h2>
     <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
       <p>零信任不僅驗證「誰」在請求存取，也驗證「從哪個設備」請求存取。未管理的或不合規的設備，即使有合法的使用者憑證，也不應被允許存取敏感資源。這個階段的核心是建立設備清查系統，了解哪些設備正在存取企業資源，並評估每台設備的安全合規狀態：作業系統版本、安全補丁狀況、防毒軟體安裝、磁碟加密狀態、越獄狀態等。</p>
       <p style="margin-top:1rem">行動裝置管理（MDM）和端點偵測回應（EDR）是此階段的核心工具。對於 BYOD 政策，可透過容器化技術（如 Microsoft Intune MAM）或 VDI 虛擬桌面基礎架構實現工作與個人資料的隔離。網路存取控制（NAC）解決方案則能確保只有符合合規狀態的設備才能連接企業網路。</p>
@@ -194,7 +194,7 @@
   </div>
 
   <div class="reveal" style="margin-top:2.5rem">
-    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)">第三階段：<span style="color:#FA5822">網路微分段</span>與 ZTNA 部署（6–12 個月）</h2>
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)">第三階段：<span style="color:#FA5822">網路微分段</span>與 ZTNA 部署（6–12 個月）</h2>
     <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
       <p>傳統的大型平坦網路（Flat Network）是橫向移動攻擊（Lateral Movement）的溫床。微分段（Micro-segmentation）將網路拆分為細小的安全區域，每個區域之間的通訊都受到嚴格管控。即使攻擊者突破了某個節點，也無法自由橫向擴散，能有效遏制勒索軟體和 APT 的橫向傳播。</p>
       <p style="margin-top:1rem">ZTNA 解決方案正逐漸取代傳統 VPN，成為遠端存取的新標準。ZTNA 的核心優勢在於它不會將用戶直接放入企業網路，而是代理特定應用程式的存取請求，大幅縮小攻擊面。對於台灣擁有 IT/OT 混合環境的製造商，網路分段更是重中之重，應明確區隔工廠控制網路（OT）和企業辦公網路（IT），並對所有跨段通訊實施深度封包檢測。</p>
@@ -202,7 +202,7 @@
   </div>
 
   <div class="reveal" style="margin-top:2.5rem">
-    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)">第四階段：<span style="color:#FA5822">持續監控</span>與自動化回應（12 個月後）</h2>
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)">第四階段：<span style="color:#FA5822">持續監控</span>與自動化回應（12 個月後）</h2>
     <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
       <p>零信任不是一次性的部署，而是持續運作的安全能力。這個階段的核心是建立完整的可觀測性（Observability）基礎設施，包括統一的日誌收集（Log Management）、SIEM 平台整合，以及使用者和實體行為分析（UEBA）能力。UEBA 能夠建立使用者和實體的行為基線，當偵測到異常時（如非尋常時間的大量資料存取、異常的登入地點）自動觸發警報或降低信任等級。</p>
       <p style="margin-top:1rem">對於資源有限的台灣中小企業，MDR（受管偵測與回應）服務是可行的替代方案，將持續監控和初步事件回應外包給專業資安服務供應商，在不大幅增加內部人力的前提下實現 24/7 安全監控覆蓋。SOAR（安全協調、自動化與回應）能力的建立能顯著縮短從威脅偵測到隔離回應的平均時間（MTTC）。</p>
@@ -210,7 +210,7 @@
   </div>
 
   <div class="reveal" style="margin-top:2.5rem;background:var(--ink-2);border:1px solid var(--ink-4);border-radius:12px;padding:1.75rem">
-    <div style="font-family:'Syne',sans-serif;font-size:1.125rem;font-weight:700;margin-bottom:1rem">零信任成熟度評估：台灣企業常見現況</div>
+    <div style="font-family:'Inter', sans-serif;font-size:1.125rem;font-weight:700;margin-bottom:1rem">零信任成熟度評估：台灣企業常見現況</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
       <div style="background:rgba(250,88,34,0.06);border:1px solid rgba(250,88,34,0.2);border-radius:8px;padding:1rem">
         <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#FA5822;margin-bottom:0.5rem">LEVEL 1 — 起步</div>
@@ -232,7 +232,7 @@
   </div>
 
   <div class="reveal" style="margin-top:2.5rem">
-    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)">常見<span style="color:#FA5822">導入誤區</span>與應對策略</h2>
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)">常見<span style="color:#FA5822">導入誤區</span>與應對策略</h2>
     <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
       <p>許多台灣企業在零信任導入過程中容易陷入以下誤區：</p>
       <ul style="margin-top:1rem;list-style:none;padding:0;display:flex;flex-direction:column;gap:0.875rem">
@@ -258,7 +258,7 @@
   </div>
 
   <div class="reveal" style="margin-top:3rem;background:linear-gradient(135deg,rgba(250,88,34,0.08),rgba(0,200,200,0.04));border:1px solid rgba(250,88,34,0.2);border-radius:12px;padding:2rem">
-    <div style="font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:0.75rem">需要專業資安建議？</div>
+    <div style="font-family:'Inter', sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:0.75rem">需要專業資安建議？</div>
     <p style="color:var(--silver);margin-bottom:1.5rem">立即聯絡 Hexion Networks，獲取針對貴公司量身訂製的資安評估與解決方案。</p>
     <div style="display:flex;gap:1rem;flex-wrap:wrap">
       <a href="/contact/" class="btn btn-orange">免費諮詢</a>
