@@ -4,7 +4,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const url = process.argv[2] || 'http://localhost:3000';
+const url = process.argv[2] || 'http://localhost:5501';
 const label = process.argv[3] || '';
 
 const screenshotDir = path.join(__dirname, 'temporary screenshots');

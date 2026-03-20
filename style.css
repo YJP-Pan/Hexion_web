@@ -432,6 +432,57 @@ nav {
 @keyframes prodScanAnim {
   0%{left:-60%;opacity:0} 20%{opacity:1} 80%{opacity:1} 100%{left:160%;opacity:0}
 }
+.prod-device-img {
+  position: relative; height: 140px; margin-bottom: 1rem;
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
+}
+.prod-device-img img {
+  max-width: 100%; max-height: 100%; object-fit: contain;
+  filter: drop-shadow(0 2px 12px rgba(0,0,0,0.4));
+  position: relative; z-index: 1;
+}
+.prod-img-glow {
+  position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 55%, var(--gc,#FA5822) 0%, transparent 70%);
+  opacity: 0.12; animation: prodGlowPulse 3s ease-in-out infinite;
+}
+.prod-img-scan {
+  position: absolute; left: 0; right: 0; height: 1.5px; z-index: 2;
+  background: linear-gradient(90deg, transparent, var(--gc,#FA5822), transparent);
+  opacity: 0.7; pointer-events: none;
+  animation: prodImgScan 3.5s ease-in-out infinite;
+}
+.prod-img-corner {
+  position: absolute; width: 10px; height: 10px;
+  border-color: var(--gc,#FA5822); border-style: solid; opacity: 0.5;
+  pointer-events: none; z-index: 2;
+  animation: prodCornerBlink 2.5s ease-in-out infinite;
+}
+.prod-img-corner.tl { top:2px; left:2px; border-width:1.5px 0 0 1.5px; }
+.prod-img-corner.tr { top:2px; right:2px; border-width:1.5px 1.5px 0 0; animation-delay:.6s; }
+.prod-img-corner.bl { bottom:2px; left:2px; border-width:0 0 1.5px 1.5px; animation-delay:1.2s; }
+.prod-img-corner.br { bottom:2px; right:2px; border-width:0 1.5px 1.5px 0; animation-delay:1.8s; }
+@keyframes prodGlowPulse {
+  0%,100% { opacity:0.10; transform:scale(1); }
+  50% { opacity:0.22; transform:scale(1.05); }
+}
+@keyframes prodImgScan {
+  0% { top:5%; opacity:0; }
+  8% { opacity:0.7; }
+  92% { opacity:0.7; }
+  100% { top:95%; opacity:0; }
+}
+@keyframes prodCornerBlink {
+  0%,100% { opacity:0.4; }
+  50% { opacity:0.9; }
+}
+.prod-card:nth-child(2) .prod-img-scan { animation-delay:0.9s; }
+.prod-card:nth-child(3) .prod-img-scan { animation-delay:1.8s; }
+.prod-card:nth-child(4) .prod-img-scan { animation-delay:2.7s; }
+/* per-product image size tweaks */
+[data-prod="pico"] .prod-device-img img { height:92%; width:auto; max-width:none; }
+[data-prod="ark"]  .prod-device-img img { height:52%; width:auto; max-width:100%; }
+[data-prod="lion"] .prod-device-img img { height:65%; width:auto; max-width:100%; }
 .prod-badge-top {
   display: inline-block; padding: 0.15rem 0.6rem;
   font-size: 0.5625rem; font-weight: 700; letter-spacing: 0.1em;
