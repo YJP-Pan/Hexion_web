@@ -97,7 +97,7 @@
     <div class="reveal">
       <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(250,88,34,0.1);border:1px solid rgba(250,88,34,0.3);border-radius:4px;padding:0.25rem 0.75rem;font-family:'Orbitron',monospace;font-size:0.65rem;color:#FA5822;letter-spacing:0.1em;margin-bottom:1.25rem">產品解析</div>
       <h1 style="font-family:'Syne',sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.025em;line-height:1.15;margin-bottom:1.25rem">深度封包檢測（DPI）技術解析：如何辨識隱藏在流量中的威脅</h1>
-      <p style="color:var(--silver);font-size:1.0625rem;line-height:1.7;margin-bottom:2rem">DPI 是現代 NGFW 的核心技術，但它究竟如何在高速流量中精準辨識威脅？本文深入解析 LIONIC DPI 引擎的運作原理與企業部署建議。</p>
+      <p style="color:var(--silver);font-size:1.0625rem;line-height:1.7;margin-bottom:2rem">DPI 是現代 NGFW 的核心技術，但它究竟如何在高速流量中精準辨識威脅？本文深入解析 DPI 技術的運作原理與企業部署建議。</p>
       <div style="display:flex;align-items:center;gap:1.5rem;color:var(--silver);font-size:0.8125rem;border-top:1px solid var(--ink-4);padding-top:1.5rem">
         <span>Hexion Networks 資安研究團隊</span><span>·</span><span>2025 年 10 月 20 日</span><span>·</span><span>7 分鐘閱讀</span>
       </div>
@@ -203,7 +203,7 @@
       <line x1="540" y1="169" x2="580" y2="181" stroke="#FA5822" stroke-width="1.5" opacity="0.8"/>
 
       <!-- Bottom label -->
-      <text x="400" y="320" text-anchor="middle" font-family="'Orbitron',monospace" font-size="10" fill="#2E2E46" letter-spacing="2">LIONIC DPI — 1400+ PROTOCOL SIGNATURES</text>
+      <text x="400" y="320" text-anchor="middle" font-family="'Orbitron',monospace" font-size="10" fill="#2E2E46" letter-spacing="2">ENTERPRISE DPI — 1400+ PROTOCOL SIGNATURES</text>
     </svg>
   </div>
 
@@ -222,7 +222,7 @@
     <div style="display:flex;flex-direction:column;gap:1rem">
       <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1.25rem">
         <div style="font-weight:600;color:var(--white);margin-bottom:0.5rem">1. 特徵比對（Signature-Based Matching）</div>
-        <p style="color:var(--silver);line-height:1.75;font-size:0.9375rem">透過預先建立的協議特徵資料庫，識別已知的應用程式與惡意軟體。LIONIC DPI 引擎維護超過 1,400 種協議特徵，涵蓋從 HTTP、HTTPS、QUIC 到 BitTorrent、Telnet、RDP 等各類應用。特徵比對速度最快，但需要持續更新才能應對新型威脅。</p>
+        <p style="color:var(--silver);line-height:1.75;font-size:0.9375rem">透過預先建立的協議特徵資料庫，識別已知的應用程式與惡意軟體。企業級 DPI 引擎通常維護超過 1,400 種協議特徵，涵蓋從 HTTP、HTTPS、QUIC 到 BitTorrent、Telnet、RDP 等各類應用。特徵比對速度最快，但需要持續更新才能應對新型威脅。</p>
       </div>
       <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1.25rem">
         <div style="font-weight:600;color:var(--white);margin-bottom:0.5rem">2. 行為分析（Behavioral Analysis）</div>
@@ -237,8 +237,8 @@
 
   <!-- Section 3 -->
   <div class="reveal" style="margin-bottom:2.5rem">
-    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">LIONIC DPI 引擎優勢：1400+ 協議、硬體加速、低延遲</h2>
-    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">Hexion Networks 的 Pico-NGFW 與 Tera-NGFW 系列採用台灣 LIONIC 公司開發的 DPI 引擎，在台灣資安市場中佔有獨特優勢：</p>
+    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">企業級 DPI 引擎優勢：1400+ 協議、硬體加速、低延遲</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">優秀的企業級 DPI 引擎通常具備以下核心優勢：</p>
     <ul style="color:var(--silver);line-height:1.8;padding-left:1.5rem;margin-bottom:1rem">
       <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">1,400+ 種協議識別：</strong>涵蓋主流商業應用、工業協議（Modbus、DNP3）、即時通訊、P2P、串流媒體等，並持續更新以因應新興服務。</li>
       <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">硬體加速架構：</strong>利用 FPGA 與多核心 ASIC 進行封包解析，避免純軟體方案在高流量下的 CPU 瓶頸，確保防護啟用後吞吐量不大幅下降。</li>
@@ -258,13 +258,13 @@
       <li style="margin-bottom:0.5rem">隱私考量：金融、醫療等敏感流量需排除在解密範圍外</li>
       <li style="margin-bottom:0.5rem">TLS 1.3 挑戰：完美前向保密（PFS）使部分解密方法失效</li>
     </ul>
-    <p style="color:var(--silver);line-height:1.8">Hexion 建議企業採取「選擇性解密」策略：對高風險分類（雲端儲存、匿名代理、未知網站）啟用解密，對已知安全的金融機構、醫療系統排除解密，在安全性與效能/隱私之間取得平衡。</p>
+    <p style="color:var(--silver);line-height:1.8">建議企業採取「選擇性解密」策略：對高風險分類（雲端儲存、匿名代理、未知網站）啟用解密，對已知安全的金融機構、醫療系統排除解密，在安全性與效能/隱私之間取得平衡。</p>
   </div>
 
   <!-- Section 5 -->
   <div class="reveal" style="margin-bottom:2.5rem">
     <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">企業部署 DPI 的實務建議</h2>
-    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">對於準備導入或升級 DPI 能力的企業，Hexion 資安顧問團隊根據台灣中大型企業的部署經驗，整理以下實務建議：</p>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">對於準備導入或升級 DPI 能力的企業，以下是根據台灣中大型企業部署經驗整理的實務建議：</p>
     <ol style="color:var(--silver);line-height:1.8;padding-left:1.5rem">
       <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">先評估流量基線：</strong>在啟用 DPI 前，先以監控模式（Monitor Mode）運行 2-4 週，了解企業正常流量的應用程式分佈，避免誤封關鍵業務流量。</li>
       <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">分階段啟用功能：</strong>建議先啟用應用識別，再逐步開啟 IPS、惡意軟體掃描，最後才啟用 SSL 解密，讓 IT 團隊有時間處理每個階段的誤報（False Positive）。</li>
@@ -281,7 +281,7 @@
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem">
       <div style="background:var(--ink-2);border-radius:8px;padding:1rem">
         <div style="font-family:'Orbitron',monospace;font-size:1.25rem;color:#FA5822;font-weight:700">1,400+</div>
-        <div style="color:var(--silver);font-size:0.875rem;margin-top:0.25rem">協議識別種類（LIONIC 引擎）</div>
+        <div style="color:var(--silver);font-size:0.875rem;margin-top:0.25rem">協議識別種類（企業級引擎）</div>
       </div>
       <div style="background:var(--ink-2);border-radius:8px;padding:1rem">
         <div style="font-family:'Orbitron',monospace;font-size:1.25rem;color:#FA5822;font-weight:700">&lt;1ms</div>
@@ -303,7 +303,7 @@
     <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">深度封包檢測</span>
     <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">DPI</span>
     <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">NGFW</span>
-    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">LIONIC</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">DPI</span>
     <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">SSL Inspection</span>
     <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">Layer 7</span>
     <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">IPS</span>
@@ -312,7 +312,7 @@
   <!-- CTA -->
   <div class="reveal" style="margin-top:3rem;background:linear-gradient(135deg,rgba(250,88,34,0.08),rgba(0,200,200,0.04));border:1px solid rgba(250,88,34,0.2);border-radius:12px;padding:2rem">
     <div style="font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:0.75rem">需要專業資安建議？</div>
-    <p style="color:var(--silver);margin-bottom:1.5rem">立即聯絡 Hexion Networks，獲取針對貴公司量身訂製的資安評估與解決方案。</p>
+    <p style="color:var(--silver);margin-bottom:1.5rem">如需針對貴公司量身訂製的 DPI 架構建議，歡迎聯絡專業資安顧問進行評估。</p>
     <div style="display:flex;gap:1rem;flex-wrap:wrap">
       <a href="/contact/" class="btn btn-orange">免費諮詢</a>
       

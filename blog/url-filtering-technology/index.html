@@ -213,7 +213,7 @@
       <div style="background:var(--ink-2);border:1px solid rgba(250,88,34,0.3);border-radius:8px;padding:1.25rem">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;flex-wrap:wrap;gap:0.5rem">
           <div style="font-weight:600;color:var(--white)">NGFW 整合 URL 過濾</div>
-          <span style="background:rgba(250,88,34,0.1);border:1px solid rgba(250,88,34,0.3);border-radius:4px;padding:0.15rem 0.5rem;font-size:0.75rem;color:#FA5822">Hexion 推薦方案</span>
+          
         </div>
         <p style="color:var(--silver);line-height:1.75;font-size:0.9375rem;margin-bottom:0.75rem">將 URL 過濾整合在 NGFW 引擎中，結合 DPI 的應用識別能力，在網關處對所有流量進行統一的 URL 分類與策略執行。無需額外設備或端點配置，與 IPS、惡意軟體防護、SSL 解密緊密整合，提供最全面的防護。</p>
         <div style="display:flex;gap:1rem;flex-wrap:wrap">
@@ -228,9 +228,9 @@
 
   <!-- Section 3 -->
   <div class="reveal" style="margin-bottom:2.5rem">
-    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">URL 分類資料庫的重要性：Lionfilter 億級 DB</h2>
+    <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">URL 分類資料庫的重要性：億級資料庫</h2>
     <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">URL 過濾系統的核心競爭力在於分類資料庫的品質與規模。一個資料庫如果只涵蓋 1,000 萬個 URL，面對每天新增的數百萬個新域名（包括惡意域名），其防護效果將大打折扣。</p>
-    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">LIONIC 的 Lionfilter URL 資料庫具備以下優勢：</p>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">企業級 URL 過濾資料庫通常具備以下優勢：</p>
     <ul style="color:var(--silver);line-height:1.8;padding-left:1.5rem;margin-bottom:1rem">
       <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">億級 URL 收錄量：</strong>涵蓋超過 10 億條 URL 記錄，是市場上規模最大的分類資料庫之一，確保即使是長尾的小眾網站也有分類記錄</li>
       <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">200+ 精細分類：</strong>遠超傳統的 50-80 種分類，能精確區分「社群媒體-Facebook」與「社群媒體-LinkedIn」等細分類別，讓企業能制定更細緻的政策</li>
@@ -244,7 +244,7 @@
     <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">HTTPS 解密的必要性與挑戰</h2>
     <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">若不進行 SSL/TLS 解密，URL 過濾在 HTTPS 流量上只能看到主機名稱（SNI 欄位），無法看到完整的 URL 路徑。這意味著：攻擊者只需使用 HTTPS，就能讓 URL 過濾僅能做到域名層級的控制，而無法阻擋來自合法域名下特定頁面的威脅。</p>
     <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">例如，Google Drive（drive.google.com）是業務工具，不應整個封鎖，但其中可能有人分享惡意 PDF。若無 HTTPS 解密，防火牆無法阻擋對特定惡意檔案 URL 的存取。</p>
-    <p style="color:var(--silver);line-height:1.8">但 HTTPS 解密帶來隱私與法規考量。台灣《個人資料保護法》要求企業對員工個資的處理有明確法律依據。Hexion 建議企業在部署前：制定並公告員工 BYOD 及 IT 使用政策、建立解密範圍白名單排除金融、健康等敏感服務、確保解密後的流量日誌受嚴格存取控制保護。</p>
+    <p style="color:var(--silver);line-height:1.8">但 HTTPS 解密帶來隱私與法規考量。台灣《個人資料保護法》要求企業對員工個資的處理有明確法律依據。建議企業在部署前：制定並公告員工 BYOD 及 IT 使用政策、建立解密範圍白名單排除金融、健康等敏感服務、確保解密後的流量日誌受嚴格存取控制保護。</p>
   </div>
 
   <!-- Section 5 -->
@@ -286,34 +286,10 @@
     <p style="color:var(--silver);line-height:1.8">日誌保存期限建議至少 6 個月（線上），1 年（歸檔）。金融業通常需保存 5-7 年。應將 URL 過濾日誌整合至 SIEM，設定告警規則偵測大量存取封鎖、異常的外部資料傳輸等行為。</p>
   </div>
 
-  <!-- Section 7 - Info Box: Lionfilter Categories -->
-  <div class="reveal" style="margin-bottom:2.5rem;background:rgba(0,200,200,0.05);border:1px solid rgba(0,200,200,0.2);border-radius:12px;padding:2rem">
-    <div style="font-family:'Orbitron',monospace;font-size:0.7rem;letter-spacing:0.1em;color:var(--teal);margin-bottom:1rem">LIONFILTER 分類精選</div>
-    <div style="font-family:'Syne',sans-serif;font-size:1.125rem;font-weight:700;margin-bottom:1.25rem">200+ 類別中的關鍵安全分類</div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0.75rem">
-      <div style="background:var(--ink-2);border-radius:6px;padding:0.75rem">
-        <div style="color:#FA5822;font-size:0.75rem;font-weight:600;margin-bottom:0.25rem">威脅類</div>
-        <p style="color:var(--silver);font-size:0.8rem;line-height:1.6">惡意軟體下載、釣魚網站、C2 通訊、殭屍網路、間諜軟體、勒索軟體基礎設施</p>
-      </div>
-      <div style="background:var(--ink-2);border-radius:6px;padding:0.75rem">
-        <div style="color:#FA5822;font-size:0.75rem;font-weight:600;margin-bottom:0.25rem">迴避類</div>
-        <p style="color:var(--silver);font-size:0.8rem;line-height:1.6">匿名代理、Tor 出口節點、VPN 服務、IP 到 URL 直連、新域名（&lt;30天）</p>
-      </div>
-      <div style="background:var(--ink-2);border-radius:6px;padding:0.75rem">
-        <div style="color:#8B8BA8;font-size:0.75rem;font-weight:600;margin-bottom:0.25rem">生產力類</div>
-        <p style="color:var(--silver);font-size:0.8rem;line-height:1.6">社群媒體細分（FB/IG/X/Threads）、影音串流、遊戲、購物、拍賣網站</p>
-      </div>
-      <div style="background:var(--ink-2);border-radius:6px;padding:0.75rem">
-        <div style="color:#00C8C8;font-size:0.75rem;font-weight:600;margin-bottom:0.25rem">業務類</div>
-        <p style="color:var(--silver);font-size:0.8rem;line-height:1.6">金融服務、政府機關、教育機構、醫療衛生、B2B SaaS、CDN 服務</p>
-      </div>
-    </div>
-  </div>
-
   <!-- Tags -->
   <div class="reveal" style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--ink-4);display:flex;gap:0.5rem;flex-wrap:wrap">
     <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">URL 過濾</span>
-    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">Lionfilter</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">URL Filter</span>
     <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">Web 安全</span>
     <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">HTTPS 解密</span>
     <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">DNS 過濾</span>
@@ -323,7 +299,7 @@
   <!-- CTA -->
   <div class="reveal" style="margin-top:3rem;background:linear-gradient(135deg,rgba(250,88,34,0.08),rgba(0,200,200,0.04));border:1px solid rgba(250,88,34,0.2);border-radius:12px;padding:2rem">
     <div style="font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:0.75rem">需要專業資安建議？</div>
-    <p style="color:var(--silver);margin-bottom:1.5rem">立即聯絡 Hexion Networks，獲取針對貴公司量身訂製的資安評估與解決方案。</p>
+    <p style="color:var(--silver);margin-bottom:1.5rem">如需針對貴公司量身訂製的 Web 安全評估，歡迎聯絡專業資安顧問。</p>
     <div style="display:flex;gap:1rem;flex-wrap:wrap">
       <a href="/contact/" class="btn btn-orange">免費諮詢</a>
       
