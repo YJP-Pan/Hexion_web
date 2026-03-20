@@ -47,7 +47,7 @@ const NAV_HTML = `
       <div class="mega">
         <div class="mega-col">
           <div class="mega-label">LIONIC NGFW</div>
-          <a href="/products/pico-utm-100/" class="mega-link mega-link-product"><span class="mega-prod-badge" style="background:rgba(250,88,34,0.15);color:#FA5822">IT</span>Pico-NGFW 100</a>
+          <a href="/products/pico-utm-100/" class="mega-link mega-link-product"><span class="mega-prod-badge" style="background:rgba(250,88,34,0.15);color:#FA5822">IT</span>Pico-UTM 100</a>
           <a href="/products/dual-ark-utm-16/" class="mega-link mega-link-product"><span class="mega-prod-badge" style="background:rgba(0,200,200,0.12);color:#00C8C8">IoT</span>Dual Ark-NGFW 16</a>
           <a href="/products/tera-utm-12/" class="mega-link mega-link-product"><span class="mega-prod-badge" style="background:rgba(255,122,69,0.15);color:#FF7A45">OT</span>Tera-NGFW 12</a>
           <a href="/products/lionfilter-200/" class="mega-link mega-link-product"><span class="mega-prod-badge" style="background:rgba(167,139,250,0.12);color:#A78BFA">NET</span>Lionfilter 200</a>
@@ -99,7 +99,7 @@ const FOOTER_HTML = `
     </div>
     <div>
       <div class="f-col-title">產品</div>
-      <a href="/products/pico-utm-100/" class="f-link">Pico-NGFW 100</a>
+      <a href="/products/pico-utm-100/" class="f-link">Pico-UTM 100</a>
       <a href="/products/tera-utm-12/" class="f-link">Tera-NGFW 12</a>
       <a href="/products/teamt5/" class="f-link">TeamT5</a>
       <a href="/products/cycraft/" class="f-link">奧義智慧</a>
