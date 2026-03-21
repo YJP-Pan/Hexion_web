@@ -127,9 +127,9 @@
       <text x="65" y="218" text-anchor="middle" font-family="Orbitron" font-size="5.5" fill="rgba(0,200,200,0.8)">SCADA HMI</text>
 
       <!-- Arrows IT -> Firewall -->
-      <line x1="130" y1="155" x2="168" y2="200" stroke="rgba(0,200,200,0.35)" stroke-width="1.5" marker-end="url(#arrowDT)" stroke-dasharray="4 2"/>
-      <line x1="130" y1="200" x2="168" y2="200" stroke="rgba(0,200,200,0.35)" stroke-width="1.5" marker-end="url(#arrowDT)"/>
-      <line x1="130" y1="245" x2="168" y2="200" stroke="rgba(0,200,200,0.35)" stroke-width="1.5" marker-end="url(#arrowDT)" stroke-dasharray="4 2"/>
+      <line x1="130" y1="155" x2="168" y2="200" stroke="rgba(0,200,200,0.35)" stroke-width="1.5" marker-end="url(#arrowDT)" stroke-dasharray="4 2" class="svg-flow"/>
+      <line x1="130" y1="200" x2="168" y2="200" stroke="rgba(0,200,200,0.35)" stroke-width="1.5" marker-end="url(#arrowDT)" stroke-dasharray="4 2" class="svg-flow"/>
+      <line x1="130" y1="245" x2="168" y2="200" stroke="rgba(0,200,200,0.35)" stroke-width="1.5" marker-end="url(#arrowDT)" stroke-dasharray="4 2" class="svg-flow"/>
 
       <!-- Central NGFW device -->
       <rect x="168" y="172" width="104" height="56" rx="6" fill="rgba(10,10,20,0.95)" stroke="rgba(0,200,200,0.5)" stroke-width="2"/>
@@ -137,14 +137,14 @@
       <text x="220" y="203" text-anchor="middle" font-family="Orbitron" font-size="6" fill="#00C8C8" font-weight="700">NGFW 16</text>
       <text x="220" y="218" text-anchor="middle" font-family="Orbitron" font-size="5" fill="rgba(0,200,200,0.5)">HA READY</text>
       <!-- LED indicators on device -->
-      <circle cx="210" cy="225" r="2.5" fill="#00C8C8" opacity="0.9"/>
-      <circle cx="218" cy="225" r="2.5" fill="#FA5822" opacity="0.9"/>
-      <circle cx="226" cy="225" r="2.5" fill="#00C8C8" opacity="0.9"/>
+      <circle cx="210" cy="225" r="2.5" fill="#00C8C8" opacity="0.9" class="svg-blink"/>
+      <circle cx="218" cy="225" r="2.5" fill="#FA5822" opacity="0.9" class="svg-blink-2"/>
+      <circle cx="226" cy="225" r="2.5" fill="#00C8C8" opacity="0.9" class="svg-blink-3"/>
 
       <!-- Arrows Firewall -> OT -->
-      <line x1="272" y1="200" x2="308" y2="155" stroke="rgba(250,88,34,0.4)" stroke-width="1.5" marker-end="url(#arrowDO)" stroke-dasharray="4 2"/>
-      <line x1="272" y1="200" x2="308" y2="200" stroke="rgba(250,88,34,0.4)" stroke-width="1.5" marker-end="url(#arrowDO)"/>
-      <line x1="272" y1="200" x2="308" y2="245" stroke="rgba(250,88,34,0.4)" stroke-width="1.5" marker-end="url(#arrowDO)" stroke-dasharray="4 2"/>
+      <line x1="272" y1="200" x2="308" y2="155" stroke="rgba(250,88,34,0.4)" stroke-width="1.5" marker-end="url(#arrowDO)" stroke-dasharray="4 2" class="svg-flow"/>
+      <line x1="272" y1="200" x2="308" y2="200" stroke="rgba(250,88,34,0.4)" stroke-width="1.5" marker-end="url(#arrowDO)" stroke-dasharray="4 2" class="svg-flow"/>
+      <line x1="272" y1="200" x2="308" y2="245" stroke="rgba(250,88,34,0.4)" stroke-width="1.5" marker-end="url(#arrowDO)" stroke-dasharray="4 2" class="svg-flow"/>
 
       <!-- OT Zone (right) -->
       <rect x="308" y="80" width="122" height="240" rx="8" fill="rgba(250,88,34,0.04)" stroke="rgba(250,88,34,0.22)" stroke-width="1.5" stroke-dasharray="6 3"/>
@@ -172,8 +172,8 @@
       <text x="220" y="318" text-anchor="middle" font-family="Inter" font-size="8" fill="rgba(0,200,200,0.6)">HA 備援 · &lt; 30ms 切換</text>
 
       <!-- Separation line indicator -->
-      <line x1="220" y1="80" x2="220" y2="168" stroke="rgba(0,200,200,0.2)" stroke-width="1" stroke-dasharray="4 3"/>
-      <line x1="220" y1="232" x2="220" y2="330" stroke="rgba(0,200,200,0.2)" stroke-width="1" stroke-dasharray="4 3"/>
+      <line x1="220" y1="80" x2="220" y2="168" stroke="rgba(0,200,200,0.2)" stroke-width="1" stroke-dasharray="4 3" class="svg-flow"/>
+      <line x1="220" y1="232" x2="220" y2="330" stroke="rgba(0,200,200,0.2)" stroke-width="1" stroke-dasharray="4 3" class="svg-flow"/>
     </svg>
   </div>
 </div>

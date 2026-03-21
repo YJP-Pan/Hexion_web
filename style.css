@@ -855,7 +855,20 @@ nav {
 /* SVG node/circle pulse */
 @keyframes svgPulse { 0%,100%{transform:scale(1);opacity:0.6} 50%{transform:scale(1.35);opacity:1} }
 .svg-pulse { transform-box:fill-box; transform-origin:center; animation:svgPulse 2.5s ease-in-out infinite; }
-.svg-pulse-2{animation-delay:0.8s} .svg-pulse-3{animation-delay:1.6s}
+.svg-pulse-2{animation-delay:0.8s} .svg-pulse-3{animation-delay:1.6s} .svg-pulse-4{animation-delay:2.4s} .svg-pulse-5{animation-delay:3.2s}
+/* SVG ring slow spin */
+@keyframes svgSpin { to { transform: rotate(360deg); } }
+.svg-spin { transform-box:fill-box; transform-origin:center; animation: svgSpin 22s linear infinite; }
+/* SVG LED blink */
+@keyframes svgBlink { 0%,100%{opacity:0.9} 45%,55%{opacity:0.15} }
+.svg-blink  { animation: svgBlink 2s ease-in-out infinite; }
+.svg-blink-2{ animation: svgBlink 2s ease-in-out infinite 0.65s; }
+.svg-blink-3{ animation: svgBlink 2s ease-in-out infinite 1.3s; }
+/* SVG element float */
+@keyframes svgFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+.svg-float  { transform-box:fill-box; transform-origin:center; animation: svgFloat 3.5s ease-in-out infinite; }
+.svg-float-2{ animation: svgFloat 3.5s ease-in-out infinite 1.2s; }
+.svg-float-3{ animation: svgFloat 3.5s ease-in-out infinite 2.4s; }
 
 /* ── BLOG ── */
 .blog-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }

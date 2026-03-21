@@ -118,9 +118,9 @@
       <rect x="80" y="162" width="130" height="22" rx="3" fill="rgba(0,200,200,0.06)" stroke="rgba(0,200,200,0.25)" stroke-width="1"/>
       <text x="145" y="177" text-anchor="middle" font-family="Orbitron" font-size="7" fill="#00C8C8" font-weight="700">TERA-UTM 12</text>
       <!-- Status LEDs -->
-      <circle cx="224" cy="173" r="3.5" fill="#00C8C8" opacity="0.9"/>
-      <circle cx="235" cy="173" r="3.5" fill="#FA5822" opacity="0.9"/>
-      <circle cx="246" cy="173" r="3.5" fill="#00C8C8" opacity="0.9"/>
+      <circle cx="224" cy="173" r="3.5" fill="#00C8C8" opacity="0.9" class="svg-blink"/>
+      <circle cx="235" cy="173" r="3.5" fill="#FA5822" opacity="0.9" class="svg-blink-2"/>
+      <circle cx="246" cy="173" r="3.5" fill="#00C8C8" opacity="0.9" class="svg-blink-3"/>
       <!-- Port group label -->
       <text x="215" y="200" text-anchor="middle" font-family="Orbitron" font-size="5.5" fill="rgba(0,200,200,0.5)">GbE PORTS · 12×</text>
       <!-- Row 1: ports 1-6 (teal) -->
@@ -155,10 +155,10 @@
       <text x="334" y="187" text-anchor="middle" font-family="Orbitron" font-size="5" fill="rgba(250,88,34,0.6)">HA NODE</text>
       <!-- Network flow arrows -->
       <g stroke="rgba(0,200,200,0.4)" stroke-width="1.5" marker-end="url(#arrowT)">
-        <line x1="22" y1="200" x2="68" y2="200"/>
+        <line x1="22" y1="200" x2="68" y2="200" stroke-dasharray="6 3" class="svg-flow"/>
       </g>
       <g stroke="rgba(250,88,34,0.4)" stroke-width="1.5" marker-end="url(#arrowO2)">
-        <line x1="372" y1="200" x2="414" y2="200"/>
+        <line x1="372" y1="200" x2="414" y2="200" stroke-dasharray="6 3" class="svg-flow"/>
       </g>
       <!-- Traffic nodes -->
       <rect x="0"   y="184" width="22" height="32" rx="3" fill="rgba(0,200,200,0.06)" stroke="rgba(0,200,200,0.3)" stroke-width="1"/>
@@ -168,15 +168,21 @@
       <text x="427" y="197" text-anchor="middle" font-family="Orbitron" font-size="4" fill="rgba(250,88,34,0.7)">DATA</text>
       <text x="427" y="208" text-anchor="middle" font-family="Orbitron" font-size="4" fill="rgba(250,88,34,0.7)">CTR</text>
       <!-- Feature badges above -->
-      <rect x="82"  y="88" width="70" height="20" rx="3" fill="rgba(0,200,200,0.08)" stroke="rgba(0,200,200,0.3)" stroke-width="1"/>
-      <text x="117" y="101" text-anchor="middle" font-family="Orbitron" font-size="5.5" fill="#00C8C8">IPS ENGINE</text>
-      <rect x="168" y="88" width="80" height="20" rx="3" fill="rgba(0,200,200,0.08)" stroke="rgba(0,200,200,0.3)" stroke-width="1"/>
-      <text x="208" y="101" text-anchor="middle" font-family="Orbitron" font-size="5.5" fill="#00C8C8">SSL INSPECT</text>
-      <rect x="264" y="88" width="72" height="20" rx="3" fill="rgba(250,88,34,0.08)" stroke="rgba(250,88,34,0.3)" stroke-width="1"/>
-      <text x="300" y="101" text-anchor="middle" font-family="Orbitron" font-size="5.5" fill="#FA5822">1400+ APPS</text>
-      <line x1="117" y1="108" x2="120" y2="148" stroke="rgba(0,200,200,0.15)" stroke-width="1" stroke-dasharray="3 3"/>
-      <line x1="208" y1="108" x2="208" y2="148" stroke="rgba(0,200,200,0.15)" stroke-width="1" stroke-dasharray="3 3"/>
-      <line x1="300" y1="108" x2="290" y2="148" stroke="rgba(250,88,34,0.15)" stroke-width="1" stroke-dasharray="3 3"/>
+      <g class="svg-float">
+        <rect x="82"  y="88" width="70" height="20" rx="3" fill="rgba(0,200,200,0.08)" stroke="rgba(0,200,200,0.3)" stroke-width="1"/>
+        <text x="117" y="101" text-anchor="middle" font-family="Orbitron" font-size="5.5" fill="#00C8C8">IPS ENGINE</text>
+      </g>
+      <g class="svg-float-2">
+        <rect x="168" y="88" width="80" height="20" rx="3" fill="rgba(0,200,200,0.08)" stroke="rgba(0,200,200,0.3)" stroke-width="1"/>
+        <text x="208" y="101" text-anchor="middle" font-family="Orbitron" font-size="5.5" fill="#00C8C8">SSL INSPECT</text>
+      </g>
+      <g class="svg-float-3">
+        <rect x="264" y="88" width="72" height="20" rx="3" fill="rgba(250,88,34,0.08)" stroke="rgba(250,88,34,0.3)" stroke-width="1"/>
+        <text x="300" y="101" text-anchor="middle" font-family="Orbitron" font-size="5.5" fill="#FA5822">1400+ APPS</text>
+      </g>
+      <line x1="117" y1="108" x2="120" y2="148" stroke="rgba(0,200,200,0.15)" stroke-width="1" stroke-dasharray="3 3" class="svg-flow"/>
+      <line x1="208" y1="108" x2="208" y2="148" stroke="rgba(0,200,200,0.15)" stroke-width="1" stroke-dasharray="3 3" class="svg-flow"/>
+      <line x1="300" y1="108" x2="290" y2="148" stroke="rgba(250,88,34,0.15)" stroke-width="1" stroke-dasharray="3 3" class="svg-flow"/>
       <!-- Throughput stat -->
       <text x="220" y="308" text-anchor="middle" font-family="Orbitron" font-size="13" fill="#FA5822" font-weight="700">890 Mbps</text>
       <text x="220" y="326" text-anchor="middle" font-family="Inter" font-size="8.5" fill="rgba(0,200,200,0.7)">UTM Throughput</text>

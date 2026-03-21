@@ -109,28 +109,34 @@
         <radialGradient id="ebg1"><stop offset="0%" stop-color="#A78BFA" stop-opacity="0.15"/><stop offset="100%" stop-color="#A78BFA" stop-opacity="0"/></radialGradient>
       </defs>
       <circle cx="200" cy="180" r="150" fill="url(#ebg1)"/>
-      <circle cx="200" cy="180" r="110" stroke="rgba(167,139,250,0.12)" stroke-width="1" stroke-dasharray="4 4"/>
+      <circle cx="200" cy="180" r="110" stroke="rgba(167,139,250,0.12)" stroke-width="1" stroke-dasharray="4 4" class="svg-spin"/>
       <circle cx="200" cy="180" r="70" stroke="rgba(167,139,250,0.22)" stroke-width="1"/>
       <circle cx="200" cy="180" r="36" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.5)" stroke-width="1.5"/>
       <text x="200" y="176" text-anchor="middle" font-family="Orbitron" font-size="8" fill="#A78BFA" font-weight="700">END</text>
       <text x="200" y="190" text-anchor="middle" font-family="Orbitron" font-size="7" fill="#A78BFA" font-weight="700">BLOCK</text>
       <!-- Threat indicators blocked -->
-      <rect x="150" y="42" width="100" height="24" rx="4" fill="rgba(255,68,68,0.08)" stroke="rgba(255,68,68,0.4)" stroke-width="1"/>
-      <text x="200" y="58" text-anchor="middle" font-family="Orbitron" font-size="6.5" fill="#FF4444">RANSOMWARE</text>
-      <rect x="305" y="110" width="72" height="24" rx="4" fill="rgba(255,68,68,0.08)" stroke="rgba(255,68,68,0.4)" stroke-width="1"/>
-      <text x="341" y="126" text-anchor="middle" font-family="Orbitron" font-size="6.5" fill="#FF4444">FILELESS</text>
-      <rect x="20" y="110" width="72" height="24" rx="4" fill="rgba(255,68,68,0.08)" stroke="rgba(255,68,68,0.4)" stroke-width="1"/>
-      <text x="56" y="126" text-anchor="middle" font-family="Orbitron" font-size="6.5" fill="#FF4444">LATERAL</text>
+      <g class="svg-float">
+        <rect x="150" y="42" width="100" height="24" rx="4" fill="rgba(255,68,68,0.08)" stroke="rgba(255,68,68,0.4)" stroke-width="1"/>
+        <text x="200" y="58" text-anchor="middle" font-family="Orbitron" font-size="6.5" fill="#FF4444">RANSOMWARE</text>
+      </g>
+      <g class="svg-float-2">
+        <rect x="305" y="110" width="72" height="24" rx="4" fill="rgba(255,68,68,0.08)" stroke="rgba(255,68,68,0.4)" stroke-width="1"/>
+        <text x="341" y="126" text-anchor="middle" font-family="Orbitron" font-size="6.5" fill="#FF4444">FILELESS</text>
+      </g>
+      <g class="svg-float-3">
+        <rect x="20" y="110" width="72" height="24" rx="4" fill="rgba(255,68,68,0.08)" stroke="rgba(255,68,68,0.4)" stroke-width="1"/>
+        <text x="56" y="126" text-anchor="middle" font-family="Orbitron" font-size="6.5" fill="#FF4444">LATERAL</text>
+      </g>
       <!-- Blocked indicators -->
       <g fill="rgba(167,139,250,0.8)" font-family="Orbitron" font-size="9" font-weight="700">
         <text x="200" y="41" text-anchor="middle" fill="rgba(167,139,250,0.5)">✕ BLOCKED</text>
       </g>
       <g stroke="rgba(167,139,250,0.2)" stroke-width="1" stroke-dasharray="3 3">
-        <line x1="200" y1="180" x2="200" y2="66"/><line x1="200" y1="180" x2="305" y2="122"/>
-        <line x1="200" y1="180" x2="92" y2="122"/>
+        <line x1="200" y1="180" x2="200" y2="66" class="svg-flow"/><line x1="200" y1="180" x2="305" y2="122" class="svg-flow"/>
+        <line x1="200" y1="180" x2="92" y2="122" class="svg-flow"/>
       </g>
       <g fill="rgba(167,139,250,0.6)">
-        <circle cx="200" cy="66" r="5"/><circle cx="305" cy="122" r="5"/><circle cx="92" cy="122" r="5"/>
+        <circle cx="200" cy="66" r="5" class="svg-pulse"/><circle cx="305" cy="122" r="5" class="svg-pulse-2"/><circle cx="92" cy="122" r="5" class="svg-pulse-3"/>
       </g>
       <!-- Shield icon in center area -->
       <path d="M200 145 L215 152 L215 165 C215 173 208 179 200 182 C192 179 185 173 185 165 L185 152 Z" stroke="rgba(167,139,250,0.6)" stroke-width="1.5" fill="rgba(167,139,250,0.05)"/>

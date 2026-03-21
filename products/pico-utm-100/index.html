@@ -119,15 +119,15 @@
       <rect x="130" y="155" width="140" height="20" rx="3" fill="rgba(250,88,34,0.08)" stroke="rgba(250,88,34,0.2)" stroke-width="1"/>
       <text x="200" y="169" text-anchor="middle" font-family="Orbitron" font-size="7" fill="#FA5822" font-weight="700">PICO-NGFW 100</text>
       <!-- Status LEDs -->
-      <circle cx="140" cy="192" r="4" fill="#00C8C8" opacity="0.8"/>
-      <circle cx="155" cy="192" r="4" fill="#FA5822" opacity="0.8"/>
-      <circle cx="170" cy="192" r="4" fill="#00C8C8" opacity="0.8"/>
+      <circle cx="140" cy="192" r="4" fill="#00C8C8" opacity="0.8" class="svg-blink"/>
+      <circle cx="155" cy="192" r="4" fill="#FA5822" opacity="0.8" class="svg-blink-2"/>
+      <circle cx="170" cy="192" r="4" fill="#00C8C8" opacity="0.8" class="svg-blink-3"/>
       <!-- Port labels -->
       <text x="200" y="205" text-anchor="middle" font-family="Orbitron" font-size="6" fill="rgba(250,88,34,0.6)">LIONIC DPI ENGINE</text>
       <!-- Network flow arrows -->
       <g stroke="rgba(250,88,34,0.3)" stroke-width="1.5" marker-end="url(#arrowO)">
-        <line x1="80" y1="180" x2="118" y2="180"/>
-        <line x1="282" y1="180" x2="320" y2="180"/>
+        <line x1="80" y1="180" x2="118" y2="180" stroke-dasharray="6 3" class="svg-flow"/>
+        <line x1="282" y1="180" x2="320" y2="180" stroke-dasharray="6 3" class="svg-flow"/>
       </g>
       <defs>
         <marker id="arrowO" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
@@ -140,15 +140,21 @@
       <rect x="320" y="165" width="40" height="30" rx="4" fill="rgba(0,200,200,0.06)" stroke="rgba(0,200,200,0.3)" stroke-width="1"/>
       <text x="340" y="183" text-anchor="middle" font-family="Orbitron" font-size="5.5" fill="rgba(0,200,200,0.7)">INTRANET</text>
       <!-- DPI feature badges -->
-      <rect x="120" y="90" width="60" height="18" rx="3" fill="rgba(250,88,34,0.08)" stroke="rgba(250,88,34,0.3)" stroke-width="1"/>
-      <text x="150" y="102" text-anchor="middle" font-family="Orbitron" font-size="5.5" fill="#FA5822">IPS / IDS</text>
-      <rect x="192" y="90" width="60" height="18" rx="3" fill="rgba(250,88,34,0.08)" stroke="rgba(250,88,34,0.3)" stroke-width="1"/>
-      <text x="222" y="102" text-anchor="middle" font-family="Orbitron" font-size="5.5" fill="#FA5822">SSL INSPECT</text>
-      <rect x="155" y="66" width="60" height="18" rx="3" fill="rgba(250,88,34,0.08)" stroke="rgba(250,88,34,0.3)" stroke-width="1"/>
-      <text x="185" y="78" text-anchor="middle" font-family="Orbitron" font-size="5.5" fill="#FA5822">1400+ APPS</text>
-      <line x1="150" y1="108" x2="165" y2="145" stroke="rgba(250,88,34,0.15)" stroke-width="1" stroke-dasharray="3 3"/>
-      <line x1="222" y1="108" x2="210" y2="145" stroke="rgba(250,88,34,0.15)" stroke-width="1" stroke-dasharray="3 3"/>
-      <line x1="185" y1="84" x2="190" y2="145" stroke="rgba(250,88,34,0.15)" stroke-width="1" stroke-dasharray="3 3"/>
+      <g class="svg-float">
+        <rect x="120" y="90" width="60" height="18" rx="3" fill="rgba(250,88,34,0.08)" stroke="rgba(250,88,34,0.3)" stroke-width="1"/>
+        <text x="150" y="102" text-anchor="middle" font-family="Orbitron" font-size="5.5" fill="#FA5822">IPS / IDS</text>
+      </g>
+      <g class="svg-float-2">
+        <rect x="192" y="90" width="60" height="18" rx="3" fill="rgba(250,88,34,0.08)" stroke="rgba(250,88,34,0.3)" stroke-width="1"/>
+        <text x="222" y="102" text-anchor="middle" font-family="Orbitron" font-size="5.5" fill="#FA5822">SSL INSPECT</text>
+      </g>
+      <g class="svg-float-3">
+        <rect x="155" y="66" width="60" height="18" rx="3" fill="rgba(250,88,34,0.08)" stroke="rgba(250,88,34,0.3)" stroke-width="1"/>
+        <text x="185" y="78" text-anchor="middle" font-family="Orbitron" font-size="5.5" fill="#FA5822">1400+ APPS</text>
+      </g>
+      <line x1="150" y1="108" x2="165" y2="145" stroke="rgba(250,88,34,0.15)" stroke-width="1" stroke-dasharray="3 3" class="svg-flow"/>
+      <line x1="222" y1="108" x2="210" y2="145" stroke="rgba(250,88,34,0.15)" stroke-width="1" stroke-dasharray="3 3" class="svg-flow"/>
+      <line x1="185" y1="84" x2="190" y2="145" stroke="rgba(250,88,34,0.15)" stroke-width="1" stroke-dasharray="3 3" class="svg-flow"/>
       <!-- Stats -->
       <text x="200" y="268" text-anchor="middle" font-family="Orbitron" font-size="9" fill="#FA5822" font-weight="700">700 Mbps</text>
       <text x="200" y="282" text-anchor="middle" font-family="Inter" font-size="8" fill="rgba(250,88,34,0.6)">全功能啟用吞吐量</text>
