@@ -28,6 +28,14 @@
     .value-num{font-family:'Orbitron',monospace;font-size:2rem;font-weight:900;color:rgba(250,88,34,0.15);line-height:1;margin-bottom:0.5rem}
     .value-title{font-family:'Inter', sans-serif;font-size:1rem;font-weight:700;color:#fff;margin-bottom:0.5rem}
     .value-desc{font-size:0.8125rem;color:var(--silver);line-height:1.65}
+    .why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:3rem}
+    @media(max-width:768px){.why-grid{grid-template-columns:1fr}}
+    /* Partner eco animation */
+    @keyframes partnerFlow{to{stroke-dashoffset:-28}}
+    @keyframes partnerPulse{0%,100%{opacity:0.5;transform:scale(1)}50%{opacity:1;transform:scale(1.15)}}
+    @keyframes partnerNodeGlow{0%,100%{filter:drop-shadow(0 0 4px currentColor)}50%{filter:drop-shadow(0 0 14px currentColor)}}
+    .partner-dash{animation:partnerFlow 2.5s linear infinite}
+    .partner-node{transform-box:fill-box;transform-origin:center;animation:partnerPulse 2.5s ease-in-out infinite}
   </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-78TQ277930"></script>
@@ -155,7 +163,7 @@
 
   <!-- Right: Animated SVG -->
   <div class="reveal reveal-delay-1" style="position:relative;z-index:2;display:flex;align-items:center;justify-content:center">
-    <svg viewBox="0 0 360 360" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px">
+    <svg viewBox="0 0 360 360" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px">
       <defs>
         <radialGradient id="mfGlow" cx="50%" cy="50%" r="50%">
           <stop offset="0%" stop-color="#FA5822" stop-opacity="0.18"/>
@@ -237,46 +245,72 @@
   </div>
 </section> -->
 
-<!-- PRODUCTS WE STAND BEHIND -->
+<!-- PARTNERS -->
 <section style="padding:6rem var(--px);background:var(--ink)">
-  <div class="reveal" style="margin-bottom:3rem">
-    <div class="sec-tag">合作夥伴 · 代理產品</div>
-    <h2 class="sec-h">我們只推薦<span class="accent">真正信任</span>的產品</h2>
-    <p class="sec-p">Hexion Networks，代理並整合台灣頂尖資安解決方案，為每個場景選出最適合的防護組合。</p>
+  <div class="reveal" style="margin-bottom:3rem;text-align:center;max-width:640px;margin-left:auto;margin-right:auto">
+    <div class="sec-tag" style="justify-content:center">合作夥伴</div>
+    <h2 class="sec-h">攜手<span class="accent">頂尖品牌</span>，打造全方位防線</h2>
+    <p class="sec-p">我們精選與台灣資安生態系最具代表性的品牌深度合作，為每個客戶場景整合最適切的解決方案。</p>
   </div>
-  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem" class="reveal">
-    <!-- LIONIC -->
-    <div style="background:rgba(250,88,34,0.04);border:1px solid rgba(250,88,34,0.15);border-radius:16px;padding:2rem;display:grid;grid-template-columns:auto 1fr;gap:1.5rem;align-items:start">
-      <div style="width:52px;height:52px;border-radius:12px;background:rgba(250,88,34,0.1);border:1px solid rgba(250,88,34,0.25);display:flex;align-items:center;justify-content:center;font-family:'Orbitron',monospace;font-size:0.625rem;font-weight:700;color:var(--o);text-align:center;line-height:1.3">LIONIC<br>NGFW</div>
-      <div>
-        <div style="font-family:'Inter', sans-serif;font-size:1.125rem;font-weight:700;color:#fff;margin-bottom:0.375rem">LIONIC NGFW 全系列</div>
-        <div style="font-size:0.8125rem;color:var(--silver);line-height:1.65;margin-bottom:1rem">Pico-UTM 100（IT）、Dual Ark-NGFW 16（IoT）、Tera-NGFW 12（OT）、Lionfilter 200（NET）</div>
-        <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
-          <span style="font-size:0.7rem;padding:0.2rem 0.625rem;border-radius:100px;background:rgba(250,88,34,0.1);border:1px solid rgba(250,88,34,0.25);color:var(--o);font-family:'Orbitron',monospace">IT</span>
-          <span style="font-size:0.7rem;padding:0.2rem 0.625rem;border-radius:100px;background:rgba(0,200,200,0.1);border:1px solid rgba(0,200,200,0.25);color:var(--teal);font-family:'Orbitron',monospace">IoT</span>
-          <span style="font-size:0.7rem;padding:0.2rem 0.625rem;border-radius:100px;background:rgba(255,122,69,0.1);border:1px solid rgba(255,122,69,0.25);color:#FF7A45;font-family:'Orbitron',monospace">OT</span>
-          <span style="font-size:0.7rem;padding:0.2rem 0.625rem;border-radius:100px;background:rgba(167,139,250,0.1);border:1px solid rgba(167,139,250,0.25);color:#A78BFA;font-family:'Orbitron',monospace">NET</span>
-        </div>
-      </div>
-    </div>
-    <!-- EDR -->
-    <div style="background:rgba(61,220,151,0.03);border:1px solid rgba(61,220,151,0.12);border-radius:16px;padding:2rem;display:flex;flex-direction:column;gap:1rem">
-      <div style="font-family:'Inter', sans-serif;font-size:1.125rem;font-weight:700;color:#fff;margin-bottom:-0.25rem">EDR 端點偵測回應生態系</div>
-      <div style="display:flex;flex-direction:column;gap:0.75rem">
-        <div style="display:flex;align-items:center;gap:1rem;padding:0.875rem;background:rgba(61,220,151,0.04);border:1px solid rgba(61,220,151,0.1);border-radius:10px">
-          <div style="width:36px;height:36px;border-radius:8px;background:rgba(61,220,151,0.12);border:1px solid rgba(61,220,151,0.25);display:flex;align-items:center;justify-content:center;font-family:'Orbitron',monospace;font-size:0.55rem;font-weight:700;color:#3DDC97;flex-shrink:0;text-align:center;line-height:1.3">END<br>BLOCK</div>
-          <div><div style="font-size:0.875rem;font-weight:600;color:#fff;margin-bottom:0.125rem">Endblock</div><div style="font-size:0.75rem;color:var(--silver)">自動行為分析 · 即時隔離 · 無需特徵碼</div></div>
-        </div>
-        <div style="display:flex;align-items:center;gap:1rem;padding:0.875rem;background:rgba(61,220,151,0.04);border:1px solid rgba(61,220,151,0.1);border-radius:10px">
-          <div style="width:36px;height:36px;border-radius:8px;background:rgba(61,220,151,0.12);border:1px solid rgba(61,220,151,0.25);display:flex;align-items:center;justify-content:center;font-family:'Orbitron',monospace;font-size:0.55rem;font-weight:700;color:#3DDC97;flex-shrink:0;text-align:center;line-height:1.3">TEAM<br>T5</div>
-          <div><div style="font-size:0.875rem;font-weight:600;color:#fff;margin-bottom:0.125rem">TeamT5</div><div style="font-size:0.75rem;color:var(--silver)">APT 威脅情報 · 攻擊者溯源 · 台灣本地 TI</div></div>
-        </div>
-        <div style="display:flex;align-items:center;gap:1rem;padding:0.875rem;background:rgba(61,220,151,0.04);border:1px solid rgba(61,220,151,0.1);border-radius:10px">
-          <div style="width:36px;height:36px;border-radius:8px;background:rgba(61,220,151,0.12);border:1px solid rgba(61,220,151,0.25);display:flex;align-items:center;justify-content:center;font-family:'Orbitron',monospace;font-size:0.55rem;font-weight:700;color:#3DDC97;flex-shrink:0;text-align:center;line-height:1.3">CY<br>CRAFT</div>
-          <div><div style="font-size:0.875rem;font-weight:600;color:#fff;margin-bottom:0.125rem">奧義智慧 CyCraft</div><div style="font-size:0.75rem;color:var(--silver)">AI 驅動 SOC · 自動鑑識 · 企業全面防護</div></div>
-        </div>
-      </div>
-    </div>
+  <div class="reveal" style="display:flex;justify-content:center">
+    <svg viewBox="0 0 560 340" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px">
+      <defs>
+        <radialGradient id="ecoGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#FA5822" stop-opacity="0.1"/>
+          <stop offset="100%" stop-color="#FA5822" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="ecoBlur"><feGaussianBlur stdDeviation="12"/></filter>
+        <filter id="ecoSoft"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <pattern id="ecoPat" width="40" height="40" patternUnits="userSpaceOnUse">
+          <path d="M40 0L0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+        </pattern>
+      </defs>
+      <!-- Background -->
+      <rect width="560" height="340" fill="#0A0A14" rx="16"/>
+      <rect width="560" height="340" fill="url(#ecoPat)" rx="16"/>
+      <ellipse cx="280" cy="170" rx="200" ry="140" fill="url(#ecoGlow)" filter="url(#ecoBlur)"/>
+
+      <!-- Center: HEXION hub -->
+      <circle cx="280" cy="170" r="46" fill="rgba(250,88,34,0.08)" stroke="rgba(250,88,34,0.35)" stroke-width="1.5" style="transform-box:fill-box;transform-origin:center;animation:coreBreath 3s ease-in-out infinite"/>
+      <circle cx="280" cy="170" r="32" fill="rgba(250,88,34,0.12)" stroke="rgba(250,88,34,0.5)" stroke-width="1"/>
+      <text x="280" y="166" text-anchor="middle" font-family="Orbitron,monospace" font-size="8" fill="#FA5822" font-weight="700">HEXION</text>
+      <text x="280" y="179" text-anchor="middle" font-family="Orbitron,monospace" font-size="7" fill="rgba(250,88,34,0.7)">NETWORKS</text>
+
+      <!-- Spoke lines (animated dash flow) -->
+      <line class="partner-dash" x1="280" y1="124" x2="280" y2="56" stroke="rgba(250,88,34,0.3)" stroke-width="1" stroke-dasharray="5 4"/>
+      <line class="partner-dash" x1="320" y1="148" x2="438" y2="88" stroke="rgba(0,200,200,0.3)" stroke-width="1" stroke-dasharray="5 4" style="animation-delay:0.6s"/>
+      <line class="partner-dash" x1="320" y1="196" x2="438" y2="256" stroke="rgba(61,220,151,0.3)" stroke-width="1" stroke-dasharray="5 4" style="animation-delay:1.2s"/>
+      <line class="partner-dash" x1="240" y1="196" x2="122" y2="256" stroke="rgba(167,139,250,0.3)" stroke-width="1" stroke-dasharray="5 4" style="animation-delay:1.8s"/>
+      <line class="partner-dash" x1="240" y1="148" x2="122" y2="88" stroke="rgba(255,122,69,0.3)" stroke-width="1" stroke-dasharray="5 4" style="animation-delay:0.9s"/>
+
+      <!-- Partner node: LIONIC (top) -->
+      <circle class="partner-node" cx="280" cy="44" r="28" fill="rgba(250,88,34,0.08)" stroke="rgba(250,88,34,0.4)" stroke-width="1.5" filter="url(#ecoSoft)"/>
+      <text x="280" y="40" text-anchor="middle" font-family="Orbitron,monospace" font-size="7.5" fill="#FA5822" font-weight="700">LIONIC</text>
+      <text x="280" y="52" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="rgba(250,88,34,0.6)">NGFW</text>
+
+      <!-- Partner node: TeamT5 (top-right) -->
+      <circle class="partner-node" cx="460" cy="78" r="28" fill="rgba(0,200,200,0.06)" stroke="rgba(0,200,200,0.35)" stroke-width="1.5" filter="url(#ecoSoft)" style="animation-delay:0.5s"/>
+      <text x="460" y="74" text-anchor="middle" font-family="Orbitron,monospace" font-size="7" fill="#00C8C8" font-weight="700">TEAM</text>
+      <text x="460" y="86" text-anchor="middle" font-family="Orbitron,monospace" font-size="7" fill="#00C8C8" font-weight="700">T5</text>
+
+      <!-- Partner node: CyCraft (bottom-right) -->
+      <circle class="partner-node" cx="460" cy="262" r="28" fill="rgba(61,220,151,0.06)" stroke="rgba(61,220,151,0.35)" stroke-width="1.5" filter="url(#ecoSoft)" style="animation-delay:1s"/>
+      <text x="460" y="258" text-anchor="middle" font-family="Orbitron,monospace" font-size="6.5" fill="#3DDC97" font-weight="700">CyCraft</text>
+      <text x="460" y="270" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="rgba(61,220,151,0.6)">奧義智慧</text>
+
+      <!-- Partner node: Endblock (bottom-left) -->
+      <circle class="partner-node" cx="100" cy="262" r="28" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.35)" stroke-width="1.5" filter="url(#ecoSoft)" style="animation-delay:1.5s"/>
+      <text x="100" y="258" text-anchor="middle" font-family="Orbitron,monospace" font-size="7" fill="#A78BFA" font-weight="700">END</text>
+      <text x="100" y="270" text-anchor="middle" font-family="Orbitron,monospace" font-size="7" fill="#A78BFA" font-weight="700">BLOCK</text>
+
+      <!-- Partner node: top-left -->
+      <circle class="partner-node" cx="100" cy="78" r="28" fill="rgba(255,122,69,0.06)" stroke="rgba(255,122,69,0.35)" stroke-width="1.5" filter="url(#ecoSoft)" style="animation-delay:0.25s"/>
+      <text x="100" y="74" text-anchor="middle" font-family="Orbitron,monospace" font-size="6.5" fill="#FF7A45" font-weight="700">SEMI</text>
+      <text x="100" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="rgba(255,122,69,0.6)">合規夥伴</text>
+
+      <!-- Outer ring -->
+      <circle cx="280" cy="170" r="156" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.75" stroke-dasharray="6 6"/>
+    </svg>
   </div>
 </section>
 
@@ -286,33 +320,33 @@
     <div class="sec-tag">為什麼選擇我們</div>
     <h2 class="sec-h">Hexion Networks 的<span class="accent">獨特優勢</span></h2>
   </div>
-  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:3rem">
+  <div class="why-grid">
     <div class="reveal" style="display:flex;gap:1rem;align-items:flex-start;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:1.5rem">
       <div style="font-family:'Orbitron',monospace;font-size:1.5rem;font-weight:700;color:var(--o);flex-shrink:0;line-height:1">01</div>
       <div>
         <div style="font-family:'Inter', sans-serif;font-size:1rem;font-weight:700;color:#fff;margin-bottom:0.375rem">策略與技術雙軌並行</div>
-        <p style="font-size:0.875rem;color:var(--silver);line-height:1.65">我們不只是技術供應商，更是業務成長夥伴。每個資安方案都與您的商業目標對齊，確保投資產生最大回報。</p>
+        <p style="font-size:0.875rem;color:var(--silver);line-height:1.65">我們不只提供技術建議，更深入理解您的業務目標。每個方案從策略定義到執行落地，確保每一分投入都轉化為真實的競爭優勢。</p>
       </div>
     </div>
-    <div class="reveal reveal-delay-1" style="display:flex;gap:1rem;align-items:flex-start;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:1.5rem">
+    <div class="reveal svc-s1" style="display:flex;gap:1rem;align-items:flex-start;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:1.5rem">
       <div style="font-family:'Orbitron',monospace;font-size:1.5rem;font-weight:700;color:var(--o);flex-shrink:0;line-height:1">02</div>
       <div>
-        <div style="font-family:'Inter', sans-serif;font-size:1rem;font-weight:700;color:#fff;margin-bottom:0.375rem">LIONIC 授權合作夥伴</div>
-        <p style="font-size:0.875rem;color:var(--silver);line-height:1.65">唯一結合商業顧問服務的 LIONIC NGFW 授權經銷商，提供從設備採購到策略規劃的一站式服務。</p>
+        <div style="font-family:'Inter', sans-serif;font-size:1rem;font-weight:700;color:#fff;margin-bottom:0.375rem">嚴謹的顧問方法論</div>
+        <p style="font-size:0.875rem;color:var(--silver);line-height:1.65">從需求診斷、現況評估到方案設計，每個步驟都有可追蹤的里程碑與可驗證的成效，讓您的投資透明可控。</p>
       </div>
     </div>
-    <div class="reveal" style="display:flex;gap:1rem;align-items:flex-start;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:1.5rem">
+    <div class="reveal svc-s2" style="display:flex;gap:1rem;align-items:flex-start;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:1.5rem">
       <div style="font-family:'Orbitron',monospace;font-size:1.5rem;font-weight:700;color:var(--o);flex-shrink:0;line-height:1">03</div>
       <div>
-        <div style="font-family:'Inter', sans-serif;font-size:1rem;font-weight:700;color:#fff;margin-bottom:0.375rem">三大 EDR 生態系</div>
-        <p style="font-size:0.875rem;color:var(--silver);line-height:1.65">代理 TeamT5、奧義智慧、Endblock 三大頂尖 EDR 品牌，依您的規模與需求推薦最適合的端點防護方案。</p>
+        <div style="font-family:'Inter', sans-serif;font-size:1rem;font-weight:700;color:#fff;margin-bottom:0.375rem">深度產業洞察</div>
+        <p style="font-size:0.875rem;color:var(--silver);line-height:1.65">深入製造、金融、醫療等多個產業的法規環境與威脅態勢，提供真正符合產業情境的方案，而非套用通用模板。</p>
       </div>
     </div>
-    <div class="reveal reveal-delay-1" style="display:flex;gap:1rem;align-items:flex-start;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:1.5rem">
+    <div class="reveal svc-s3" style="display:flex;gap:1rem;align-items:flex-start;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:1.5rem">
       <div style="font-family:'Orbitron',monospace;font-size:1.5rem;font-weight:700;color:var(--o);flex-shrink:0;line-height:1">04</div>
       <div>
-        <div style="font-family:'Inter', sans-serif;font-size:1rem;font-weight:700;color:#fff;margin-bottom:0.375rem">在地化服務支援</div>
-        <p style="font-size:0.875rem;color:var(--silver);line-height:1.65">台灣本地團隊，快速響應，深入了解台灣企業的法規環境與產業特性，提供真正貼近需求的解決方案。</p>
+        <div style="font-family:'Inter', sans-serif;font-size:1rem;font-weight:700;color:#fff;margin-bottom:0.375rem">在地化快速響應</div>
+        <p style="font-size:0.875rem;color:var(--silver);line-height:1.65">台灣本地團隊，中文支援、現場回應不拖延。熟悉台灣法規環境與企業文化，讓顧問服務真正落地，而非停在報告層次。</p>
       </div>
     </div>
   </div>
