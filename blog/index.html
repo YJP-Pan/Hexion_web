@@ -97,6 +97,8 @@
 <section class="page-hero">
   <div class="page-hero-glow"></div>
   <div class="page-hero-grid"></div>
+  <canvas id="blogPC" class="hero-particle-canvas"></canvas>
+  <div class="hero-scan-line"></div>
   <div class="page-hero-inner reveal">
     <div class="sec-tag" style="justify-content:center;margin-bottom:1rem">知識庫</div>
     <h1>資安<span style="color:var(--o)">知識庫</span></h1>
@@ -595,4 +597,5 @@ function filterBlog(cat, btn) {
 }
 </script>
 <script>var _ls=Date.now();window.addEventListener("load",function(){var l=document.getElementById("page-loader");if(!l)return;var elapsed=Date.now()-_ls,wait=Math.max(0,800-elapsed);setTimeout(function(){l.classList.add("out");setTimeout(function(){l.remove()},520)},wait)});</script>
+<script>(function(){var cv=document.getElementById('blogPC'),cx=cv.getContext('2d'),W,H,pts=[],raf,N=45,D=120,C=['rgba(250,88,34,','rgba(0,200,200,'];function rsz(){W=cv.width=cv.offsetWidth;H=cv.height=cv.offsetHeight;}function mk(){pts=[];for(var i=0;i<N;i++)pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,r:Math.random()*1.5+.8,c:C[Math.random()<.7?0:1],a:Math.random()*.35+.2});}function draw(){cx.clearRect(0,0,W,H);for(var i=0;i<pts.length;i++){for(var j=i+1;j<pts.length;j++){var dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<D){cx.beginPath();cx.strokeStyle='rgba(250,88,34,'+(1-d/D)*.14+')';cx.lineWidth=.6;cx.moveTo(pts[i].x,pts[i].y);cx.lineTo(pts[j].x,pts[j].y);cx.stroke();}}}pts.forEach(function(p){cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);cx.fillStyle=p.c+p.a+')';cx.fill();p.x+=p.vx;p.y+=p.vy;if(p.x<-10)p.x=W+10;if(p.x>W+10)p.x=-10;if(p.y<-10)p.y=H+10;if(p.y>H+10)p.y=-10;});raf=requestAnimationFrame(draw);}rsz();mk();draw();window.addEventListener('resize',function(){cancelAnimationFrame(raf);rsz();mk();draw();});}());</script>
 </body></html>

@@ -112,6 +112,8 @@
 <section class="about-hero">
   <div class="about-hero-glow"></div>
   <div class="about-hero-grid"></div>
+  <canvas id="aboutPC" class="hero-particle-canvas"></canvas>
+  <div class="hero-scan-line"></div>
   <div style="max-width:800px;margin:0 auto;text-align:center;position:relative;z-index:2">
     <div class="sec-tag reveal" style="justify-content:center">關於我們</div>
     <h1 class="reveal reveal-delay-1" style="font-family:'Inter', sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:800;color:#fff;letter-spacing:-0.03em;margin-bottom:1.25rem;line-height:1.1">
@@ -428,4 +430,5 @@ const ro=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.targe
 document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 </script>
 <script>var _ls=Date.now();window.addEventListener("load",function(){var l=document.getElementById("page-loader");if(!l)return;var elapsed=Date.now()-_ls,wait=Math.max(0,800-elapsed);setTimeout(function(){l.classList.add("out");setTimeout(function(){l.remove()},520)},wait)});</script>
+<script>(function(){var cv=document.getElementById('aboutPC'),cx=cv.getContext('2d'),W,H,pts=[],raf,N=45,D=120,C=['rgba(250,88,34,','rgba(0,200,200,'];function rsz(){W=cv.width=cv.offsetWidth;H=cv.height=cv.offsetHeight;}function mk(){pts=[];for(var i=0;i<N;i++)pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,r:Math.random()*1.5+.8,c:C[Math.random()<.7?0:1],a:Math.random()*.35+.2});}function draw(){cx.clearRect(0,0,W,H);for(var i=0;i<pts.length;i++){for(var j=i+1;j<pts.length;j++){var dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<D){cx.beginPath();cx.strokeStyle='rgba(250,88,34,'+(1-d/D)*.14+')';cx.lineWidth=.6;cx.moveTo(pts[i].x,pts[i].y);cx.lineTo(pts[j].x,pts[j].y);cx.stroke();}}}pts.forEach(function(p){cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);cx.fillStyle=p.c+p.a+')';cx.fill();p.x+=p.vx;p.y+=p.vy;if(p.x<-10)p.x=W+10;if(p.x>W+10)p.x=-10;if(p.y<-10)p.y=H+10;if(p.y>H+10)p.y=-10;});raf=requestAnimationFrame(draw);}rsz();mk();draw();window.addEventListener('resize',function(){cancelAnimationFrame(raf);rsz();mk();draw();});}());</script>
 </body></html>
