@@ -51,6 +51,56 @@
       .who-grid{grid-template-columns:1fr}
       .metrics-grid{gap:0}
     }
+
+    /* ── Service page animations ── */
+
+    /* Hero scan line */
+    @keyframes heroScan { 0%{top:-4px} 100%{top:100%} }
+    .hero-scan-line{position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(250,88,34,0.3),transparent);top:-4px;animation:heroScan 5s linear infinite;pointer-events:none;z-index:3}
+
+    /* Metric number glow pulse */
+    @keyframes svcMetricGlow { 0%,100%{filter:drop-shadow(0 0 6px currentColor)} 50%{filter:drop-shadow(0 0 20px currentColor) drop-shadow(0 0 40px currentColor)} }
+    .svc-metric-num{display:block;animation:svcMetricGlow 3s ease-in-out infinite}
+
+    /* Bar chart: bars grow from bottom */
+    @keyframes svcBarGrow { from{transform:scaleY(0)} to{transform:scaleY(1)} }
+    .svc-bar{transform-box:fill-box;transform-origin:bottom center;animation:svcBarGrow 0.7s cubic-bezier(0.34,1.4,0.64,1) both}
+    .svc-bar-1{animation-delay:0.1s}.svc-bar-2{animation-delay:0.22s}.svc-bar-3{animation-delay:0.34s}.svc-bar-4{animation-delay:0.46s}.svc-bar-5{animation-delay:0.58s}
+
+    /* Bar chart: trend line draw */
+    @keyframes svcLineDraw { from{stroke-dashoffset:600} to{stroke-dashoffset:0} }
+    .svc-trend{stroke-dasharray:600;stroke-dashoffset:600;animation:svcLineDraw 1.2s 0.6s ease-out forwards}
+
+    /* Radar polygon breathe */
+    @keyframes svcRadarBreathe { 0%,100%{opacity:0.08;transform:scale(1)} 50%{opacity:0.2;transform:scale(1.04)} }
+    .svc-radar-fill{transform-box:fill-box;transform-origin:center;animation:svcRadarBreathe 4s ease-in-out infinite}
+
+    /* Radar score dots pulse */
+    @keyframes svcDotPulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.5);opacity:0.6} }
+    .svc-radar-dot{transform-box:fill-box;transform-origin:center;animation:svcDotPulse 2.5s ease-in-out infinite}
+    .svc-radar-dot:nth-child(1){animation-delay:0s}.svc-radar-dot:nth-child(2){animation-delay:0.4s}.svc-radar-dot:nth-child(3){animation-delay:0.8s}.svc-radar-dot:nth-child(4){animation-delay:1.2s}.svc-radar-dot:nth-child(5){animation-delay:1.6s}
+
+    /* Security outer ring slow rotate */
+    @keyframes svcRingRot { to{transform:rotate(360deg)} }
+    .svc-ring-outer{transform-box:fill-box;transform-origin:center;animation:svcRingRot 30s linear infinite}
+    .svc-ring-mid{transform-box:fill-box;transform-origin:center;animation:svcRingRot 18s linear infinite reverse}
+
+    /* Threat indicator blink */
+    @keyframes svcThreatBlink { 0%,100%{opacity:0.15;r:8} 50%{opacity:1;r:10} }
+    .svc-threat{animation:svcThreatBlink 2s ease-in-out infinite}
+    .svc-threat-2{animation-delay:0.66s}.svc-threat-3{animation-delay:1.32s}
+
+    /* Who-serve & process card hover glow */
+    .svc-card-ani{position:relative;overflow:hidden;transition:border-color 0.3s,transform 0.3s}
+    .svc-card-ani::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(250,88,34,0.06),transparent);opacity:0;transition:opacity 0.4s}
+    .svc-card-ani:hover{transform:translateY(-4px)}
+    .svc-card-ani:hover::before{opacity:1}
+    @keyframes svcCardScan{0%{top:-100%}100%{top:200%}}
+    .svc-card-ani::after{content:'';position:absolute;left:0;right:0;height:40%;background:linear-gradient(to bottom,transparent,rgba(255,255,255,0.025),transparent);top:-100%;animation:svcCardScan 5s ease-in-out infinite}
+
+    /* Stagger reveal delays */
+    .svc-s1{transition-delay:0.05s}.svc-s2{transition-delay:0.1s}.svc-s3{transition-delay:0.15s}
+    .svc-s4{transition-delay:0.2s}.svc-s5{transition-delay:0.25s}.svc-s6{transition-delay:0.3s}
   </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-78TQ277930"></script>
@@ -124,6 +174,7 @@
 </nav>
 
 <section class="service-hero">
+  <div class="hero-scan-line"></div>
   <div style="max-width:760px;margin:0 auto;text-align:center;position:relative;z-index:2">
     <div class="sec-tag reveal" style="justify-content:center">服務項目</div>
     <h1 class="reveal reveal-delay-1" style="font-family:'Inter', sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:800;color:#fff;letter-spacing:-0.03em;margin-bottom:1.25rem;line-height:1.1">
@@ -139,15 +190,15 @@
 <section style="padding:3.5rem var(--px);background:var(--ink-2);border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05)">
   <div class="metrics-grid">
     <div class="reveal">
-      <div style="font-family:'Orbitron',monospace;font-size:clamp(2rem,4vw,3rem);font-weight:900;color:var(--o);line-height:1">+40%</div>
+      <span class="svc-metric-num" style="font-family:'Orbitron',monospace;font-size:clamp(2rem,4vw,3rem);font-weight:900;color:var(--o);line-height:1">+40%</span>
       <div style="font-size:0.8125rem;color:var(--silver);margin-top:0.5rem;line-height:1.5">客戶平均業務成長幅度<br><span style="font-size:0.7rem;color:rgba(255,255,255,0.25)">first year engagement</span></div>
     </div>
     <div class="reveal metrics-mid" style="border-left:1px solid rgba(255,255,255,0.06);border-right:1px solid rgba(255,255,255,0.06)">
-      <div style="font-family:'Orbitron',monospace;font-size:clamp(2rem,4vw,3rem);font-weight:900;color:var(--teal);line-height:1">98%</div>
+      <span class="svc-metric-num" style="font-family:'Orbitron',monospace;font-size:clamp(2rem,4vw,3rem);font-weight:900;color:var(--teal);line-height:1">98%</span>
       <div style="font-size:0.8125rem;color:var(--silver);margin-top:0.5rem;line-height:1.5">客戶滿意度與續約率<br><span style="font-size:0.7rem;color:rgba(255,255,255,0.25)">client satisfaction rate</span></div>
     </div>
     <div class="reveal">
-      <div style="font-family:'Orbitron',monospace;font-size:clamp(2rem,4vw,3rem);font-weight:900;color:#A78BFA;line-height:1">6週</div>
+      <span class="svc-metric-num" style="font-family:'Orbitron',monospace;font-size:clamp(2rem,4vw,3rem);font-weight:900;color:#A78BFA;line-height:1">6週</span>
       <div style="font-size:0.8125rem;color:var(--silver);margin-top:0.5rem;line-height:1.5">從策略規劃到方案落地<br><span style="font-size:0.7rem;color:rgba(255,255,255,0.25)">strategy to execution</span></div>
     </div>
   </div>
@@ -199,13 +250,13 @@
         <line x1="80" y1="140" x2="440" y2="140" stroke="rgba(255,255,255,0.04)" stroke-width="0.75" stroke-dasharray="4 4"/>
         <line x1="80" y1="80" x2="440" y2="80" stroke="rgba(255,255,255,0.04)" stroke-width="0.75" stroke-dasharray="4 4"/>
         <!-- Bar chart: market growth -->
-        <rect x="110" y="210" width="40" height="60" rx="3" fill="rgba(250,88,34,0.2)" stroke="rgba(250,88,34,0.4)" stroke-width="1"/>
-        <rect x="170" y="180" width="40" height="90" rx="3" fill="rgba(250,88,34,0.3)" stroke="rgba(250,88,34,0.5)" stroke-width="1"/>
-        <rect x="230" y="140" width="40" height="130" rx="3" fill="rgba(250,88,34,0.4)" stroke="rgba(250,88,34,0.6)" stroke-width="1"/>
-        <rect x="290" y="90" width="40" height="180" rx="3" fill="rgba(250,88,34,0.55)" stroke="rgba(250,88,34,0.7)" stroke-width="1"/>
-        <rect x="350" y="55" width="40" height="215" rx="3" fill="rgba(250,88,34,0.7)" stroke="#FA5822" stroke-width="1.5"/>
+        <rect class="svc-bar svc-bar-1" x="110" y="210" width="40" height="60" rx="3" fill="rgba(250,88,34,0.2)" stroke="rgba(250,88,34,0.4)" stroke-width="1"/>
+        <rect class="svc-bar svc-bar-2" x="170" y="180" width="40" height="90" rx="3" fill="rgba(250,88,34,0.3)" stroke="rgba(250,88,34,0.5)" stroke-width="1"/>
+        <rect class="svc-bar svc-bar-3" x="230" y="140" width="40" height="130" rx="3" fill="rgba(250,88,34,0.4)" stroke="rgba(250,88,34,0.6)" stroke-width="1"/>
+        <rect class="svc-bar svc-bar-4" x="290" y="90" width="40" height="180" rx="3" fill="rgba(250,88,34,0.55)" stroke="rgba(250,88,34,0.7)" stroke-width="1"/>
+        <rect class="svc-bar svc-bar-5" x="350" y="55" width="40" height="215" rx="3" fill="rgba(250,88,34,0.7)" stroke="#FA5822" stroke-width="1.5"/>
         <!-- Trend line -->
-        <polyline points="130,210 190,175 250,135 310,88 370,52" stroke="#FA5822" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <polyline class="svc-trend" points="130,210 190,175 250,135 310,88 370,52" stroke="#FA5822" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
         <!-- Dots -->
         <circle cx="130" cy="210" r="4" fill="#FA5822"/>
         <circle cx="190" cy="175" r="4" fill="#FA5822"/>
@@ -251,13 +302,13 @@
         <line x1="140" y1="110" x2="340" y2="230" stroke="rgba(0,200,200,0.1)" stroke-width="0.75"/>
         <line x1="340" y1="110" x2="140" y2="230" stroke="rgba(0,200,200,0.1)" stroke-width="0.75"/>
         <!-- Filled polygon: brand scores -->
-        <polygon points="240,80 325,135 310,222 240,258 170,222 155,135" fill="rgba(0,200,200,0.08)" stroke="#00C8C8" stroke-width="1.5"/>
+        <polygon class="svc-radar-fill" points="240,80 325,135 310,222 240,258 170,222 155,135" fill="rgba(0,200,200,0.08)" stroke="#00C8C8" stroke-width="1.5"/>
         <!-- Score dots -->
-        <circle cx="240" cy="80" r="5" fill="#00C8C8"/>
-        <circle cx="325" cy="135" r="5" fill="#00C8C8"/>
-        <circle cx="310" cy="222" r="5" fill="#00C8C8"/>
-        <circle cx="240" cy="258" r="5" fill="#00C8C8"/>
-        <circle cx="170" cy="222" r="5" fill="#00C8C8"/>
+        <circle class="svc-radar-dot" cx="240" cy="80" r="5" fill="#00C8C8"/>
+        <circle class="svc-radar-dot" cx="325" cy="135" r="5" fill="#00C8C8" style="animation-delay:0.4s"/>
+        <circle class="svc-radar-dot" cx="310" cy="222" r="5" fill="#00C8C8" style="animation-delay:0.8s"/>
+        <circle class="svc-radar-dot" cx="240" cy="258" r="5" fill="#00C8C8" style="animation-delay:1.2s"/>
+        <circle class="svc-radar-dot" cx="170" cy="222" r="5" fill="#00C8C8" style="animation-delay:1.6s"/>
         <circle cx="155" cy="135" r="5" fill="rgba(0,200,200,0.4)"/>
         <!-- Labels -->
         <text x="240" y="50" font-size="9" font-family="monospace" fill="rgba(0,200,200,0.7)" text-anchor="middle">識別度</text>
@@ -336,8 +387,8 @@
         <rect width="480" height="340" fill="url(#sec-grid)" rx="16"/>
         <ellipse cx="240" cy="170" rx="200" ry="160" fill="url(#sec-g)" filter="url(#sec-blur)"/>
         <!-- Layered defense rings -->
-        <circle cx="240" cy="170" r="130" fill="none" stroke="rgba(255,68,68,0.08)" stroke-width="1.5"/>
-        <circle cx="240" cy="170" r="95" fill="none" stroke="rgba(255,68,68,0.12)" stroke-width="1.5"/>
+        <circle class="svc-ring-outer" cx="240" cy="170" r="130" fill="none" stroke="rgba(255,68,68,0.08)" stroke-width="1.5" stroke-dasharray="12 6"/>
+        <circle class="svc-ring-mid" cx="240" cy="170" r="95" fill="none" stroke="rgba(255,68,68,0.12)" stroke-width="1.5" stroke-dasharray="8 4"/>
         <circle cx="240" cy="170" r="60" fill="none" stroke="rgba(255,68,68,0.18)" stroke-width="1.5"/>
         <circle cx="240" cy="170" r="28" fill="rgba(255,68,68,0.06)" stroke="rgba(255,68,68,0.4)" stroke-width="2"/>
         <!-- Asset at center -->
@@ -348,11 +399,11 @@
         <text x="240" y="132" font-size="8" font-family="monospace" fill="rgba(255,102,102,0.5)" text-anchor="middle">ENDPOINT</text>
         <text x="240" y="152" font-size="8" font-family="monospace" fill="rgba(255,102,102,0.6)" text-anchor="middle">IDENTITY</text>
         <!-- Threat indicators at edges -->
-        <circle cx="240" cy="40" r="8" fill="rgba(255,68,68,0.15)" stroke="#FF4444" stroke-width="1.5"/>
+        <circle class="svc-threat" cx="240" cy="40" r="8" fill="rgba(255,68,68,0.15)" stroke="#FF4444" stroke-width="1.5"/>
         <text x="240" y="44" font-size="8" fill="#FF4444" text-anchor="middle">!</text>
-        <circle cx="370" cy="170" r="8" fill="rgba(255,68,68,0.15)" stroke="#FF4444" stroke-width="1.5"/>
+        <circle class="svc-threat svc-threat-2" cx="370" cy="170" r="8" fill="rgba(255,68,68,0.15)" stroke="#FF4444" stroke-width="1.5"/>
         <text x="370" y="174" font-size="8" fill="#FF4444" text-anchor="middle">!</text>
-        <circle cx="110" cy="170" r="8" fill="rgba(255,68,68,0.15)" stroke="#FF4444" stroke-width="1.5"/>
+        <circle class="svc-threat svc-threat-3" cx="110" cy="170" r="8" fill="rgba(255,68,68,0.15)" stroke="#FF4444" stroke-width="1.5"/>
         <text x="110" y="174" font-size="8" fill="#FF4444" text-anchor="middle">!</text>
         <!-- Block arrows -->
         <path d="M240 56 L240 72" stroke="rgba(255,68,68,0.4)" stroke-width="1.5" stroke-dasharray="3 2" marker-end="url(#arr)"/>
@@ -377,33 +428,33 @@
     <div class="sec-tag">適合場景</div>
     <h2 class="sec-h">哪些企業最適合<span class="accent">我們的服務</span></h2>
   </div>
-  <div class="who-grid reveal">
-    <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:1.75rem;transition:border-color 0.25s" onmouseover="this.style.borderColor='rgba(250,88,34,0.3)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.06)'">
+  <div class="who-grid">
+    <div class="svc-card-ani reveal svc-s1" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:1.75rem">
       <div style="font-family:'Orbitron',monospace;font-size:1.5rem;font-weight:700;color:rgba(250,88,34,0.3);margin-bottom:0.75rem">SME</div>
       <div style="font-size:1rem;font-weight:700;color:#fff;font-family:'Inter', sans-serif;margin-bottom:0.5rem">中小企業轉型期</div>
       <p style="font-size:0.8125rem;color:var(--silver);line-height:1.65">需要突破成長瓶頸，卻缺乏專職策略或資安人力的快速成長企業。</p>
     </div>
-    <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:1.75rem;transition:border-color 0.25s" onmouseover="this.style.borderColor='rgba(0,200,200,0.3)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.06)'">
+    <div class="svc-card-ani reveal svc-s2" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:1.75rem">
       <div style="font-family:'Orbitron',monospace;font-size:1.5rem;font-weight:700;color:rgba(0,200,200,0.3);margin-bottom:0.75rem">MFG</div>
       <div style="font-size:1rem;font-weight:700;color:#fff;font-family:'Inter', sans-serif;margin-bottom:0.5rem">製造業資安合規</div>
       <p style="font-size:0.8125rem;color:var(--silver);line-height:1.65">面對 SEMI E187 或客戶要求，需要快速達到資安合規標準的製造廠商。</p>
     </div>
-    <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:1.75rem;transition:border-color 0.25s" onmouseover="this.style.borderColor='rgba(167,139,250,0.3)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.06)'">
+    <div class="svc-card-ani reveal svc-s3" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:1.75rem">
       <div style="font-family:'Orbitron',monospace;font-size:1.5rem;font-weight:700;color:rgba(167,139,250,0.3);margin-bottom:0.75rem">TECH</div>
       <div style="font-size:1rem;font-weight:700;color:#fff;font-family:'Inter', sans-serif;margin-bottom:0.5rem">科技新創品牌建立</div>
       <p style="font-size:0.8125rem;color:var(--silver);line-height:1.65">有產品有技術但缺乏品牌定位，需要從零建立市場信任感的科技公司。</p>
     </div>
-    <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:1.75rem;transition:border-color 0.25s" onmouseover="this.style.borderColor='rgba(61,220,151,0.3)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.06)'">
+    <div class="svc-card-ani reveal svc-s4" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:1.75rem">
       <div style="font-family:'Orbitron',monospace;font-size:1.5rem;font-weight:700;color:rgba(61,220,151,0.3);margin-bottom:0.75rem">FIN</div>
       <div style="font-size:1rem;font-weight:700;color:#fff;font-family:'Inter', sans-serif;margin-bottom:0.5rem">金融與醫療機構</div>
       <p style="font-size:0.8125rem;color:var(--silver);line-height:1.65">高度監管行業，需要兼顧嚴格合規要求與業務數位化轉型的企業。</p>
     </div>
-    <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:1.75rem;transition:border-color 0.25s" onmouseover="this.style.borderColor='rgba(250,88,34,0.3)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.06)'">
+    <div class="svc-card-ani reveal svc-s5" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:1.75rem">
       <div style="font-family:'Orbitron',monospace;font-size:1.5rem;font-weight:700;color:rgba(250,88,34,0.3);margin-bottom:0.75rem">GOV</div>
       <div style="font-size:1rem;font-weight:700;color:#fff;font-family:'Inter', sans-serif;margin-bottom:0.5rem">政府與公共事業</div>
       <p style="font-size:0.8125rem;color:var(--silver);line-height:1.65">需要滿足政府資安規範，同時推動內部數位轉型的公部門或公共建設。</p>
     </div>
-    <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:1.75rem;transition:border-color 0.25s" onmouseover="this.style.borderColor='rgba(255,122,69,0.3)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.06)'">
+    <div class="svc-card-ani reveal svc-s6" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:1.75rem">
       <div style="font-family:'Orbitron',monospace;font-size:1.5rem;font-weight:700;color:rgba(255,122,69,0.3);margin-bottom:0.75rem">OT</div>
       <div style="font-size:1rem;font-weight:700;color:#fff;font-family:'Inter', sans-serif;margin-bottom:0.5rem">OT / ICS 工控環境</div>
       <p style="font-size:0.8125rem;color:var(--silver);line-height:1.65">工廠、能源或關鍵基礎設施，需要在不停機前提下建立 OT 資安防護的企業。</p>
@@ -417,33 +468,33 @@
     <div class="sec-tag" style="justify-content:center">服務流程</div>
     <h2 class="sec-h">透明、高效的<span class="accent">六步驟服務流程</span></h2>
   </div>
-  <div class="process-grid reveal" style="">
-    <div class="process-card">
+  <div class="process-grid">
+    <div class="process-card svc-card-ani reveal svc-s1">
       <div class="process-num">01</div>
       <div class="process-title">初步諮詢</div>
       <p class="process-desc">免費 30 分鐘電話/LINE 諮詢，了解您的需求與痛點，初步評估適合的服務方向。</p>
     </div>
-    <div class="process-card">
+    <div class="process-card svc-card-ani reveal svc-s2">
       <div class="process-num">02</div>
       <div class="process-title">現況評估</div>
       <p class="process-desc">深入分析您的業務流程、IT 架構與現有資安措施，建立完整的現況基準線。</p>
     </div>
-    <div class="process-card">
+    <div class="process-card svc-card-ani reveal svc-s3">
       <div class="process-num">03</div>
       <div class="process-title">提案規劃</div>
       <p class="process-desc">根據評估結果制定客製化方案，包含清晰的時間表、里程碑與預算規劃。</p>
     </div>
-    <div class="process-card">
+    <div class="process-card svc-card-ani reveal svc-s4">
       <div class="process-num">04</div>
       <div class="process-title">方案執行</div>
       <p class="process-desc">由專屬顧問主導執行，確保每個環節符合規劃，並保持與您的團隊緊密溝通。</p>
     </div>
-    <div class="process-card">
+    <div class="process-card svc-card-ani reveal svc-s5">
       <div class="process-num">05</div>
       <div class="process-title">驗收測試</div>
       <p class="process-desc">完整驗收測試與文件交付，確保方案有效運作，所有問題在交付前解決。</p>
     </div>
-    <div class="process-card">
+    <div class="process-card svc-card-ani reveal svc-s6">
       <div class="process-num">06</div>
       <div class="process-title">持續支援</div>
       <p class="process-desc">提供後續技術支援、定期回顧與方案優化，確保長期服務效益最大化。</p>
