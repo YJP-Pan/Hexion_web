@@ -108,6 +108,15 @@ h1,h2,h3,h4 { font-family: 'Inter', 'Inter', sans-serif; letter-spacing:-0.025em
   display: inline-flex; align-items: center; gap: 6px;
   color: var(--teal) !important; font-weight: 600;
 }
+.lang-btn {
+  color: rgba(255,255,255,0.4) !important;
+  font-size: 0.68rem; letter-spacing: 0.1em;
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 0.1rem 0.45rem; border-radius: 3px;
+  text-decoration: none;
+  transition: color 0.15s, border-color 0.15s;
+}
+.lang-btn:hover { color: var(--white) !important; border-color: rgba(255,255,255,0.3); }
 
 /* ── NAV ── */
 nav {
