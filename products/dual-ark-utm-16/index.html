@@ -120,6 +120,9 @@
         <radialGradient id="dg2" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#FA5822" stop-opacity="0.08"/><stop offset="100%" stop-color="#FA5822" stop-opacity="0"/></radialGradient>
         <marker id="arrowDT" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="rgba(0,200,200,0.7)"/></marker>
         <marker id="arrowDO" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="rgba(250,88,34,0.5)"/></marker>
+        <filter id="arkImgGlow" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="0" stdDeviation="10" flood-color="#00C8C8" flood-opacity="0.45"/>
+        </filter>
       </defs>
 
       <circle cx="220" cy="200" r="170" fill="url(#dg1)"/>
@@ -143,14 +146,8 @@
       <line x1="130" y1="200" x2="168" y2="200" stroke="rgba(0,200,200,0.35)" stroke-width="1.5" marker-end="url(#arrowDT)" stroke-dasharray="4 2" class="svg-flow"/>
       <line x1="130" y1="245" x2="168" y2="200" stroke="rgba(0,200,200,0.35)" stroke-width="1.5" marker-end="url(#arrowDT)" stroke-dasharray="4 2" class="svg-flow"/>
 
-      <!-- Central NGFW device -->
-      <rect x="168" y="172" width="104" height="56" rx="6" fill="rgba(10,10,20,0.95)" stroke="rgba(0,200,200,0.5)" stroke-width="2"/>
-      <text x="220" y="197" text-anchor="middle" font-family="Orbitron" font-size="6" fill="#00C8C8" font-weight="700">ARK-UTM 16</text>
-      <text x="220" y="218" text-anchor="middle" font-family="Orbitron" font-size="5" fill="rgba(0,200,200,0.5)">HA READY</text>
-      <!-- LED indicators on device -->
-      <circle cx="210" cy="225" r="2.5" fill="#00C8C8" opacity="0.9" class="svg-blink"/>
-      <circle cx="218" cy="225" r="2.5" fill="#FA5822" opacity="0.9" class="svg-blink-2"/>
-      <circle cx="226" cy="225" r="2.5" fill="#00C8C8" opacity="0.9" class="svg-blink-3"/>
+      <!-- Product image -->
+      <image href="/brand_assets/ark-front.png" x="155" y="158" width="130" height="84" preserveAspectRatio="xMidYMid meet" filter="url(#arkImgGlow)"/>
 
       <!-- Arrows Firewall -> OT -->
       <line x1="272" y1="200" x2="308" y2="155" stroke="rgba(250,88,34,0.4)" stroke-width="1.5" marker-end="url(#arrowDO)" stroke-dasharray="4 2" class="svg-flow"/>

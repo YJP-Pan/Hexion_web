@@ -121,6 +121,9 @@
         <marker id="arrowLO" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="rgba(250,88,34,0.6)"/></marker>
         <marker id="arrowLT" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="rgba(0,200,200,0.6)"/></marker>
         <marker id="arrowLR" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="rgba(255,68,68,0.6)"/></marker>
+        <filter id="lfImgGlow" x="-10%" y="-20%" width="120%" height="140%">
+          <feDropShadow dx="0" dy="0" stdDeviation="10" flood-color="#FA5822" flood-opacity="0.45"/>
+        </filter>
       </defs>
 
       <circle cx="220" cy="200" r="170" fill="url(#lg1)"/>
@@ -135,23 +138,8 @@
       <!-- Arrow: Internet -> Gateway -->
       <line x1="80" y1="200" x2="118" y2="200" stroke="rgba(250,88,34,0.5)" stroke-width="1.5" marker-end="url(#arrowLO)" stroke-dasharray="6 3" class="svg-flow"/>
 
-      <!-- Central gateway device -->
-      <rect x="118" y="158" width="204" height="84" rx="8" fill="rgba(10,10,20,0.95)" stroke="rgba(250,88,34,0.45)" stroke-width="2"/>
-      <text x="220" y="179" text-anchor="middle" font-family="Orbitron" font-size="7.5" fill="#FA5822" font-weight="700">LIONFILTER 200</text>
-      <!-- Category layers inside device -->
-      <rect x="130" y="186" width="46" height="14" rx="2" fill="rgba(250,88,34,0.1)" stroke="rgba(250,88,34,0.35)" stroke-width="1"/>
-      <text x="153" y="196" text-anchor="middle" font-family="Orbitron" font-size="4.5" fill="#FA5822">CLASSIFY</text>
-      <rect x="183" y="186" width="46" height="14" rx="2" fill="rgba(0,200,200,0.1)" stroke="rgba(0,200,200,0.35)" stroke-width="1"/>
-      <text x="206" y="196" text-anchor="middle" font-family="Orbitron" font-size="4.5" fill="#00C8C8">INSPECT</text>
-      <rect x="236" y="186" width="46" height="14" rx="2" fill="rgba(250,88,34,0.1)" stroke="rgba(250,88,34,0.35)" stroke-width="1"/>
-      <text x="259" y="196" text-anchor="middle" font-family="Orbitron" font-size="4.5" fill="#FA5822">ENFORCE</text>
-      <!-- Divider line -->
-      <line x1="130" y1="207" x2="310" y2="207" stroke="rgba(250,88,34,0.15)" stroke-width="1"/>
-      <!-- Status LEDs -->
-      <circle cx="210" cy="222" r="3" fill="#00C8C8" opacity="0.9" class="svg-blink"/>
-      <circle cx="220" cy="222" r="3" fill="#FA5822" opacity="0.9" class="svg-blink-2"/>
-      <circle cx="230" cy="222" r="3" fill="#00C8C8" opacity="0.9" class="svg-blink-3"/>
-      <text x="260" y="227" text-anchor="middle" font-family="Orbitron" font-size="5" fill="rgba(250,88,34,0.5)">1億+ URL DB</text>
+      <!-- Product image -->
+      <image href="/brand_assets/lf200-front.png" x="115" y="152" width="210" height="90" preserveAspectRatio="xMidYMid meet" filter="url(#lfImgGlow)"/>
 
       <!-- ALLOWED path -->
       <line x1="322" y1="185" x2="380" y2="150" stroke="rgba(0,200,200,0.5)" stroke-width="1.5" marker-end="url(#arrowLT)" stroke-dasharray="6 3" class="svg-flow"/>
