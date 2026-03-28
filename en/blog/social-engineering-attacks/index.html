@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Social Engineering Attacks Explained | From Phishing to AI Deepfakes — Hexion Networks</title>
+  <meta name="description" content="A deep dive into social engineering attack techniques: from spear phishing emails and Business Email Compromise (BEC) to AI deepfake voice fraud, with a complete enterprise defense framework." />
+  <meta name="keywords" content="social engineering, phishing, BEC, deepfake, security awareness training, spear phishing, vishing, Taiwan cybersecurity, Hexion Networks" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hexionnetworks.com/en/blog/social-engineering-attacks/" />
+  <link rel="alternate" hreflang="zh-TW" href="https://hexionnetworks.com/blog/social-engineering-attacks/" />
+  <link rel="alternate" hreflang="en" href="https://hexionnetworks.com/en/blog/social-engineering-attacks/" />
+  <link rel="alternate" hreflang="x-default" href="https://hexionnetworks.com/blog/social-engineering-attacks/" />
+  <meta property="og:title" content="Social Engineering Attacks Explained | From Phishing to AI Deepfakes — Hexion Networks" />
+  <meta property="og:description" content="Deep analysis of social engineering attack methods — from spear phishing and BEC to AI deepfake scams — and a complete enterprise defense strategy." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://hexionnetworks.com/en/blog/social-engineering-attacks/" />
+  <meta property="og:image" content="https://hexionnetworks.com/brand_assets/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/brand_assets/favicon.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Social Engineering Attacks Explained | From Phishing to AI Deepfakes","datePublished":"2025-10-20","dateModified":"2025-10-20","author":{"@type":"Organization","name":"Hexion Networks"},"publisher":{"@type":"Organization","name":"Hexion Networks","url":"https://hexionnetworks.com"},"url":"https://hexionnetworks.com/en/blog/social-engineering-attacks/"}</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-78TQ277930"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-78TQ277930');
+</script>
+<script src="/lang.js"></script>
+</head>
+<body>
+<div id="page-loader"><img src="/brand_assets/logo.png" alt="" class="loader-logo" /><div class="loader-ring-wrap"><div class="loader-ring loader-ring-outer"></div><div class="loader-ring loader-ring-inner"></div><div class="loader-dot"></div></div></div>
+<div class="topbar">
+  <a href="/en/contact/">Contact Us</a>
+  <a href="/en/blog/" class="topbar-highlight">Latest Security Reports →</a>
+  <a href="#" id="lang-toggle" class="lang-btn">中文</a>
+</div>
+<nav>
+  <a href="/en/" class="nav-logo"><img src="/brand_assets/logo.png" alt="Hexion Networks" /></a>
+  <div class="nav-links">
+    <div class="nav-item">
+      <button>
+        Products
+        <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M8 11L3 6h10z"/></svg>
+      </button>
+      <div class="mega" style="width:560px;grid-template-columns:1fr 1fr">
+        <div class="mega-col" style="border-right:1px solid rgba(255,255,255,0.06)">
+          <div class="mega-label" style="color:var(--teal)">LIONIC NGFW Series</div>
+          <a href="/en/products/pico-utm-100/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.15);color:var(--o)">IT</span>
+            Pico-UTM 100
+          </a>
+          <a href="/en/products/dual-ark-utm-16/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(0,200,200,0.12);color:var(--teal)">IoT</span>
+            Ark-UTM 16
+          </a>
+          <a href="/en/products/tera-utm-12/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.12);color:#FF7A45">OT</span>
+            Tera-UTM 12
+          </a>
+          <a href="/en/products/lionfilter-200/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(167,139,250,0.12);color:#A78BFA">NET</span>
+            Lionfilter 200
+          </a>
+        </div>
+        <div class="mega-col" style="background:rgba(61,220,151,0.025)">
+          <div class="mega-label" style="color:#3DDC97">EDR Endpoint Detection</div>
+          <a href="/en/products/endblock/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.15);color:#3DDC97">EDR</span>
+            Endblock
+          </a>
+          <a href="/en/products/teamt5/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.12);color:#3DDC97">TI</span>
+            TeamT5
+          </a>
+          <a href="/en/products/cycraft/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.1);color:#3DDC97">AI</span>
+            CyCraft AI
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-item"><a href="/en/services/">Services</a></div>
+    <div class="nav-item" style="display:none"><a href="/en/research/">Research</a></div>
+    <div class="nav-item active"><a href="/en/blog/">Blog</a></div>
+    <div class="nav-item"><a href="/en/about/">About</a></div>
+  </div>
+  <div class="nav-cta">
+    <a href="https://line.me/R/ti/p/@278zhddk" target="_blank" class="nav-line-btn">LINE Chat</a>
+    <a href="/en/contact/" class="btn btn-orange" style="padding:0.5rem 1.125rem;font-size:0.8125rem;">Get a Quote →</a>
+  </div>
+</nav>
+
+<div class="page-hero" style="padding-bottom:3rem">
+  <div style="padding:0 var(--px)">
+    <div class="reveal" style="display:flex;gap:0.5rem;margin-bottom:1.5rem;flex-wrap:wrap">
+      <a href="/en/blog/" style="color:var(--silver);font-size:0.8rem;text-decoration:none">Blog</a>
+      <span style="color:var(--silver);font-size:0.8rem">/</span>
+      <span style="color:var(--o);font-size:0.8rem">Threat Analysis</span>
+    </div>
+    <div class="reveal">
+      <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(250,88,34,0.1);border:1px solid rgba(250,88,34,0.3);border-radius:4px;padding:0.25rem 0.75rem;font-family:'Orbitron',monospace;font-size:0.65rem;color:#FA5822;letter-spacing:0.1em;margin-bottom:1.25rem">THREAT ANALYSIS</div>
+      <h1 style="font-family:'Inter', sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.025em;line-height:1.15;margin-bottom:1.25rem">Social Engineering Attacks Explained: From Phishing Emails to AI Deepfake Threats</h1>
+      <p style="color:var(--silver);font-size:1.0625rem;line-height:1.7;margin-bottom:2rem">No matter how strong your technical defenses, a single moment of human misjudgment remains the hardest line to hold. This article analyzes how social engineering exploits human psychological weaknesses — evolving from traditional phishing to AI deepfake fraud — and provides a strategic framework for building a complete human firewall.</p>
+      <div style="display:flex;align-items:center;gap:1.5rem;color:var(--silver);font-size:0.8125rem;border-top:1px solid var(--ink-4);padding-top:1.5rem;flex-wrap:wrap">
+        <span>Hexion Networks Security Research Team</span>
+        <span>·</span>
+        <span>2025-10-20</span>
+        <span>·</span>
+        <span>8 min read</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="padding:3rem var(--px) 5rem">
+  <div class="reveal" style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:12px;overflow:hidden;margin-bottom:3rem;aspect-ratio:16/7;display:flex;align-items:center;justify-content:center">
+    <svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+      <defs>
+        <radialGradient id="se-bg" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="#FA5822" stop-opacity="0.08"/><stop offset="100%" stop-color="#0A0A14" stop-opacity="0"/></radialGradient>
+      </defs>
+      <rect width="800" height="350" fill="#0A0A14"/>
+      <rect width="800" height="350" fill="url(#se-bg)"/>
+      <text x="400" y="30" text-anchor="middle" font-family="Orbitron,monospace" font-size="9" fill="#FA5822" letter-spacing="3">SOCIAL ENGINEERING ATTACK VECTORS</text>
+      <rect x="30" y="55" width="160" height="80" rx="6" fill="rgba(250,88,34,0.08)" stroke="rgba(250,88,34,0.4)" stroke-width="1"/>
+      <text x="110" y="78" text-anchor="middle" font-family="Orbitron,monospace" font-size="8" fill="#FA5822">SPEAR PHISHING</text>
+      <text x="110" y="95" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#8B8BA8">Targeted Email Attack</text>
+      <text x="110" y="110" text-anchor="middle" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(250,88,34,0.6)">Target: Exec / Finance</text>
+      <text x="110" y="125" text-anchor="middle" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(250,88,34,0.5)">Success Rate: High</text>
+      <rect x="210" y="55" width="160" height="80" rx="6" fill="rgba(255,68,68,0.08)" stroke="rgba(255,68,68,0.4)" stroke-width="1"/>
+      <text x="290" y="78" text-anchor="middle" font-family="Orbitron,monospace" font-size="8" fill="#FF4444">BEC</text>
+      <text x="290" y="95" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#8B8BA8">Business Email Compromise</text>
+      <text x="290" y="110" text-anchor="middle" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(255,68,68,0.6)">Target: Wire Transfer</text>
+      <text x="290" y="125" text-anchor="middle" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(255,68,68,0.5)">Loss: Globally Highest</text>
+      <rect x="390" y="55" width="160" height="80" rx="6" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.4)" stroke-width="1"/>
+      <text x="470" y="78" text-anchor="middle" font-family="Orbitron,monospace" font-size="8" fill="#A78BFA">VISHING</text>
+      <text x="470" y="95" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#8B8BA8">Voice Phishing Call</text>
+      <text x="470" y="110" text-anchor="middle" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(167,139,250,0.6)">Impersonate: IT / Bank</text>
+      <text x="470" y="125" text-anchor="middle" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(167,139,250,0.5)">AI Synthesized Voice</text>
+      <rect x="570" y="55" width="160" height="80" rx="6" fill="rgba(0,200,200,0.08)" stroke="rgba(0,200,200,0.4)" stroke-width="1"/>
+      <text x="650" y="78" text-anchor="middle" font-family="Orbitron,monospace" font-size="8" fill="#00C8C8">DEEPFAKE</text>
+      <text x="650" y="95" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#8B8BA8">AI Video/Audio Fraud</text>
+      <text x="650" y="110" text-anchor="middle" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(0,200,200,0.6)">Impersonate: CEO Video</text>
+      <text x="650" y="125" text-anchor="middle" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(0,200,200,0.5)">Real-Time Generation</text>
+      <text x="400" y="165" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#8B8BA8">▼ Psychological Manipulation Mechanisms</text>
+      <rect x="30" y="178" width="170" height="36" rx="5" fill="rgba(250,88,34,0.05)" stroke="rgba(250,88,34,0.2)" stroke-width="0.75"/>
+      <text x="115" y="194" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="rgba(250,88,34,0.8)" font-weight="600">Urgency / Fear</text>
+      <text x="115" y="208" text-anchor="middle" font-family="Inter,sans-serif" font-size="6.5" fill="#8B8BA8">Deadline payment, account suspension</text>
+      <rect x="215" y="178" width="170" height="36" rx="5" fill="rgba(255,68,68,0.05)" stroke="rgba(255,68,68,0.2)" stroke-width="0.75"/>
+      <text x="300" y="194" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="rgba(255,68,68,0.8)" font-weight="600">Authority / Trust</text>
+      <text x="300" y="208" text-anchor="middle" font-family="Inter,sans-serif" font-size="6.5" fill="#8B8BA8">Impersonate CEO, IT, government</text>
+      <rect x="400" y="178" width="170" height="36" rx="5" fill="rgba(167,139,250,0.05)" stroke="rgba(167,139,250,0.2)" stroke-width="0.75"/>
+      <text x="485" y="194" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="rgba(167,139,250,0.8)" font-weight="600">Reciprocity / Social Pressure</text>
+      <text x="485" y="208" text-anchor="middle" font-family="Inter,sans-serif" font-size="6.5" fill="#8B8BA8">Do me this favor, don't let me down</text>
+      <rect x="585" y="178" width="170" height="36" rx="5" fill="rgba(0,200,200,0.05)" stroke="rgba(0,200,200,0.2)" stroke-width="0.75"/>
+      <text x="670" y="194" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="rgba(0,200,200,0.8)" font-weight="600">Greed / Curiosity</text>
+      <text x="670" y="208" text-anchor="middle" font-family="Inter,sans-serif" font-size="6.5" fill="#8B8BA8">Prize notification, leaked documents</text>
+      <rect x="160" y="248" width="480" height="70" rx="7" fill="rgba(0,200,200,0.05)" stroke="rgba(0,200,200,0.25)" stroke-width="1"/>
+      <text x="400" y="270" text-anchor="middle" font-family="Orbitron,monospace" font-size="8" fill="#00C8C8" font-weight="700">DEFENSE FRAMEWORK: PEOPLE + PROCESS + TECHNOLOGY</text>
+      <text x="400" y="290" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#8B8BA8">Security Awareness Training · Social Engineering Drills · Email Auth (DMARC/SPF/DKIM) · MFA</text>
+      <text x="400" y="308" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#8B8BA8">Dual-Approval Wire Transfer Process · Out-of-Band Verification · Security Reporting Culture</text>
+    </svg>
+  </div>
+
+  <div class="reveal" style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+    <p>Verizon's 2025 Data Breach Investigations Report found that over 74% of security incidents involve human factors — miscalculation, stolen credentials, or social engineering. This figure reveals an uncomfortable truth: no matter how sophisticated an enterprise's technical defenses, attackers only need to deceive one person to potentially breach all of them.</p>
+    <p style="margin-top:1rem">Social engineering is so difficult to defend against because it attacks human cognitive shortcuts and emotional responses rather than technical vulnerabilities. Attackers don't need to breach a firewall or exploit a zero-day vulnerability — they just need to make a target make a wrong decision under pressure.</p>
+  </div>
+
+  <div class="reveal" style="margin-top:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)"><span style="color:#FA5822">The Evolution of Phishing</span>: From Mass Blasting to Precision Targeting</h2>
+    <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+      <p>Early phishing attacks relied on mass distribution and low cost — crude content and grammatical errors made them easy to identify. But after 2024, the proliferation of generative AI completely transformed attack precision and scale:</p>
+      <ul style="margin-top:1rem;list-style:none;padding:0;display:flex;flex-direction:column;gap:0.75rem">
+        <li style="display:flex;gap:0.75rem"><span style="color:#FA5822;flex-shrink:0;font-weight:700">→</span><div><strong style="color:var(--white)">Spear Phishing:</strong> Attackers research targets' LinkedIn profiles, company announcements, and social media posts to craft highly personalized emails. For example: "Regarding the collaboration project you mentioned in your TechDay presentation yesterday..."</div></li>
+        <li style="display:flex;gap:0.75rem"><span style="color:#FA5822;flex-shrink:0;font-weight:700">→</span><div><strong style="color:var(--white)">Whaling:</strong> Precision attacks targeting senior executives (CEO, CFO, board members). Attackers impersonate board members or legal counsel, demanding urgent confidential actions.</div></li>
+        <li style="display:flex;gap:0.75rem"><span style="color:#FA5822;flex-shrink:0;font-weight:700">→</span><div><strong style="color:var(--white)">AI-Assisted Generation:</strong> Modern attackers use LLM tools to mass-generate grammatically perfect, logically coherent personalized emails and can instantly translate them into any language — eliminating linguistic red flags.</div></li>
+        <li style="display:flex;gap:0.75rem"><span style="color:#FA5822;flex-shrink:0;font-weight:700">→</span><div><strong style="color:var(--white)">Multi-Channel Attacks:</strong> First establishing trust via LinkedIn or messaging apps, then directing targets via email or phone to execute malicious actions — making it difficult to distinguish legitimate from fraudulent.</div></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)"><span style="color:#FA5822">Business Email Compromise (BEC)</span>: The Highest-Loss Attack Type</h2>
+    <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+      <p>According to the FBI's Internet Crime Complaint Center (IC3), BEC is the globally highest-loss cybercrime category, causing over $3 billion USD in losses in 2024. BEC attacks typically take several forms:</p>
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1.25rem;margin-top:1rem">
+        <div style="display:flex;flex-direction:column;gap:1rem;font-size:0.9375rem">
+          <div><strong style="color:var(--white)">CEO Fraud:</strong><span style="color:var(--fog)"> Attackers compromise or impersonate the CEO's email, requesting finance staff to urgently execute a confidential wire transfer while emphasizing it must not be disclosed to others.</span></div>
+          <div><strong style="color:var(--white)">Fake Invoice Scam:</strong><span style="color:var(--fog)"> Impersonating a vendor to send fake invoices, or announcing "bank account changes," directing companies to wire funds to attacker-controlled accounts.</span></div>
+          <div><strong style="color:var(--white)">Attorney Impersonation:</strong><span style="color:var(--fog)"> Impersonating company legal counsel to request urgent wire transfers or confidential documents under the guise of a confidential legal matter.</span></div>
+          <div><strong style="color:var(--white)">Payroll Diversion:</strong><span style="color:var(--fog)"> Impersonating an employee contacting HR to change payroll deposit account, redirecting salary to attacker's account.</span></div>
+        </div>
+      </div>
+      <div style="background:rgba(250,88,34,0.06);border-left:3px solid #FA5822;border-radius:0 8px 8px 0;padding:1rem 1.25rem;margin-top:1.25rem">
+        <div style="font-family:'Inter', sans-serif;font-size:0.875rem;font-weight:700;color:#FA5822;margin-bottom:0.5rem">Real-World Case</div>
+        <p style="font-size:0.9375rem;color:var(--fog)">A Taiwan manufacturing exporter lost approximately NT$8 million in 2024: attackers compromised an external partner's email account and inserted a "change of wire transfer account" message into a legitimate email thread, using nearly identical formatting to normal correspondence — finance staff noticed nothing unusual.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)"><span style="color:#FA5822">AI Deepfake Scams</span>: When What You See and Hear May Be Fake</h2>
+    <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+      <p>In 2024, a Hong Kong multinational's finance employee joined a video call where they saw the "CFO" and other "colleagues," and transferred HK$200 million as instructed. But every person appearing on the video was an AI-generated deepfake image. This case marked the dawn of a new era in social engineering attacks.</p>
+      <p style="margin-top:1rem">Modern deepfake technology can now generate convincing real-time facial imagery and voice cloning. Attackers need only a few minutes of the target's voice samples (typically from YouTube videos or podcasts) to synthesize a convincing replica for phone fraud (vishing).</p>
+      <ul style="margin-top:1rem;list-style:none;padding:0;display:flex;flex-direction:column;gap:0.75rem">
+        <li style="display:flex;gap:0.75rem"><span style="color:#00C8C8;flex-shrink:0;font-weight:700">→</span><div><strong style="color:var(--white)">Establish Out-of-Band Verification:</strong> Any instruction involving fund transfers or sensitive operations must be confirmed through a pre-agreed independent channel (such as a known office phone) — never reply within the same call or email thread.</div></li>
+        <li style="display:flex;gap:0.75rem"><span style="color:#00C8C8;flex-shrink:0;font-weight:700">→</span><div><strong style="color:var(--white)">Pre-Agree on Safety Phrases:</strong> For high-risk processes (such as large transfers), agree in advance on a "safety phrase" — require the counterparty to say it during video or phone calls to verify authenticity.</div></li>
+        <li style="display:flex;gap:0.75rem"><span style="color:#00C8C8;flex-shrink:0;font-weight:700">→</span><div><strong style="color:var(--white)">Recognize Deepfake Indicators:</strong> Unnatural blink rates, subtle lip-sync mismatches, blurry and flickering background edges — watch for these details in high-stakes video calls.</div></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)">Enterprise Defense Framework: <span style="color:#FA5822">Three Layers of People, Process, and Technology</span></h2>
+    <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+      <p>Social engineering defense cannot rely on technology alone — it requires three layers working in concert:</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1.25rem">
+        <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1.25rem">
+          <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#FA5822;letter-spacing:0.08em;margin-bottom:0.75rem">PEOPLE</div>
+          <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:0.5rem;font-size:0.9rem;color:var(--fog)">
+            <li>· Regular security awareness training</li>
+            <li>· Social engineering simulation drills (phishing tests)</li>
+            <li>· Enhanced training for high-risk roles (Finance, IT, Executives)</li>
+            <li>· Build a no-punishment reporting culture</li>
+          </ul>
+        </div>
+        <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1.25rem">
+          <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#00C8C8;letter-spacing:0.08em;margin-bottom:0.75rem">PROCESS</div>
+          <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:0.5rem;font-size:0.9rem;color:var(--fog)">
+            <li>· Dual-approval SOP for large wire transfers</li>
+            <li>· Account changes must be phone-verified</li>
+            <li>· Cooling period for urgent requests</li>
+            <li>· Out-of-band verification standard procedures</li>
+          </ul>
+        </div>
+        <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1.25rem">
+          <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#3DDC97;letter-spacing:0.08em;margin-bottom:0.75rem">TECHNOLOGY</div>
+          <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:0.5rem;font-size:0.9rem;color:var(--fog)">
+            <li>· DMARC / SPF / DKIM email authentication</li>
+            <li>· Email security gateway (sandbox analysis)</li>
+            <li>· Multi-factor authentication (MFA)</li>
+            <li>· Anti-fraud browser extensions</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)">How to Build an <span style="color:#FA5822">Effective Security Awareness Program</span></h2>
+    <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+      <p>Annual compliance training has limited effect. A truly effective security awareness program needs to be continuous and contextual. Here are the key elements:</p>
+      <ol style="margin-top:1rem;padding-left:1.25rem;list-style:decimal;display:flex;flex-direction:column;gap:0.75rem">
+        <li><strong style="color:var(--white)">Contextual Phishing Simulation:</strong> Send simulated phishing emails regularly (monthly recommended), updating scenarios based on current threat trends. Provide immediate educational feedback to those who click — not post-hoc punishment.</li>
+        <li><strong style="color:var(--white)">Micro-Learning Format:</strong> Replace lengthy courses with under-5-minute short videos or interactive scenario questions. Better learning outcomes, higher employee acceptance.</li>
+        <li><strong style="color:var(--white)">Role-Based Training:</strong> Finance staff get BEC identification training; IT staff get technical support scam awareness; executives get whaling attack recognition.</li>
+        <li><strong style="color:var(--white)">Build Easy Reporting Channels:</strong> Let employees easily report suspicious emails (one-click report button) with positive feedback, making reporting a recognized and rewarded behavior.</li>
+        <li><strong style="color:var(--white)">Measure Effectiveness:</strong> Track phishing test click rates, report rates, and average identification time. Use data to drive program improvement.</li>
+      </ol>
+      <div style="background:rgba(250,88,34,0.06);border-left:3px solid #FA5822;border-radius:0 8px 8px 0;padding:1rem 1.25rem;margin-top:1.25rem">
+        <p style="font-size:0.9375rem;color:var(--fog)">"The ultimate goal of social engineering defense isn't to ensure employees never make mistakes — it's to shorten the attacker's action window. Get suspicious activity noticed and reported quickly enough to stop attacks before damage occurs."</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--ink-4);display:flex;gap:0.5rem;flex-wrap:wrap">
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">Social Engineering</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">Phishing</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">BEC</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">Deepfake</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">Security Awareness Training</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">Taiwan Enterprise</span>
+  </div>
+
+  <div class="reveal" style="margin-top:3rem;background:linear-gradient(135deg,rgba(250,88,34,0.08),rgba(0,200,200,0.04));border:1px solid rgba(250,88,34,0.2);border-radius:12px;padding:2rem">
+    <div style="font-family:'Inter', sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:0.75rem">Need Expert Security Advice?</div>
+    <p style="color:var(--silver);margin-bottom:1.5rem">Contact Hexion Networks for a tailored social engineering drill and security awareness training program for your organization.</p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap">
+      <a href="/en/contact/" class="btn btn-orange">Free Consultation</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div><a href="/en/"><img src="/brand_assets/logo.png" alt="Hexion Networks" style="height:36px;filter:brightness(0) invert(1);opacity:0.85" /></a><p class="footer-brand-desc">An integrated services firm combining business strategy, brand consulting, IT, and cybersecurity.</p></div>
+    <div><div class="f-col-title">Products</div><a href="/en/products/pico-utm-100/" class="f-link">Pico-UTM 100</a><a href="/en/products/dual-ark-utm-16/" class="f-link">Ark-UTM 16</a><a href="/en/products/tera-utm-12/" class="f-link">Tera-UTM 12</a><a href="/en/products/lionfilter-200/" class="f-link">Lionfilter 200</a><a href="/en/products/endblock/" class="f-link">Endblock</a><a href="/en/products/teamt5/" class="f-link">TeamT5</a><a href="/en/products/cycraft/" class="f-link">CyCraft AI</a></div>
+    <div><div class="f-col-title">Services</div><a href="/en/services/" class="f-link">Business Strategy</a><a href="/en/services/" class="f-link">Brand Consulting</a><a href="/en/services/" class="f-link">Security Assessment</a></div>
+    <div><div class="f-col-title">Company</div><a href="/en/about/" class="f-link">About Us</a><a href="/en/blog/" class="f-link">Blog</a><a href="/en/contact/" class="f-link">Contact</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 HEXION NETWORKS.</span>
+    <div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+  </div>
+</footer>
+
+<script>const ro=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target)}})},{threshold:0.08});document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));</script>
+<script>var _ls=Date.now();window.addEventListener("load",function(){var l=document.getElementById("page-loader");if(!l)return;var elapsed=Date.now()-_ls,wait=Math.max(0,800-elapsed);setTimeout(function(){l.classList.add("out");setTimeout(function(){l.remove()},520)},wait)});</script>
+</body></html>

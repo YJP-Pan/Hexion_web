@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Supply Chain Security | Complete Guide to Third-Party Risk Management — Hexion Networks</title>
+  <meta name="description" content="The SolarWinds incident revealed the devastating power of supply chain attacks. As a core player in the global supply chain, this article provides a deep analysis of SBOM, third-party risk assessment, and technical defense measures." />
+  <meta name="keywords" content="supply chain attack,SolarWinds,SBOM,software bill of materials,third-party risk,3CX attack,cybersecurity,APT, Hexion Networks" />  <meta name="geo.region" content="TW" />
+  <meta name="geo.placename" content="Taiwan" />
+  <meta name="geo.position" content="23.7;121.0" />
+  <meta name="ICBM" content="23.7, 121.0" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hexionnetworks.com/en/blog/supply-chain-security/" />
+  <link rel="alternate" hreflang="zh-TW" href="https://hexionnetworks.com/blog/supply-chain-security/" />
+  <link rel="alternate" hreflang="en" href="https://hexionnetworks.com/en/blog/supply-chain-security/" />
+  <link rel="alternate" hreflang="x-default" href="https://hexionnetworks.com/blog/supply-chain-security/" />
+  <meta property="og:title" content="Supply Chain Security | Complete Guide to Third-Party Risk Management — Hexion Networks" />
+  <meta property="og:description" content="The SolarWinds incident revealed the devastating power of supply chain attacks. As a core player in the global supply chain, organizations need to understand and defend against these threats." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://hexionnetworks.com/en/blog/supply-chain-security/" />
+  <meta property="og:image" content="https://hexionnetworks.com/brand_assets/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Supply Chain Security | Complete Guide to Third-Party Risk Management — Hexion Networks" />
+  <meta name="twitter:description" content="The SolarWinds incident revealed the devastating power of supply chain attacks. This article provides a deep analysis of SBOM, third-party risk assessment, and technical defense measures." />
+  <meta name="twitter:image" content="https://hexionnetworks.com/brand_assets/logo.png" />
+  <link rel="icon" href="/brand_assets/favicon.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Supply Chain Security | Complete Guide to Third-Party Risk Management","datePublished":"2025-09-02","dateModified":"2025-09-02","author":{"@type":"Organization","name":"Hexion Networks"},"publisher":{"@type":"Organization","name":"Hexion Networks","url":"https://hexionnetworks.com"},"url":"https://hexionnetworks.com/en/blog/supply-chain-security/"}</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-78TQ277930"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-78TQ277930');
+</script>
+<script src="/lang.js"></script>
+</head>
+<body>
+<div id="page-loader"><img src="/brand_assets/logo.png" alt="" class="loader-logo" /><div class="loader-ring-wrap"><div class="loader-ring loader-ring-outer"></div><div class="loader-ring loader-ring-inner"></div><div class="loader-dot"></div></div></div>
+<div class="topbar">
+  <a href="/en/contact/">Contact Us</a>
+  <a href="/en/blog/" class="topbar-highlight">Latest Security Report →</a>
+  <a href="/blog/supply-chain-security/" id="lang-toggle" class="lang-btn">中文</a>
+</div>
+<nav>
+  <a href="/en/" class="nav-logo"><img src="/brand_assets/logo.png" alt="Hexion Networks" /></a>
+  <div class="nav-links">
+    <div class="nav-item">
+      <button>
+        Products
+        <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M8 11L3 6h10z"/></svg>
+      </button>
+      <div class="mega" style="width:560px;grid-template-columns:1fr 1fr">
+        <div class="mega-col" style="border-right:1px solid rgba(255,255,255,0.06)">
+          <div class="mega-label" style="color:var(--teal)">LIONIC NGFW Series</div>
+          <a href="/en/products/pico-utm-100/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.15);color:var(--o)">IT</span>
+            Pico-UTM 100
+          </a>
+          <a href="/en/products/dual-ark-utm-16/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(0,200,200,0.12);color:var(--teal)">IoT</span>
+            Ark-UTM 16
+          </a>
+          <a href="/en/products/tera-utm-12/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.12);color:#FF7A45">OT</span>
+            Tera-UTM 12
+          </a>
+          <a href="/en/products/lionfilter-200/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(167,139,250,0.12);color:#A78BFA">NET</span>
+            Lionfilter 200
+          </a>
+        </div>
+        <div class="mega-col" style="background:rgba(61,220,151,0.025)">
+          <div class="mega-label" style="color:#3DDC97">EDR Endpoint Detection &amp; Response</div>
+          <a href="/en/products/endblock/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.15);color:#3DDC97">EDR</span>
+            Endblock
+          </a>
+          <a href="/en/products/teamt5/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.12);color:#3DDC97">TI</span>
+            TeamT5
+          </a>
+          <a href="/en/products/cycraft/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.1);color:#3DDC97">AI</span>
+            CyCraft AI
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-item"><a href="/en/services/">Services</a></div>
+    <div class="nav-item" style="display:none"><a href="/en/research/">Research</a></div>
+    <div class="nav-item active"><a href="/en/blog/">Blog</a></div>
+    <div class="nav-item"><a href="/en/about/">About</a></div>
+  </div>
+  <div class="nav-cta">
+    <a href="https://line.me/R/ti/p/@278zhddk" target="_blank" class="nav-line-btn">LINE Chat</a>
+    <a href="/en/contact/" class="btn btn-orange" style="padding:0.5rem 1.125rem;font-size:0.8125rem;">Get a Quote →</a>
+  </div>
+</nav>
+
+<div class="page-hero" style="padding-bottom:3rem">
+  <div style="padding:0 var(--px)">
+    <div class="reveal" style="display:flex;gap:0.5rem;margin-bottom:1.5rem">
+      <a href="/en/blog/" style="color:var(--silver);font-size:0.8rem;text-decoration:none">Blog</a>
+      <span style="color:var(--silver);font-size:0.8rem">/</span>
+      <span style="color:var(--o);font-size:0.8rem">Threat Analysis</span>
+    </div>
+    <div class="reveal">
+      <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(250,88,34,0.1);border:1px solid rgba(250,88,34,0.3);border-radius:4px;padding:0.25rem 0.75rem;font-family:'Orbitron',monospace;font-size:0.65rem;color:#FA5822;letter-spacing:0.1em;margin-bottom:1.25rem">Threat Analysis</div>
+      <h1 style="font-family:'Inter', sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.025em;line-height:1.15;margin-bottom:1.25rem">Anatomy of Supply Chain Attacks: How to Defend Against Infiltration Through Third Parties</h1>
+      <p style="color:var(--silver);font-size:1.0625rem;line-height:1.7;margin-bottom:2rem">The SolarWinds incident revealed the devastating power of supply chain attacks. As a core player in the global supply chain, organizations need to deeply understand and defend against these threats.</p>
+      <div style="display:flex;align-items:center;gap:1.5rem;color:var(--silver);font-size:0.8125rem;border-top:1px solid var(--ink-4);padding-top:1.5rem">
+        <span>Hexion Networks Security Research Team</span><span>·</span><span>September 2, 2025</span><span>·</span><span>8 min read</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="padding:3rem var(--px) 5rem">
+
+  <!-- SVG Banner: supply chain attack flow -->
+  <div class="reveal" style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:12px;overflow:hidden;margin-bottom:3rem;aspect-ratio:16/7;display:flex;align-items:center;justify-content:center">
+    <svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+      <defs>
+        <linearGradient id="sc-bg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#0A0A14"/>
+          <stop offset="100%" stop-color="#11111E"/>
+        </linearGradient>
+        <marker id="arr-red" markerWidth="8" markerHeight="6" refX="6" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#FA5822"/>
+        </marker>
+      </defs>
+      <rect width="800" height="350" fill="url(#sc-bg)"/>
+      <!-- Step 1: Trusted Vendor -->
+      <rect x="30" y="120" width="130" height="70" rx="8" fill="#1A1A2C" stroke="#00C8C8" stroke-width="1.5"/>
+      <text x="95" y="147" text-anchor="middle" font-family="'Orbitron',monospace" font-size="8" fill="#00C8C8">TRUSTED</text>
+      <text x="95" y="160" text-anchor="middle" font-family="'Orbitron',monospace" font-size="8" fill="#00C8C8">VENDOR</text>
+      <text x="95" y="178" text-anchor="middle" font-family="monospace" font-size="8" fill="#8B8BA8">SolarWinds / 3CX</text>
+      <!-- Attacker -->
+      <rect x="30" y="220" width="130" height="50" rx="8" fill="rgba(250,88,34,0.15)" stroke="#FA5822" stroke-width="1.5"/>
+      <text x="95" y="243" text-anchor="middle" font-family="'Orbitron',monospace" font-size="8" fill="#FA5822">APT ATTACKER</text>
+      <text x="95" y="258" text-anchor="middle" font-family="monospace" font-size="7" fill="#8B8BA8">Nation-state / Cybercrime</text>
+      <!-- Arrow: attacker injects into vendor -->
+      <line x1="95" y1="220" x2="95" y2="190" stroke="#FA5822" stroke-width="1.5" marker-end="url(#arr-red)"/>
+      <text x="107" y="208" font-family="monospace" font-size="7" fill="#FA5822">inject</text>
+      <!-- Step 2: Compromised Update -->
+      <rect x="220" y="120" width="140" height="70" rx="8" fill="#1A1A2C" stroke="#FA5822" stroke-width="1.5"/>
+      <text x="290" y="143" text-anchor="middle" font-family="'Orbitron',monospace" font-size="8" fill="#FA5822">COMPROMISED</text>
+      <text x="290" y="156" text-anchor="middle" font-family="'Orbitron',monospace" font-size="8" fill="#FA5822">SOFTWARE UPDATE</text>
+      <text x="290" y="175" text-anchor="middle" font-family="monospace" font-size="8" fill="#8B8BA8">Signed by vendor cert ✓</text>
+      <!-- Arrow: vendor sends update -->
+      <line x1="160" y1="155" x2="218" y2="155" stroke="#FA5822" stroke-width="1.5" marker-end="url(#arr-red)"/>
+      <text x="176" y="148" font-family="monospace" font-size="7" fill="#FA5822">ships</text>
+      <!-- Step 3: Target pulls update -->
+      <rect x="430" y="80" width="140" height="60" rx="8" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="500" y="104" text-anchor="middle" font-family="monospace" font-size="8" fill="#C4C4D8">Target Corp A</text>
+      <text x="500" y="120" text-anchor="middle" font-family="monospace" font-size="7" fill="#8B8BA8">Fortune 500 / Gov Agency</text>
+      <rect x="430" y="160" width="140" height="60" rx="8" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="500" y="184" text-anchor="middle" font-family="monospace" font-size="8" fill="#C4C4D8">Target Corp B</text>
+      <text x="500" y="200" text-anchor="middle" font-family="monospace" font-size="7" fill="#8B8BA8">18,000+ customers</text>
+      <rect x="430" y="240" width="140" height="60" rx="8" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="500" y="264" text-anchor="middle" font-family="monospace" font-size="8" fill="#C4C4D8">Target Corp C</text>
+      <text x="500" y="280" text-anchor="middle" font-family="monospace" font-size="7" fill="#8B8BA8">Critical Infrastructure</text>
+      <!-- Arrows update → targets -->
+      <line x1="360" y1="145" x2="428" y2="112" stroke="#FA5822" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arr-red)" opacity="0.8"/>
+      <line x1="360" y1="165" x2="428" y2="192" stroke="#FA5822" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arr-red)" opacity="0.8"/>
+      <line x1="360" y1="175" x2="428" y2="265" stroke="#FA5822" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arr-red)" opacity="0.8"/>
+      <!-- Step 4: Exfiltration / Backdoor -->
+      <rect x="635" y="155" width="130" height="50" rx="8" fill="rgba(250,88,34,0.15)" stroke="#FA5822" stroke-width="1.5"/>
+      <text x="700" y="177" text-anchor="middle" font-family="'Orbitron',monospace" font-size="8" fill="#FA5822">C2 / BACKDOOR</text>
+      <text x="700" y="192" text-anchor="middle" font-family="monospace" font-size="7" fill="#8B8BA8">Data exfil / Ransomware</text>
+      <line x1="570" y1="185" x2="633" y2="181" stroke="#FA5822" stroke-width="1.5" marker-end="url(#arr-red)" opacity="0.8"/>
+      <!-- Bottom label -->
+      <text x="400" y="325" text-anchor="middle" font-family="'Orbitron',monospace" font-size="9" fill="#2E2E46" letter-spacing="2">SUPPLY CHAIN ATTACK — TRUSTED UPDATE VECTOR</text>
+    </svg>
+  </div>
+
+  <!-- Section 1 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">Definition and Types of Supply Chain Attacks</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">A supply chain attack is a technique where the attacker does not directly target the victim organization, but instead attacks through a vendor, software supplier, or service provider that the victim trusts. The attacker compromises that "trusted third party" and then exploits that trust relationship to infiltrate the ultimate target.</p>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">Primary supply chain attack types:</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem">
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1.25rem">
+        <div style="font-weight:600;color:var(--white);margin-bottom:0.5rem">Software Update Poisoning</div>
+        <p style="color:var(--silver);font-size:0.875rem;line-height:1.7">The attacker compromises the vendor's build pipeline and injects malicious code into legitimate software updates. Because the update carries the vendor's digital signature, security tools typically do not block it.</p>
+      </div>
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1.25rem">
+        <div style="font-weight:600;color:var(--white);margin-bottom:0.5rem">Open-Source Package Poisoning</div>
+        <p style="color:var(--silver);font-size:0.875rem;line-height:1.7">Attackers upload malicious packages to registries such as npm, PyPI, and RubyGems, or use "Dependency Confusion" attacks to make organizations automatically download malicious versions.</p>
+      </div>
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1.25rem">
+        <div style="font-weight:600;color:var(--white);margin-bottom:0.5rem">Trusted Service Provider Compromise</div>
+        <p style="color:var(--silver);font-size:0.875rem;line-height:1.7">Compromising IT outsourcers, system integrators, or cloud service providers, then using those vendors' legitimate access rights to infiltrate all of their customers. MSPs (Managed Service Providers) are prime targets.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">Analysis of Three Major Supply Chain Attack Cases</h2>
+    <div style="display:flex;flex-direction:column;gap:1.25rem">
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:10px;padding:1.5rem">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.75rem;flex-wrap:wrap;gap:0.5rem">
+          <div style="font-family:'Inter', sans-serif;font-weight:700;color:var(--white)">SolarWinds Orion (2020)</div>
+          <span style="background:rgba(250,88,34,0.15);border:1px solid rgba(250,88,34,0.3);border-radius:4px;padding:0.2rem 0.6rem;font-size:0.75rem;color:#FA5822">Nation-State APT</span>
+        </div>
+        <p style="color:var(--silver);line-height:1.75;font-size:0.9375rem">Russian APT29 (Cozy Bear) compromised SolarWinds' software build environment and planted a backdoor called SUNBURST inside the Orion platform update (a DLL file). Because the update carried a legitimate digital signature, over 18,000 organizations installed the tainted update — victims included the U.S. Treasury, Department of Commerce, NASA, and dozens of Fortune 500 companies. The attackers lurked undetected for nine months, exfiltrating data throughout.</p>
+      </div>
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:10px;padding:1.5rem">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.75rem;flex-wrap:wrap;gap:0.5rem">
+          <div style="font-family:'Inter', sans-serif;font-weight:700;color:var(--white)">3CX Desktop App (2023)</div>
+          <span style="background:rgba(250,88,34,0.15);border:1px solid rgba(250,88,34,0.3);border-radius:4px;padding:0.2rem 0.6rem;font-size:0.75rem;color:#FA5822">Double Supply Chain</span>
+        </div>
+        <p style="color:var(--silver);line-height:1.75;font-size:0.9375rem">North Korea's Lazarus Group first compromised a financial software company (Trading Technologies), used its infected packages to further compromise 3CX's build environment, and then poisoned the 3CX desktop communications software update. This was the first publicly confirmed "supply chain within a supply chain" attack in history, affecting over 600,000 business users worldwide.</p>
+      </div>
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:10px;padding:1.5rem">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.75rem;flex-wrap:wrap;gap:0.5rem">
+          <div style="font-family:'Inter', sans-serif;font-weight:700;color:var(--white)">XZ Utils Backdoor (2024)</div>
+          <span style="background:rgba(250,88,34,0.15);border:1px solid rgba(250,88,34,0.3);border-radius:4px;padding:0.2rem 0.6rem;font-size:0.75rem;color:#FA5822">Open Source</span>
+        </div>
+        <p style="color:var(--silver);line-height:1.75;font-size:0.9375rem">The attacker "JiaT75" posed as an active contributor to the xz/liblzma compression library, spending two years building trust and gaining maintainer privileges, ultimately planting an SSH backdoor in the official release. Had it not been accidentally discovered by a Microsoft engineer, this backdoor could have been broadly deployed across Linux servers worldwide. This incident profoundly exposed the fragility of open-source software supply chains.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">Taiwan's Unique Supply Chain Risk</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">Taiwan occupies a unique position in the global supply chain — semiconductor manufacturing, PCB production, and electronic component manufacturing are all globally critical. This makes Taiwanese organizations highly attractive pivot points for supply chain attacks: compromising one Taiwanese semiconductor fab could open doors to the world's top technology companies.</p>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">Taiwan-specific supply chain risk factors:</p>
+    <ul style="color:var(--silver);line-height:1.8;padding-left:1.5rem">
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">Dense IT Outsourcing Culture:</strong> Many small and medium-sized manufacturers fully outsource IT maintenance to local IT firms that often serve dozens of clients simultaneously, with highly variable security management quality.</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">Equipment Vendor Remote Access:</strong> Japanese, American, and European equipment vendors require ongoing remote access to factory equipment — connections that are often not strictly controlled.</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">China Supply Chain Exposure:</strong> Deep commercial ties between Taiwanese enterprises and mainland Chinese vendors introduce potential supply chain intervention risks.</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">Rising Customer Requirements:</strong> Major Taiwanese companies such as TSMC and Foxconn are progressively requiring their suppliers to obtain security certifications, elevating overall supply chain security awareness.</li>
+    </ul>
+  </div>
+
+  <!-- Section 4 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">SBOM: Software Bill of Materials as the Foundation of Supply Chain Transparency</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">An SBOM (Software Bill of Materials) is a detailed list of all components, dependencies, and their versions within a piece of software — analogous to the ingredient list on a food label. Following the SolarWinds incident, SBOMs have become a core tool in global supply chain security management.</p>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">Practical uses of SBOMs:</p>
+    <ul style="color:var(--silver);line-height:1.8;padding-left:1.5rem;margin-bottom:1rem">
+      <li style="margin-bottom:0.5rem">When new vulnerabilities (such as Log4Shell) are disclosed, immediately identify which products use the affected component.</li>
+      <li style="margin-bottom:0.5rem">When procuring software, require vendors to provide an SBOM as part of due diligence.</li>
+      <li style="margin-bottom:0.5rem">Identify use of known-vulnerable older open-source packages.</li>
+      <li style="margin-bottom:0.5rem">Meet regulatory requirements such as U.S. EO 14028 and the EU's CRA (Cyber Resilience Act).</li>
+    </ul>
+    <p style="color:var(--silver);line-height:1.8">Mainstream SBOM formats include SPDX (Linux Foundation) and CycloneDX (OWASP). Organizations can use open-source tools such as Syft and Grype to generate SBOMs for their own software, and require suppliers to provide SBOMs for their products.</p>
+  </div>
+
+  <!-- Section 5 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">Third-Party Risk Assessment Framework</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">Organizations should establish a systematic Third-Party Risk Assessment (TPRA) process rather than relying on one-time questionnaires. Hexion's recommended assessment framework covers three dimensions:</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem">
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1.25rem">
+        <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#FA5822;margin-bottom:0.5rem">Inherent Risk</div>
+        <p style="color:var(--silver);font-size:0.875rem;line-height:1.7">Assess the sensitivity of the data the supplier accesses, depth of system access, and difficulty of replacement. High-risk suppliers require more rigorous evaluation.</p>
+      </div>
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1.25rem">
+        <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#FA5822;margin-bottom:0.5rem">Control Effectiveness</div>
+        <p style="color:var(--silver);font-size:0.875rem;line-height:1.7">Verify the security controls actually implemented by the supplier, including certifications such as ISO 27001 and SOC 2, and actual penetration test reports.</p>
+      </div>
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1.25rem">
+        <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#FA5822;margin-bottom:0.5rem">Residual Risk</div>
+        <p style="color:var(--silver);font-size:0.875rem;line-height:1.7">Assess whether residual risk is acceptable, and determine whether additional contractual security requirements or technical compensating controls are needed.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 6 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">Technical Defense Measures</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">Beyond risk assessment, organizations need to deploy concrete technical controls to limit the blast radius of supply chain attacks:</p>
+    <ul style="color:var(--silver);line-height:1.8;padding-left:1.5rem">
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">Least Privilege Access:</strong> Vendor remote access should be limited to the minimum necessary scope, managed through a PAM (Privileged Access Management) system for fine-grained control, with every access requiring approval and logging.</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">Network Isolation:</strong> Vendor access should route through a dedicated DMZ or ZTNA (Zero Trust Network Access) channel rather than directly into the internal network.</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">Endpoint Detection (EDR):</strong> Deploy EDR on all endpoints for continuous monitoring of anomalous behavior following software update installations.</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">Software Signature Verification:</strong> When deploying software updates, in addition to verifying digital signatures, compare hash values against vendor announcements to confirm updates have not been tampered with.</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">Network Behavior Monitoring:</strong> NGFW application behavior monitoring can identify C2 communications lurking within normal business traffic, even covert HTTPS-based channels.</li>
+    </ul>
+  </div>
+
+  <!-- Section 7 - Highlight Box: Checklist -->
+  <div class="reveal" style="margin-bottom:2.5rem;background:rgba(0,200,200,0.05);border:1px solid rgba(0,200,200,0.2);border-radius:12px;padding:2rem">
+    <div style="font-family:'Orbitron',monospace;font-size:0.7rem;letter-spacing:0.1em;color:var(--teal);margin-bottom:1rem">ASSESSMENT CHECKLIST</div>
+    <div style="font-family:'Inter', sans-serif;font-size:1.125rem;font-weight:700;margin-bottom:1.25rem">Supply Chain Security Assessment Checklist (10 Items)</div>
+    <ol style="color:var(--silver);line-height:1.8;padding-left:1.5rem">
+      <li style="margin-bottom:0.5rem">Does the supplier hold ISO 27001 or SOC 2 Type II certification?</li>
+      <li style="margin-bottom:0.5rem">Can they provide a penetration test report from within the past year?</li>
+      <li style="margin-bottom:0.5rem">Does their software product include an SBOM (Software Bill of Materials)?</li>
+      <li style="margin-bottom:0.5rem">Does vendor remote access use MFA? Are access logs fully retained?</li>
+      <li style="margin-bottom:0.5rem">Do they have a clear vulnerability disclosure and patch release policy (Patch SLA)?</li>
+      <li style="margin-bottom:0.5rem">Does the software build pipeline (CI/CD Pipeline) have security audit mechanisms?</li>
+      <li style="margin-bottom:0.5rem">Are employees regularly trained against social engineering attacks?</li>
+      <li style="margin-bottom:0.5rem">Do they have an incident response plan with clear client notification obligations?</li>
+      <li style="margin-bottom:0.5rem">Are their downstream suppliers (fourth-party risk) also included in security management?</li>
+      <li style="margin-bottom:0.5rem">Do contracts include security requirements, audit rights, and breach liability clauses?</li>
+    </ol>
+  </div>
+
+  <!-- Tags -->
+  <div class="reveal" style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--ink-4);display:flex;gap:0.5rem;flex-wrap:wrap">
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">Supply Chain Attack</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">SolarWinds</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">SBOM</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">Third-Party Risk</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">APT</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">Threat Intelligence</span>
+  </div>
+
+  <!-- CTA -->
+  <div class="reveal" style="margin-top:3rem;background:linear-gradient(135deg,rgba(250,88,34,0.08),rgba(0,200,200,0.04));border:1px solid rgba(250,88,34,0.2);border-radius:12px;padding:2rem">
+    <div style="font-family:'Inter', sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:0.75rem">Need Professional Security Advice?</div>
+    <p style="color:var(--silver);margin-bottom:1.5rem">Contact Hexion Networks for a tailored security assessment and solution designed for your organization.</p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap">
+      <a href="/en/contact/" class="btn btn-orange">Get a Quote</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div><a href="/en/"><img src="/brand_assets/logo.png" alt="Hexion Networks" style="height:36px;filter:brightness(0) invert(1);opacity:0.85" /></a><p class="footer-brand-desc">Integrated consulting: business strategy, brand advisory, IT infrastructure &amp; cybersecurity.</p></div>
+    <div><div class="f-col-title">Products</div><a href="/en/products/pico-utm-100/" class="f-link">Pico-UTM 100</a><a href="/en/products/dual-ark-utm-16/" class="f-link">Ark-UTM 16</a><a href="/en/products/tera-utm-12/" class="f-link">Tera-UTM 12</a><a href="/en/products/lionfilter-200/" class="f-link">Lionfilter 200</a><a href="/en/products/endblock/" class="f-link">Endblock</a><a href="/en/products/teamt5/" class="f-link">TeamT5</a><a href="/en/products/cycraft/" class="f-link">CyCraft AI</a></div>
+    <div><div class="f-col-title">Services</div><a href="/en/services/" class="f-link">Business Strategy</a><a href="/en/services/" class="f-link">Brand Advisory</a><a href="/en/services/" class="f-link">Security Assessment</a></div>
+    <div><div class="f-col-title">Company</div><a href="/en/about/" class="f-link">About Us</a><a href="/en/blog/" class="f-link">Blog</a><a href="/en/contact/" class="f-link">Contact</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 HEXION NETWORKS.</span>
+    <div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+  </div>
+</footer>
+
+<script>const ro=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target)}})},{threshold:0.08});document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));</script>
+<script>var _ls=Date.now();window.addEventListener("load",function(){var l=document.getElementById("page-loader");if(!l)return;var elapsed=Date.now()-_ls,wait=Math.max(0,800-elapsed);setTimeout(function(){l.classList.add("out");setTimeout(function(){l.remove()},520)},wait)});</script>
+</body></html>

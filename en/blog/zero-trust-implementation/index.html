@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zero Trust Architecture Implementation Guide | Enterprise Zero Trust Adoption — Hexion Networks</title>
+  <meta name="description" content="Complete Zero Trust Architecture implementation guide covering identity verification, network microsegmentation, least privilege, and continuous monitoring to help enterprises phase in Zero Trust and reduce APT and insider threat risk." />
+  <meta name="keywords" content="Zero Trust Architecture, Zero Trust, ZTA, ZTNA, MFA, microsegmentation, least privilege, enterprise cybersecurity, NIST 800-207, Hexion Networks" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hexionnetworks.com/en/blog/zero-trust-implementation/" />
+  <link rel="alternate" hreflang="zh-TW" href="https://hexionnetworks.com/blog/zero-trust-implementation/" />
+  <link rel="alternate" hreflang="en" href="https://hexionnetworks.com/en/blog/zero-trust-implementation/" />
+  <link rel="alternate" hreflang="x-default" href="https://hexionnetworks.com/blog/zero-trust-implementation/" />
+  <meta property="og:title" content="Zero Trust Architecture Implementation Guide | Enterprise Zero Trust Adoption — Hexion Networks" />
+  <meta property="og:description" content="Complete Zero Trust Architecture implementation guide covering identity verification, network microsegmentation, least privilege, and continuous monitoring." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://hexionnetworks.com/en/blog/zero-trust-implementation/" />
+  <meta property="og:image" content="https://hexionnetworks.com/brand_assets/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/brand_assets/favicon.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Zero Trust Architecture Implementation Guide | Enterprise Zero Trust Adoption","datePublished":"2025-12-10","dateModified":"2025-12-10","author":{"@type":"Organization","name":"Hexion Networks"},"publisher":{"@type":"Organization","name":"Hexion Networks","url":"https://hexionnetworks.com"},"url":"https://hexionnetworks.com/en/blog/zero-trust-implementation/"}</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-78TQ277930"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-78TQ277930');
+</script>
+<script src="/lang.js"></script>
+</head>
+<body>
+<div id="page-loader"><img src="/brand_assets/logo.png" alt="" class="loader-logo" /><div class="loader-ring-wrap"><div class="loader-ring loader-ring-outer"></div><div class="loader-ring loader-ring-inner"></div><div class="loader-dot"></div></div></div>
+<div class="topbar">
+  <a href="/en/contact/">Contact Us</a>
+  <a href="/en/blog/" class="topbar-highlight">Latest Security Reports →</a>
+  <a href="#" id="lang-toggle" class="lang-btn">中文</a>
+</div>
+<nav>
+  <a href="/en/" class="nav-logo"><img src="/brand_assets/logo.png" alt="Hexion Networks" /></a>
+  <div class="nav-links">
+    <div class="nav-item">
+      <button>
+        Products
+        <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M8 11L3 6h10z"/></svg>
+      </button>
+      <div class="mega" style="width:560px;grid-template-columns:1fr 1fr">
+        <div class="mega-col" style="border-right:1px solid rgba(255,255,255,0.06)">
+          <div class="mega-label" style="color:var(--teal)">LIONIC NGFW Series</div>
+          <a href="/en/products/pico-utm-100/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.15);color:var(--o)">IT</span>
+            Pico-UTM 100
+          </a>
+          <a href="/en/products/dual-ark-utm-16/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(0,200,200,0.12);color:var(--teal)">IoT</span>
+            Ark-UTM 16
+          </a>
+          <a href="/en/products/tera-utm-12/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.12);color:#FF7A45">OT</span>
+            Tera-UTM 12
+          </a>
+          <a href="/en/products/lionfilter-200/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(167,139,250,0.12);color:#A78BFA">NET</span>
+            Lionfilter 200
+          </a>
+        </div>
+        <div class="mega-col" style="background:rgba(61,220,151,0.025)">
+          <div class="mega-label" style="color:#3DDC97">EDR Endpoint Detection</div>
+          <a href="/en/products/endblock/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.15);color:#3DDC97">EDR</span>
+            Endblock
+          </a>
+          <a href="/en/products/teamt5/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.12);color:#3DDC97">TI</span>
+            TeamT5
+          </a>
+          <a href="/en/products/cycraft/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.1);color:#3DDC97">AI</span>
+            CyCraft AI
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-item"><a href="/en/services/">Services</a></div>
+    <div class="nav-item" style="display:none"><a href="/en/research/">Research</a></div>
+    <div class="nav-item active"><a href="/en/blog/">Blog</a></div>
+    <div class="nav-item"><a href="/en/about/">About</a></div>
+  </div>
+  <div class="nav-cta">
+    <a href="https://line.me/R/ti/p/@278zhddk" target="_blank" class="nav-line-btn">LINE Chat</a>
+    <a href="/en/contact/" class="btn btn-orange" style="padding:0.5rem 1.125rem;font-size:0.8125rem;">Get a Quote →</a>
+  </div>
+</nav>
+
+<div class="page-hero" style="padding-bottom:3rem">
+  <div style="padding:0 var(--px)">
+    <div class="reveal" style="display:flex;gap:0.5rem;margin-bottom:1.5rem;flex-wrap:wrap">
+      <a href="/en/blog/" style="color:var(--silver);font-size:0.8rem;text-decoration:none">Blog</a>
+      <span style="color:var(--silver);font-size:0.8rem">/</span>
+      <span style="color:var(--o);font-size:0.8rem">Technical Guide</span>
+    </div>
+    <div class="reveal">
+      <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(250,88,34,0.1);border:1px solid rgba(250,88,34,0.3);border-radius:4px;padding:0.25rem 0.75rem;font-family:'Orbitron',monospace;font-size:0.65rem;color:#FA5822;letter-spacing:0.1em;margin-bottom:1.25rem">TECHNICAL GUIDE</div>
+      <h1 style="font-family:'Inter', sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.025em;line-height:1.15;margin-bottom:1.25rem">Zero Trust Architecture Guide: How Enterprises Can Phase In Zero Trust</h1>
+      <p style="color:var(--silver);font-size:1.0625rem;line-height:1.7;margin-bottom:2rem">"Never trust, always verify" is more than a slogan — it's the design philosophy of modern enterprise security. This guide provides a complete Zero Trust adoption path from assessment to full implementation, balancing effectiveness with practicality.</p>
+      <div style="display:flex;align-items:center;gap:1.5rem;color:var(--silver);font-size:0.8125rem;border-top:1px solid var(--ink-4);padding-top:1.5rem;flex-wrap:wrap">
+        <span>Hexion Networks Security Research Team</span>
+        <span>·</span>
+        <span>2025-12-10</span>
+        <span>·</span>
+        <span>10 min read</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="padding:3rem var(--px) 5rem">
+  <div class="reveal" style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:12px;overflow:hidden;margin-bottom:3rem;aspect-ratio:16/7;display:flex;align-items:center;justify-content:center">
+    <svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+      <defs>
+        <radialGradient id="zta-c" cx="50%" cy="50%" r="55%"><stop offset="0%" stop-color="#00C8C8" stop-opacity="0.09"/><stop offset="100%" stop-color="#0A0A14" stop-opacity="0"/></radialGradient>
+        <radialGradient id="zta-l" cx="15%" cy="50%" r="40%"><stop offset="0%" stop-color="#FA5822" stop-opacity="0.08"/><stop offset="100%" stop-color="#0A0A14" stop-opacity="0"/></radialGradient>
+      </defs>
+      <rect width="800" height="350" fill="#0A0A14"/>
+      <rect width="800" height="350" fill="url(#zta-c)"/>
+      <rect width="800" height="350" fill="url(#zta-l)"/>
+      <rect x="300" y="120" width="200" height="110" rx="10" fill="rgba(250,88,34,0.1)" stroke="#FA5822" stroke-width="1.5"/>
+      <text x="400" y="150" text-anchor="middle" font-family="Orbitron,monospace" font-size="9" fill="#FA5822" font-weight="700">POLICY ENGINE</text>
+      <text x="400" y="166" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#8B8BA8">Trust Evaluation &amp; Dynamic Authorization</text>
+      <text x="400" y="182" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#C4C4D8">Continuous Verification · Least Privilege</text>
+      <text x="400" y="198" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#C4C4D8">Never Trust · Always Verify</text>
+      <rect x="55" y="75" width="140" height="65" rx="7" fill="rgba(0,200,200,0.08)" stroke="#00C8C8" stroke-width="1"/>
+      <text x="125" y="100" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#00C8C8" font-weight="600">Identity</text>
+      <text x="125" y="116" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#8B8BA8">MFA · SSO · PAM</text>
+      <text x="125" y="130" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#8B8BA8">FIDO2 · Passkey</text>
+      <rect x="55" y="210" width="140" height="65" rx="7" fill="rgba(0,200,200,0.08)" stroke="#00C8C8" stroke-width="1"/>
+      <text x="125" y="235" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#00C8C8" font-weight="600">Device Security</text>
+      <text x="125" y="251" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#8B8BA8">EDR · MDM · Health Check</text>
+      <text x="125" y="265" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#8B8BA8">Compliance Posture</text>
+      <rect x="605" y="75" width="140" height="65" rx="7" fill="rgba(250,88,34,0.08)" stroke="#FA5822" stroke-width="1"/>
+      <text x="675" y="100" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#FA5822" font-weight="600">Network Microseg.</text>
+      <text x="675" y="116" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#8B8BA8">ZTNA · SD-WAN</text>
+      <text x="675" y="130" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#8B8BA8">East-West Traffic Control</text>
+      <rect x="605" y="210" width="140" height="65" rx="7" fill="rgba(250,88,34,0.08)" stroke="#FA5822" stroke-width="1"/>
+      <text x="675" y="235" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#FA5822" font-weight="600">Data Protection</text>
+      <text x="675" y="251" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#8B8BA8">DLP · Encryption · Classification</text>
+      <text x="675" y="265" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#8B8BA8">Access Control</text>
+      <rect x="290" y="272" width="220" height="55" rx="7" fill="rgba(0,200,200,0.06)" stroke="#00C8C8" stroke-width="1"/>
+      <text x="400" y="296" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#00C8C8" font-weight="600">Continuous Monitoring &amp; Threat Analytics</text>
+      <text x="400" y="313" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#8B8BA8">SIEM · UEBA · SOC 24/7</text>
+      <line x1="195" y1="108" x2="300" y2="157" stroke="#00C8C8" stroke-width="1" stroke-dasharray="4,3" opacity="0.55"/>
+      <line x1="195" y1="242" x2="300" y2="193" stroke="#00C8C8" stroke-width="1" stroke-dasharray="4,3" opacity="0.55"/>
+      <line x1="500" y1="157" x2="605" y2="108" stroke="#FA5822" stroke-width="1" stroke-dasharray="4,3" opacity="0.55"/>
+      <line x1="500" y1="193" x2="605" y2="242" stroke="#FA5822" stroke-width="1" stroke-dasharray="4,3" opacity="0.55"/>
+      <line x1="400" y1="230" x2="400" y2="272" stroke="#00C8C8" stroke-width="1" stroke-dasharray="4,3" opacity="0.55"/>
+    </svg>
+  </div>
+
+  <div class="reveal" style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+    <p>The traditional "castle-and-moat" network security model assumed the internal corporate network was trustworthy — guard the perimeter and everything inside is safe. But with remote work normalized, cloud services widely adopted, and APT attackers increasingly choosing lateral movement from within, this model has fundamentally failed. Zero Trust Architecture (ZTA) was born precisely to address this reality.</p>
+    <p style="margin-top:1rem">Taiwan's government cybersecurity guidelines have explicitly required critical information infrastructure operators to complete initial Zero Trust implementation by end of 2026. With APT attacks ongoing and geopolitical risk escalating, the enterprise sector is also accelerating this transition.</p>
+  </div>
+
+  <div class="reveal" style="margin-top:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)"><span style="color:#FA5822">Core Principles</span> of Zero Trust and the NIST Standard</h2>
+    <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+      <p>Per NIST SP 800-207, Zero Trust Architecture is built on three core tenets: first, all data sources and computing services are considered resources, including personal devices and cloud services; second, all communications must be secured regardless of network location (internal and external requests are treated equally); third, access to each resource is dynamically granted per connection session and only with minimum necessary permissions.</p>
+      <p style="margin-top:1rem">CISA describes Zero Trust implementation across five pillars: Identity, Device, Network, Application/Workload, and Data. Each pillar has maturity levels from "Traditional" to "Advanced" to "Optimal," providing enterprises with a phased implementation path.</p>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)">Phase 1: <span style="color:#FA5822">Identity Hardening</span> (Months 1–3)</h2>
+    <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+      <p>Zero Trust always starts with identity. For most enterprises, identity hardening involves integrating Active Directory with a cloud identity platform (such as Microsoft Entra ID or Okta), enforcing multi-factor authentication (MFA), and establishing a Privileged Access Management (PAM) system.</p>
+      <p style="margin-top:1rem">Many organizations face legacy application MFA integration challenges. For systems that cannot natively support modern authentication protocols, SAML or OIDC proxy gateways can enable MFA protection. FIDO2 hardware security keys are currently the most phishing-resistant MFA option and are recommended first for privileged accounts and system administrators. This phase should also complete a privileged account audit — identify all high-privilege accounts and establish controls including Just-in-Time (JIT) access grants and session recording.</p>
+      <div style="background:rgba(0,200,200,0.06);border-left:3px solid #00C8C8;border-radius:0 8px 8px 0;padding:1rem 1.25rem;margin-top:1.25rem">
+        <div style="font-family:'Inter', sans-serif;font-size:0.875rem;font-weight:700;color:#00C8C8;margin-bottom:0.5rem">Phase 1 Milestones</div>
+        <ul style="font-size:0.9375rem;color:var(--fog);list-style:disc;padding-left:1.1rem;line-height:1.9">
+          <li>All privileged accounts enforcing FIDO2 or Authenticator App MFA</li>
+          <li>Identity directory unified, stale and orphaned accounts cleaned up</li>
+          <li>Conditional access policies established (based on location, device, risk score)</li>
+          <li>PAM platform deployed with JIT access implemented</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)">Phase 2: <span style="color:#FA5822">Device Security Verification</span> and Endpoint Management (Months 3–6)</h2>
+    <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+      <p>Zero Trust verifies not only "who" is requesting access but also "from which device." Unmanaged or non-compliant devices should not be permitted access to sensitive resources even with valid user credentials. This phase's core is establishing a device inventory system — understanding which devices are accessing enterprise resources and assessing each device's security compliance posture: OS version, patch status, antivirus installation, disk encryption, jailbreak status, and more.</p>
+      <p style="margin-top:1rem">Mobile Device Management (MDM) and EDR are the core tools for this phase. For BYOD policies, containerization technologies (like Microsoft Intune MAM) or VDI virtual desktop infrastructure can separate work and personal data. Network Access Control (NAC) solutions ensure only compliant devices can connect to the corporate network.</p>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)">Phase 3: <span style="color:#FA5822">Network Microsegmentation</span> and ZTNA Deployment (Months 6–12)</h2>
+    <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+      <p>Traditional flat networks are breeding grounds for lateral movement attacks. Microsegmentation breaks the network into small security zones with strictly controlled communication between them. Even if an attacker breaches one node, they cannot freely move laterally — effectively containing ransomware and APT propagation.</p>
+      <p style="margin-top:1rem">ZTNA solutions are gradually replacing traditional VPNs as the new standard for remote access. ZTNA's key advantage is that it does not place users directly on the corporate network — instead it proxies access to specific applications, dramatically reducing attack surface. For manufacturers with IT/OT mixed environments, network segmentation is especially critical: clearly separate factory control networks (OT) from enterprise office networks (IT), and apply deep packet inspection to all cross-segment traffic.</p>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)">Phase 4: <span style="color:#FA5822">Continuous Monitoring</span> and Automated Response (Month 12+)</h2>
+    <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+      <p>Zero Trust is not a one-time deployment but a continuously operating security capability. This phase's core is building complete observability infrastructure: unified log management, SIEM platform integration, and User and Entity Behavior Analytics (UEBA). UEBA establishes behavioral baselines for users and entities, automatically triggering alerts or reducing trust levels when anomalies are detected (such as unusual data access volumes or abnormal login locations).</p>
+      <p style="margin-top:1rem">For resource-constrained SMEs, MDR (Managed Detection and Response) services are a viable alternative — outsourcing continuous monitoring and initial incident response to professional security service providers to achieve 24/7 coverage without significantly expanding internal headcount. Building SOAR (Security Orchestration, Automation and Response) capabilities can significantly reduce Mean Time to Contain (MTTC) from threat detection to isolation.</p>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:2.5rem;background:var(--ink-2);border:1px solid var(--ink-4);border-radius:12px;padding:1.75rem">
+    <div style="font-family:'Inter', sans-serif;font-size:1.125rem;font-weight:700;margin-bottom:1rem">Zero Trust Maturity Assessment</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+      <div style="background:rgba(250,88,34,0.06);border:1px solid rgba(250,88,34,0.2);border-radius:8px;padding:1rem">
+        <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#FA5822;margin-bottom:0.5rem">LEVEL 1 — INITIAL</div>
+        <p style="font-size:0.875rem;color:var(--fog)">MFA deployed, identity directory unified, VPN as primary remote access method</p>
+      </div>
+      <div style="background:rgba(0,200,200,0.06);border:1px solid rgba(0,200,200,0.2);border-radius:8px;padding:1rem">
+        <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#00C8C8;margin-bottom:0.5rem">LEVEL 2 — ADVANCED</div>
+        <p style="font-size:0.875rem;color:var(--fog)">Device health verification complete, initial microsegmentation, ZTNA replacing some VPN usage</p>
+      </div>
+      <div style="background:rgba(250,88,34,0.06);border:1px solid rgba(250,88,34,0.2);border-radius:8px;padding:1rem">
+        <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#FA5822;margin-bottom:0.5rem">LEVEL 3 — OPTIMIZED</div>
+        <p style="font-size:0.875rem;color:var(--fog)">Dynamic risk scoring, adaptive access control, UEBA integration, automated isolation</p>
+      </div>
+      <div style="background:rgba(0,200,200,0.06);border:1px solid rgba(0,200,200,0.2);border-radius:8px;padding:1rem">
+        <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#00C8C8;margin-bottom:0.5rem">LEVEL 4 — AUTOMATED</div>
+        <p style="font-size:0.875rem;color:var(--fog)">AI-assisted threat hunting, full observability, cross-pillar automated response</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)">Common <span style="color:#FA5822">Implementation Pitfalls</span> and How to Avoid Them</h2>
+    <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+      <p>Many organizations fall into these common Zero Trust implementation traps:</p>
+      <ul style="margin-top:1rem;list-style:none;padding:0;display:flex;flex-direction:column;gap:0.875rem">
+        <li style="display:flex;gap:0.75rem"><span style="color:#FA5822;font-weight:700;flex-shrink:0">✕</span><div><strong style="color:var(--white)">"Zero Trust is a product you can buy":</strong> Zero Trust is an architectural strategy requiring integration of multiple products and processes. No single vendor provides a complete solution.</div></li>
+        <li style="display:flex;gap:0.75rem"><span style="color:#FA5822;font-weight:700;flex-shrink:0">✕</span><div><strong style="color:var(--white)">"Zero Trust equals MFA":</strong> MFA is just one element of the identity pillar. Complete Zero Trust requires coordinated development across all five pillars.</div></li>
+        <li style="display:flex;gap:0.75rem"><span style="color:#FA5822;font-weight:700;flex-shrink:0">✕</span><div><strong style="color:var(--white)">"Trying to deploy everything at once":</strong> Zero Trust is a continuously evolving process — chasing perfection often causes projects to stall.</div></li>
+        <li style="display:flex;gap:0.75rem"><span style="color:#FA5822;font-weight:700;flex-shrink:0">✕</span><div><strong style="color:var(--white)">"Ignoring legacy system integration challenges":</strong> Many ERP and production systems cannot support modern authentication. Plan proxy integration solutions in advance.</div></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:2.5rem;font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+    <p>Zero Trust adoption is a journey, not a destination. The most important first step is conducting a current-state assessment — understanding your identity management maturity, network architecture complexity, and existing security tool investments — then building a realistic implementation roadmap. Hexion Networks provides Zero Trust readiness assessments to help organizations identify gaps and define the most appropriate adoption path.</p>
+  </div>
+
+  <div class="reveal" style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--ink-4);display:flex;gap:0.5rem;flex-wrap:wrap">
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">Zero Trust Architecture</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">ZTNA</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">MFA</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">Microsegmentation</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">NIST 800-207</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">Taiwan Cybersecurity</span>
+  </div>
+
+  <div class="reveal" style="margin-top:3rem;background:linear-gradient(135deg,rgba(250,88,34,0.08),rgba(0,200,200,0.04));border:1px solid rgba(250,88,34,0.2);border-radius:12px;padding:2rem">
+    <div style="font-family:'Inter', sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:0.75rem">Need Expert Security Advice?</div>
+    <p style="color:var(--silver);margin-bottom:1.5rem">Contact Hexion Networks for a tailored security assessment and Zero Trust implementation roadmap for your organization.</p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap">
+      <a href="/en/contact/" class="btn btn-orange">Free Consultation</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div><a href="/en/"><img src="/brand_assets/logo.png" alt="Hexion Networks" style="height:36px;filter:brightness(0) invert(1);opacity:0.85" /></a><p class="footer-brand-desc">An integrated services firm combining business strategy, brand consulting, IT, and cybersecurity.</p></div>
+    <div><div class="f-col-title">Products</div><a href="/en/products/pico-utm-100/" class="f-link">Pico-UTM 100</a><a href="/en/products/dual-ark-utm-16/" class="f-link">Ark-UTM 16</a><a href="/en/products/tera-utm-12/" class="f-link">Tera-UTM 12</a><a href="/en/products/lionfilter-200/" class="f-link">Lionfilter 200</a><a href="/en/products/endblock/" class="f-link">Endblock</a><a href="/en/products/teamt5/" class="f-link">TeamT5</a><a href="/en/products/cycraft/" class="f-link">CyCraft AI</a></div>
+    <div><div class="f-col-title">Services</div><a href="/en/services/" class="f-link">Business Strategy</a><a href="/en/services/" class="f-link">Brand Consulting</a><a href="/en/services/" class="f-link">Security Assessment</a></div>
+    <div><div class="f-col-title">Company</div><a href="/en/about/" class="f-link">About Us</a><a href="/en/blog/" class="f-link">Blog</a><a href="/en/contact/" class="f-link">Contact</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 HEXION NETWORKS.</span>
+    <div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+  </div>
+</footer>
+
+<script>const ro=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target)}})},{threshold:0.08});document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));</script>
+<script>var _ls=Date.now();window.addEventListener("load",function(){var l=document.getElementById("page-loader");if(!l)return;var elapsed=Date.now()-_ls,wait=Math.max(0,800-elapsed);setTimeout(function(){l.classList.add("out");setTimeout(function(){l.remove()},520)},wait)});</script>
+</body></html>

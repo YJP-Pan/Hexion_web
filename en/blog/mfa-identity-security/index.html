@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MFA & Identity Security: Enterprise Guide — From OTP to Passwordless — Hexion Networks</title>
+  <meta name="description" content="A complete guide to multi-factor authentication (MFA): from SMS OTP and TOTP apps to FIDO2 passwordless authentication — covering bypass attacks and enterprise deployment strategy." />
+  <meta name="keywords" content="MFA, multi-factor authentication, FIDO2, passwordless, identity security, OTP, WebAuthn, Zero Trust, Hexion Networks" />
+  <meta name="geo.region" content="TW" />
+  <meta name="geo.placename" content="Taiwan" />
+  <meta name="geo.position" content="23.7;121.0" />
+  <meta name="ICBM" content="23.7, 121.0" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hexionnetworks.com/en/blog/mfa-identity-security/" />
+  <link rel="alternate" hreflang="zh-TW" href="https://hexionnetworks.com/blog/mfa-identity-security/" />
+  <link rel="alternate" hreflang="en" href="https://hexionnetworks.com/en/blog/mfa-identity-security/" />
+  <link rel="alternate" hreflang="x-default" href="https://hexionnetworks.com/blog/mfa-identity-security/" />
+  <meta property="og:title" content="MFA & Identity Security: Enterprise Guide — From OTP to Passwordless — Hexion Networks" />
+  <meta property="og:description" content="Explore MFA technology evolution, bypass attack techniques, and how enterprises can choose the right authentication strategy to defend against modern threats." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://hexionnetworks.com/en/blog/mfa-identity-security/" />
+  <meta property="og:image" content="https://hexionnetworks.com/brand_assets/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="MFA & Identity Security: Enterprise Guide — From OTP to Passwordless — Hexion Networks" />
+  <meta name="twitter:description" content="A complete guide to MFA: from SMS OTP and TOTP apps to FIDO2 passwordless — covering bypass attacks and enterprise deployment strategy." />
+  <meta name="twitter:image" content="https://hexionnetworks.com/brand_assets/logo.png" />
+  <link rel="icon" href="/brand_assets/favicon.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"MFA & Identity Security: Enterprise Guide — From OTP to Passwordless","datePublished":"2025-08-18","dateModified":"2025-08-18","author":{"@type":"Organization","name":"Hexion Networks"},"publisher":{"@type":"Organization","name":"Hexion Networks","url":"https://hexionnetworks.com"},"url":"https://hexionnetworks.com/en/blog/mfa-identity-security/"}</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-78TQ277930"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-78TQ277930');
+</script>
+<script src="/lang.js"></script>
+</head>
+<body>
+<div id="page-loader"><img src="/brand_assets/logo.png" alt="" class="loader-logo" /><div class="loader-ring-wrap"><div class="loader-ring loader-ring-outer"></div><div class="loader-ring loader-ring-inner"></div><div class="loader-dot"></div></div></div>
+<div class="topbar">
+  <a href="/en/contact/">Contact Us</a>
+  <a href="/en/blog/" class="topbar-highlight">Latest Security Reports →</a>
+  <a href="/blog/mfa-identity-security/" id="lang-toggle" class="lang-btn">中文</a>
+</div>
+<nav>
+  <a href="/en/" class="nav-logo"><img src="/brand_assets/logo.png" alt="Hexion Networks" /></a>
+  <div class="nav-links">
+    <div class="nav-item">
+      <button>
+        Products
+        <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M8 11L3 6h10z"/></svg>
+      </button>
+      <div class="mega" style="width:560px;grid-template-columns:1fr 1fr">
+        <div class="mega-col" style="border-right:1px solid rgba(255,255,255,0.06)">
+          <div class="mega-label" style="color:var(--teal)">LIONIC NGFW Series</div>
+          <a href="/en/products/pico-utm-100/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.15);color:var(--o)">IT</span>
+            Pico-UTM 100
+          </a>
+          <a href="/en/products/dual-ark-utm-16/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(0,200,200,0.12);color:var(--teal)">IoT</span>
+            Ark-UTM 16
+          </a>
+          <a href="/en/products/tera-utm-12/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.12);color:#FF7A45">OT</span>
+            Tera-UTM 12
+          </a>
+          <a href="/en/products/lionfilter-200/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(167,139,250,0.12);color:#A78BFA">NET</span>
+            Lionfilter 200
+          </a>
+        </div>
+        <div class="mega-col" style="background:rgba(61,220,151,0.025)">
+          <div class="mega-label" style="color:#3DDC97">EDR Endpoint Detection & Response</div>
+          <a href="/en/products/endblock/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.15);color:#3DDC97">EDR</span>
+            Endblock
+          </a>
+          <a href="/en/products/teamt5/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.12);color:#3DDC97">TI</span>
+            TeamT5
+          </a>
+          <a href="/en/products/cycraft/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.1);color:#3DDC97">AI</span>
+            CyCraft AI
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-item"><a href="/en/services/">Services</a></div>
+    <div class="nav-item" style="display:none"><a href="/en/research/">Research</a></div>
+    <div class="nav-item active"><a href="/en/blog/">Blog</a></div>
+    <div class="nav-item"><a href="/en/about/">About</a></div>
+  </div>
+  <div class="nav-cta">
+    <a href="https://line.me/R/ti/p/@278zhddk" target="_blank" class="nav-line-btn">LINE Chat</a>
+    <a href="/en/contact/" class="btn btn-orange" style="padding:0.5rem 1.125rem;font-size:0.8125rem;">Get a Quote →</a>
+  </div>
+</nav>
+
+<div class="page-hero" style="padding-bottom:3rem">
+  <div style="padding:0 var(--px)">
+    <div class="reveal" style="display:flex;gap:0.5rem;margin-bottom:1.5rem;flex-wrap:wrap">
+      <a href="/en/blog/" style="color:var(--silver);font-size:0.8rem;text-decoration:none">Blog</a>
+      <span style="color:var(--silver);font-size:0.8rem">/</span>
+      <span style="color:var(--teal);font-size:0.8rem">Technical Guide</span>
+    </div>
+    <div class="reveal">
+      <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(0,200,200,0.1);border:1px solid rgba(0,200,200,0.3);border-radius:4px;padding:0.25rem 0.75rem;font-family:'Orbitron',monospace;font-size:0.65rem;color:#00C8C8;letter-spacing:0.1em;margin-bottom:1.25rem">TECHNICAL GUIDE</div>
+      <h1 style="font-family:'Inter', sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.025em;line-height:1.15;margin-bottom:1.25rem">MFA & Identity Security: From OTP to Passwordless — A Complete Enterprise Strategy</h1>
+      <p style="color:var(--silver);font-size:1.0625rem;line-height:1.7;margin-bottom:2rem">Passwords are dead, but their successors are not equally secure. This guide breaks down MFA technology strengths, attacker bypass techniques, and how enterprises can choose the right authentication strategy to defend against modern threats.</p>
+      <div style="display:flex;align-items:center;gap:1.5rem;color:var(--silver);font-size:0.8125rem;border-top:1px solid var(--ink-4);padding-top:1.5rem;flex-wrap:wrap">
+        <span>Hexion Networks Security Research Team</span>
+        <span>·</span>
+        <span>2025-08-18</span>
+        <span>·</span>
+        <span>7 min read</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="padding:3rem var(--px) 5rem">
+  <div class="reveal" style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:12px;overflow:hidden;margin-bottom:3rem;aspect-ratio:16/7;display:flex;align-items:center;justify-content:center">
+    <svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+      <defs>
+        <radialGradient id="mfa-bg" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="#00C8C8" stop-opacity="0.08"/><stop offset="100%" stop-color="#0A0A14" stop-opacity="0"/></radialGradient>
+      </defs>
+      <rect width="800" height="350" fill="#0A1414"/>
+      <rect width="800" height="350" fill="url(#mfa-bg)"/>
+      <text x="400" y="30" text-anchor="middle" font-family="Orbitron,monospace" font-size="9" fill="#00C8C8" letter-spacing="3">MFA STRENGTH SPECTRUM</text>
+      <!-- Security level bar -->
+      <rect x="40" y="300" width="720" height="6" rx="3" fill="rgba(255,255,255,0.05)"/>
+      <rect x="40" y="300" width="720" height="6" rx="3" fill="url(#mfa-grad)"/>
+      <defs>
+        <linearGradient id="mfa-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#FF4444"/>
+          <stop offset="35%" stop-color="#FA5822"/>
+          <stop offset="65%" stop-color="#00C8C8"/>
+          <stop offset="100%" stop-color="#3DDC97"/>
+        </linearGradient>
+      </defs>
+      <text x="40" y="322" font-family="Inter,sans-serif" font-size="7" fill="#8B8BA8">Lower Security</text>
+      <text x="760" y="322" font-family="Inter,sans-serif" font-size="7" fill="#8B8BA8" text-anchor="end">Phishing-Resistant</text>
+
+      <!-- SMS OTP -->
+      <rect x="40" y="55" width="130" height="220" rx="6" fill="rgba(255,68,68,0.06)" stroke="rgba(255,68,68,0.35)" stroke-width="1"/>
+      <text x="105" y="78" text-anchor="middle" font-family="Orbitron,monospace" font-size="7.5" fill="#FF4444">SMS OTP</text>
+      <line x1="40" y1="88" x2="170" y2="88" stroke="rgba(255,68,68,0.15)" stroke-width="0.75"/>
+      <text x="55" y="104" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(255,255,255,0.4)">Usability: ★★★★★</text>
+      <text x="55" y="118" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(255,68,68,0.7)">Risk: SIM Swap</text>
+      <text x="55" y="132" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(255,68,68,0.6)">Risk: SS7 Interception</text>
+      <text x="55" y="146" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(255,68,68,0.6)">Risk: AiTM Phishing</text>
+      <rect x="55" y="240" width="70" height="20" rx="4" fill="rgba(255,68,68,0.15)" stroke="rgba(255,68,68,0.4)" stroke-width="0.75"/>
+      <text x="90" y="253" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#FF4444">Bypassable</text>
+
+      <!-- TOTP App -->
+      <rect x="185" y="55" width="130" height="220" rx="6" fill="rgba(250,88,34,0.06)" stroke="rgba(250,88,34,0.35)" stroke-width="1"/>
+      <text x="250" y="78" text-anchor="middle" font-family="Orbitron,monospace" font-size="7.5" fill="#FA5822">TOTP APP</text>
+      <line x1="185" y1="88" x2="315" y2="88" stroke="rgba(250,88,34,0.15)" stroke-width="0.75"/>
+      <text x="200" y="104" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(255,255,255,0.4)">Usability: ★★★★</text>
+      <text x="200" y="118" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(250,88,34,0.5)">Risk: AiTM Phishing</text>
+      <text x="200" y="132" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(250,88,34,0.5)">Risk: MFA Fatigue</text>
+      <text x="200" y="146" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(61,220,151,0.6)">Pro: No SIM risk</text>
+      <rect x="200" y="240" width="70" height="20" rx="4" fill="rgba(250,88,34,0.15)" stroke="rgba(250,88,34,0.4)" stroke-width="0.75"/>
+      <text x="235" y="253" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#FA5822">Partially Bypassable</text>
+
+      <!-- Push Notification -->
+      <rect x="330" y="55" width="130" height="220" rx="6" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.35)" stroke-width="1"/>
+      <text x="395" y="72" text-anchor="middle" font-family="Orbitron,monospace" font-size="7" fill="#A78BFA">PUSH NOTIFY</text>
+      <text x="395" y="85" text-anchor="middle" font-family="Orbitron,monospace" font-size="6.5" fill="rgba(167,139,250,0.7)">(Number Match)</text>
+      <line x1="330" y1="93" x2="460" y2="93" stroke="rgba(167,139,250,0.15)" stroke-width="0.75"/>
+      <text x="345" y="108" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(255,255,255,0.4)">Usability: ★★★★</text>
+      <text x="345" y="122" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(167,139,250,0.5)">Risk: MFA Fatigue</text>
+      <text x="345" y="136" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(61,220,151,0.6)">Pro: Context display</text>
+      <text x="345" y="150" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(61,220,151,0.6)">Pro: Number match</text>
+      <rect x="345" y="240" width="80" height="20" rx="4" fill="rgba(167,139,250,0.15)" stroke="rgba(167,139,250,0.4)" stroke-width="0.75"/>
+      <text x="385" y="253" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#A78BFA">Harder to Bypass</text>
+
+      <!-- Hardware Key -->
+      <rect x="475" y="55" width="130" height="220" rx="6" fill="rgba(0,200,200,0.06)" stroke="rgba(0,200,200,0.35)" stroke-width="1"/>
+      <text x="540" y="78" text-anchor="middle" font-family="Orbitron,monospace" font-size="7.5" fill="#00C8C8">HW SECURITY KEY</text>
+      <line x1="475" y1="88" x2="605" y2="88" stroke="rgba(0,200,200,0.15)" stroke-width="0.75"/>
+      <text x="490" y="104" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(255,255,255,0.4)">Usability: ★★★</text>
+      <text x="490" y="118" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(61,220,151,0.6)">Pro: Phishing-resistant</text>
+      <text x="490" y="132" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(61,220,151,0.6)">Pro: FIDO2 standard</text>
+      <text x="490" y="146" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(250,88,34,0.5)">Cost: Higher</text>
+      <rect x="490" y="240" width="80" height="20" rx="4" fill="rgba(0,200,200,0.15)" stroke="rgba(0,200,200,0.4)" stroke-width="0.75"/>
+      <text x="530" y="253" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#00C8C8">Phishing-Resistant</text>
+
+      <!-- Passkey -->
+      <rect x="620" y="55" width="140" height="220" rx="6" fill="rgba(61,220,151,0.08)" stroke="#3DDC97" stroke-width="1.2"/>
+      <text x="690" y="78" text-anchor="middle" font-family="Orbitron,monospace" font-size="7.5" fill="#3DDC97">PASSKEY</text>
+      <text x="690" y="90" text-anchor="middle" font-family="Orbitron,monospace" font-size="6.5" fill="rgba(61,220,151,0.7)">(FIDO2/WebAuthn)</text>
+      <line x1="620" y1="98" x2="760" y2="98" stroke="rgba(61,220,151,0.2)" stroke-width="0.75"/>
+      <text x="635" y="113" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(255,255,255,0.5)">Usability: ★★★★★</text>
+      <text x="635" y="127" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(61,220,151,0.8)">Pro: Passwordless</text>
+      <text x="635" y="141" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(61,220,151,0.8)">Pro: Phishing-resistant</text>
+      <text x="635" y="155" font-family="Inter,sans-serif" font-size="6.5" fill="rgba(61,220,151,0.7)">Pro: Biometric</text>
+      <rect x="635" y="240" width="100" height="20" rx="4" fill="rgba(61,220,151,0.15)" stroke="#3DDC97" stroke-width="0.75"/>
+      <text x="685" y="253" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#3DDC97">Highest Security</text>
+    </svg>
+  </div>
+
+  <div class="reveal" style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+    <p>Microsoft telemetry shows that accounts with MFA enabled are 99.9% less likely to be compromised than those without. That number makes MFA look like a silver bullet — but attackers have long developed multiple techniques to bypass MFA, creating a critical gap between "has MFA" and "MFA actually works."</p>
+    <p style="margin-top:1rem">The core logic of authentication is combining at least two of three factors: something you know (password), something you have (phone/hardware key), and something you are (biometrics). But various implementations differ wildly in security strength — choosing the wrong MFA method may give your enterprise a false sense of security.</p>
+  </div>
+
+  <div class="reveal" style="margin-top:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)"><span style="color:#FA5822">How Attackers Bypass MFA</span>: Four Techniques You Need to Know</h2>
+    <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+      <p>Understanding attack methods is the first step to choosing the right defensive tools:</p>
+      <ul style="margin-top:1rem;list-style:none;padding:0;display:flex;flex-direction:column;gap:1rem">
+        <li style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1rem 1.25rem">
+          <div style="font-weight:700;color:var(--white);margin-bottom:0.375rem">① AiTM (Adversary-in-the-Middle) Phishing</div>
+          <p style="font-size:0.9375rem;color:var(--fog)">Attackers set up a proxy phishing site that relays credentials and OTP codes to the real site in real time, stealing the authenticated session cookie. SMS OTP and TOTP apps cannot defend against this technique. Microsoft and Google accounts have been targeted at scale using this method.</p>
+        </li>
+        <li style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1rem 1.25rem">
+          <div style="font-weight:700;color:var(--white);margin-bottom:0.375rem">② MFA Fatigue Attack (Push Bombing)</div>
+          <p style="font-size:0.9375rem;color:var(--fog)">After obtaining a password, attackers repeatedly trigger push authentication notifications until the target approves out of frustration or confusion. The Uber breach in 2022 was executed via this technique. Enabling Number Match significantly reduces this risk.</p>
+        </li>
+        <li style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1rem 1.25rem">
+          <div style="font-weight:700;color:var(--white);margin-bottom:0.375rem">③ SIM Swapping</div>
+          <p style="font-size:0.9375rem;color:var(--fog)">Attackers use social engineering to convince a carrier to transfer the victim's phone number to an attacker-controlled SIM card, allowing them to receive all SMS OTPs. This is the fundamental weakness of SMS-based MFA, with documented cases in Taiwan as well.</p>
+        </li>
+        <li style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1rem 1.25rem">
+          <div style="font-weight:700;color:var(--white);margin-bottom:0.375rem">④ Social Engineering the MFA Reset Process</div>
+          <p style="font-size:0.9375rem;color:var(--fog)">Attackers impersonate IT support staff, tricking targets into completing "account verification" via phone or email, triggering an MFA reset and account takeover. Both Twilio and Cloudflare faced this attack in 2022 — Cloudflare successfully defended because they had deployed hardware security keys.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)"><span style="color:#00C8C8">FIDO2 / Passkey</span>: The Truly Phishing-Resistant Authentication Standard</h2>
+    <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+      <p>The FIDO2 (Fast Identity Online 2.0) standard combined with the WebAuthn protocol provides the strongest phishing-resistant authentication available today. Its core principle is "domain binding" — the authentication process uses a cryptographic signature from the device that includes the legitimate domain. Even if an attacker creates a visually identical phishing site, authentication cannot be completed on the wrong domain.</p>
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1.25rem;margin-top:1rem">
+        <div style="font-family:'Inter', sans-serif;font-size:0.9375rem;font-weight:700;margin-bottom:1rem">Three Forms of Passkey</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;font-size:0.9rem">
+          <div><strong style="color:#3DDC97">Platform Passkey</strong><p style="color:var(--fog);margin-top:0.375rem">Stored in the device's secure chip (iPhone Face ID, Android fingerprint, Windows Hello) — free, convenient, and the future mainstream option.</p></div>
+          <div><strong style="color:#00C8C8">Hardware Security Key</strong><p style="color:var(--fog);margin-top:0.375rem">Physical USB/NFC devices like YubiKey — highest security, ideal for privileged accounts and high-risk scenarios.</p></div>
+          <div><strong style="color:#A78BFA">Cross-Device</strong><p style="color:var(--fog);margin-top:0.375rem">Use your phone to scan a QR code to confirm a desktop login — balances security and convenience without needing extra hardware.</p></div>
+        </div>
+      </div>
+      <div style="background:rgba(0,200,200,0.06);border-left:3px solid #00C8C8;border-radius:0 8px 8px 0;padding:1rem 1.25rem;margin-top:1.25rem">
+        <div style="font-family:'Inter', sans-serif;font-size:0.875rem;font-weight:700;color:#00C8C8;margin-bottom:0.5rem">Google Internal Case Study</div>
+        <p style="font-size:0.9375rem;color:var(--fog)">After Google required all employees to use hardware security keys in 2017, account takeover incidents dropped to zero. Even when employees were tricked by phishing emails and entered their passwords on malicious sites, the hardware key's domain binding mechanism prevented any unauthorized logins.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)">Enterprise MFA <span style="color:#00C8C8">Tiered Deployment Strategy</span></h2>
+    <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+      <p>Not all accounts need the same level of protection. A risk-based tiered strategy is the pragmatic approach:</p>
+      <div style="display:flex;flex-direction:column;gap:0.75rem;margin-top:1.25rem">
+        <div style="display:grid;grid-template-columns:160px 1fr;gap:1rem;align-items:start;background:rgba(255,68,68,0.04);border:1px solid rgba(255,68,68,0.2);border-radius:8px;padding:1rem">
+          <div><span style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#FF4444">CRITICAL</span><br/><span style="font-size:0.85rem;color:var(--fog)">Admins, domain controllers, cloud root accounts</span></div>
+          <div style="font-size:0.9rem;color:var(--fog)">Hardware security keys (FIDO2) + conditional access policies (managed devices only, specific IP ranges)</div>
+        </div>
+        <div style="display:grid;grid-template-columns:160px 1fr;gap:1rem;align-items:start;background:rgba(250,88,34,0.04);border:1px solid rgba(250,88,34,0.2);border-radius:8px;padding:1rem">
+          <div><span style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#FA5822">HIGH</span><br/><span style="font-size:0.85rem;color:var(--fog)">Executives, Finance, HR, Developers</span></div>
+          <div style="font-size:0.9rem;color:var(--fog)">Passkey or hardware key preferred; TOTP app as backup; SMS OTP disabled</div>
+        </div>
+        <div style="display:grid;grid-template-columns:160px 1fr;gap:1rem;align-items:start;background:rgba(0,200,200,0.04);border:1px solid rgba(0,200,200,0.2);border-radius:8px;padding:1rem">
+          <div><span style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#00C8C8">STANDARD</span><br/><span style="font-size:0.85rem;color:var(--fog)">General employee accounts</span></div>
+          <div style="font-size:0.9rem;color:var(--fog)">Push notifications with Number Match enabled, or TOTP app; progressively migrate to Passkey</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--ink-4);display:flex;gap:0.5rem;flex-wrap:wrap">
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">MFA</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">FIDO2</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">Passkey</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">Identity Security</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">AiTM Attack</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">Zero Trust</span>
+  </div>
+
+  <div class="reveal" style="margin-top:3rem;background:linear-gradient(135deg,rgba(0,200,200,0.08),rgba(250,88,34,0.04));border:1px solid rgba(0,200,200,0.2);border-radius:12px;padding:2rem">
+    <div style="font-family:'Inter', sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:0.75rem">Need Expert Security Advice?</div>
+    <p style="color:var(--silver);margin-bottom:1.5rem">Contact Hexion Networks to assess your organization's identity security posture and plan the right MFA upgrade path.</p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap">
+      <a href="/en/contact/" class="btn btn-orange">Free Consultation</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div><a href="/en/"><img src="/brand_assets/logo.png" alt="Hexion Networks" style="height:36px;filter:brightness(0) invert(1);opacity:0.85" /></a><p class="footer-brand-desc">An integrated services company combining business strategy, brand consulting, IT, and cybersecurity.</p></div>
+    <div><div class="f-col-title">Products</div><a href="/en/products/pico-utm-100/" class="f-link">Pico-UTM 100</a><a href="/en/products/dual-ark-utm-16/" class="f-link">Ark-UTM 16</a><a href="/en/products/tera-utm-12/" class="f-link">Tera-UTM 12</a><a href="/en/products/lionfilter-200/" class="f-link">Lionfilter 200</a><a href="/en/products/endblock/" class="f-link">Endblock</a><a href="/en/products/teamt5/" class="f-link">TeamT5</a><a href="/en/products/cycraft/" class="f-link">CyCraft AI</a></div>
+    <div><div class="f-col-title">Services</div><a href="/en/services/" class="f-link">Business Strategy</a><a href="/en/services/" class="f-link">Brand Consulting</a><a href="/en/services/" class="f-link">Security Assessment</a></div>
+    <div><div class="f-col-title">Company</div><a href="/en/about/" class="f-link">About Us</a><a href="/en/blog/" class="f-link">Blog</a><a href="/en/contact/" class="f-link">Contact</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 HEXION NETWORKS.</span>
+    <div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+  </div>
+</footer>
+
+<script>const ro=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target)}})},{threshold:0.08});document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));</script>
+<script>var _ls=Date.now();window.addEventListener("load",function(){var l=document.getElementById("page-loader");if(!l)return;var elapsed=Date.now()-_ls,wait=Math.max(0,800-elapsed);setTimeout(function(){l.classList.add("out");setTimeout(function(){l.remove()},520)},wait)});</script>
+</body></html>

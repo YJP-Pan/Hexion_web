@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OT/ICS Security Complete Guide | Industrial Control System Protection — Hexion Networks</title>
+  <meta name="description" content="As IT/OT convergence accelerates, industrial control systems face unprecedented cybersecurity threats. This guide covers the complete OT security roadmap from the Purdue Model to IEC 62443 for manufacturers." />
+  <meta name="keywords" content="OT security,ICS cybersecurity,industrial control systems,Purdue model,IEC 62443,SEMI E187,IT/OT convergence,manufacturing security, Hexion Networks" />  <meta name="geo.region" content="TW" />
+  <meta name="geo.placename" content="Taiwan" />
+  <meta name="geo.position" content="23.7;121.0" />
+  <meta name="ICBM" content="23.7, 121.0" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hexionnetworks.com/en/blog/ot-ics-security-guide/" />
+  <link rel="alternate" hreflang="zh-TW" href="https://hexionnetworks.com/blog/ot-ics-security-guide/" />
+  <link rel="alternate" hreflang="en" href="https://hexionnetworks.com/en/blog/ot-ics-security-guide/" />
+  <link rel="alternate" hreflang="x-default" href="https://hexionnetworks.com/blog/ot-ics-security-guide/" />
+  <meta property="og:title" content="OT/ICS Security Complete Guide | Industrial Control System Protection — Hexion Networks" />
+  <meta property="og:description" content="As IT/OT convergence accelerates, industrial control systems face unprecedented cybersecurity threats. This guide provides a complete OT security roadmap for manufacturers." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://hexionnetworks.com/en/blog/ot-ics-security-guide/" />
+  <meta property="og:image" content="https://hexionnetworks.com/brand_assets/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="OT/ICS Security Complete Guide | Industrial Control System Protection — Hexion Networks" />
+  <meta name="twitter:description" content="As IT/OT convergence accelerates, industrial control systems face unprecedented cybersecurity threats. This guide covers the complete OT security roadmap from the Purdue Model to IEC 62443." />
+  <meta name="twitter:image" content="https://hexionnetworks.com/brand_assets/logo.png" />
+  <link rel="icon" href="/brand_assets/favicon.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"OT/ICS Security Complete Guide | Industrial Control System Protection","datePublished":"2025-10-08","dateModified":"2025-10-08","author":{"@type":"Organization","name":"Hexion Networks"},"publisher":{"@type":"Organization","name":"Hexion Networks","url":"https://hexionnetworks.com"},"url":"https://hexionnetworks.com/en/blog/ot-ics-security-guide/"}</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-78TQ277930"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-78TQ277930');
+</script>
+<script src="/lang.js"></script>
+</head>
+<body>
+<div id="page-loader"><img src="/brand_assets/logo.png" alt="" class="loader-logo" /><div class="loader-ring-wrap"><div class="loader-ring loader-ring-outer"></div><div class="loader-ring loader-ring-inner"></div><div class="loader-dot"></div></div></div>
+<div class="topbar">
+  <a href="/en/contact/">Contact Us</a>
+  <a href="/en/blog/" class="topbar-highlight">Latest Security Report →</a>
+  <a href="/blog/ot-ics-security-guide/" id="lang-toggle" class="lang-btn">中文</a>
+</div>
+<nav>
+  <a href="/en/" class="nav-logo"><img src="/brand_assets/logo.png" alt="Hexion Networks" /></a>
+  <div class="nav-links">
+    <div class="nav-item">
+      <button>
+        Products
+        <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M8 11L3 6h10z"/></svg>
+      </button>
+      <div class="mega" style="width:560px;grid-template-columns:1fr 1fr">
+        <div class="mega-col" style="border-right:1px solid rgba(255,255,255,0.06)">
+          <div class="mega-label" style="color:var(--teal)">LIONIC NGFW Series</div>
+          <a href="/en/products/pico-utm-100/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.15);color:var(--o)">IT</span>
+            Pico-UTM 100
+          </a>
+          <a href="/en/products/dual-ark-utm-16/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(0,200,200,0.12);color:var(--teal)">IoT</span>
+            Ark-UTM 16
+          </a>
+          <a href="/en/products/tera-utm-12/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.12);color:#FF7A45">OT</span>
+            Tera-UTM 12
+          </a>
+          <a href="/en/products/lionfilter-200/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(167,139,250,0.12);color:#A78BFA">NET</span>
+            Lionfilter 200
+          </a>
+        </div>
+        <div class="mega-col" style="background:rgba(61,220,151,0.025)">
+          <div class="mega-label" style="color:#3DDC97">EDR Endpoint Detection &amp; Response</div>
+          <a href="/en/products/endblock/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.15);color:#3DDC97">EDR</span>
+            Endblock
+          </a>
+          <a href="/en/products/teamt5/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.12);color:#3DDC97">TI</span>
+            TeamT5
+          </a>
+          <a href="/en/products/cycraft/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.1);color:#3DDC97">AI</span>
+            CyCraft AI
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-item"><a href="/en/services/">Services</a></div>
+    <div class="nav-item" style="display:none"><a href="/en/research/">Research</a></div>
+    <div class="nav-item active"><a href="/en/blog/">Blog</a></div>
+    <div class="nav-item"><a href="/en/about/">About</a></div>
+  </div>
+  <div class="nav-cta">
+    <a href="https://line.me/R/ti/p/@278zhddk" target="_blank" class="nav-line-btn">LINE Chat</a>
+    <a href="/en/contact/" class="btn btn-orange" style="padding:0.5rem 1.125rem;font-size:0.8125rem;">Get a Quote →</a>
+  </div>
+</nav>
+
+<div class="page-hero" style="padding-bottom:3rem">
+  <div style="padding:0 var(--px)">
+    <div class="reveal" style="display:flex;gap:0.5rem;margin-bottom:1.5rem">
+      <a href="/en/blog/" style="color:var(--silver);font-size:0.8rem;text-decoration:none">Blog</a>
+      <span style="color:var(--silver);font-size:0.8rem">/</span>
+      <span style="color:var(--o);font-size:0.8rem">Technical Guide</span>
+    </div>
+    <div class="reveal">
+      <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(250,88,34,0.1);border:1px solid rgba(250,88,34,0.3);border-radius:4px;padding:0.25rem 0.75rem;font-family:'Orbitron',monospace;font-size:0.65rem;color:#FA5822;letter-spacing:0.1em;margin-bottom:1.25rem">Technical Guide</div>
+      <h1 style="font-family:'Inter', sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.025em;line-height:1.15;margin-bottom:1.25rem">OT/ICS Security Protection Guide: Cybersecurity Challenges and Solutions in the Age of Factory Automation</h1>
+      <p style="color:var(--silver);font-size:1.0625rem;line-height:1.7;margin-bottom:2rem">As IT/OT convergence accelerates, industrial control systems face unprecedented cybersecurity threats. This guide covers everything from the Purdue Model to IEC 62443, providing a complete OT security roadmap for manufacturers.</p>
+      <div style="display:flex;align-items:center;gap:1.5rem;color:var(--silver);font-size:0.8125rem;border-top:1px solid var(--ink-4);padding-top:1.5rem">
+        <span>Hexion Networks Security Research Team</span><span>·</span><span>October 8, 2025</span><span>·</span><span>9 min read</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="padding:3rem var(--px) 5rem">
+
+  <!-- SVG Banner: Purdue model layers -->
+  <div class="reveal" style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:12px;overflow:hidden;margin-bottom:3rem;aspect-ratio:16/7;display:flex;align-items:center;justify-content:center">
+    <svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+      <defs>
+        <linearGradient id="ot-bg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#0A0A14"/>
+          <stop offset="100%" stop-color="#11111E"/>
+        </linearGradient>
+      </defs>
+      <rect width="800" height="350" fill="url(#ot-bg)"/>
+      <!-- Purdue Level labels left -->
+      <text x="30" y="62" font-family="'Orbitron',monospace" font-size="8" fill="#8B8BA8">LEVEL 5</text>
+      <text x="30" y="102" font-family="'Orbitron',monospace" font-size="8" fill="#8B8BA8">LEVEL 4</text>
+      <text x="30" y="162" font-family="'Orbitron',monospace" font-size="8" fill="#FA5822">LEVEL 3</text>
+      <text x="30" y="222" font-family="'Orbitron',monospace" font-size="8" fill="#FA5822">LEVEL 2</text>
+      <text x="30" y="272" font-family="'Orbitron',monospace" font-size="8" fill="#FA5822">LEVEL 1</text>
+      <text x="30" y="312" font-family="'Orbitron',monospace" font-size="8" fill="#FA5822">LEVEL 0</text>
+      <!-- IT Zone bar -->
+      <rect x="90" y="40" width="620" height="100" rx="8" fill="rgba(0,200,200,0.04)" stroke="rgba(0,200,200,0.25)" stroke-width="1"/>
+      <text x="400" y="58" text-anchor="middle" font-family="'Orbitron',monospace" font-size="9" fill="#00C8C8" letter-spacing="2">IT ZONE</text>
+      <!-- Level 5 row -->
+      <rect x="110" y="65" width="580" height="22" rx="4" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="400" y="80" text-anchor="middle" font-family="monospace" font-size="9" fill="#C4C4D8">Enterprise Network — ERP / MES / Email / Internet</text>
+      <!-- Level 4 row -->
+      <rect x="110" y="98" width="580" height="22" rx="4" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="400" y="113" text-anchor="middle" font-family="monospace" font-size="9" fill="#C4C4D8">Business Planning Network — Historian / Data Warehouse</text>
+      <!-- DMZ separator -->
+      <rect x="90" y="130" width="620" height="22" rx="4" fill="rgba(250,88,34,0.12)" stroke="#FA5822" stroke-width="1.5"/>
+      <text x="400" y="145" text-anchor="middle" font-family="'Orbitron',monospace" font-size="9" fill="#FA5822" letter-spacing="2">DMZ — NGFW / DATA DIODE / JUMP HOST</text>
+      <!-- OT Zone bar -->
+      <rect x="90" y="158" width="620" height="180" rx="8" fill="rgba(250,88,34,0.04)" stroke="rgba(250,88,34,0.25)" stroke-width="1"/>
+      <text x="400" y="175" text-anchor="middle" font-family="'Orbitron',monospace" font-size="9" fill="#FA5822" letter-spacing="2">OT ZONE</text>
+      <!-- Level 3 row -->
+      <rect x="110" y="180" width="580" height="22" rx="4" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="400" y="195" text-anchor="middle" font-family="monospace" font-size="9" fill="#C4C4D8">Manufacturing Operations — SCADA / DCS / OPC-UA Server</text>
+      <!-- Level 2 row -->
+      <rect x="110" y="215" width="580" height="22" rx="4" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="400" y="230" text-anchor="middle" font-family="monospace" font-size="9" fill="#C4C4D8">Supervisory Control — HMI / Engineering Workstation</text>
+      <!-- Level 1 row -->
+      <rect x="110" y="250" width="580" height="22" rx="4" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="400" y="265" text-anchor="middle" font-family="monospace" font-size="9" fill="#C4C4D8">Basic Control — PLC / RTU / Modbus / DNP3</text>
+      <!-- Level 0 row -->
+      <rect x="110" y="285" width="580" height="22" rx="4" fill="#1A1A2C" stroke="rgba(250,88,34,0.4)"/>
+      <text x="400" y="300" text-anchor="middle" font-family="monospace" font-size="9" fill="#FA5822">Physical Process — Sensors / Actuators / Motors / Valves</text>
+      <!-- Label -->
+      <text x="400" y="335" text-anchor="middle" font-family="'Orbitron',monospace" font-size="9" fill="#2E2E46" letter-spacing="2">PURDUE MODEL — IT/OT NETWORK SEGMENTATION</text>
+    </svg>
+  </div>
+
+  <!-- Section 1 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">The Unique Nature of OT/ICS Environments</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">The cybersecurity challenges of OT (Operational Technology) and ICS (Industrial Control Systems) environments are fundamentally different from those of traditional IT environments. In the IT world, security priorities follow the CIA triad: Confidentiality, Integrity, Availability. In the OT world, this order is completely reversed: availability is always the top priority, and any security measure that could halt production or cause equipment anomalies may be rejected outright.</p>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">Equipment in OT environments — such as PLCs (Programmable Logic Controllers), RTUs (Remote Terminal Units), and HMIs (Human-Machine Interfaces) — typically has the following characteristics: designed for service lifespans of 15–30 years, cannot be easily taken offline for updates, uses proprietary industrial protocols, and has limited computing resources that make it difficult to support traditional security agents.</p>
+    <p style="color:var(--silver);line-height:1.8">Taiwan, as a global manufacturing powerhouse with a large concentration of semiconductor, electronics, and precision machinery facilities, becomes a high-value target for nation-state APT groups. An attack on these facilities affects not just the enterprise itself but can cause serious disruption to global supply chains.</p>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">New Threats from IT/OT Convergence</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">In the past, OT networks relied on "air gapping" for security — physical isolation from external networks. But the drive toward smart manufacturing, Industry 4.0, and the explosion of remote monitoring needs following COVID-19 are rapidly eroding this last line of defense.</p>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">Key risks from IT/OT convergence:</p>
+    <ul style="color:var(--silver);line-height:1.8;padding-left:1.5rem;margin-bottom:1rem">
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">Vendor Remote Access:</strong> Remote maintenance connections required by equipment vendors often bypass security controls to reach directly into production networks.</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">USB Media Intrusion:</strong> Configuration laptops or USB devices used by engineers may carry malware from the IT side into the OT environment.</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">Engineering Workstations:</strong> Windows-based HMIs and engineering workstations need network connectivity yet often cannot receive updates or run antivirus software.</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">Cloud SCADA:</strong> Monitoring systems built on cloud architectures expand the attack surface significantly.</li>
+    </ul>
+    <p style="color:var(--silver);line-height:1.8">The 2021 Colonial Pipeline ransomware attack is a textbook example of attackers breaching from the IT side and forcing the company to proactively shut down OT pipelines. Taiwan also saw several attacks targeting semiconductor manufacturer OT networks between 2022 and 2023, some of which were classified and never publicly reported.</p>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">The Purdue Model and Network Layered Architecture</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">The Purdue Model (Purdue Enterprise Reference Architecture, PERA) is the standard reference framework for IT/OT network layered design, dividing industrial networks into six layers from Level 0 to Level 5:</p>
+    <div style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:1rem">
+      <div style="background:var(--ink-2);border-left:3px solid #FA5822;padding:1rem 1.25rem;border-radius:0 8px 8px 0">
+        <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:#FA5822;margin-bottom:0.35rem">LEVEL 0 — Physical Process Layer</div>
+        <p style="color:var(--silver);font-size:0.9rem;line-height:1.7">Physical devices such as sensors, actuators, motors, and valves that directly control production processes. No software agents can be installed at this layer.</p>
+      </div>
+      <div style="background:var(--ink-2);border-left:3px solid #FA5822;padding:1rem 1.25rem;border-radius:0 8px 8px 0">
+        <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:#FA5822;margin-bottom:0.35rem">LEVEL 1 — Basic Control Layer</div>
+        <p style="color:var(--silver);font-size:0.9rem;line-height:1.7">PLCs and RTUs that directly control Level 0 devices using industrial protocols such as Modbus, DNP3, and PROFINET.</p>
+      </div>
+      <div style="background:var(--ink-2);border-left:3px solid #FA5822;padding:1rem 1.25rem;border-radius:0 8px 8px 0">
+        <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:#FA5822;margin-bottom:0.35rem">LEVEL 2 — Supervisory Control Layer</div>
+        <p style="color:var(--silver);font-size:0.9rem;line-height:1.7">HMIs and SCADA workstations where operators monitor and control production processes.</p>
+      </div>
+      <div style="background:var(--ink-2);border-left:3px solid #FA5822;padding:1rem 1.25rem;border-radius:0 8px 8px 0">
+        <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:#FA5822;margin-bottom:0.35rem">LEVEL 3 — Manufacturing Operations Layer</div>
+        <p style="color:var(--silver);font-size:0.9rem;line-height:1.7">MES (Manufacturing Execution Systems) and plant data historians that bridge upper IT and lower OT layers.</p>
+      </div>
+      <div style="background:var(--ink-2);border-left:3px solid #00C8C8;padding:1rem 1.25rem;border-radius:0 8px 8px 0">
+        <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:#00C8C8;margin-bottom:0.35rem">LEVEL 4-5 — Enterprise IT Layer</div>
+        <p style="color:var(--silver);font-size:0.9rem;line-height:1.7">ERP, email, and Internet access. A strict DMZ firewall separation should be established between this layer and the OT layers.</p>
+      </div>
+    </div>
+    <p style="color:var(--silver);line-height:1.8">It is recommended to deploy a dedicated industrial firewall (NGFW) between Level 3 and Level 4 to form a strict IT/OT isolation boundary, along with a Jump Host to manage cross-layer access requests.</p>
+  </div>
+
+  <!-- Section 4 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">Industrial Protocol Security: Modbus, DNP3, and OPC-UA</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">The proprietary protocols used by industrial control systems were designed with no security considerations whatsoever. Understanding the weaknesses of these protocols is the foundation for developing protection strategies:</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem">
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1.25rem">
+        <div style="font-weight:600;color:var(--white);margin-bottom:0.5rem">Modbus</div>
+        <p style="color:var(--silver);font-size:0.875rem;line-height:1.7">Designed in 1979 with no authentication or encryption. Anyone who can connect to a Modbus device can read all registers and even write control commands directly. NGFWs can use DPI to identify and restrict access to Modbus Function Codes.</p>
+      </div>
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1.25rem">
+        <div style="font-weight:600;color:var(--white);margin-bottom:0.5rem">DNP3</div>
+        <p style="color:var(--silver);font-size:0.875rem;line-height:1.7">Widely used in electric power and water treatment facilities. Slightly improved over Modbus, but the base version still lacks authentication. Secure Authentication v5 (SAv5) offers improvements, but deployment rates remain low.</p>
+      </div>
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1.25rem">
+        <div style="font-weight:600;color:var(--white);margin-bottom:0.5rem">OPC-UA</div>
+        <p style="color:var(--silver);font-size:0.875rem;line-height:1.7">Modern industrial protocol standard with built-in TLS encryption and X.509 certificate authentication. Currently the most secure industrial communication protocol, though misconfiguration (e.g., accepting arbitrary certificates) can still introduce vulnerabilities.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 5 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">IEC 62443 Standard Overview</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">IEC 62443 is an international cybersecurity standard series for Industrial Automation and Control Systems (IACS), divided into four main parts covering a complete framework from organizational policy to device technical requirements:</p>
+    <ul style="color:var(--silver);line-height:1.8;padding-left:1.5rem;margin-bottom:1rem">
+      <li style="margin-bottom:0.5rem"><strong style="color:var(--white)">IEC 62443-2:</strong> Organizational security policy and procedure requirements, including asset management and supplier management.</li>
+      <li style="margin-bottom:0.5rem"><strong style="color:var(--white)">IEC 62443-3:</strong> System-level security requirements, defining Security Levels 1–4 and the Zone/Conduit model.</li>
+      <li style="margin-bottom:0.5rem"><strong style="color:var(--white)">IEC 62443-4:</strong> Component-level secure development requirements applicable to vendors of PLCs, HMIs, and other devices.</li>
+    </ul>
+    <p style="color:var(--silver);line-height:1.8">Taiwan's government and major manufacturing conglomerates are progressively requiring suppliers to provide IEC 62443-related certifications. Organizations can commission professional security consultants to conduct an IEC 62443 Gap Analysis and develop a compliance roadmap.</p>
+  </div>
+
+  <!-- Section 6 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">SEMI E187: Special Security Requirements for Semiconductor Fabs</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">SEMI E187 is a cybersecurity specification developed specifically for semiconductor manufacturing equipment (such as wafer tools) that came into effect in 2022. The standard makes explicit requirements of semiconductor equipment vendors, including:</p>
+    <ul style="color:var(--silver);line-height:1.8;padding-left:1.5rem;margin-bottom:1rem">
+      <li style="margin-bottom:0.5rem">OS Hardening: disabling unnecessary services and ports</li>
+      <li style="margin-bottom:0.5rem">Least Privilege account permissions</li>
+      <li style="margin-bottom:0.5rem">Portable media controls: prohibiting unauthorized USB device connections</li>
+      <li style="margin-bottom:0.5rem">Network connection logging: complete connection logs and audit mechanisms</li>
+      <li style="margin-bottom:0.5rem">Malware protection: deployment of endpoint protection solutions</li>
+    </ul>
+    <p style="color:var(--silver);line-height:1.8">Taiwan's semiconductor fabs (including wafer foundries and their supply chains) are actively pushing equipment vendors toward SEMI E187 compliance. Organizations can commission professional security consultants to conduct SEMI E187 compliance assessments to identify gaps and recommend specific improvements.</p>
+  </div>
+
+  <!-- Section 7 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">Three-Phase OT Security Implementation Path</h2>
+    <div style="display:flex;flex-direction:column;gap:1rem">
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:10px;padding:1.5rem">
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.75rem">
+          <div style="font-family:'Orbitron',monospace;font-size:1rem;color:#FA5822;font-weight:700;min-width:2.5rem">01</div>
+          <div style="font-weight:700;color:var(--white);font-size:1rem">Visibility Establishment (Months 1–3)</div>
+        </div>
+        <p style="color:var(--silver);line-height:1.75;font-size:0.9375rem">Deploy OT asset discovery tools to build a complete device inventory and network topology map. Use passive traffic monitoring to identify all industrial protocol communications. This phase is observation only — no blocking actions are taken to avoid impacting production.</p>
+      </div>
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:10px;padding:1.5rem">
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.75rem">
+          <div style="font-family:'Orbitron',monospace;font-size:1rem;color:#FA5822;font-weight:700;min-width:2.5rem">02</div>
+          <div style="font-weight:700;color:var(--white);font-size:1rem">Network Segmentation Implementation (Months 4–9)</div>
+        </div>
+        <p style="color:var(--silver);line-height:1.75;font-size:0.9375rem">Build a layered network architecture according to the Purdue Model, deploy an NGFW at the IT/OT boundary, enable industrial protocol DPI (Deep Packet Inspection), and configure Allowlist policies. Implement in batches, starting with non-critical production lines.</p>
+      </div>
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:10px;padding:1.5rem">
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.75rem">
+          <div style="font-family:'Orbitron',monospace;font-size:1rem;color:#FA5822;font-weight:700;min-width:2.5rem">03</div>
+          <div style="font-weight:700;color:var(--white);font-size:1rem">Continuous Monitoring and Response (Month 10 Onward)</div>
+        </div>
+        <p style="color:var(--silver);line-height:1.75;font-size:0.9375rem">Establish an OT Security Operations Center (OT-SOC) or integrate with an existing SOC, develop OT-specific incident response procedures, conduct regular OT security drills, and continuously update industrial threat intelligence.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tags -->
+  <div class="reveal" style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--ink-4);display:flex;gap:0.5rem;flex-wrap:wrap">
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">OT Security</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">ICS</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">Purdue Model</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">IEC 62443</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">SEMI E187</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">Ark-UTM</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">Manufacturing Security</span>
+  </div>
+
+  <!-- CTA -->
+  <div class="reveal" style="margin-top:3rem;background:linear-gradient(135deg,rgba(250,88,34,0.08),rgba(0,200,200,0.04));border:1px solid rgba(250,88,34,0.2);border-radius:12px;padding:2rem">
+    <div style="font-family:'Inter', sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:0.75rem">Need Professional Security Advice?</div>
+    <p style="color:var(--silver);margin-bottom:1.5rem">Contact a professional security consultant for a tailored OT security assessment for your organization.</p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap">
+      <a href="/en/contact/" class="btn btn-orange">Get a Quote</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div><a href="/en/"><img src="/brand_assets/logo.png" alt="Hexion Networks" style="height:36px;filter:brightness(0) invert(1);opacity:0.85" /></a><p class="footer-brand-desc">Integrated consulting: business strategy, brand advisory, IT infrastructure &amp; cybersecurity.</p></div>
+    <div><div class="f-col-title">Products</div><a href="/en/products/pico-utm-100/" class="f-link">Pico-UTM 100</a><a href="/en/products/dual-ark-utm-16/" class="f-link">Ark-UTM 16</a><a href="/en/products/tera-utm-12/" class="f-link">Tera-UTM 12</a><a href="/en/products/lionfilter-200/" class="f-link">Lionfilter 200</a><a href="/en/products/endblock/" class="f-link">Endblock</a><a href="/en/products/teamt5/" class="f-link">TeamT5</a><a href="/en/products/cycraft/" class="f-link">CyCraft AI</a></div>
+    <div><div class="f-col-title">Services</div><a href="/en/services/" class="f-link">Business Strategy</a><a href="/en/services/" class="f-link">Brand Advisory</a><a href="/en/services/" class="f-link">Security Assessment</a></div>
+    <div><div class="f-col-title">Company</div><a href="/en/about/" class="f-link">About Us</a><a href="/en/blog/" class="f-link">Blog</a><a href="/en/contact/" class="f-link">Contact</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 HEXION NETWORKS.</span>
+    <div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+  </div>
+</footer>
+
+<script>const ro=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target)}})},{threshold:0.08});document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));</script>
+<script>var _ls=Date.now();window.addEventListener("load",function(){var l=document.getElementById("page-loader");if(!l)return;var elapsed=Date.now()-_ls,wait=Math.max(0,800-elapsed);setTimeout(function(){l.classList.add("out");setTimeout(function(){l.remove()},520)},wait)});</script>
+</body></html>

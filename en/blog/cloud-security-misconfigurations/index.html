@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cloud Security Misconfigurations: Enterprise Cloud Security Guide — Hexion Networks</title>
+  <meta name="description" content="Analyze the most common cloud security misconfigurations: from public S3 buckets and overprivileged IAM to secrets in repos — with a complete guide to CSPM tools and cloud security governance." />
+  <meta name="keywords" content="cloud security, misconfiguration, CSPM, AWS, Azure, IAM, S3, shared responsibility model, Landing Zone, Hexion Networks" />
+  <meta name="geo.region" content="TW" />
+  <meta name="geo.placename" content="Taiwan" />
+  <meta name="geo.position" content="23.7;121.0" />
+  <meta name="ICBM" content="23.7, 121.0" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hexionnetworks.com/en/blog/cloud-security-misconfigurations/" />
+  <link rel="alternate" hreflang="zh-TW" href="https://hexionnetworks.com/blog/cloud-security-misconfigurations/" />
+  <link rel="alternate" hreflang="en" href="https://hexionnetworks.com/en/blog/cloud-security-misconfigurations/" />
+  <link rel="alternate" hreflang="x-default" href="https://hexionnetworks.com/blog/cloud-security-misconfigurations/" />
+  <meta property="og:title" content="Cloud Security Misconfigurations: Enterprise Cloud Security Guide — Hexion Networks" />
+  <meta property="og:description" content="Analyze the most common cloud security misconfigurations and provide a complete strategy for CSPM tools and cloud security governance." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://hexionnetworks.com/en/blog/cloud-security-misconfigurations/" />
+  <meta property="og:image" content="https://hexionnetworks.com/brand_assets/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Cloud Security Misconfigurations: Enterprise Cloud Security Guide — Hexion Networks" />
+  <meta name="twitter:description" content="Analyze the most common cloud misconfigurations: from public S3 buckets to overprivileged IAM — with a complete guide to CSPM and cloud governance." />
+  <meta name="twitter:image" content="https://hexionnetworks.com/brand_assets/logo.png" />
+  <link rel="icon" href="/brand_assets/favicon.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Cloud Security Misconfigurations: Enterprise Cloud Security Guide","datePublished":"2025-08-05","dateModified":"2025-08-05","author":{"@type":"Organization","name":"Hexion Networks"},"publisher":{"@type":"Organization","name":"Hexion Networks","url":"https://hexionnetworks.com"},"url":"https://hexionnetworks.com/en/blog/cloud-security-misconfigurations/"}</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-78TQ277930"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-78TQ277930');
+</script>
+<script src="/lang.js"></script>
+</head>
+<body>
+<div id="page-loader"><img src="/brand_assets/logo.png" alt="" class="loader-logo" /><div class="loader-ring-wrap"><div class="loader-ring loader-ring-outer"></div><div class="loader-ring loader-ring-inner"></div><div class="loader-dot"></div></div></div>
+<div class="topbar">
+  <a href="/en/contact/">Contact Us</a>
+  <a href="/en/blog/" class="topbar-highlight">Latest Security Reports →</a>
+  <a href="/blog/cloud-security-misconfigurations/" id="lang-toggle" class="lang-btn">中文</a>
+</div>
+<nav>
+  <a href="/en/" class="nav-logo"><img src="/brand_assets/logo.png" alt="Hexion Networks" /></a>
+  <div class="nav-links">
+    <div class="nav-item">
+      <button>
+        Products
+        <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M8 11L3 6h10z"/></svg>
+      </button>
+      <div class="mega" style="width:560px;grid-template-columns:1fr 1fr">
+        <div class="mega-col" style="border-right:1px solid rgba(255,255,255,0.06)">
+          <div class="mega-label" style="color:var(--teal)">LIONIC NGFW Series</div>
+          <a href="/en/products/pico-utm-100/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.15);color:var(--o)">IT</span>
+            Pico-UTM 100
+          </a>
+          <a href="/en/products/dual-ark-utm-16/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(0,200,200,0.12);color:var(--teal)">IoT</span>
+            Ark-UTM 16
+          </a>
+          <a href="/en/products/tera-utm-12/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.12);color:#FF7A45">OT</span>
+            Tera-UTM 12
+          </a>
+          <a href="/en/products/lionfilter-200/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(167,139,250,0.12);color:#A78BFA">NET</span>
+            Lionfilter 200
+          </a>
+        </div>
+        <div class="mega-col" style="background:rgba(61,220,151,0.025)">
+          <div class="mega-label" style="color:#3DDC97">EDR Endpoint Detection & Response</div>
+          <a href="/en/products/endblock/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.15);color:#3DDC97">EDR</span>
+            Endblock
+          </a>
+          <a href="/en/products/teamt5/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.12);color:#3DDC97">TI</span>
+            TeamT5
+          </a>
+          <a href="/en/products/cycraft/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.1);color:#3DDC97">AI</span>
+            CyCraft AI
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-item"><a href="/en/services/">Services</a></div>
+    <div class="nav-item" style="display:none"><a href="/en/research/">Research</a></div>
+    <div class="nav-item active"><a href="/en/blog/">Blog</a></div>
+    <div class="nav-item"><a href="/en/about/">About</a></div>
+  </div>
+  <div class="nav-cta">
+    <a href="https://line.me/R/ti/p/@278zhddk" target="_blank" class="nav-line-btn">LINE Chat</a>
+    <a href="/en/contact/" class="btn btn-orange" style="padding:0.5rem 1.125rem;font-size:0.8125rem;">Get a Quote →</a>
+  </div>
+</nav>
+
+<div class="page-hero" style="padding-bottom:3rem">
+  <div style="padding:0 var(--px)">
+    <div class="reveal" style="display:flex;gap:0.5rem;margin-bottom:1.5rem;flex-wrap:wrap">
+      <a href="/en/blog/" style="color:var(--silver);font-size:0.8rem;text-decoration:none">Blog</a>
+      <span style="color:var(--silver);font-size:0.8rem">/</span>
+      <span style="color:var(--teal);font-size:0.8rem">Technical Guide</span>
+    </div>
+    <div class="reveal">
+      <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(0,200,200,0.1);border:1px solid rgba(0,200,200,0.3);border-radius:4px;padding:0.25rem 0.75rem;font-family:'Orbitron',monospace;font-size:0.65rem;color:#00C8C8;letter-spacing:0.1em;margin-bottom:1.25rem">TECHNICAL GUIDE</div>
+      <h1 style="font-family:'Inter', sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.025em;line-height:1.15;margin-bottom:1.25rem">Cloud Security Governance: The Most Common Misconfigurations After Moving to the Cloud and How to Fix Them</h1>
+      <p style="color:var(--silver);font-size:1.0625rem;line-height:1.7;margin-bottom:2rem">Over 80% of cloud data breaches stem from misconfigurations, not zero-day vulnerabilities. This guide analyzes the most common cloud misconfigurations, clears up misunderstandings of the shared responsibility model, and explains how to build continuous cloud security governance.</p>
+      <div style="display:flex;align-items:center;gap:1.5rem;color:var(--silver);font-size:0.8125rem;border-top:1px solid var(--ink-4);padding-top:1.5rem;flex-wrap:wrap">
+        <span>Hexion Networks Security Research Team</span>
+        <span>·</span>
+        <span>2025-08-05</span>
+        <span>·</span>
+        <span>9 min read</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="padding:3rem var(--px) 5rem">
+  <div class="reveal" style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:12px;overflow:hidden;margin-bottom:3rem;aspect-ratio:16/7;display:flex;align-items:center;justify-content:center">
+    <svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+      <defs>
+        <radialGradient id="cloud-bg" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="#3DDC97" stop-opacity="0.07"/><stop offset="100%" stop-color="#0A0A14" stop-opacity="0"/></radialGradient>
+      </defs>
+      <rect width="800" height="350" fill="#080F0C"/>
+      <rect width="800" height="350" fill="url(#cloud-bg)"/>
+      <text x="400" y="30" text-anchor="middle" font-family="Orbitron,monospace" font-size="9" fill="#3DDC97" letter-spacing="3">CLOUD SHARED RESPONSIBILITY MODEL</text>
+
+      <!-- Provider responsible -->
+      <rect x="40" y="50" width="340" height="260" rx="6" fill="rgba(61,220,151,0.04)" stroke="rgba(61,220,151,0.2)" stroke-width="1"/>
+      <text x="210" y="73" text-anchor="middle" font-family="Orbitron,monospace" font-size="8" fill="#3DDC97">Cloud Provider Responsible</text>
+      <rect x="60" y="85" width="300" height="28" rx="4" fill="rgba(61,220,151,0.08)" stroke="rgba(61,220,151,0.25)" stroke-width="0.75"/>
+      <text x="210" y="103" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="rgba(61,220,151,0.8)">Physical Data Center Security</text>
+      <rect x="60" y="119" width="300" height="28" rx="4" fill="rgba(61,220,151,0.08)" stroke="rgba(61,220,151,0.25)" stroke-width="0.75"/>
+      <text x="210" y="137" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="rgba(61,220,151,0.8)">Hardware &amp; Network Infrastructure</text>
+      <rect x="60" y="153" width="300" height="28" rx="4" fill="rgba(61,220,151,0.08)" stroke="rgba(61,220,151,0.25)" stroke-width="0.75"/>
+      <text x="210" y="171" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="rgba(61,220,151,0.8)">Virtualization Layer / Hypervisor Security</text>
+      <rect x="60" y="187" width="300" height="28" rx="4" fill="rgba(61,220,151,0.06)" stroke="rgba(61,220,151,0.2)" stroke-width="0.75"/>
+      <text x="210" y="205" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="rgba(61,220,151,0.6)">OS Patching for Managed Services</text>
+
+      <!-- Customer responsible -->
+      <rect x="420" y="50" width="340" height="260" rx="6" fill="rgba(250,88,34,0.04)" stroke="rgba(250,88,34,0.25)" stroke-width="1"/>
+      <text x="590" y="73" text-anchor="middle" font-family="Orbitron,monospace" font-size="8" fill="#FA5822">Customer Responsible</text>
+      <rect x="440" y="85" width="300" height="28" rx="4" fill="rgba(255,68,68,0.1)" stroke="rgba(255,68,68,0.35)" stroke-width="0.75"/>
+      <text x="590" y="103" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#FF4444">Data Classification &amp; Access Control ← Most Error-Prone</text>
+      <rect x="440" y="119" width="300" height="28" rx="4" fill="rgba(250,88,34,0.08)" stroke="rgba(250,88,34,0.3)" stroke-width="0.75"/>
+      <text x="590" y="137" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="rgba(250,88,34,0.8)">IAM Permissions &amp; Management</text>
+      <rect x="440" y="153" width="300" height="28" rx="4" fill="rgba(250,88,34,0.08)" stroke="rgba(250,88,34,0.3)" stroke-width="0.75"/>
+      <text x="590" y="171" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="rgba(250,88,34,0.8)">Network Security Groups &amp; Firewall Rules</text>
+      <rect x="440" y="187" width="300" height="28" rx="4" fill="rgba(250,88,34,0.08)" stroke="rgba(250,88,34,0.3)" stroke-width="0.75"/>
+      <text x="590" y="205" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="rgba(250,88,34,0.8)">Encryption at Rest &amp; In Transit</text>
+      <rect x="440" y="221" width="300" height="28" rx="4" fill="rgba(250,88,34,0.08)" stroke="rgba(250,88,34,0.3)" stroke-width="0.75"/>
+      <text x="590" y="239" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="rgba(250,88,34,0.8)">Audit Logs &amp; Monitoring</text>
+      <rect x="440" y="255" width="300" height="28" rx="4" fill="rgba(250,88,34,0.06)" stroke="rgba(250,88,34,0.2)" stroke-width="0.75"/>
+      <text x="590" y="273" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="rgba(250,88,34,0.6)">Application Layer Security</text>
+
+      <!-- VS divider -->
+      <text x="400" y="185" text-anchor="middle" font-family="Orbitron,monospace" font-size="11" fill="rgba(255,255,255,0.2)" font-weight="700">VS</text>
+
+      <!-- Bottom CSPM banner -->
+      <rect x="40" y="325" width="720" height="20" rx="4" fill="rgba(0,200,200,0.06)" stroke="rgba(0,200,200,0.2)" stroke-width="0.75"/>
+      <text x="400" y="338" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="rgba(0,200,200,0.7)">CSPM (Cloud Security Posture Management) tools automatically scan all items on the right for compliance</text>
+    </svg>
+  </div>
+
+  <div class="reveal" style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+    <p>Gartner predicts that through 2025, 99% of cloud security failures will be the customer's fault — not the cloud provider's. Behind this striking number lies a widespread misunderstanding: many enterprises believe "moving to AWS or Azure means we're secure," ignoring that cloud operates under a Shared Responsibility Model — cloud providers are responsible for securing the cloud infrastructure; customers are responsible for securing what they run in the cloud.</p>
+    <p style="margin-top:1rem">Several high-profile Taiwanese enterprise data breaches in 2024 ultimately traced back to the same root cause: S3 buckets configured for public access, API keys leaked to GitHub, or overly permissive IAM policies. None of these were zero-day vulnerabilities — they were all preventable misconfigurations.</p>
+  </div>
+
+  <div class="reveal" style="margin-top:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)"><span style="color:#FA5822">Six Most Common</span> Cloud Misconfigurations</h2>
+    <div style="display:flex;flex-direction:column;gap:1rem">
+      <div style="background:var(--ink-2);border:1px solid rgba(255,68,68,0.2);border-radius:8px;padding:1.25rem">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem">
+          <strong style="color:var(--white)">① Public Object Storage Access (S3/Blob Public)</strong>
+          <span style="font-family:'Orbitron',monospace;font-size:0.65rem;color:#FF4444;background:rgba(255,68,68,0.1);padding:0.2rem 0.5rem;border-radius:3px">HIGH RISK</span>
+        </div>
+        <p style="font-size:0.9375rem;color:var(--fog)">Setting an S3 bucket or Azure Blob to public read access allows anyone to anonymously access the data. The common cause: a developer opens it for testing convenience and forgets to close it before going to production. AWS now provides an account-level "Block Public Access" switch that should be enforced on all production accounts.</p>
+      </div>
+      <div style="background:var(--ink-2);border:1px solid rgba(255,68,68,0.2);border-radius:8px;padding:1.25rem">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem">
+          <strong style="color:var(--white)">② Overprivileged IAM (Violating Least Privilege)</strong>
+          <span style="font-family:'Orbitron',monospace;font-size:0.65rem;color:#FF4444;background:rgba(255,68,68,0.1);padding:0.2rem 0.5rem;border-radius:3px">HIGH RISK</span>
+        </div>
+        <p style="font-size:0.9375rem;color:var(--fog)">Granting Administrator permissions for convenience, or using wildcard <code style="background:var(--ink-3);padding:0 0.3em;border-radius:3px">*:*</code> IAM policies. If an IAM key with such permissions is leaked, an attacker can completely take over your entire cloud account. Use AWS IAM Access Analyzer to regularly review and remove unused permissions.</p>
+      </div>
+      <div style="background:var(--ink-2);border:1px solid rgba(250,88,34,0.2);border-radius:8px;padding:1.25rem">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem">
+          <strong style="color:var(--white)">③ Secrets Leaked to Code Repositories</strong>
+          <span style="font-family:'Orbitron',monospace;font-size:0.65rem;color:#FA5822;background:rgba(250,88,34,0.1);padding:0.2rem 0.5rem;border-radius:3px">HIGH RISK</span>
+        </div>
+        <p style="font-size:0.9375rem;color:var(--fog)">Developers hardcode AWS Access Keys, database passwords, or API tokens directly into source code and push to public or private GitHub repositories. GitGuardian statistics show over 10 million secrets are detected on GitHub annually. Use environment variables, AWS Secrets Manager, or Azure Key Vault to manage secrets.</p>
+      </div>
+      <div style="background:var(--ink-2);border:1px solid rgba(250,88,34,0.2);border-radius:8px;padding:1.25rem">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem">
+          <strong style="color:var(--white)">④ Overly Permissive Network Security Group Rules</strong>
+          <span style="font-family:'Orbitron',monospace;font-size:0.65rem;color:#FA5822;background:rgba(250,88,34,0.1);padding:0.2rem 0.5rem;border-radius:3px">MEDIUM-HIGH RISK</span>
+        </div>
+        <p style="font-size:0.9375rem;color:var(--fog)">Database security groups allowing 0.0.0.0/0 (global IP) access to ports 3306, 5432, or SSH (22) and RDP (3389) exposed directly to the internet. Restrict database access to only application server IPs. Admin access must go through a Bastion Host or VPN.</p>
+      </div>
+      <div style="background:var(--ink-2);border:1px solid rgba(0,200,200,0.2);border-radius:8px;padding:1.25rem">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem">
+          <strong style="color:var(--white)">⑤ No Logging or Monitoring Enabled</strong>
+          <span style="font-family:'Orbitron',monospace;font-size:0.65rem;color:#00C8C8;background:rgba(0,200,200,0.1);padding:0.2rem 0.5rem;border-radius:3px">MEDIUM RISK</span>
+        </div>
+        <p style="font-size:0.9375rem;color:var(--fog)">Not enabling AWS CloudTrail, Azure Monitor Logs, or GCP Cloud Audit Logs means there's no way to trace attack paths and scope after an incident. Audit logs should also be stored in a separate, write-protected storage space to prevent attackers from erasing tracks after a breach.</p>
+      </div>
+      <div style="background:var(--ink-2);border:1px solid rgba(0,200,200,0.2);border-radius:8px;padding:1.25rem">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem">
+          <strong style="color:var(--white)">⑥ No Encryption at Rest</strong>
+          <span style="font-family:'Orbitron',monospace;font-size:0.65rem;color:#00C8C8;background:rgba(0,200,200,0.1);padding:0.2rem 0.5rem;border-radius:3px">MEDIUM RISK</span>
+        </div>
+        <p style="font-size:0.9375rem;color:var(--fog)">Database disks (EBS, RDS), object storage (S3), and backups without encryption create exposure risk from cloud provider insiders or physical access scenarios. Modern cloud encryption is nearly free and transparent — it should be enabled by default.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)"><span style="color:#3DDC97">CSPM</span>: Automating Cloud Configuration Compliance</h2>
+    <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+      <p>Cloud Security Posture Management (CSPM) tools continuously scan your cloud environment's configurations, compare them against security best practices and compliance benchmarks (CIS Benchmark, ISO 27001, PDPA), and automatically generate remediation recommendations.</p>
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1.25rem;margin-top:1rem">
+        <div style="font-family:'Inter', sans-serif;font-size:0.9375rem;font-weight:700;margin-bottom:1rem">CSPM Core Functions</div>
+        <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:0.625rem;font-size:0.9375rem;color:var(--fog)">
+          <li style="display:flex;gap:0.75rem"><span style="color:#3DDC97;font-weight:700;flex-shrink:0">→</span><div><strong style="color:var(--white)">Continuous Visibility:</strong> Centralized view of all resource configurations across AWS, Azure, and GCP — automatically identifies publicly exposed resources</div></li>
+          <li style="display:flex;gap:0.75rem"><span style="color:#3DDC97;font-weight:700;flex-shrink:0">→</span><div><strong style="color:var(--white)">Compliance Scoring:</strong> Automatically evaluates current environment compliance against CIS, NIST, SOC 2, GDPR, and other frameworks — generates auditable reports</div></li>
+          <li style="display:flex;gap:0.75rem"><span style="color:#3DDC97;font-weight:700;flex-shrink:0">→</span><div><strong style="color:var(--white)">Drift Detection:</strong> Real-time alerts when configurations deviate from security baselines (e.g., someone manually disabled public access blocking)</div></li>
+          <li style="display:flex;gap:0.75rem"><span style="color:#3DDC97;font-weight:700;flex-shrink:0">→</span><div><strong style="color:var(--white)">Auto-Remediation:</strong> Provides automated remediation scripts for known risky configurations — some tools support one-click fixes</div></li>
+        </ul>
+      </div>
+      <div style="background:rgba(61,220,151,0.06);border-left:3px solid #3DDC97;border-radius:0 8px 8px 0;padding:1rem 1.25rem;margin-top:1.25rem">
+        <div style="font-family:'Inter', sans-serif;font-size:0.875rem;font-weight:700;color:#3DDC97;margin-bottom:0.5rem">Where to Start</div>
+        <p style="font-size:0.9375rem;color:var(--fog)">Many cloud providers offer native free CSPM capabilities — AWS Security Hub (with GuardDuty integration), Azure Security Center, and GCP Security Command Center — these are the minimum baseline for cloud security governance and should be enabled from day one, not after an incident occurs.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)">Establishing a <span style="color:#3DDC97">Cloud Security Baseline</span>: Landing Zone Design Principles</h2>
+    <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+      <p>Embedding security at account creation is far more efficient than patching after the fact. Here are the security design principles for a cloud Landing Zone:</p>
+      <ol style="margin-top:1rem;padding-left:1.25rem;list-style:decimal;display:flex;flex-direction:column;gap:0.75rem">
+        <li><strong style="color:var(--white)">Account Isolation Strategy:</strong> Use separate cloud accounts for production, staging, and development. Restrict cross-account access to prevent development issues from affecting production.</li>
+        <li><strong style="color:var(--white)">Service Control Policies (SCPs):</strong> Enforce security policies at the organization level — such as prohibiting CloudTrail from being disabled or public S3 buckets from being created — even account administrators cannot bypass these.</li>
+        <li><strong style="color:var(--white)">Centralized Log Account:</strong> Create a dedicated logging account where all accounts' CloudTrail logs are centrally stored with immutable protection enabled.</li>
+        <li><strong style="color:var(--white)">IAM Identity Center (SSO):</strong> Use AWS IAM Identity Center or Azure AD to centrally manage human access — avoid long-lived IAM keys scattered across accounts.</li>
+        <li><strong style="color:var(--white)">Infrastructure as Code (IaC):</strong> Manage all resources with Terraform or CloudFormation, version-controlled in git, with security scanning steps integrated into the CI/CD pipeline.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--ink-4);display:flex;gap:0.5rem;flex-wrap:wrap">
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">Cloud Security</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">CSPM</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">IAM</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">S3 Configuration</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">Shared Responsibility</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">Landing Zone</span>
+  </div>
+
+  <div class="reveal" style="margin-top:3rem;background:linear-gradient(135deg,rgba(61,220,151,0.08),rgba(0,200,200,0.04));border:1px solid rgba(61,220,151,0.2);border-radius:12px;padding:2rem">
+    <div style="font-family:'Inter', sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:0.75rem">Need Expert Security Advice?</div>
+    <p style="color:var(--silver);margin-bottom:1.5rem">Contact Hexion Networks for a cloud security assessment and CSPM deployment recommendations tailored to your environment.</p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap">
+      <a href="/en/contact/" class="btn btn-orange">Free Consultation</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div><a href="/en/"><img src="/brand_assets/logo.png" alt="Hexion Networks" style="height:36px;filter:brightness(0) invert(1);opacity:0.85" /></a><p class="footer-brand-desc">An integrated services company combining business strategy, brand consulting, IT, and cybersecurity.</p></div>
+    <div><div class="f-col-title">Products</div><a href="/en/products/pico-utm-100/" class="f-link">Pico-UTM 100</a><a href="/en/products/dual-ark-utm-16/" class="f-link">Ark-UTM 16</a><a href="/en/products/tera-utm-12/" class="f-link">Tera-UTM 12</a><a href="/en/products/lionfilter-200/" class="f-link">Lionfilter 200</a><a href="/en/products/endblock/" class="f-link">Endblock</a><a href="/en/products/teamt5/" class="f-link">TeamT5</a><a href="/en/products/cycraft/" class="f-link">CyCraft AI</a></div>
+    <div><div class="f-col-title">Services</div><a href="/en/services/" class="f-link">Business Strategy</a><a href="/en/services/" class="f-link">Brand Consulting</a><a href="/en/services/" class="f-link">Security Assessment</a></div>
+    <div><div class="f-col-title">Company</div><a href="/en/about/" class="f-link">About Us</a><a href="/en/blog/" class="f-link">Blog</a><a href="/en/contact/" class="f-link">Contact</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 HEXION NETWORKS.</span>
+    <div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+  </div>
+</footer>
+
+<script>const ro=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target)}})},{threshold:0.08});document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));</script>
+<script>var _ls=Date.now();window.addEventListener("load",function(){var l=document.getElementById("page-loader");if(!l)return;var elapsed=Date.now()-_ls,wait=Math.max(0,800-elapsed);setTimeout(function(){l.classList.add("out");setTimeout(function(){l.remove()},520)},wait)});</script>
+</body></html>

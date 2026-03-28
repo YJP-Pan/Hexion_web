@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Security Blog | NGFW · Zero Trust · Cybersecurity Knowledge Base — Hexion Networks</title>
+  <meta name="description" content="Hexion Networks security knowledge base: in-depth analysis of LIONIC NGFW, zero trust architecture, ransomware defense, OT security, SEMI E187 compliance, and more." />
+  <meta name="keywords" content="security blog, NGFW, zero trust, ransomware, OT security, SEMI E187, Hexion Networks, cybersecurity knowledge base, Taiwan cybersecurity" />
+  <meta name="geo.region" content="TW" />
+  <meta name="geo.placename" content="Taiwan" />
+  <meta name="geo.position" content="23.7;121.0" />
+  <meta name="ICBM" content="23.7, 121.0" />
+  <meta name="robots" content="index, follow" /><link rel="canonical" href="https://hexionnetworks.com/en/blog/" />
+  <link rel="alternate" hreflang="zh-TW" href="https://hexionnetworks.com/blog/" />
+  <link rel="alternate" hreflang="en" href="https://hexionnetworks.com/en/blog/" />
+  <link rel="alternate" hreflang="x-default" href="https://hexionnetworks.com/blog/" />
+  <link rel="icon" href="/brand_assets/favicon.png" />
+  <meta property="og:title" content="Hexion Networks Security Blog | NGFW · Zero Trust · Cybersecurity Knowledge Base" />
+  <meta property="og:description" content="Hexion Networks security knowledge base: in-depth analysis of LIONIC NGFW, zero trust architecture, ransomware defense, OT security, SEMI E187 compliance, and more." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://hexionnetworks.com/en/blog/" />
+  <meta property="og:image" content="https://hexionnetworks.com/brand_assets/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hexion Networks Security Blog | NGFW · Zero Trust · Cybersecurity Knowledge Base" />
+  <meta name="twitter:description" content="Hexion Networks security knowledge base: in-depth analysis of LIONIC NGFW, zero trust architecture, ransomware defense, OT security, SEMI E187 compliance, and more." />
+  <meta name="twitter:image" content="https://hexionnetworks.com/brand_assets/logo.png" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Security Blog | NGFW · Zero Trust · Cybersecurity Knowledge Base — Hexion Networks","description":"Hexion Networks security knowledge base: in-depth analysis of LIONIC NGFW, zero trust architecture, ransomware defense, OT security, SEMI E187 compliance, and more.","url":"https://hexionnetworks.com/en/blog/","inLanguage":"en","publisher":{"@type":"Organization","name":"Hexion Networks","url":"https://hexionnetworks.com"}}</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    .blog-filter-row{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:2.5rem}
+    .filter-btn{padding:0.4rem 1rem;border-radius:100px;font-size:0.75rem;font-weight:600;border:1px solid rgba(255,255,255,0.1);color:var(--silver);background:rgba(255,255,255,0.03);cursor:pointer;transition:all 0.2s;font-family:'Orbitron',monospace;letter-spacing:0.04em}
+    .filter-btn:hover,.filter-btn.active{background:rgba(250,88,34,0.1);border-color:rgba(250,88,34,0.35);color:var(--o)}
+    .blog-featured{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:3rem}
+    @media(max-width:768px){.blog-featured{grid-template-columns:1fr}}
+    .blog-featured-card{background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;transition:border-color 0.25s,transform 0.25s;display:flex;flex-direction:column}
+    .blog-featured-card:hover{border-color:rgba(250,88,34,0.3);transform:translateY(-4px)}
+    .blog-featured-card .ins-img{border-radius:0}
+  </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-78TQ277930"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-78TQ277930');
+</script>
+<script src="/lang.js"></script>
+</head>
+<body>
+<div id="page-loader"><img src="/brand_assets/logo.png" alt="" class="loader-logo" /><div class="loader-ring-wrap"><div class="loader-ring loader-ring-outer"></div><div class="loader-ring loader-ring-inner"></div><div class="loader-dot"></div></div></div>
+<div class="topbar">
+  <a href="/en/contact/">Contact Us</a>
+  <a href="/en/blog/" class="topbar-highlight">Latest Security Report →</a>
+  <a href="/blog/" id="lang-toggle" class="lang-btn">中文</a>
+</div>
+<nav>
+  <a href="/en/" class="nav-logo"><img src="/brand_assets/logo.png" alt="Hexion Networks" /></a>
+  <div class="nav-links">
+    <div class="nav-item">
+      <button>
+        Products
+        <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M8 11L3 6h10z"/></svg>
+      </button>
+      <div class="mega" style="width:560px;grid-template-columns:1fr 1fr">
+        <div class="mega-col" style="border-right:1px solid rgba(255,255,255,0.06)">
+          <div class="mega-label" style="color:var(--teal)">LIONIC NGFW Series</div>
+          <a href="/en/products/pico-utm-100/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.15);color:var(--o)">IT</span>
+            Pico-UTM 100
+          </a>
+          <a href="/en/products/dual-ark-utm-16/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(0,200,200,0.12);color:var(--teal)">IoT</span>
+            Ark-UTM 16
+          </a>
+          <a href="/en/products/tera-utm-12/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.12);color:#FF7A45">OT</span>
+            Tera-UTM 12
+          </a>
+          <a href="/en/products/lionfilter-200/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(167,139,250,0.12);color:#A78BFA">NET</span>
+            Lionfilter 200
+          </a>
+        </div>
+        <div class="mega-col" style="background:rgba(61,220,151,0.025)">
+          <div class="mega-label" style="color:#3DDC97">EDR Endpoint Detection &amp; Response</div>
+          <a href="/en/products/endblock/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.15);color:#3DDC97">EDR</span>
+            Endblock
+          </a>
+          <a href="/en/products/teamt5/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.12);color:#3DDC97">TI</span>
+            TeamT5
+          </a>
+          <a href="/en/products/cycraft/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.1);color:#3DDC97">AI</span>
+            CyCraft AI
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-item"><a href="/en/services/">Services</a></div>
+    <div class="nav-item" style="display:none"><a href="/en/research/">Research</a></div>
+    <div class="nav-item active"><a href="/en/blog/">Blog</a></div>
+    <div class="nav-item"><a href="/en/about/">About</a></div>
+  </div>
+  <div class="nav-cta">
+    <a href="https://line.me/R/ti/p/@278zhddk" target="_blank" class="nav-line-btn">LINE Chat</a>
+    <a href="/en/contact/" class="btn btn-orange" style="padding:0.5rem 1.125rem;font-size:0.8125rem;">Get a Quote →</a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-glow"></div>
+  <div class="page-hero-grid"></div>
+  <canvas id="blogPC" class="hero-particle-canvas"></canvas>
+  <div class="hero-scan-line"></div>
+  <div class="page-hero-inner reveal">
+    <div class="sec-tag" style="justify-content:center;margin-bottom:1rem">Knowledge Base</div>
+    <h1>Security<span style="color:var(--o)"> Knowledge Hub</span></h1>
+    <p>The Hexion Networks research team shares the latest threat analysis, technical deep dives, and industry security trends — helping enterprises understand threats and stay ahead of attackers.</p>
+  </div>
+</section>
+
+<div style="background:var(--ink)">
+  <div class="content-sec">
+    <!-- FEATURED -->
+    <div class="reveal">
+      <div class="sec-tag">Featured Articles</div>
+      <h2 class="sec-h" style="margin-bottom:1.5rem">Latest<span class="accent"> In-Depth Reports</span></h2>
+    </div>
+    <div class="blog-featured">
+      <a href="/en/blog/cybersecurity-trends-2026/" style="text-decoration:none" class="blog-featured-card reveal">
+        <div class="ins-img">
+          <svg viewBox="0 0 580 280" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%">
+            <rect width="580" height="280" fill="#0A0A18"/>
+            <defs>
+              <pattern id="bf-g1" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0L0 0 0 40" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/></pattern>
+              <filter id="bf-blur1"><feGaussianBlur stdDeviation="8"/></filter>
+            </defs>
+            <rect width="580" height="280" fill="url(#bf-g1)"/>
+            <ellipse cx="290" cy="140" rx="240" ry="140" fill="rgba(250,88,34,0.06)" filter="url(#bf-blur1)"/>
+            <line class="svg-flow" x1="120" y1="100" x2="290" y2="140" stroke="rgba(250,88,34,0.25)" stroke-width="1" stroke-dasharray="4 3"/>
+            <line class="svg-flow" x1="420" y1="80" x2="290" y2="140" stroke="rgba(250,88,34,0.25)" stroke-width="1" stroke-dasharray="4 3" style="animation-delay:0.5s"/>
+            <line class="svg-flow" x1="480" y1="180" x2="290" y2="140" stroke="rgba(250,88,34,0.2)" stroke-width="1" stroke-dasharray="4 3" style="animation-delay:1s"/>
+            <line class="svg-flow" x1="80" y1="200" x2="290" y2="140" stroke="rgba(250,88,34,0.15)" stroke-width="1" stroke-dasharray="4 3" style="animation-delay:1.5s"/>
+            <line class="svg-flow" x1="200" y1="50" x2="290" y2="140" stroke="rgba(0,200,200,0.2)" stroke-width="1" stroke-dasharray="4 3" style="animation-delay:0.75s"/>
+            <line class="svg-flow" x1="500" y1="220" x2="290" y2="140" stroke="rgba(0,200,200,0.15)" stroke-width="1" stroke-dasharray="4 3" style="animation-delay:1.25s"/>
+            <circle cx="120" cy="100" r="8" fill="rgba(255,68,68,0.15)" stroke="#FF4444" stroke-width="1.5"/>
+            <circle cx="120" cy="100" r="3" fill="#FF4444"/>
+            <circle cx="420" cy="80" r="7" fill="rgba(255,68,68,0.12)" stroke="#FF4444" stroke-width="1.5"/>
+            <circle cx="420" cy="80" r="2.5" fill="#FF4444"/>
+            <circle cx="480" cy="180" r="6" fill="rgba(250,88,34,0.15)" stroke="#FA5822" stroke-width="1.5"/>
+            <circle cx="480" cy="180" r="2.5" fill="#FA5822"/>
+            <circle cx="80" cy="200" r="5" fill="rgba(250,88,34,0.12)" stroke="#FA5822" stroke-width="1.5"/>
+            <circle cx="80" cy="200" r="2" fill="#FA5822"/>
+            <circle cx="200" cy="50" r="6" fill="rgba(0,200,200,0.12)" stroke="#00C8C8" stroke-width="1.5"/>
+            <circle cx="200" cy="50" r="2.5" fill="#00C8C8"/>
+            <circle cx="500" cy="220" r="5" fill="rgba(0,200,200,0.1)" stroke="#00C8C8" stroke-width="1"/>
+            <circle cx="500" cy="220" r="2" fill="#00C8C8"/>
+            <circle class="svg-pulse" cx="290" cy="140" r="18" fill="rgba(250,88,34,0.1)" stroke="rgba(250,88,34,0.5)" stroke-width="1.5"/>
+            <circle cx="290" cy="140" r="10" fill="rgba(250,88,34,0.2)" stroke="rgba(250,88,34,0.6)" stroke-width="1"/>
+            <circle cx="290" cy="140" r="4" fill="#FA5822"/>
+            <rect x="16" y="200" width="148" height="64" rx="6" fill="rgba(17,17,30,0.9)" stroke="rgba(250,88,34,0.2)" stroke-width="0.75"/>
+            <text x="26" y="218" font-size="8" font-family="monospace" fill="rgba(250,88,34,0.8)">APT ACTIVITY (30D)</text>
+            <rect x="26" y="224" width="118" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
+            <rect x="26" y="224" width="82" height="6" rx="3" fill="rgba(255,68,68,0.5)"/>
+            <rect x="26" y="236" width="118" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
+            <rect x="26" y="236" width="55" height="6" rx="3" fill="rgba(250,88,34,0.5)"/>
+            <rect x="26" y="248" width="118" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
+            <rect x="26" y="248" width="95" height="6" rx="3" fill="rgba(0,200,200,0.4)"/>
+            <text x="26" y="262" font-size="7" font-family="monospace" fill="rgba(255,255,255,0.3)">+23% MoM</text>
+            <rect x="420" y="16" width="140" height="28" rx="5" fill="rgba(255,68,68,0.12)" stroke="rgba(255,68,68,0.3)" stroke-width="0.75"/>
+            <text x="490" y="33" font-size="9" font-family="monospace" fill="#FF4444" text-anchor="middle">CRITICAL ALERT</text>
+          </svg>
+        </div>
+        <div class="ins-body">
+          <span class="ins-tag">Threat Report</span>
+          <div class="ins-title lg">2026 Enterprise Cybersecurity Threat Trends: AI Attacks, Ransomware &amp; OT Threats</div>
+          <div class="ins-meta">March 10, 2026 &nbsp;·&nbsp; 8 min read</div>
+        </div>
+      </a>
+      <a href="/en/blog/zero-trust-implementation/" style="text-decoration:none" class="blog-featured-card reveal" style="transition-delay:0.1s">
+        <div class="ins-img">
+          <svg viewBox="0 0 260 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%">
+            <rect width="260" height="160" fill="#0D1A1A"/>
+            <defs><filter id="bf-blur2"><feGaussianBlur stdDeviation="8"/></filter></defs>
+            <ellipse cx="130" cy="80" rx="110" ry="80" fill="rgba(0,200,200,0.05)" filter="url(#bf-blur2)"/>
+            <path d="M130 30 L165 46 L165 78 Q165 108 130 122 Q95 108 95 78 L95 46 Z" fill="rgba(0,200,200,0.08)" stroke="rgba(0,200,200,0.4)" stroke-width="1.5"/>
+            <rect x="119" y="72" width="22" height="18" rx="3" fill="rgba(0,200,200,0.15)" stroke="#00C8C8" stroke-width="1.2"/>
+            <path d="M123 72 Q123 64 130 64 Q137 64 137 72" stroke="#00C8C8" stroke-width="1.5" fill="none"/>
+            <circle cx="130" cy="81" r="2.5" fill="#00C8C8"/>
+            <circle cx="130" cy="30" r="5" fill="rgba(0,200,200,0.15)" stroke="#00C8C8" stroke-width="1"/>
+            <circle cx="165" cy="62" r="5" fill="rgba(0,200,200,0.15)" stroke="#00C8C8" stroke-width="1"/>
+            <circle cx="152" cy="114" r="5" fill="rgba(0,200,200,0.15)" stroke="#00C8C8" stroke-width="1"/>
+            <line class="svg-flow" x1="130" y1="35" x2="130" y2="46" stroke="rgba(0,200,200,0.3)" stroke-width="0.75" stroke-dasharray="3 2"/>
+            <line class="svg-flow" x1="160" y1="66" x2="155" y2="72" stroke="rgba(0,200,200,0.3)" stroke-width="0.75" stroke-dasharray="3 2" style="animation-delay:0.6s"/>
+            <rect x="10" y="130" width="80" height="20" rx="4" fill="rgba(0,200,200,0.08)" stroke="rgba(0,200,200,0.25)" stroke-width="0.75"/>
+            <text x="50" y="143" font-size="8" font-family="monospace" fill="#00C8C8" text-anchor="middle">ZERO TRUST</text>
+          </svg>
+        </div>
+        <div class="ins-body">
+          <span class="ins-tag" style="color:var(--teal)">Technical Guide</span>
+          <div class="ins-title lg">Zero Trust Architecture Implementation Roadmap: From Planning to Deployment</div>
+          <div class="ins-meta">March 5, 2026 &nbsp;·&nbsp; 9 min read</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- FILTER -->
+    <div class="blog-filter-row reveal">
+      <button class="filter-btn active" onclick="filterBlog('all', this)">All</button>
+      <button class="filter-btn" onclick="filterBlog('threat', this)">Threat Analysis</button>
+      <button class="filter-btn" onclick="filterBlog('guide', this)">Technical Guide</button>
+      <button class="filter-btn" onclick="filterBlog('compliance', this)">Compliance</button>
+      <button class="filter-btn" onclick="filterBlog('product', this)">Product</button>
+    </div>
+
+    <!-- ALL ARTICLES GRID -->
+    <div class="blog-grid" id="blog-grid">
+
+      <!-- 1 Ransomware -->
+      <a href="/en/blog/ransomware-defense/" style="text-decoration:none" class="ins-card reveal" data-cat="threat">
+        <div class="ins-img">
+          <svg viewBox="0 0 260 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%">
+            <defs><filter id="rw-blur"><feGaussianBlur stdDeviation="8"/></filter></defs>
+            <rect width="260" height="160" fill="#120A1E"/>
+            <ellipse cx="130" cy="80" rx="110" ry="80" fill="rgba(180,100,255,0.06)" filter="url(#rw-blur)"/>
+            <rect x="60" y="40" width="36" height="44" rx="3" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+            <path d="M72 55 L84 55M72 62 L84 62M72 69 L84 69" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+            <rect x="112" y="40" width="36" height="44" rx="3" fill="rgba(255,68,68,0.06)" stroke="rgba(255,68,68,0.4)" stroke-width="1"/>
+            <rect x="120" y="52" width="20" height="14" rx="2" fill="rgba(255,68,68,0.15)" stroke="rgba(255,68,68,0.4)" stroke-width="1"/>
+            <path d="M124 52v-4a6 6 0 0112 0v4" stroke="#FF4444" stroke-width="1.2" fill="none"/>
+            <circle cx="130" cy="59" r="2" fill="#FF4444"/>
+            <rect x="164" y="40" width="36" height="44" rx="3" fill="rgba(255,68,68,0.06)" stroke="rgba(255,68,68,0.4)" stroke-width="1"/>
+            <path d="M176 55 L188 55M176 62 L188 62" stroke="rgba(255,68,68,0.3)" stroke-width="1"/>
+            <path d="M130 96 L150 105 L150 120 Q150 132 130 138 Q110 132 110 120 L110 105 Z" fill="rgba(250,88,34,0.1)" stroke="rgba(250,88,34,0.5)" stroke-width="1.5"/>
+            <path d="M121 117 L127 123 L139 111" stroke="#FA5822" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M117 52 L143 72M143 52 L117 72" stroke="rgba(250,88,34,0.5)" stroke-width="1.5" stroke-linecap="round"/>
+            <rect x="10" y="10" width="94" height="20" rx="4" fill="rgba(255,68,68,0.1)" stroke="rgba(255,68,68,0.25)" stroke-width="0.75"/>
+            <text x="57" y="23" font-size="8" font-family="monospace" fill="#FF4444" text-anchor="middle">RANSOMWARE</text>
+          </svg>
+        </div>
+        <div class="ins-body">
+          <span class="ins-tag">Case Study</span>
+          <div class="ins-title">2026 Ransomware Defense Complete Strategy: Layered Protection &amp; Response Plan</div>
+          <div class="ins-meta">Feb 28, 2026 &nbsp;·&nbsp; 7 min read</div>
+        </div>
+      </a>
+
+      <!-- 2 SEMI E187 -->
+      <a href="/en/blog/semi-e187-compliance/" style="text-decoration:none;transition-delay:.08s" class="ins-card reveal" data-cat="compliance">
+        <div class="ins-img">
+          <svg viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%">
+            <defs>
+              <radialGradient id="sg1" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#00C8C8" stop-opacity="0.1"/><stop offset="100%" stop-color="#0A1414" stop-opacity="0"/></radialGradient>
+              <filter id="sf1"><feGaussianBlur stdDeviation="6"/></filter>
+              <pattern id="sp1" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0L0 0 0 32" fill="none" stroke="rgba(0,200,200,0.04)" stroke-width="0.5"/></pattern>
+            </defs>
+            <rect width="400" height="200" fill="#080F0F"/>
+            <rect width="400" height="200" fill="url(#sp1)"/>
+            <ellipse cx="200" cy="100" rx="180" ry="100" fill="url(#sg1)" filter="url(#sf1)"/>
+            <g opacity="0.35" stroke="#00C8C8" stroke-width="0.75">
+              <path d="M170 60 L190 50 L210 60 L210 80 L190 90 L170 80Z"/>
+              <path d="M210 60 L230 50 L250 60 L250 80 L230 90 L210 80Z"/>
+              <path d="M190 90 L210 80 L230 90 L230 110 L210 120 L190 110Z"/>
+            </g>
+            <g opacity="0.6" stroke="#00C8C8" stroke-width="1">
+              <path d="M170 60 L190 50 L210 60 L210 80 L190 90 L170 80Z" fill="rgba(0,200,200,0.04)"/>
+            </g>
+            <rect x="22" y="38" width="120" height="130" rx="6" fill="rgba(10,20,20,0.9)" stroke="rgba(0,200,200,0.2)" stroke-width="1"/>
+            <text x="34" y="56" font-size="7.5" font-family="monospace" fill="rgba(0,200,200,0.7)">SEMI E187</text>
+            <line x1="22" y1="62" x2="142" y2="62" stroke="rgba(0,200,200,0.15)" stroke-width="0.75"/>
+            <g fill="none" stroke-width="1" stroke-linecap="round">
+              <circle cx="34" cy="76" r="5" stroke="#00C8C8" fill="rgba(0,200,200,0.15)"/><path d="M31 76l2 2 4-4" stroke="#00C8C8" stroke-width="1.2"/>
+              <text x="46" y="79" font-size="7" font-family="monospace" fill="rgba(255,255,255,0.5)">Network Isolation</text>
+              <circle cx="34" cy="96" r="5" stroke="#00C8C8" fill="rgba(0,200,200,0.15)"/><path d="M31 96l2 2 4-4" stroke="#00C8C8" stroke-width="1.2"/>
+              <text x="46" y="99" font-size="7" font-family="monospace" fill="rgba(255,255,255,0.5)">Patch Management</text>
+              <circle cx="34" cy="116" r="5" stroke="#00C8C8" fill="rgba(0,200,200,0.15)"/><path d="M31 116l2 2 4-4" stroke="#00C8C8" stroke-width="1.2"/>
+              <text x="46" y="119" font-size="7" font-family="monospace" fill="rgba(255,255,255,0.5)">Access Control</text>
+              <circle cx="34" cy="136" r="5" stroke="rgba(0,200,200,0.4)" fill="rgba(0,200,200,0.05)"/>
+              <text x="46" y="139" font-size="7" font-family="monospace" fill="rgba(255,255,255,0.3)">Incident Response</text>
+              <circle cx="34" cy="156" r="5" stroke="rgba(0,200,200,0.4)" fill="rgba(0,200,200,0.05)"/>
+              <text x="46" y="159" font-size="7" font-family="monospace" fill="rgba(255,255,255,0.3)">Audit Logging</text>
+            </g>
+            <rect x="280" y="148" width="110" height="34" rx="5" fill="rgba(10,20,20,0.9)" stroke="rgba(0,200,200,0.2)" stroke-width="0.75"/>
+            <text x="290" y="162" font-size="7" font-family="monospace" fill="rgba(0,200,200,0.7)">COMPLIANCE</text>
+            <rect x="290" y="167" width="90" height="6" rx="3" fill="rgba(255,255,255,0.05)"/>
+            <rect x="290" y="167" width="63" height="6" rx="3" fill="rgba(0,200,200,0.45)"/>
+            <text x="290" y="180" font-size="6.5" font-family="monospace" fill="rgba(255,255,255,0.3)">70% complete</text>
+            <rect x="270" y="12" width="118" height="22" rx="4" fill="rgba(0,200,200,0.08)" stroke="rgba(0,200,200,0.3)" stroke-width="0.75"/>
+            <text x="329" y="26" font-size="8" font-family="monospace" fill="#00C8C8" text-anchor="middle">SEMICONDUCTOR SEC.</text>
+          </svg>
+        </div>
+        <div class="ins-body">
+          <span class="ins-tag" style="color:var(--teal)">SEMI E187</span>
+          <div class="ins-title">SEMI E187 Semiconductor Security Standard: Complete Implementation Process</div>
+          <div class="ins-meta">Nov 5, 2025 &nbsp;·&nbsp; 10 min read</div>
+        </div>
+      </a>
+
+      <!-- 3 Social Engineering -->
+      <a href="/en/blog/social-engineering-attacks/" style="text-decoration:none;transition-delay:.16s" class="ins-card reveal" data-cat="threat">
+        <div class="ins-img">
+          <svg viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%">
+            <defs>
+              <radialGradient id="seg1" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#FA5822" stop-opacity="0.1"/><stop offset="100%" stop-color="#0A0A14" stop-opacity="0"/></radialGradient>
+              <filter id="sef1"><feGaussianBlur stdDeviation="6"/></filter>
+            </defs>
+            <rect width="400" height="200" fill="#100C08"/>
+            <ellipse cx="200" cy="100" rx="180" ry="100" fill="url(#seg1)" filter="url(#sef1)"/>
+            <rect x="30" y="50" width="100" height="70" rx="5" fill="rgba(250,88,34,0.06)" stroke="rgba(250,88,34,0.35)" stroke-width="1"/>
+            <path d="M30 60 L80 90 L130 60" stroke="rgba(250,88,34,0.5)" stroke-width="1.2" fill="none"/>
+            <text x="80" y="140" font-size="6.5" font-family="monospace" fill="rgba(250,88,34,0.6)" text-anchor="middle">PHISHING</text>
+            <path d="M200 40 Q200 20 220 20 Q240 20 240 40 L240 100" stroke="rgba(250,88,34,0.6)" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path d="M230 95 L240 110 L250 95" stroke="rgba(250,88,34,0.7)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <circle cx="270" cy="120" r="18" fill="rgba(255,68,68,0.1)" stroke="rgba(255,68,68,0.5)" stroke-width="1.2"/>
+            <text x="270" y="124" font-size="7.5" font-family="monospace" fill="#FF4444" text-anchor="middle">TARGET</text>
+            <rect x="290" y="30" width="98" height="36" rx="4" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.35)" stroke-width="0.75"/>
+            <text x="339" y="47" font-size="7" font-family="monospace" fill="#A78BFA" text-anchor="middle">AI DEEPFAKE</text>
+            <text x="339" y="59" font-size="6" font-family="monospace" fill="rgba(167,139,250,0.5)" text-anchor="middle">Voice Clone</text>
+            <rect x="12" y="158" width="88" height="22" rx="4" fill="rgba(255,68,68,0.1)" stroke="rgba(255,68,68,0.3)" stroke-width="0.75"/>
+            <text x="56" y="172" font-size="7.5" font-family="monospace" fill="#FF4444" text-anchor="middle">BEC FRAUD</text>
+            <rect x="270" y="155" width="118" height="22" rx="4" fill="rgba(250,88,34,0.08)" stroke="rgba(250,88,34,0.3)" stroke-width="0.75"/>
+            <text x="329" y="169" font-size="8" font-family="monospace" fill="#FA5822" text-anchor="middle">SOCIAL ENG.</text>
+          </svg>
+        </div>
+        <div class="ins-body">
+          <span class="ins-tag">Threat Analysis</span>
+          <div class="ins-title">Social Engineering Attacks: From Phishing Emails to AI Deepfakes</div>
+          <div class="ins-meta">Oct 20, 2025 &nbsp;·&nbsp; 8 min read</div>
+        </div>
+      </a>
+
+      <!-- 4 OT/ICS -->
+      <a href="/en/blog/ot-ics-security-guide/" style="text-decoration:none;transition-delay:.08s" class="ins-card reveal" data-cat="guide">
+        <div class="ins-img">
+          <svg viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%">
+            <defs>
+              <radialGradient id="og1" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#A78BFA" stop-opacity="0.1"/><stop offset="100%" stop-color="#0A0A14" stop-opacity="0"/></radialGradient>
+              <filter id="of1"><feGaussianBlur stdDeviation="6"/></filter>
+              <pattern id="opp1" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0L0 0 0 32" fill="none" stroke="rgba(167,139,250,0.04)" stroke-width="0.5"/></pattern>
+            </defs>
+            <rect width="400" height="200" fill="#0A0A14"/>
+            <rect width="400" height="200" fill="url(#opp1)"/>
+            <ellipse cx="200" cy="100" rx="180" ry="100" fill="url(#og1)" filter="url(#of1)"/>
+            <rect x="20" y="20" width="240" height="26" rx="4" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.4)" stroke-width="1"/>
+            <text x="32" y="36" font-size="7" font-family="monospace" fill="#A78BFA">L5 ENTERPRISE NETWORK</text>
+            <rect x="20" y="52" width="240" height="26" rx="4" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.3)" stroke-width="1"/>
+            <text x="32" y="68" font-size="7" font-family="monospace" fill="rgba(167,139,250,0.8)">L4 SITE BUSINESS PLANNING</text>
+            <rect x="20" y="84" width="240" height="26" rx="4" fill="rgba(167,139,250,0.05)" stroke="rgba(167,139,250,0.25)" stroke-width="1"/>
+            <text x="32" y="100" font-size="7" font-family="monospace" fill="rgba(167,139,250,0.65)">L3 SITE OPERATIONS — SCADA</text>
+            <rect x="20" y="116" width="240" height="26" rx="4" fill="rgba(250,88,34,0.05)" stroke="rgba(250,88,34,0.25)" stroke-width="1"/>
+            <text x="32" y="132" font-size="7" font-family="monospace" fill="rgba(250,88,34,0.65)">L2 CONTROL — PLC / HMI</text>
+            <rect x="20" y="148" width="240" height="26" rx="4" fill="rgba(250,88,34,0.07)" stroke="rgba(250,88,34,0.3)" stroke-width="1"/>
+            <text x="32" y="164" font-size="7" font-family="monospace" fill="rgba(250,88,34,0.8)">L1 FIELD — SENSORS / ACTUATORS</text>
+            <rect x="270" y="52" width="110" height="140" rx="6" fill="rgba(10,10,20,0.92)" stroke="rgba(167,139,250,0.2)" stroke-width="1"/>
+            <text x="325" y="70" font-size="7" font-family="monospace" fill="rgba(167,139,250,0.6)" text-anchor="middle">TERA-NGFW</text>
+            <line x1="280" y1="76" x2="370" y2="76" stroke="rgba(167,139,250,0.15)" stroke-width="0.75"/>
+            <path d="M310 100L340 113v18Q340 145 325 150Q310 145 310 131V113Z" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.5)" stroke-width="1.2"/>
+            <path d="M316 128l7 7 11-11" stroke="#A78BFA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="325" y="168" font-size="6.5" font-family="monospace" fill="rgba(167,139,250,0.5)" text-anchor="middle">OT PROTECTED</text>
+            <rect x="270" y="12" width="118" height="22" rx="4" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.3)" stroke-width="0.75"/>
+            <text x="329" y="26" font-size="8" font-family="monospace" fill="#A78BFA" text-anchor="middle">OT / ICS SECURITY</text>
+          </svg>
+        </div>
+        <div class="ins-body">
+          <span class="ins-tag" style="color:#A78BFA">OT / ICS</span>
+          <div class="ins-title">OT/ICS Industrial Security Guide: From the Purdue Model to Zero Trust OT</div>
+          <div class="ins-meta">Oct 8, 2025 &nbsp;·&nbsp; 11 min read</div>
+        </div>
+      </a>
+
+      <!-- 5 IoT -->
+      <a href="/en/blog/iot-security-challenges/" style="text-decoration:none;transition-delay:.16s" class="ins-card reveal" data-cat="threat">
+        <div class="ins-img">
+          <svg viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%">
+            <defs>
+              <radialGradient id="ig1" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#FF4444" stop-opacity="0.1"/><stop offset="100%" stop-color="#0A0A14" stop-opacity="0"/></radialGradient>
+              <filter id="if1"><feGaussianBlur stdDeviation="6"/></filter>
+              <pattern id="ip1" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0L0 0 0 32" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/></pattern>
+            </defs>
+            <rect width="400" height="200" fill="#100808"/>
+            <rect width="400" height="200" fill="url(#ip1)"/>
+            <ellipse cx="200" cy="100" rx="180" ry="100" fill="url(#ig1)" filter="url(#if1)"/>
+            <circle cx="200" cy="100" r="20" fill="rgba(255,68,68,0.1)" stroke="rgba(255,68,68,0.5)" stroke-width="1.5"/>
+            <circle cx="200" cy="100" r="12" fill="rgba(255,68,68,0.15)" stroke="rgba(255,68,68,0.7)" stroke-width="1"/>
+            <circle cx="200" cy="100" r="5" fill="#FF4444"/>
+            <g stroke-width="1">
+              <line class="svg-flow" x1="200" y1="80" x2="200" y2="44" stroke="rgba(255,68,68,0.35)" stroke-dasharray="4 3"/>
+              <circle class="svg-pulse" cx="200" cy="36" r="10" fill="rgba(255,68,68,0.12)" stroke="#FF4444"/>
+              <text x="200" y="40" font-size="7" font-family="monospace" fill="#FF4444" text-anchor="middle">CAM</text>
+              <line class="svg-flow" x1="182" y1="88" x2="140" y2="60" stroke="rgba(255,68,68,0.3)" stroke-dasharray="4 3" style="animation-delay:0.4s"/>
+              <circle class="svg-pulse svg-pulse-2" cx="130" cy="54" r="10" fill="rgba(255,68,68,0.1)" stroke="rgba(255,68,68,0.6)"/>
+              <text x="130" y="58" font-size="7" font-family="monospace" fill="rgba(255,68,68,0.8)" text-anchor="middle">DVR</text>
+              <line class="svg-flow" x1="180" y1="100" x2="134" y2="100" stroke="rgba(255,68,68,0.3)" stroke-dasharray="4 3" style="animation-delay:0.8s"/>
+              <circle cx="122" cy="100" r="10" fill="rgba(255,68,68,0.1)" stroke="rgba(255,68,68,0.5)"/>
+              <text x="122" y="104" font-size="7" font-family="monospace" fill="rgba(255,68,68,0.7)" text-anchor="middle">PLC</text>
+              <line class="svg-flow" x1="182" y1="112" x2="140" y2="142" stroke="rgba(250,88,34,0.3)" stroke-dasharray="4 3" style="animation-delay:1.2s"/>
+              <circle cx="130" cy="150" r="10" fill="rgba(250,88,34,0.1)" stroke="rgba(250,88,34,0.5)"/>
+              <text x="130" y="154" font-size="7" font-family="monospace" fill="rgba(250,88,34,0.7)" text-anchor="middle">RTR</text>
+              <line class="svg-flow" x1="218" y1="112" x2="260" y2="142" stroke="rgba(250,88,34,0.3)" stroke-dasharray="4 3" style="animation-delay:1.6s"/>
+              <circle cx="270" cy="150" r="10" fill="rgba(250,88,34,0.1)" stroke="rgba(250,88,34,0.5)"/>
+              <text x="270" y="154" font-size="7" font-family="monospace" fill="rgba(250,88,34,0.7)" text-anchor="middle">NAS</text>
+              <line class="svg-flow" x1="220" y1="100" x2="266" y2="100" stroke="rgba(255,68,68,0.3)" stroke-dasharray="4 3" style="animation-delay:2s"/>
+              <circle cx="278" cy="100" r="10" fill="rgba(255,68,68,0.1)" stroke="rgba(255,68,68,0.5)"/>
+              <text x="278" y="104" font-size="7" font-family="monospace" fill="rgba(255,68,68,0.7)" text-anchor="middle">CAM</text>
+              <line class="svg-flow" x1="218" y1="88" x2="260" y2="60" stroke="rgba(255,68,68,0.3)" stroke-dasharray="4 3" style="animation-delay:2.4s"/>
+              <circle class="svg-pulse svg-pulse-3" cx="270" cy="54" r="10" fill="rgba(255,68,68,0.12)" stroke="#FF4444"/>
+              <text x="270" y="58" font-size="7" font-family="monospace" fill="#FF4444" text-anchor="middle">VoIP</text>
+            </g>
+            <rect x="12" y="160" width="116" height="30" rx="5" fill="rgba(15,8,8,0.9)" stroke="rgba(255,68,68,0.25)" stroke-width="0.75"/>
+            <text x="22" y="174" font-size="7" font-family="monospace" fill="rgba(255,68,68,0.7)">MIRAI BOTNET</text>
+            <text x="22" y="185" font-size="6.5" font-family="monospace" fill="rgba(255,255,255,0.3)">600K+ devices</text>
+            <rect x="270" y="12" width="118" height="22" rx="4" fill="rgba(255,68,68,0.08)" stroke="rgba(255,68,68,0.3)" stroke-width="0.75"/>
+            <text x="329" y="26" font-size="8" font-family="monospace" fill="#FF4444" text-anchor="middle">IoT THREAT MAP</text>
+          </svg>
+        </div>
+        <div class="ins-body">
+          <span class="ins-tag">IoT Security</span>
+          <div class="ins-title">IoT Device Security Challenges: Why IoT Is the Weakest Link in Enterprise Networks</div>
+          <div class="ins-meta">Sep 15, 2025 &nbsp;·&nbsp; 6 min read</div>
+        </div>
+      </a>
+
+      <!-- 6 Supply Chain -->
+      <a href="/en/blog/supply-chain-security/" style="text-decoration:none;transition-delay:.08s" class="ins-card reveal" data-cat="threat">
+        <div class="ins-img">
+          <svg viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%">
+            <defs>
+              <radialGradient id="scg1" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#FA5822" stop-opacity="0.1"/><stop offset="100%" stop-color="#0A0A14" stop-opacity="0"/></radialGradient>
+              <filter id="scf1"><feGaussianBlur stdDeviation="6"/></filter>
+              <pattern id="scp1" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0L0 0 0 32" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/></pattern>
+            </defs>
+            <rect width="400" height="200" fill="#100A08"/>
+            <rect width="400" height="200" fill="url(#scp1)"/>
+            <ellipse cx="200" cy="100" rx="180" ry="100" fill="url(#scg1)" filter="url(#scf1)"/>
+            <line class="svg-flow" x1="50" y1="100" x2="350" y2="100" stroke="rgba(250,88,34,0.2)" stroke-width="2" stroke-dasharray="8 4"/>
+            <g>
+              <circle cx="60" cy="100" r="18" fill="rgba(250,88,34,0.08)" stroke="rgba(250,88,34,0.4)" stroke-width="1.2"/>
+              <text x="60" y="97" font-size="6" font-family="monospace" fill="rgba(250,88,34,0.8)" text-anchor="middle">VENDOR</text>
+              <text x="60" y="107" font-size="6" font-family="monospace" fill="rgba(250,88,34,0.6)" text-anchor="middle">A</text>
+              <circle cx="140" cy="100" r="18" fill="rgba(250,88,34,0.08)" stroke="rgba(250,88,34,0.4)" stroke-width="1.2"/>
+              <text x="140" y="97" font-size="6" font-family="monospace" fill="rgba(250,88,34,0.8)" text-anchor="middle">BUILD</text>
+              <text x="140" y="107" font-size="6" font-family="monospace" fill="rgba(250,88,34,0.6)" text-anchor="middle">SYS</text>
+              <circle class="svg-pulse" cx="220" cy="100" r="22" fill="rgba(255,68,68,0.15)" stroke="#FF4444" stroke-width="1.5"/>
+              <circle cx="220" cy="100" r="14" fill="rgba(255,68,68,0.2)" stroke="rgba(255,68,68,0.8)" stroke-width="1"/>
+              <path d="M213 93l14 14M227 93l-14 14" stroke="#FF4444" stroke-width="2" stroke-linecap="round"/>
+              <text x="220" y="134" font-size="6.5" font-family="monospace" fill="#FF4444" text-anchor="middle">COMPROMISED</text>
+              <circle cx="300" cy="100" r="18" fill="rgba(250,88,34,0.06)" stroke="rgba(250,88,34,0.3)" stroke-width="1.2"/>
+              <text x="300" y="97" font-size="6" font-family="monospace" fill="rgba(250,88,34,0.6)" text-anchor="middle">DEPLOY</text>
+              <text x="300" y="107" font-size="6" font-family="monospace" fill="rgba(250,88,34,0.4)" text-anchor="middle">TARGET</text>
+              <circle cx="360" cy="100" r="18" fill="rgba(250,88,34,0.06)" stroke="rgba(250,88,34,0.3)" stroke-width="1.2"/>
+              <text x="360" y="97" font-size="6" font-family="monospace" fill="rgba(250,88,34,0.6)" text-anchor="middle">PROD</text>
+              <text x="360" y="107" font-size="6" font-family="monospace" fill="rgba(250,88,34,0.4)" text-anchor="middle">ENV</text>
+            </g>
+            <rect x="12" y="148" width="140" height="42" rx="5" fill="rgba(12,8,6,0.92)" stroke="rgba(250,88,34,0.2)" stroke-width="0.75"/>
+            <text x="22" y="163" font-size="7" font-family="monospace" fill="rgba(250,88,34,0.8)">ATTACK PATTERN</text>
+            <rect x="22" y="168" width="110" height="5" rx="2" fill="rgba(255,255,255,0.05)"/>
+            <rect x="22" y="168" width="88" height="5" rx="2" fill="rgba(255,68,68,0.4)"/>
+            <text x="22" y="183" font-size="6.5" font-family="monospace" fill="rgba(255,255,255,0.25)">SolarWinds pattern</text>
+            <rect x="260" y="12" width="128" height="22" rx="4" fill="rgba(250,88,34,0.08)" stroke="rgba(250,88,34,0.3)" stroke-width="0.75"/>
+            <text x="324" y="26" font-size="8" font-family="monospace" fill="#FA5822" text-anchor="middle">SUPPLY CHAIN ATK</text>
+          </svg>
+        </div>
+        <div class="ins-body">
+          <span class="ins-tag">Supply Chain</span>
+          <div class="ins-title">Supply Chain Security Attacks: New Threat Patterns After SolarWinds</div>
+          <div class="ins-meta">Sep 2, 2025 &nbsp;·&nbsp; 8 min read</div>
+        </div>
+      </a>
+
+      <!-- 7 MFA -->
+      <a href="/en/blog/mfa-identity-security/" style="text-decoration:none;transition-delay:.16s" class="ins-card reveal" data-cat="guide">
+        <div class="ins-img">
+          <svg viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%">
+            <defs>
+              <radialGradient id="mfag1" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#00C8C8" stop-opacity="0.1"/><stop offset="100%" stop-color="#0A1414" stop-opacity="0"/></radialGradient>
+              <filter id="mfaf1"><feGaussianBlur stdDeviation="6"/></filter>
+            </defs>
+            <rect width="400" height="200" fill="#080F0F"/>
+            <ellipse cx="200" cy="100" rx="180" ry="100" fill="url(#mfag1)" filter="url(#mfaf1)"/>
+            <path d="M130 40 L170 55 L170 95 Q170 125 130 135 Q90 125 90 95 L90 55 Z" fill="rgba(0,200,200,0.08)" stroke="rgba(0,200,200,0.5)" stroke-width="1.5"/>
+            <circle cx="130" cy="85" r="12" fill="rgba(0,200,200,0.12)" stroke="#00C8C8" stroke-width="1.2"/>
+            <rect x="123" y="90" width="14" height="10" rx="2" fill="rgba(0,200,200,0.2)" stroke="#00C8C8" stroke-width="1"/>
+            <path d="M126 90 Q126 83 130 83 Q134 83 134 90" stroke="#00C8C8" stroke-width="1.2" fill="none"/>
+            <rect x="200" y="28" width="90" height="24" rx="4" fill="rgba(255,68,68,0.1)" stroke="rgba(255,68,68,0.4)" stroke-width="0.75"/>
+            <text x="245" y="43" font-size="7" font-family="monospace" fill="#FF4444" text-anchor="middle">SMS OTP ✗</text>
+            <rect x="200" y="58" width="90" height="24" rx="4" fill="rgba(250,88,34,0.08)" stroke="rgba(250,88,34,0.3)" stroke-width="0.75"/>
+            <text x="245" y="73" font-size="7" font-family="monospace" fill="#FA5822" text-anchor="middle">TOTP APP ~</text>
+            <rect x="200" y="88" width="90" height="24" rx="4" fill="rgba(0,200,200,0.08)" stroke="rgba(0,200,200,0.35)" stroke-width="0.75"/>
+            <text x="245" y="103" font-size="7" font-family="monospace" fill="#00C8C8" text-anchor="middle">HW KEY ✓</text>
+            <rect x="200" y="118" width="90" height="24" rx="4" fill="rgba(61,220,151,0.12)" stroke="#3DDC97" stroke-width="1"/>
+            <text x="245" y="133" font-size="7" font-family="monospace" fill="#3DDC97" text-anchor="middle">PASSKEY ✓✓</text>
+            <rect x="305" y="88" width="82" height="54" rx="5" fill="rgba(61,220,151,0.08)" stroke="#3DDC97" stroke-width="0.75"/>
+            <text x="346" y="107" font-size="7.5" font-family="monospace" fill="#3DDC97" text-anchor="middle">FIDO2</text>
+            <text x="346" y="120" font-size="6.5" font-family="monospace" fill="rgba(61,220,151,0.6)" text-anchor="middle">WebAuthn</text>
+            <text x="346" y="133" font-size="6" font-family="monospace" fill="rgba(61,220,151,0.5)" text-anchor="middle">Anti-Phishing</text>
+            <rect x="270" y="155" width="118" height="22" rx="4" fill="rgba(0,200,200,0.08)" stroke="rgba(0,200,200,0.3)" stroke-width="0.75"/>
+            <text x="329" y="169" font-size="8" font-family="monospace" fill="#00C8C8" text-anchor="middle">MFA / PASSKEY</text>
+          </svg>
+        </div>
+        <div class="ins-body">
+          <span class="ins-tag" style="color:var(--teal)">Technical Guide</span>
+          <div class="ins-title">MFA &amp; Identity Security: From OTP to Passwordless Authentication</div>
+          <div class="ins-meta">Aug 18, 2025 &nbsp;·&nbsp; 7 min read</div>
+        </div>
+      </a>
+
+      <!-- 8 Cloud Security -->
+      <a href="/en/blog/cloud-security-misconfigurations/" style="text-decoration:none;transition-delay:.24s" class="ins-card reveal" data-cat="guide">
+        <div class="ins-img">
+          <svg viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%">
+            <defs>
+              <radialGradient id="cloudg1" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#3DDC97" stop-opacity="0.1"/><stop offset="100%" stop-color="#0A0A14" stop-opacity="0"/></radialGradient>
+              <filter id="cloudf1"><feGaussianBlur stdDeviation="6"/></filter>
+            </defs>
+            <rect width="400" height="200" fill="#080F0C"/>
+            <ellipse cx="200" cy="100" rx="180" ry="100" fill="url(#cloudg1)" filter="url(#cloudf1)"/>
+            <path d="M120 120 Q100 120 100 100 Q100 82 118 80 Q120 60 145 60 Q160 45 180 55 Q195 40 220 50 Q245 40 255 60 Q275 62 278 82 Q295 86 292 105 Q290 120 270 120 Z" fill="rgba(61,220,151,0.06)" stroke="rgba(61,220,151,0.4)" stroke-width="1.2"/>
+            <circle cx="148" cy="90" r="10" fill="rgba(255,68,68,0.15)" stroke="rgba(255,68,68,0.5)" stroke-width="1"/>
+            <path d="M143 85l10 10M153 85l-10 10" stroke="#FF4444" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="200" cy="82" r="10" fill="rgba(255,68,68,0.12)" stroke="rgba(255,68,68,0.4)" stroke-width="1"/>
+            <path d="M195 77l10 10M205 77l-10 10" stroke="#FF4444" stroke-width="1.5" stroke-linecap="round"/>
+            <rect x="230" y="70" width="34" height="30" rx="3" fill="rgba(255,68,68,0.1)" stroke="rgba(255,68,68,0.4)" stroke-width="1"/>
+            <text x="247" y="90" font-size="6" font-family="monospace" fill="#FF4444" text-anchor="middle">PUBLIC</text>
+            <rect x="290" y="50" width="90" height="110" rx="6" fill="rgba(10,20,14,0.92)" stroke="rgba(61,220,151,0.3)" stroke-width="0.75"/>
+            <text x="335" y="68" font-size="7" font-family="monospace" fill="rgba(61,220,151,0.7)" text-anchor="middle">CSPM</text>
+            <line x1="298" y1="74" x2="372" y2="74" stroke="rgba(61,220,151,0.15)" stroke-width="0.75"/>
+            <text x="300" y="88" font-size="6" font-family="monospace" fill="rgba(255,68,68,0.7)">S3 Public !</text>
+            <text x="300" y="102" font-size="6" font-family="monospace" fill="rgba(255,68,68,0.6)">IAM * !</text>
+            <text x="300" y="116" font-size="6" font-family="monospace" fill="rgba(250,88,34,0.6)">No MFA !</text>
+            <text x="300" y="130" font-size="6" font-family="monospace" fill="rgba(61,220,151,0.6)">Logs: OK</text>
+            <text x="300" y="144" font-size="6" font-family="monospace" fill="rgba(61,220,151,0.6)">Encrypt: OK</text>
+            <rect x="12" y="155" width="118" height="22" rx="4" fill="rgba(61,220,151,0.08)" stroke="rgba(61,220,151,0.3)" stroke-width="0.75"/>
+            <text x="71" y="169" font-size="8" font-family="monospace" fill="#3DDC97" text-anchor="middle">CLOUD SECURITY</text>
+          </svg>
+        </div>
+        <div class="ins-body">
+          <span class="ins-tag" style="color:#3DDC97">Technical Guide</span>
+          <div class="ins-title">Cloud Security Governance: Common Misconfigurations &amp; Prevention Guide</div>
+          <div class="ins-meta">Aug 5, 2025 &nbsp;·&nbsp; 9 min read</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<div class="cta-band">
+  <div class="reveal">
+    <h2>Want to Receive<span> the Latest Security Intelligence?</span></h2>
+    <p>Subscribe to the Hexion Networks monthly report for the latest threat trend analysis.</p>
+  </div>
+  <div class="reveal reveal-delay-1" style="display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap">
+    <a href="/en/contact/" class="btn btn-ghost">Subscribe to Newsletter</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div><a href="/en/"><img src="/brand_assets/logo.png" alt="Hexion Networks" style="height:36px;filter:brightness(0) invert(1);opacity:0.85" /></a><p class="footer-brand-desc">Integrated consulting: business strategy, brand advisory, IT infrastructure &amp; cybersecurity.</p></div>
+    <div><div class="f-col-title">Products</div><a href="/en/products/pico-utm-100/" class="f-link">Pico-UTM 100</a><a href="/en/products/dual-ark-utm-16/" class="f-link">Ark-UTM 16</a><a href="/en/products/tera-utm-12/" class="f-link">Tera-UTM 12</a><a href="/en/products/lionfilter-200/" class="f-link">Lionfilter 200</a><a href="/en/products/endblock/" class="f-link">Endblock</a><a href="/en/products/teamt5/" class="f-link">TeamT5</a><a href="/en/products/cycraft/" class="f-link">CyCraft AI</a></div>
+    <div><div class="f-col-title">Services</div><a href="/en/services/" class="f-link">Business Strategy</a><a href="/en/services/" class="f-link">Brand Advisory</a><a href="/en/services/" class="f-link">Security Assessment</a></div>
+    <div><div class="f-col-title">Company</div><a href="/en/about/" class="f-link">About Us</a><a href="/en/blog/" class="f-link">Blog</a><a href="/en/contact/" class="f-link">Contact</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 HEXION NETWORKS.</span>
+    <div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+  </div>
+</footer>
+
+<script>
+const ro=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target)}})},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+function filterBlog(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#blog-grid .ins-card').forEach(card=>{
+    card.style.display = (cat==='all'||card.dataset.cat===cat)?'':'none';
+  });
+}
+</script>
+<script>var _ls=Date.now();window.addEventListener("load",function(){var l=document.getElementById("page-loader");if(!l)return;var elapsed=Date.now()-_ls,wait=Math.max(0,800-elapsed);setTimeout(function(){l.classList.add("out");setTimeout(function(){l.remove()},520)},wait)});</script>
+<script>(function(){var cv=document.getElementById('blogPC'),cx=cv.getContext('2d'),W,H,pts=[],raf,N=45,D=120,C=['rgba(250,88,34,','rgba(0,200,200,'];function rsz(){W=cv.width=cv.offsetWidth;H=cv.height=cv.offsetHeight;}function mk(){pts=[];for(var i=0;i<N;i++)pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,r:Math.random()*1.5+.8,c:C[Math.random()<.7?0:1],a:Math.random()*.35+.2});}function draw(){cx.clearRect(0,0,W,H);for(var i=0;i<pts.length;i++){for(var j=i+1;j<pts.length;j++){var dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<D){cx.beginPath();cx.strokeStyle='rgba(250,88,34,'+(1-d/D)*.14+')';cx.lineWidth=.6;cx.moveTo(pts[i].x,pts[i].y);cx.lineTo(pts[j].x,pts[j].y);cx.stroke();}}}pts.forEach(function(p){cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);cx.fillStyle=p.c+p.a+')';cx.fill();p.x+=p.vx;p.y+=p.vy;if(p.x<-10)p.x=W+10;if(p.x>W+10)p.x=-10;if(p.y<-10)p.y=H+10;if(p.y>H+10)p.y=-10;});raf=requestAnimationFrame(draw);}rsz();mk();draw();window.addEventListener('resize',function(){cancelAnimationFrame(raf);rsz();mk();draw();});}());</script>
+</body></html>
