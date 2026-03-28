@@ -5,18 +5,6 @@
   var zhPath = IS_EN ? (PATH.replace(/^\/en/, '') || '/') : PATH;
   var enPath = IS_EN ? PATH : ('/en' + PATH);
 
-  // First-visit: auto-detect browser language
-  var pref = localStorage.getItem('hexion-lang');
-  if (!pref) {
-    var lang = (navigator.language || navigator.userLanguage || '').toLowerCase();
-    pref = lang.startsWith('zh') ? 'zh' : 'en';
-    localStorage.setItem('hexion-lang', pref);
-    if (pref === 'en' && !IS_EN) {
-      window.location.replace(enPath);
-      return;
-    }
-  }
-
   // Wire up the toggle button after DOM is ready
   document.addEventListener('DOMContentLoaded', function () {
     var btn = document.getElementById('lang-toggle');
