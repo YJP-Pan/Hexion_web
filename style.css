@@ -698,6 +698,8 @@ nav {
 }
 .ins-card:hover::before { top: 100%; }
 .ins-img { width: 100%; overflow: hidden; }
+.blog-grid .ins-img { aspect-ratio: 2/1; overflow: hidden; }
+.blog-grid .ins-img svg { width: 100%; height: 100%; display: block; }
 .ins-body { padding: 1.375rem; }
 .ins-tag {
   display: inline-block; font-size: 0.6875rem; font-weight: 700;
