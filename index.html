@@ -119,6 +119,15 @@
     .hero-cta-btns{justify-content:center}
     .hero-illus-col{order:1;justify-content:center;overflow:visible}
   }
+  /* ── Hero text entrance animations ── */
+  @keyframes heroIn{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+  .hero-text-col>.hero-pill    {animation:heroIn 0.65s cubic-bezier(0.16,1,0.3,1) both 0.20s}
+  .hero-text-col>h1            {animation:heroIn 0.85s cubic-bezier(0.16,1,0.3,1) both 0.38s}
+  .hero-text-col>.hero-desc    {animation:heroIn 0.65s cubic-bezier(0.16,1,0.3,1) both 0.58s}
+  .hero-text-col>.hero-cta-btns{animation:heroIn 0.65s cubic-bezier(0.16,1,0.3,1) both 0.76s}
+  /* ── Gradient heading shimmer ── */
+  @keyframes gradShimmer{0%{background-position:0% center}100%{background-position:200% center}}
+  .hero h1 .grad{background:linear-gradient(90deg,var(--o) 0%,#FF9A5C 30%,#FFD0A8 50%,var(--o) 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradShimmer 4s linear infinite}
   /* ── Abstract illustration animations ── */
   @keyframes hexPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
   @keyframes hexFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
@@ -255,7 +264,7 @@
     <div class="hero-top-row">
 
       <!-- Left: text -->
-      <div class="reveal hero-text-col">
+      <div class="hero-text-col">
         <div class="hero-pill">
           <span class="hero-pill-dot"></span>
           整合型顧問服務 · Hexion Networks 2026
@@ -286,20 +295,36 @@
 <!-- Stats -->
 <div class="stats-band">
   <div class="stat reveal">
-    <div class="stat-n">100<span>+</span></div>
-    <div class="stat-l" style="white-space:nowrap">全球企業客戶</div>
+    <div class="stat-icon-wrap">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.2"/><rect x="14" y="3" width="7" height="7" rx="1.2"/><rect x="3" y="14" width="7" height="7" rx="1.2"/><rect x="14" y="14" width="7" height="7" rx="1.2"/></svg>
+    </div>
+    <div class="stat-n">6<span>大</span></div>
+    <div class="stat-l">服務領域</div>
+    <div class="stat-sub">商業・品牌・數位・資安・AI・整合</div>
   </div>
-  <div class="stat reveal" style="transition-delay:.07s">
-    <div class="stat-n">99<span>%</span></div>
-    <div class="stat-l" style="white-space:nowrap">偵測準確率</div>
+  <div class="stat reveal" style="transition-delay:.08s">
+    <div class="stat-icon-wrap">
+      <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+    </div>
+    <div class="stat-n" id="s-clients">—</div>
+    <div class="stat-l">企業客戶</div>
+    <div class="stat-sub">（請提供正確數字）</div>
   </div>
-  <div class="stat reveal" style="transition-delay:.14s">
-    <div class="stat-n">&lt;1<span>ms</span></div>
-    <div class="stat-l" style="white-space:nowrap">威脅響應速度</div>
+  <div class="stat reveal" style="transition-delay:.16s">
+    <div class="stat-icon-wrap">
+      <svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+    </div>
+    <div class="stat-n" id="s-cases">—</div>
+    <div class="stat-l">完成專案</div>
+    <div class="stat-sub">（請提供正確數字）</div>
   </div>
-  <div class="stat reveal" style="transition-delay:.21s">
-    <div class="stat-n">180<span>+</span></div>
-    <div class="stat-l" style="white-space:nowrap">覆蓋國家地區</div>
+  <div class="stat reveal" style="transition-delay:.24s">
+    <div class="stat-icon-wrap">
+      <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    </div>
+    <div class="stat-n" id="s-products">—</div>
+    <div class="stat-l">資安產品型號</div>
+    <div class="stat-sub">（請提供正確數字）</div>
   </div>
 </div>
 
@@ -1228,23 +1253,22 @@ function countUp(el, target, suffix, duration) {
 }
 
 const statConfigs = [
-  { el: document.querySelectorAll('.stat-n')[0], val: 100,   suffix: '<span>+</span>',   dur: 1200 },
-  { el: document.querySelectorAll('.stat-n')[1], val: 99.99, suffix: '<span>%</span>',    dur: 1600 },
-  { el: document.querySelectorAll('.stat-n')[2], val: null,  suffix: null,                dur: 0    }, // <1ms — skip
-  { el: document.querySelectorAll('.stat-n')[3], val: 180,   suffix: '<span>+</span>',   dur: 1400 },
+  { el: document.querySelectorAll('.stat-n')[0], val: 6, suffix: '<span>大</span>', dur: 600 },
+  // stats 2-4: fill in once user confirms correct numbers
 ];
 
 const statsObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
       statsObs.unobserve(e.target);
+      document.querySelectorAll('.stat').forEach(function(s){ s.classList.add('visible'); });
       statConfigs.forEach(cfg => {
         if (!cfg.val) return;
         countUp(cfg.el, cfg.val, cfg.suffix, cfg.dur);
       });
     }
   });
-}, { threshold: 0.5 });
+}, { threshold: 0.4 });
 const statsBand = document.querySelector('.stats-band');
 if (statsBand) statsObs.observe(statsBand);
 
@@ -1344,6 +1368,24 @@ document.querySelectorAll('.ins-card').forEach(c => c.style.position = 'relative
 
   var t=0;
 
+  /* ── Ambient micro-dots ── */
+  var ADOTS=(function(){
+    var arr=[];
+    for(var k=0;k<26;k++){
+      arr.push({
+        ang:Math.random()*Math.PI*2,
+        distF:0.75+Math.random()*1.55,
+        sp:(Math.random()<0.5?1:-1)*(0.00016+Math.random()*0.00020),
+        phase:Math.random()*Math.PI*2,
+        pulseSp:0.015+Math.random()*0.020,
+        size:0.55+Math.random()*1.25,
+        isOrange:Math.random()<0.28,
+        yF:0.52+Math.random()*0.32
+      });
+    }
+    return arr;
+  })();
+
   function draw(){
     X.clearRect(0,0,W,H);
 
@@ -1351,6 +1393,27 @@ document.querySelectorAll('.ins-card').forEach(c => c.style.position = 'relative
     var ay= t*0.0038;
     var ax= Math.sin(t*0.0011)*0.30 - 0.20;
     var az= t*0.0009;
+
+    /* ── Central radial glow ── */
+    var grd=X.createRadialGradient(W/2,H/2,0,W/2,H/2,scale*0.9);
+    grd.addColorStop(0,'rgba(250,88,34,0.09)');
+    grd.addColorStop(0.45,'rgba(250,88,34,0.03)');
+    grd.addColorStop(1,'rgba(0,0,0,0)');
+    X.fillStyle=grd; X.fillRect(0,0,W,H);
+
+    /* ── Orbital dashed rings ── */
+    [
+      {tilt:0.38,rF:1.12,dashOff:-0.32,alpha:0.13},
+      {tilt:-0.22,rF:1.50,dashOff:0.20,alpha:0.07}
+    ].forEach(function(r){
+      X.save();
+      X.translate(W/2,H/2); X.rotate(r.tilt); X.scale(1,0.28);
+      X.beginPath(); X.arc(0,0,scale*r.rF,0,Math.PI*2);
+      X.strokeStyle='rgba(250,88,34,'+r.alpha+')';
+      X.lineWidth=0.75; X.setLineDash([4,16]);
+      X.lineDashOffset=t*r.dashOff; X.stroke();
+      X.setLineDash([]); X.restore();
+    });
 
     /* transform icosahedron */
     var VP=V0.map(function(v){return proj(rz(rx(ry(v,ay),ax),az),scale);});
@@ -1384,10 +1447,8 @@ document.querySelectorAll('.ins-card').forEach(c => c.style.position = 'relative
       var p=VP[i];
       var depth=(p.z+1)/2;
       if(OG[i]){
-        /* orange vertex */
         X.beginPath(); X.arc(p.x,p.y,2.5+depth*2,0,Math.PI*2);
         X.fillStyle='rgba(250,88,34,'+(0.35+0.55*depth)+')'; X.fill();
-        /* outer ring */
         X.beginPath(); X.arc(p.x,p.y,5+depth*3,0,Math.PI*2);
         X.strokeStyle='rgba(250,88,34,'+(0.08+0.14*depth)+')';
         X.lineWidth=0.8; X.stroke();
@@ -1403,6 +1464,20 @@ document.querySelectorAll('.ins-card').forEach(c => c.style.position = 'relative
       var depth=(p.z+1)/2;
       X.beginPath(); X.arc(p.x,p.y,1.5+depth,0,Math.PI*2);
       X.fillStyle='rgba(250,88,34,'+(0.10+0.25*depth)+')'; X.fill();
+    });
+
+    /* ── Ambient micro-dots ── */
+    ADOTS.forEach(function(d){
+      d.ang+=d.sp;
+      var dist=scale*d.distF;
+      var pulse=0.5+0.5*Math.sin(t*d.pulseSp+d.phase);
+      var px=W/2+Math.cos(d.ang)*dist;
+      var py=H/2+Math.sin(d.ang)*dist*d.yF;
+      var col=d.isOrange?'250,88,34':'255,255,255';
+      var alpha=d.isOrange?(0.10+0.22*pulse):(0.05+0.13*pulse);
+      var r=d.size*(0.75+0.25*pulse);
+      X.beginPath(); X.arc(px,py,r,0,Math.PI*2);
+      X.fillStyle='rgba('+col+','+alpha+')'; X.fill();
     });
 
     t++;

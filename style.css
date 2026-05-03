@@ -338,20 +338,37 @@ nav {
   display: grid; grid-template-columns: repeat(4,1fr);
 }
 .stat {
-  padding: 2rem var(--px); border-right: 1px solid rgba(255,255,255,0.05);
+  padding: 2.5rem var(--px); border-right: 1px solid rgba(255,255,255,0.05);
   position: relative; overflow: hidden;
+  display: flex; flex-direction: column; gap: 0;
+  transition: background 0.25s;
 }
-.stat::before {
-  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+.stat:hover { background: rgba(250,88,34,0.04); }
+.stat-icon-wrap {
+  width: 34px; height: 34px; border-radius: 8px;
+  background: rgba(250,88,34,0.10);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.125rem; flex-shrink: 0;
+  transition: background 0.25s;
+}
+.stat:hover .stat-icon-wrap { background: rgba(250,88,34,0.20); }
+.stat-icon-wrap svg { width: 16px; height: 16px; stroke: var(--o); fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+.stat::after {
+  content: ''; position: absolute;
+  bottom: 0; left: 0; right: 0; height: 2px;
   background: linear-gradient(90deg, var(--o), transparent);
   transform: scaleX(0); transform-origin: left;
-  transition: transform 0.4s cubic-bezier(0.22,1,0.36,1);
+  transition: transform 0.7s cubic-bezier(0.16,1,0.3,1);
 }
-.stat:hover::before { transform: scaleX(1); }
+.stat.visible::after, .stat:hover::after { transform: scaleX(1); }
+.stat:nth-child(2).visible::after { transition-delay: 0.12s; }
+.stat:nth-child(3).visible::after { transition-delay: 0.24s; }
+.stat:nth-child(4).visible::after { transition-delay: 0.36s; }
 .stat:last-child { border-right: none; }
-.stat-n { font-size: 2rem; font-weight: 900; font-family: 'Orbitron', monospace; color: var(--white); line-height: 1; margin-bottom: 0.375rem; letter-spacing: 0.04em; }
-.stat-n span { color: var(--o); }
-.stat-l { font-size: 0.8125rem; color: var(--silver); font-family: 'Inter', sans-serif; }
+.stat-n { font-size: 2.5rem; font-weight: 900; font-family: 'Orbitron', monospace; color: var(--white); line-height: 1; margin-bottom: 0.45rem; letter-spacing: 0.02em; }
+.stat-n span { color: var(--o); font-size: 1.2rem; font-weight: 700; }
+.stat-l { font-size: 0.875rem; color: #fff; font-weight: 600; margin-bottom: 0.25rem; }
+.stat-sub { font-size: 0.6875rem; color: var(--silver); line-height: 1.5; margin-top: 0.1rem; }
 
 /* ── SECTION COMMON ── */
 .sec-tag {
@@ -949,6 +966,8 @@ footer { background: var(--ink-2); padding: 4.5rem var(--px) 2rem; }
   .tab-panel.active{grid-template-columns:1fr 1fr}
   .footer-top{grid-template-columns:1fr 1fr}
   .stats-band{grid-template-columns:repeat(2,1fr)}
+  .stat:nth-child(2){border-right:none}
+  .stat:nth-child(3){border-top:1px solid rgba(255,255,255,0.05)}
   .edr-grid{grid-template-columns:1fr}
   .prod-showcase{grid-template-columns:repeat(2,1fr)}
 }
