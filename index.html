@@ -113,11 +113,15 @@
   .hero-illus-col{display:flex;align-items:stretch;justify-content:center;overflow:hidden;width:100%}
   #constellCanvas{width:100%!important;height:100%!important;display:block}
   @media(max-width:960px){
-    .hero-top-row{grid-template-columns:1fr}
+    .hero-top-row{grid-template-columns:1fr;gap:1.5rem}
     .hero-text-col{text-align:center;order:2;padding:0 var(--px);max-width:100%}
     .hero-text-col .hero-pill{justify-content:center}
     .hero-cta-btns{justify-content:center}
-    .hero-illus-col{order:1;justify-content:center;overflow:visible}
+    .hero-illus-col{order:1;justify-content:center;overflow:visible;height:320px}
+  }
+  @media(max-width:520px){
+    .hero-illus-col{height:260px}
+    #heroSection{padding-top:5.5rem!important;padding-bottom:3rem!important}
   }
   /* ── Hero text entrance animations ── */
   @keyframes heroIn{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
@@ -253,7 +257,7 @@
 </nav>
 
 <!-- ═══════════════ HERO ═══════════════ -->
-<section class="hero" style="display:block;min-height:auto;padding:7.5rem 0 5rem">
+<section class="hero" style="display:block;min-height:auto;padding:7.5rem 0 5rem" id="heroSection">
   <div class="hero-bg"></div>
   <div class="hero-grid-lines"></div>
   <canvas id="particleCanvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;opacity:0.7"></canvas>
