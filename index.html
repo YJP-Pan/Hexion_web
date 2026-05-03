@@ -258,6 +258,9 @@
   <div class="hero-grid-lines"></div>
   <canvas id="particleCanvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;opacity:0.7"></canvas>
   <div class="hero-scan"></div>
+  <div class="cyber-tag" style="top:20%;left:56%;animation-delay:0s">STRATEGY_HUB</div>
+  <div class="cyber-tag" style="top:68%;left:53%;animation-delay:2s;border-color:rgba(0,200,200,0.4);color:rgba(0,200,200,0.85)">AI_INSIGHTS</div>
+  <div class="cyber-tag" style="top:42%;left:62%;animation-delay:4s">BRAND_OPS</div>
 
   <div style="position:relative;z-index:2;width:100%">
 
@@ -270,8 +273,8 @@
           整合型顧問服務 · Hexion Networks 2026
         </div>
         <h1>
-          <span class="grad">六大核心服務</span><br />
-          <span style="white-space:nowrap">全面驅動企業成長</span>
+          <span class="glitch" data-text="六大核心服務"><span class="grad">六大核心服務</span></span><br />
+          <span class="type-cursor" style="white-space:nowrap">全面驅動企業成長</span>
         </h1>
         <p class="hero-desc">
           從商業策略到資安防護，Hexion 整合六大顧問領域，每個服務都有專屬解決方案與專業團隊支援。
@@ -1237,8 +1240,8 @@ const statsObs = new IntersectionObserver(entries => {
 const statsBand = document.querySelector('.stats-band');
 if (statsBand) statsObs.observe(statsBand);
 
-// ── Typing effect: cycle through threat phrases ──
-const phrases = ['攻擊，零妥協', '威脅，AI 先知', '漏洞，即時封鎖', '入侵，自動阻斷'];
+// ── Typing effect: cycle through service phrases ──
+const phrases = ['全面驅動企業成長', '加速數位轉型進程', '整合六大顧問服務', '打造持久競爭優勢'];
 const typeEl = document.querySelector('.type-cursor');
 if (typeEl) {
   let pi = 0, ci = 0, deleting = false;
@@ -1332,6 +1335,7 @@ document.querySelectorAll('.ins-card').forEach(c => c.style.position = 'relative
   }
 
   var t=0;
+  var PULSES=[], PTIMER=0;
 
   /* ── Ambient micro-dots ── */
   var ADOTS=(function(){
@@ -1365,6 +1369,16 @@ document.querySelectorAll('.ins-card').forEach(c => c.style.position = 'relative
     grd.addColorStop(0.45,'rgba(250,88,34,0.03)');
     grd.addColorStop(1,'rgba(0,0,0,0)');
     X.fillStyle=grd; X.fillRect(0,0,W,H);
+
+    /* ── Sonar pulse rings ── */
+    PTIMER++;
+    if(PTIMER%200===0) PULSES.push({r:0,maxR:scale*1.9,a:0.3});
+    PULSES=PULSES.filter(function(p){
+      p.r+=scale*0.011; p.a=0.3*(1-p.r/p.maxR);
+      X.beginPath(); X.arc(W/2,H/2,p.r,0,Math.PI*2);
+      X.strokeStyle='rgba(250,88,34,'+p.a+')'; X.lineWidth=0.7; X.stroke();
+      return p.r<p.maxR;
+    });
 
     /* ── Orbital dashed rings ── */
     [
@@ -1431,17 +1445,31 @@ document.querySelectorAll('.ins-card').forEach(c => c.style.position = 'relative
       X.fillStyle='rgba(250,88,34,'+(0.10+0.25*depth)+')'; X.fill();
     });
 
-    /* ── Ambient micro-dots ── */
-    ADOTS.forEach(function(d){
+    /* ── Ambient micro-dots + connections ── */
+    var aPos=ADOTS.map(function(d){
       d.ang+=d.sp;
-      var dist=scale*d.distF;
+      return{x:W/2+Math.cos(d.ang)*scale*d.distF, y:H/2+Math.sin(d.ang)*scale*d.distF*d.yF};
+    });
+    /* connection lines between close dots */
+    var maxConn=scale*0.52;
+    aPos.forEach(function(a,i){
+      aPos.forEach(function(b,j){
+        if(j<=i)return;
+        var d=Math.hypot(a.x-b.x,a.y-b.y);
+        if(d<maxConn){
+          X.beginPath(); X.moveTo(a.x,a.y); X.lineTo(b.x,b.y);
+          X.strokeStyle='rgba(255,255,255,'+(1-d/maxConn)*0.065+')';
+          X.lineWidth=0.35; X.stroke();
+        }
+      });
+    });
+    /* dot points */
+    ADOTS.forEach(function(d,i){
       var pulse=0.5+0.5*Math.sin(t*d.pulseSp+d.phase);
-      var px=W/2+Math.cos(d.ang)*dist;
-      var py=H/2+Math.sin(d.ang)*dist*d.yF;
       var col=d.isOrange?'250,88,34':'255,255,255';
       var alpha=d.isOrange?(0.10+0.22*pulse):(0.05+0.13*pulse);
       var r=d.size*(0.75+0.25*pulse);
-      X.beginPath(); X.arc(px,py,r,0,Math.PI*2);
+      X.beginPath(); X.arc(aPos[i].x,aPos[i].y,r,0,Math.PI*2);
       X.fillStyle='rgba('+col+','+alpha+')'; X.fill();
     });
 
