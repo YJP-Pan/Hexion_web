@@ -62,6 +62,82 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/style.css" />
+<style>
+  .hero-svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+  .hero-svc-card{display:flex;flex-direction:column;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:1.75rem;text-decoration:none;color:inherit;position:relative;overflow:hidden;transition:border-color 0.3s,transform 0.3s cubic-bezier(0.22,1,0.36,1),background 0.3s}
+  .hero-svc-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--o),transparent);transform:scaleX(0);transform-origin:left;transition:transform 0.35s cubic-bezier(0.22,1,0.36,1)}
+  .hero-svc-card:hover{border-color:rgba(250,88,34,0.25);transform:translateY(-5px);background:rgba(255,255,255,0.05)}
+  .hero-svc-card:hover::after{transform:scaleX(1)}
+  .hero-svc-card:focus-visible{outline:2px solid var(--o);outline-offset:2px}
+  .hero-svc-num{font-family:'Orbitron',monospace;font-size:2.25rem;font-weight:900;color:rgba(250,88,34,0.08);line-height:1;margin-bottom:0.875rem}
+  .hero-svc-icon{width:46px;height:46px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+  .hero-svc-title{font-family:'Inter',sans-serif;font-size:1rem;font-weight:700;color:#fff;margin-bottom:0.25rem}
+  .hero-svc-sub{font-size:0.7rem;font-family:'Orbitron',monospace;color:rgba(250,88,34,0.65);letter-spacing:0.03em;margin-bottom:0.875rem}
+  .hero-svc-desc{font-size:0.8125rem;color:var(--silver);line-height:1.65;margin-bottom:1rem;flex:1}
+  .hero-svc-arrow{font-size:0.8125rem;font-weight:600;color:var(--o)}
+  @media(max-width:900px){.hero-svc-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.hero-svc-grid{grid-template-columns:1fr}}
+
+  /* ── Hero 2-col layout ── */
+  .hero-top-row{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;width:100%}
+  .hero-text-col{text-align:left;padding:0 4rem 0 var(--px);max-width:680px;display:flex;flex-direction:column;justify-content:center}
+  .hero-text-col .hero-pill{justify-content:flex-start}
+  .hero-cta-btns{display:flex;gap:0.875rem;flex-wrap:wrap;margin-top:1.75rem}
+  .hero-illus-col{display:flex;align-items:stretch;justify-content:center;overflow:hidden;width:100%}
+  #constellCanvas{width:100%!important;height:100%!important;display:block}
+  @media(max-width:960px){
+    .hero-top-row{grid-template-columns:1fr}
+    .hero-text-col{text-align:center;order:2;padding:0 var(--px);max-width:100%}
+    .hero-text-col .hero-pill{justify-content:center}
+    .hero-cta-btns{justify-content:center}
+    .hero-illus-col{order:1;justify-content:center;overflow:visible}
+  }
+  /* ── Hero text entrance animations ── */
+  @keyframes heroIn{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+  .hero-text-col>.hero-pill    {animation:heroIn 0.65s cubic-bezier(0.16,1,0.3,1) both 0.20s}
+  .hero-text-col>h1            {animation:heroIn 0.85s cubic-bezier(0.16,1,0.3,1) both 0.38s}
+  .hero-text-col>.hero-desc    {animation:heroIn 0.65s cubic-bezier(0.16,1,0.3,1) both 0.58s}
+  .hero-text-col>.hero-cta-btns{animation:heroIn 0.65s cubic-bezier(0.16,1,0.3,1) both 0.76s}
+  /* ── Gradient heading shimmer ── */
+  @keyframes gradShimmer{0%{background-position:0% center}100%{background-position:200% center}}
+  .hero h1 .grad{background:linear-gradient(90deg,var(--o) 0%,#FF9A5C 30%,#FFD0A8 50%,var(--o) 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradShimmer 4s linear infinite}
+  /* ── Abstract illustration animations ── */
+  @keyframes hexPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+  @keyframes hexFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+  @keyframes hexCurveDrift{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  @keyframes hexCenterBreath{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.06);opacity:.88}}
+  .hex-all{animation:hexFloat 7s ease-in-out infinite}
+  .hex-node{transform-box:fill-box;transform-origin:center;animation:hexPulse 3s ease-in-out infinite}
+  .hex-center{transform-box:fill-box;transform-origin:center;animation:hexCenterBreath 4.5s ease-in-out infinite}
+  .hex-curve{animation:hexCurveDrift 6s ease-in-out infinite}
+  .n1{animation-delay:0s}.n2{animation-delay:.4s}.n3{animation-delay:.8s}
+  .n4{animation-delay:1.2s}.n5{animation-delay:1.6s}.n6{animation-delay:2s}
+
+  /* ── Rabbit float ── */
+  .rabbit-float{animation:rbFloat 4s ease-in-out infinite}
+  @keyframes rbFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+
+  /* ── Ear wiggle ── */
+  .rabbit-ear-l{transform-origin:bottom center;transform-box:fill-box;animation:earL 8s ease-in-out infinite}
+  @keyframes earL{0%,68%,100%{transform:rotate(0deg)}73%{transform:rotate(-9deg)}78%{transform:rotate(5deg)}83%{transform:rotate(-4deg)}88%{transform:rotate(1.5deg)}}
+  .rabbit-ear-r{transform-origin:bottom center;transform-box:fill-box;animation:earR 8s ease-in-out infinite 0.65s}
+  @keyframes earR{0%,68%,100%{transform:rotate(0deg)}73%{transform:rotate(9deg)}78%{transform:rotate(-5deg)}83%{transform:rotate(4deg)}88%{transform:rotate(-1.5deg)}}
+
+  /* ── Blink ── */
+  .rabbit-blink-l,.rabbit-blink-r{transform-origin:center;transform-box:fill-box;animation:rbBlink 5.5s ease-in-out infinite}
+  .rabbit-blink-r{animation-delay:.07s}
+  @keyframes rbBlink{0%,88%,100%{transform:scaleY(1)}92%{transform:scaleY(0.06)}96%{transform:scaleY(1)}}
+
+  /* ── Sparkles ── */
+  .rb-spark{transform-origin:center;transform-box:fill-box;animation:rbSpark 3s ease-in-out infinite}
+  .sp1{animation-duration:3.3s}.sp2{animation-duration:2.9s;animation-delay:1.1s}.sp3{animation-duration:3.7s;animation-delay:.7s}.sp4{animation-duration:2.6s;animation-delay:1.9s}
+  @keyframes rbSpark{0%,100%{opacity:0;transform:scale(0.2) rotate(0deg)}50%{opacity:1;transform:scale(1) rotate(135deg)}}
+
+  /* ── Floating dots ── */
+  .rb-dot{animation:rbDot 3s ease-in-out infinite}
+  .d1{animation-duration:3.2s}.d2{animation-duration:2.8s;animation-delay:.9s}.d3{animation-duration:3.6s;animation-delay:1.6s}.d4{animation-duration:3.1s;animation-delay:.5s}.d5{animation-duration:2.7s;animation-delay:1.3s}
+  @keyframes rbDot{0%,100%{opacity:.2;transform:scale(.7)}50%{opacity:1;transform:scale(1.4)}}
+</style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-78TQ277930"></script>
 <script>
@@ -86,7 +162,26 @@
 <nav>
   <a href="/en/" class="nav-logo"><img src="/brand_assets/logo.png" alt="Hexion Networks" /></a>
   <div class="nav-links">
-    <div class="nav-item"><a href="/en/services/">Services</a></div>
+    <div class="nav-item">
+      <button>
+        Services
+        <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M8 11L3 6h10z"/></svg>
+      </button>
+      <div class="mega" style="width:480px;grid-template-columns:1fr 1fr">
+        <div class="mega-col" style="border-right:1px solid rgba(255,255,255,0.06)">
+          <div class="mega-label">Consulting Services</div>
+          <a href="/en/services/strategy/" class="mega-link">Business Strategy Advisory</a>
+          <a href="/en/services/brand/" class="mega-link">Brand Transformation</a>
+          <a href="/en/services/digital/" class="mega-link">Digital Transformation</a>
+        </div>
+        <div class="mega-col">
+          <div class="mega-label" style="color:rgba(255,255,255,0.2)">&nbsp;</div>
+          <a href="/en/services/cybersecurity/" class="mega-link">Cybersecurity Strategy</a>
+          <a href="/en/services/ai/" class="mega-link">AI &amp; Data Advisory</a>
+          <a href="/en/services/integrated/" class="mega-link">Integrated Consulting</a>
+        </div>
+      </div>
+    </div>
     <div class="nav-item">
       <button>
         Products
@@ -140,160 +235,48 @@
 </nav>
 
 <!-- ═══════════════ HERO ═══════════════ -->
-<section class="hero">
+<section class="hero" style="display:block;min-height:auto;padding:7.5rem 0 5rem">
   <div class="hero-bg"></div>
   <div class="hero-grid-lines"></div>
   <canvas id="particleCanvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;opacity:0.7"></canvas>
   <div class="hero-scan"></div>
-  <!-- Floating cyber tags -->
-  <div class="cyber-tag" style="top:18%;right:52%;animation-delay:0s">THREAT_INTEL</div>
-  <div class="cyber-tag" style="top:72%;right:48%;animation-delay:1.5s;border-color:rgba(0,200,200,0.4);color:rgba(0,200,200,0.85)">ZERO_TRUST</div>
-  <div class="cyber-tag" style="top:38%;right:46%;animation-delay:3s">AI_DETECT</div>
+  <div class="cyber-tag" style="top:20%;left:56%;animation-delay:0s">STRATEGY_HUB</div>
+  <div class="cyber-tag" style="top:68%;left:53%;animation-delay:2s;border-color:rgba(0,200,200,0.4);color:rgba(0,200,200,0.85)">AI_INSIGHTS</div>
+  <div class="cyber-tag" style="top:42%;left:62%;animation-delay:4s">BRAND_OPS</div>
 
-  <div class="hero-content reveal">
-    <div class="hero-pill">
-      <span class="hero-pill-dot"></span>
-      AI-Powered Proactive Security Platform 2026
-    </div>
+  <div style="position:relative;z-index:2;width:100%">
 
-    <h1>
-      <span class="glitch" data-text="Stop Every">Stop Every</span><br />
-      <span class="grad type-cursor">Zero Compromise</span>
-    </h1>
+    <div class="hero-top-row">
 
-    <p class="hero-desc">
-      Hexion integrates AI threat detection, zero-trust access, and automated response
-      to identify, predict, and eliminate risks before attacks occur — protecting everything at machine speed.
-    </p>
-
-    <div class="hero-trust">
-      <div class="hero-trust-avatars">
-        <span>FIN</span><span>MFG</span><span>MED</span><span>+</span>
+      <!-- Left: text -->
+      <div class="hero-text-col">
+        <div class="hero-pill">
+          <span class="hero-pill-dot"></span>
+          Integrated Consulting · Hexion Networks 2026
+        </div>
+        <h1>
+          <span class="glitch" data-text="Six Core Services"><span class="grad">Six Core Services</span></span><br />
+          <span class="type-cursor" style="white-space:nowrap">Driving Business Growth</span>
+        </h1>
+        <p class="hero-desc">
+          From business strategy to cybersecurity, Hexion integrates six consulting domains — each with dedicated solutions and expert teams to support your success.
+        </p>
+        <div class="hero-cta-btns">
+          <a href="/en/contact/" class="btn btn-orange">Free Consultation</a>
+          <a href="/en/services/" class="btn btn-ghost">Explore Services →</a>
+        </div>
       </div>
-      <span>Trusted by <strong style="color:var(--white)">100+</strong> enterprises worldwide</span>
+
+      <!-- Right: constellation animation -->
+      <div class="reveal hero-illus-col" style="transition-delay:.18s">
+        <canvas id="constellCanvas" style="width:100%;max-width:100%;display:block"></canvas>
+      </div>
+
     </div>
-  </div>
 
-  <!-- Hero SVG Illustration -->
-  <div class="hero-visual">
-    <svg viewBox="0 0 540 480" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#FA5822" stop-opacity="0.15"/>
-          <stop offset="100%" stop-color="#FA5822" stop-opacity="0"/>
-        </radialGradient>
-        <radialGradient id="glow2" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#00C8C8" stop-opacity="0.1"/>
-          <stop offset="100%" stop-color="#00C8C8" stop-opacity="0"/>
-        </radialGradient>
-        <filter id="blur1"><feGaussianBlur stdDeviation="8"/></filter>
-        <filter id="blur2"><feGaussianBlur stdDeviation="3"/></filter>
-      </defs>
-
-      <!-- Background glow -->
-      <ellipse cx="270" cy="240" rx="200" ry="180" fill="url(#glow1)" filter="url(#blur1)"/>
-      <ellipse cx="420" cy="120" rx="120" ry="100" fill="url(#glow2)" filter="url(#blur1)"/>
-
-      <!-- Orbital rings -->
-      <ellipse cx="270" cy="240" rx="210" ry="210" stroke="rgba(250,88,34,0.08)" stroke-width="1" stroke-dasharray="4 6"/>
-      <ellipse cx="270" cy="240" rx="160" ry="160" stroke="rgba(250,88,34,0.12)" stroke-width="1" stroke-dasharray="3 5"/>
-      <ellipse cx="270" cy="240" rx="110" ry="110" stroke="rgba(250,88,34,0.18)" stroke-width="1"/>
-
-      <!-- Central shield -->
-      <path d="M270 155 L325 178 L325 222 Q325 262 270 285 Q215 262 215 222 L215 178 Z"
-        fill="rgba(250,88,34,0.06)" stroke="rgba(250,88,34,0.5)" stroke-width="1.5"/>
-      <path d="M270 168 L313 187 L313 222 Q313 254 270 273 Q227 254 227 222 L227 187 Z"
-        fill="rgba(250,88,34,0.1)" stroke="rgba(250,88,34,0.3)" stroke-width="1"/>
-      <!-- Shield checkmark -->
-      <path d="M254 220 L265 231 L288 208" stroke="#FA5822" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-
-      <!-- Orbit dots — threat indicators -->
-      <!-- Top -->
-      <circle cx="270" cy="80" r="8" fill="rgba(26,26,44,1)" stroke="rgba(250,88,34,0.6)" stroke-width="1.5"/>
-      <circle cx="270" cy="80" r="3" fill="#FA5822"/>
-      <!-- Right top -->
-      <circle cx="428" cy="132" r="6" fill="rgba(26,26,44,1)" stroke="rgba(0,200,200,0.6)" stroke-width="1.5"/>
-      <circle cx="428" cy="132" r="2.5" fill="#00C8C8"/>
-      <!-- Right bottom -->
-      <circle cx="450" cy="300" r="7" fill="rgba(26,26,44,1)" stroke="rgba(250,88,34,0.4)" stroke-width="1.5"/>
-      <circle cx="450" cy="300" r="3" fill="#FA5822" opacity="0.7"/>
-      <!-- Left top -->
-      <circle cx="90" cy="150" r="6" fill="rgba(26,26,44,1)" stroke="rgba(255,68,68,0.6)" stroke-width="1.5"/>
-      <circle cx="90" cy="150" r="2.5" fill="#FF4444"/>
-      <!-- Left bottom -->
-      <circle cx="112" cy="340" r="8" fill="rgba(26,26,44,1)" stroke="rgba(0,200,200,0.5)" stroke-width="1.5"/>
-      <circle cx="112" cy="340" r="3" fill="#00C8C8"/>
-      <!-- Bottom -->
-      <circle cx="270" cy="400" r="6" fill="rgba(26,26,44,1)" stroke="rgba(250,88,34,0.5)" stroke-width="1.5"/>
-      <circle cx="270" cy="340" r="3" fill="#FA5822" opacity="0.6"/>
-
-      <!-- Connector lines from dots to shield -->
-      <line x1="270" y1="88" x2="270" y2="155" stroke="rgba(250,88,34,0.25)" stroke-width="1" stroke-dasharray="4 4"/>
-      <line x1="422" y1="138" x2="325" y2="200" stroke="rgba(0,200,200,0.2)" stroke-width="1" stroke-dasharray="4 4"/>
-      <line x1="443" y1="294" x2="325" y2="235" stroke="rgba(250,88,34,0.2)" stroke-width="1" stroke-dasharray="4 4"/>
-      <line x1="96" y1="156" x2="215" y2="195" stroke="rgba(255,68,68,0.2)" stroke-width="1" stroke-dasharray="4 4"/>
-      <line x1="118" y1="334" x2="220" y2="255" stroke="rgba(0,200,200,0.15)" stroke-width="1" stroke-dasharray="4 4"/>
-
-      <!-- Floating event cards -->
-      <!-- Card 1: top right -->
-      <rect x="348" y="64" width="148" height="52" rx="6" fill="rgba(26,26,44,0.95)" stroke="rgba(255,68,68,0.3)" stroke-width="1"/>
-      <circle cx="364" cy="90" r="5" fill="#FF4444" opacity="0.9"/>
-      <rect x="375" y="82" width="70" height="5" rx="2" fill="rgba(255,68,68,0.6)"/>
-      <rect x="375" y="93" width="50" height="4" rx="2" fill="rgba(255,255,255,0.15)"/>
-      <rect x="430" y="80" width="52" height="20" rx="4" fill="rgba(255,68,68,0.12)" stroke="rgba(255,68,68,0.3)" stroke-width="0.75"/>
-      <text x="456" y="93" font-size="7" font-family="monospace" fill="#FF4444" text-anchor="middle">BLOCKED</text>
-
-      <!-- Card 2: bottom left -->
-      <rect x="44" y="358" width="148" height="52" rx="6" fill="rgba(26,26,44,0.95)" stroke="rgba(0,200,200,0.3)" stroke-width="1"/>
-      <circle cx="60" cy="384" r="5" fill="#00C8C8" opacity="0.9"/>
-      <rect x="71" y="376" width="80" height="5" rx="2" fill="rgba(0,200,200,0.5)"/>
-      <rect x="71" y="387" width="55" height="4" rx="2" fill="rgba(255,255,255,0.15)"/>
-      <rect x="136" y="374" width="42" height="20" rx="4" fill="rgba(0,200,200,0.1)" stroke="rgba(0,200,200,0.3)" stroke-width="0.75"/>
-      <text x="157" y="387" font-size="7" font-family="monospace" fill="#00C8C8" text-anchor="middle">SAFE</text>
-
-      <!-- Card 3: right -->
-      <rect x="378" y="280" width="130" height="48" rx="6" fill="rgba(26,26,44,0.95)" stroke="rgba(250,88,34,0.3)" stroke-width="1"/>
-      <rect x="390" y="291" width="60" height="5" rx="2" fill="rgba(250,88,34,0.6)"/>
-      <rect x="390" y="302" width="90" height="4" rx="2" fill="rgba(255,255,255,0.1)"/>
-      <rect x="390" y="312" width="75" height="4" rx="2" fill="rgba(255,255,255,0.08)"/>
-      <circle cx="494" cy="304" r="12" fill="rgba(250,88,34,0.15)" stroke="rgba(250,88,34,0.4)" stroke-width="1"/>
-      <text x="494" y="308" font-size="8" font-family="monospace" fill="#FA5822" text-anchor="middle">AI</text>
-
-      <!-- Scan line animation -->
-      <rect x="215" y="155" width="110" height="130" rx="0" fill="none"/>
-      <line x1="215" y1="200" x2="325" y2="200" stroke="rgba(250,88,34,0.4)" stroke-width="0.75">
-        <animateTransform attributeName="transform" type="translate" values="0,0;0,85;0,0" dur="3s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values="0.6;0.2;0.6" dur="3s" repeatCount="indefinite"/>
-      </line>
-
-      <!-- Pulse rings on shield -->
-      <circle cx="270" cy="220" r="45" fill="none" stroke="rgba(250,88,34,0.15)" stroke-width="1">
-        <animate attributeName="r" values="45;70;45" dur="3s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values="0.3;0;0.3" dur="3s" repeatCount="indefinite"/>
-      </circle>
-    </svg>
   </div>
 </section>
 
-<!-- Stats -->
-<div class="stats-band">
-  <div class="stat reveal">
-    <div class="stat-n">100<span>+</span></div>
-    <div class="stat-l" style="white-space:nowrap">Enterprise Clients</div>
-  </div>
-  <div class="stat reveal" style="transition-delay:.07s">
-    <div class="stat-n">99<span>%</span></div>
-    <div class="stat-l" style="white-space:nowrap">Detection Accuracy</div>
-  </div>
-  <div class="stat reveal" style="transition-delay:.14s">
-    <div class="stat-n">&lt;1<span>ms</span></div>
-    <div class="stat-l" style="white-space:nowrap">Threat Response Time</div>
-  </div>
-  <div class="stat reveal" style="transition-delay:.21s">
-    <div class="stat-n">180<span>+</span></div>
-    <div class="stat-l" style="white-space:nowrap">Countries &amp; Regions</div>
-  </div>
-</div>
 
 <!-- ═══════════════ PLATFORM ═══════════════ -->
 <section class="platform-sec">
@@ -305,33 +288,33 @@
 
   <div class="platform-grid">
 
-    <div class="p-card reveal" tabindex="0">
+    <a href="/en/services/strategy/" class="p-card reveal" tabindex="0">
       <div class="p-icon" style="background:rgba(250,88,34,0.1)">
         <svg viewBox="0 0 28 28" fill="none" stroke="#FA5822" stroke-width="1.5">
           <polyline points="4,20 10,13 15,16 24,7" stroke-linecap="round" stroke-linejoin="round"/>
           <polyline points="19,7 24,7 24,12" stroke-linecap="round" stroke-linejoin="round"/>
           <line x1="4" y1="23" x2="24" y2="23" stroke-opacity="0.3" stroke-linecap="round"/>
         </svg>
-      </div>
+      </a>
       <div class="p-title">Business Strategy &amp; Growth Advisory</div>
       <div class="p-subtitle">Business Strategy &amp; Growth Advisory</div>
       <p class="p-desc">From market positioning and revenue models to competitive strategy, helping businesses build a sustainable growth blueprint.</p>
       <div class="p-badge">Ideal for: Transformation / New ventures / Growth-stuck companies</div>
     </div>
 
-    <div class="p-card reveal" tabindex="0" style="transition-delay:.07s">
+    <a href="/en/services/brand/" class="p-card reveal" tabindex="0" style="transition-delay:.07s">
       <div class="p-icon" style="background:rgba(0,200,200,0.1)">
         <svg viewBox="0 0 28 28" fill="none" stroke="#00C8C8" stroke-width="1.5">
           <polygon points="14,4 17,10 24,11 19,16 20,23 14,20 8,23 9,16 4,11 11,10" stroke-linejoin="round"/>
         </svg>
-      </div>
+      </a>
       <div class="p-title">Brand Transformation &amp; Positioning</div>
       <div class="p-subtitle" style="color:var(--teal)">Brand Transformation &amp; Positioning</div>
       <p class="p-desc">Redefine brand value, differentiation, and communication strategy so your brand is remembered and chosen in the market.</p>
       <div class="p-badge" style="border-left-color:rgba(0,200,200,0.3)">Includes: Brand strategy, brand architecture, external messaging design</div>
     </div>
 
-    <div class="p-card reveal" tabindex="0" style="transition-delay:.14s">
+    <a href="/en/services/digital/" class="p-card reveal" tabindex="0" style="transition-delay:.14s">
       <div class="p-icon" style="background:rgba(167,139,250,0.1)">
         <svg viewBox="0 0 28 28" fill="none" stroke="#A78BFA" stroke-width="1.5">
           <rect x="4" y="18" width="8" height="6" rx="1"/>
@@ -340,27 +323,27 @@
           <line x1="8" y1="18" x2="14" y2="18" stroke-opacity="0.4" stroke-linecap="round"/>
           <line x1="14" y1="11" x2="20" y2="11" stroke-opacity="0.4" stroke-linecap="round"/>
         </svg>
-      </div>
+      </a>
       <div class="p-title">Digital Transformation &amp; IT Architecture</div>
       <div class="p-subtitle" style="color:#A78BFA">Digital Transformation &amp; IT Architecture</div>
       <p class="p-desc">From system planning to technology adoption, building the digital foundation that supports business growth.</p>
       <div class="p-badge" style="border-left-color:rgba(167,139,250,0.3)">Includes: System integration, cloud architecture, process digitization</div>
     </div>
 
-    <div class="p-card reveal" tabindex="0" style="transition-delay:.07s">
+    <a href="/en/services/cybersecurity/" class="p-card reveal" tabindex="0" style="transition-delay:.07s">
       <div class="p-icon" style="background:rgba(255,68,68,0.1)">
         <svg viewBox="0 0 28 28" fill="none" stroke="#FF6666" stroke-width="1.5">
           <path d="M14 3L24 7.5V14C24 19.5 19.5 23.5 14 25C8.5 23.5 4 19.5 4 14V7.5L14 3Z"/>
           <path d="M10 14l3 3 5-6" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-      </div>
+      </a>
       <div class="p-title">Cybersecurity Strategy &amp; Protection Design</div>
       <div class="p-subtitle" style="color:#FF6666">Cybersecurity Strategy &amp; Protection Design</div>
       <p class="p-desc">Build enterprise-grade security architecture, comprehensively elevating security capabilities from defense and monitoring to response.</p>
       <div class="p-badge" style="border-left-color:rgba(255,68,68,0.3)">Includes: Security assessment, zero-trust architecture, threat protection</div>
     </div>
 
-    <div class="p-card reveal" tabindex="0" style="transition-delay:.14s">
+    <a href="/en/services/ai/" class="p-card reveal" tabindex="0" style="transition-delay:.14s">
       <div class="p-icon" style="background:rgba(61,220,151,0.1)">
         <svg viewBox="0 0 28 28" fill="none" stroke="#3DDC97" stroke-width="1.5">
           <circle cx="14" cy="14" r="3"/>
@@ -371,21 +354,21 @@
           <line x1="8" y1="19" x2="12" y2="16" stroke-linecap="round"/>
           <line x1="20" y1="19" x2="16" y2="16" stroke-linecap="round"/>
         </svg>
-      </div>
+      </a>
       <div class="p-title">AI &amp; Data-Driven Decision Advisory</div>
       <div class="p-subtitle" style="color:#3DDC97">AI &amp; Data-Driven Decision Advisory</div>
       <p class="p-desc">Introduce AI and data analytics capabilities, moving decisions from intuition toward precision and prediction.</p>
       <div class="p-badge" style="border-left-color:rgba(61,220,151,0.3)">Includes: AI applications, data strategy, operational optimization</div>
     </div>
 
-    <div class="p-card reveal" tabindex="0" style="transition-delay:.21s">
+    <a href="/en/services/integrated/" class="p-card reveal" tabindex="0" style="transition-delay:.21s">
       <div class="p-icon" style="background:rgba(250,88,34,0.08)">
         <svg viewBox="0 0 28 28" fill="none" stroke="#FF9A5C" stroke-width="1.5">
           <path d="M14 4 C10 4 7 7 7 11 L7 14 L4 14 L4 17 C4 21 7 24 11 24 L14 24"/>
           <path d="M14 24 C18 24 21 21 21 17 L21 14 L24 14 L24 11 C24 7 21 4 17 4 L14 4"/>
           <circle cx="14" cy="14" r="2.5" fill="rgba(255,154,92,0.3)"/>
         </svg>
-      </div>
+      </a>
       <div class="p-title">Integrated Consulting &amp; Execution</div>
       <div class="p-subtitle" style="color:#FF9A5C">Integrated Consulting &amp; Execution</div>
       <p class="p-desc">Not just strategy — we directly assist with execution, ensuring every plan produces real business outcomes.</p>
@@ -1149,43 +1132,7 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 })();
 
 // ── Count-up animation for stats ──
-function countUp(el, target, suffix, duration) {
-  const start = performance.now();
-  const isFloat = String(target).includes('.');
-  function update(now) {
-    const t = Math.min((now - start) / duration, 1);
-    const ease = 1 - Math.pow(1 - t, 3);
-    const val = isFloat ? (target * ease).toFixed(2) : Math.floor(target * ease);
-    el.innerHTML = (isFloat ? val : val.toLocaleString()) + suffix;
-    if (t < 1) requestAnimationFrame(update);
-    else el.innerHTML = (isFloat ? target : target.toLocaleString()) + suffix;
-  }
-  requestAnimationFrame(update);
-}
-
-const statConfigs = [
-  { el: document.querySelectorAll('.stat-n')[0], val: 100,   suffix: '<span>+</span>',   dur: 1200 },
-  { el: document.querySelectorAll('.stat-n')[1], val: 99.99, suffix: '<span>%</span>',    dur: 1600 },
-  { el: document.querySelectorAll('.stat-n')[2], val: null,  suffix: null,                dur: 0    },
-  { el: document.querySelectorAll('.stat-n')[3], val: 180,   suffix: '<span>+</span>',   dur: 1400 },
-];
-
-const statsObs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      statsObs.unobserve(e.target);
-      statConfigs.forEach(cfg => {
-        if (!cfg.val) return;
-        countUp(cfg.el, cfg.val, cfg.suffix, cfg.dur);
-      });
-    }
-  });
-}, { threshold: 0.5 });
-const statsBand = document.querySelector('.stats-band');
-if (statsBand) statsObs.observe(statsBand);
-
-// ── Typing effect: cycle through threat phrases ──
-const phrases = ['Zero Compromise', 'AI First to Act', 'Breach Blocked', 'Auto-Contained'];
+const phrases = ['Driving Business Growth', 'Accelerating Digital Transformation', 'Six Integrated Services', 'Building Lasting Competitive Edge'];
 const typeEl = document.querySelector('.type-cursor');
 if (typeEl) {
   let pi = 0, ci = 0, deleting = false;
@@ -1229,5 +1176,200 @@ document.addEventListener('mousemove', e => { glow.style.left = e.clientX + 'px'
 document.querySelectorAll('.ins-card').forEach(c => c.style.position = 'relative');
 </script>
 <script>var _ls=Date.now();window.addEventListener("load",function(){var l=document.getElementById("page-loader");if(!l)return;var elapsed=Date.now()-_ls,wait=Math.max(0,800-elapsed);setTimeout(function(){l.classList.add("out");setTimeout(function(){l.remove()},520)},wait)});</script>
+<script>
+(function(){
+  var C=document.getElementById('constellCanvas');
+  if(!C)return;
+  var X=C.getContext('2d');
+  var W,H;
+
+  function setSize(){
+    var col=C.parentElement;
+    W=col.offsetWidth||640; H=col.offsetHeight||520;
+    C.width=W; C.height=H;
+  }
+  setSize();
+  window.addEventListener('resize',setSize);
+
+  /* ── Icosahedron geometry ── */
+  var P=(1+Math.sqrt(5))/2;
+  var NR=Math.sqrt(1+P*P);
+  var V0=[
+    [0,1,P],[0,1,-P],[0,-1,P],[0,-1,-P],
+    [1,P,0],[1,-P,0],[-1,P,0],[-1,-P,0],
+    [P,0,1],[P,0,-1],[-P,0,1],[-P,0,-1]
+  ].map(function(v){return[v[0]/NR,v[1]/NR,v[2]/NR];});
+
+  function d3(a,b){return Math.sqrt((a[0]-b[0])*(a[0]-b[0])+(a[1]-b[1])*(a[1]-b[1])+(a[2]-b[2])*(a[2]-b[2]));}
+  var eLen=Infinity;
+  for(var i=0;i<12;i++) for(var j=i+1;j<12;j++) eLen=Math.min(eLen,d3(V0[i],V0[j]));
+  var EDGES=[];
+  for(var i=0;i<12;i++) for(var j=i+1;j<12;j++) if(d3(V0[i],V0[j])<eLen*1.02) EDGES.push([i,j]);
+
+  /* ── Smaller inner octahedron (counter-rotates) ── */
+  var OCT=[
+    [1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]
+  ];
+  var OEDGES=[[0,2],[0,3],[0,4],[0,5],[1,2],[1,3],[1,4],[1,5],[2,4],[2,5],[3,4],[3,5]];
+
+  /* orange vertex indices on icosahedron (6 of 12) */
+  var OG={0:1,2:1,4:1,6:1,8:1,10:1};
+
+  /* rotation helpers */
+  function ry(v,a){var c=Math.cos(a),s=Math.sin(a);return[v[0]*c+v[2]*s,v[1],-v[0]*s+v[2]*c];}
+  function rx(v,a){var c=Math.cos(a),s=Math.sin(a);return[v[0],v[1]*c-v[2]*s,v[1]*s+v[2]*c];}
+  function rz(v,a){var c=Math.cos(a),s=Math.sin(a);return[v[0]*c-v[1]*s,v[0]*s+v[1]*c,v[2]];}
+
+  function proj(v,scale){
+    var fov=2.8, w=fov/(fov+v[2]);
+    return{x:W/2+v[0]*scale*w, y:H/2+v[1]*scale*w, z:v[2]};
+  }
+
+  var t=0;
+  var PULSES=[], PTIMER=0;
+
+  /* ── Ambient micro-dots ── */
+  var ADOTS=(function(){
+    var arr=[];
+    for(var k=0;k<26;k++){
+      arr.push({
+        ang:Math.random()*Math.PI*2,
+        distF:0.75+Math.random()*1.55,
+        sp:(Math.random()<0.5?1:-1)*(0.00016+Math.random()*0.00020),
+        phase:Math.random()*Math.PI*2,
+        pulseSp:0.015+Math.random()*0.020,
+        size:0.55+Math.random()*1.25,
+        isOrange:Math.random()<0.28,
+        yF:0.52+Math.random()*0.32
+      });
+    }
+    return arr;
+  })();
+
+  function draw(){
+    X.clearRect(0,0,W,H);
+
+    var scale=Math.min(W,H)*0.40;
+    var ay= t*0.0038;
+    var ax= Math.sin(t*0.0011)*0.30 - 0.20;
+    var az= t*0.0009;
+
+    /* ── Central radial glow ── */
+    var grd=X.createRadialGradient(W/2,H/2,0,W/2,H/2,scale*0.9);
+    grd.addColorStop(0,'rgba(250,88,34,0.09)');
+    grd.addColorStop(0.45,'rgba(250,88,34,0.03)');
+    grd.addColorStop(1,'rgba(0,0,0,0)');
+    X.fillStyle=grd; X.fillRect(0,0,W,H);
+
+    /* ── Sonar pulse rings ── */
+    PTIMER++;
+    if(PTIMER%200===0) PULSES.push({r:0,maxR:scale*1.9,a:0.3});
+    PULSES=PULSES.filter(function(p){
+      p.r+=scale*0.011; p.a=0.3*(1-p.r/p.maxR);
+      X.beginPath(); X.arc(W/2,H/2,p.r,0,Math.PI*2);
+      X.strokeStyle='rgba(250,88,34,'+p.a+')'; X.lineWidth=0.7; X.stroke();
+      return p.r<p.maxR;
+    });
+
+    /* ── Orbital dashed rings ── */
+    [
+      {tilt:0.38,rF:1.12,dashOff:-0.32,alpha:0.13},
+      {tilt:-0.22,rF:1.50,dashOff:0.20,alpha:0.07}
+    ].forEach(function(r){
+      X.save();
+      X.translate(W/2,H/2); X.rotate(r.tilt); X.scale(1,0.28);
+      X.beginPath(); X.arc(0,0,scale*r.rF,0,Math.PI*2);
+      X.strokeStyle='rgba(250,88,34,'+r.alpha+')';
+      X.lineWidth=0.75; X.setLineDash([4,16]);
+      X.lineDashOffset=t*r.dashOff; X.stroke();
+      X.setLineDash([]); X.restore();
+    });
+
+    /* transform icosahedron */
+    var VP=V0.map(function(v){return proj(rz(rx(ry(v,ay),ax),az),scale);});
+
+    /* transform octahedron (smaller, counter-rotate) */
+    var os=scale*0.45;
+    var OP=OCT.map(function(v){return proj(rz(rx(ry(v,-ay*0.7),ax*0.8),-az*0.5),os);});
+
+    /* sort icosahedron edges back-to-front */
+    EDGES.slice().sort(function(a,b){
+      return (VP[a[0]].z+VP[a[1]].z)-(VP[b[0]].z+VP[b[1]].z);
+    }).forEach(function(e){
+      var a=VP[e[0]],b=VP[e[1]];
+      var depth=((a.z+b.z)/2+1)/2;
+      X.beginPath(); X.moveTo(a.x,a.y); X.lineTo(b.x,b.y);
+      X.strokeStyle='rgba(255,255,255,'+(0.06+0.28*depth)+')';
+      X.lineWidth=0.9; X.stroke();
+    });
+
+    /* octahedron edges (very dim) */
+    OEDGES.forEach(function(e){
+      var a=OP[e[0]],b=OP[e[1]];
+      var depth=((a.z+b.z)/2+1)/2;
+      X.beginPath(); X.moveTo(a.x,a.y); X.lineTo(b.x,b.y);
+      X.strokeStyle='rgba(250,88,34,'+(0.06+0.18*depth)+')';
+      X.lineWidth=0.7; X.stroke();
+    });
+
+    /* icosahedron vertices */
+    V0.forEach(function(v,i){
+      var p=VP[i];
+      var depth=(p.z+1)/2;
+      if(OG[i]){
+        X.beginPath(); X.arc(p.x,p.y,2.5+depth*2,0,Math.PI*2);
+        X.fillStyle='rgba(250,88,34,'+(0.35+0.55*depth)+')'; X.fill();
+        X.beginPath(); X.arc(p.x,p.y,5+depth*3,0,Math.PI*2);
+        X.strokeStyle='rgba(250,88,34,'+(0.08+0.14*depth)+')';
+        X.lineWidth=0.8; X.stroke();
+      } else {
+        X.beginPath(); X.arc(p.x,p.y,1.5+depth*1.5,0,Math.PI*2);
+        X.fillStyle='rgba(255,255,255,'+(0.15+0.35*depth)+')'; X.fill();
+      }
+    });
+
+    /* octahedron vertices */
+    OCT.forEach(function(v,i){
+      var p=OP[i];
+      var depth=(p.z+1)/2;
+      X.beginPath(); X.arc(p.x,p.y,1.5+depth,0,Math.PI*2);
+      X.fillStyle='rgba(250,88,34,'+(0.10+0.25*depth)+')'; X.fill();
+    });
+
+    /* ── Ambient micro-dots + connections ── */
+    var aPos=ADOTS.map(function(d){
+      d.ang+=d.sp;
+      return{x:W/2+Math.cos(d.ang)*scale*d.distF, y:H/2+Math.sin(d.ang)*scale*d.distF*d.yF};
+    });
+    /* connection lines between close dots */
+    var maxConn=scale*0.52;
+    aPos.forEach(function(a,i){
+      aPos.forEach(function(b,j){
+        if(j<=i)return;
+        var d=Math.hypot(a.x-b.x,a.y-b.y);
+        if(d<maxConn){
+          X.beginPath(); X.moveTo(a.x,a.y); X.lineTo(b.x,b.y);
+          X.strokeStyle='rgba(255,255,255,'+(1-d/maxConn)*0.065+')';
+          X.lineWidth=0.35; X.stroke();
+        }
+      });
+    });
+    /* dot points */
+    ADOTS.forEach(function(d,i){
+      var pulse=0.5+0.5*Math.sin(t*d.pulseSp+d.phase);
+      var col=d.isOrange?'250,88,34':'255,255,255';
+      var alpha=d.isOrange?(0.10+0.22*pulse):(0.05+0.13*pulse);
+      var r=d.size*(0.75+0.25*pulse);
+      X.beginPath(); X.arc(aPos[i].x,aPos[i].y,r,0,Math.PI*2);
+      X.fillStyle='rgba('+col+','+alpha+')'; X.fill();
+    });
+
+    t++;
+    requestAnimationFrame(draw);
+  }
+
+  draw();
+})();
+</script>
 </body>
 </html>
