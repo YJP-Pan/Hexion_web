@@ -104,6 +104,10 @@ h1,h2,h3,h4 { font-family: 'Inter', 'Inter', sans-serif; letter-spacing:-0.025em
 .topbar a { color: var(--silver); text-decoration: none; transition: color 0.15s; }
 .topbar a:hover { color: var(--white); }
 .topbar-highlight { color: var(--o) !important; font-weight: 600; }
+.topbar-social-group { display:flex; align-items:center; gap:0.6rem; }
+.topbar-social { display:flex; align-items:center; color:var(--silver); opacity:0.75; transition:opacity 0.15s, color 0.15s; }
+.topbar-social:hover { opacity:1 !important; color:var(--white) !important; }
+.topbar-social svg { display:block; }
 .topbar-line {
   display: inline-flex; align-items: center; gap: 6px;
   color: var(--teal) !important; font-weight: 600;
