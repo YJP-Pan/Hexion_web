@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Endpoint Detection &amp; Response | TeamT5 · CyCraft · Endblock — Hexion Networks</title>
+  <meta name="description" content="Endpoint Detection &amp; Response solutions — Hexion Networks distributes TeamT5 ThreatVision, CyCraft AIR, and Endblock EDR, three solutions for different enterprise needs." />
+  <meta name="keywords" content="EDR, Endpoint Detection Response, TeamT5, CyCraft, Endblock, Cybersecurity, Hexion Networks, Taiwan" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hexionnetworks.com/ja/products/edr/" />
+  <link rel="alternate" hreflang="zh-TW" href="https://hexionnetworks.com/products/edr/" />
+  <link rel="alternate" hreflang="en" href="https://hexionnetworks.com/en/products/edr/" />
+  <link rel="alternate" hreflang="ja" href="https://hexionnetworks.com/ja/products/edr/" />
+  <link rel="alternate" hreflang="x-default" href="https://hexionnetworks.com/products/edr/" />
+  <meta name="language" content="ja" />
+  <meta name="geo.region" content="TW-KHH" />
+  <meta name="geo.placename" content="Kaohsiung, Taiwan" />
+  <meta name="geo.position" content="22.627;120.302" />
+  <meta name="ICBM" content="22.627, 120.302" />
+  <link rel="icon" href="/brand_assets/favicon.png" />
+  <meta property="og:title" content="Hexion Networks EDR Solutions | TeamT5 · CyCraft · Endblock" />
+  <meta property="og:description" content="Endpoint Detection &amp; Response solutions — Hexion Networks distributes TeamT5 ThreatVision, CyCraft AIR, and Endblock EDR, three solutions for different enterprise needs." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://hexionnetworks.com/ja/products/edr/" />
+  <meta property="og:image" content="https://hexionnetworks.com/brand_assets/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hexion Networks EDR Solutions | TeamT5 · CyCraft · Endblock" />
+  <meta name="twitter:description" content="Endpoint Detection &amp; Response solutions — Hexion Networks distributes TeamT5 ThreatVision, CyCraft AIR, and Endblock EDR, three solutions for different enterprise needs." />
+  <meta name="twitter:image" content="https://hexionnetworks.com/brand_assets/logo.png" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"EDR Endpoint Detection & Response | TeamT5 · CyCraft · Endblock — Hexion Networks","description":"EDR Endpoint Detection & Response solutions — Hexion Networks distributes TeamT5 ThreatVision, CyCraft AIR, and Endblock EDR, three solutions for different enterprise needs.","url": "https://hexionnetworks.com/ja/products/edr/","inLanguage":"ja","publisher":{"@type":"Organization","name":"Hexion Networks","url":"https://hexionnetworks.com"}}</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    :root{--accent:#3DDC97;--accent-rgb:61,220,151}
+
+    .edr-hero-badge {
+      display:inline-flex;align-items:center;gap:0.5rem;
+      border:1px solid rgba(61,220,151,0.4);background:rgba(61,220,151,0.08);
+      color:#3DDC97;font-family:'Orbitron',monospace;font-size:0.7rem;
+      font-weight:700;letter-spacing:0.12em;padding:0.35rem 0.875rem;
+      border-radius:999px;margin-bottom:1.25rem;
+    }
+    .edr-hero-badge-dot {
+      width:6px;height:6px;border-radius:50%;background:#3DDC97;
+      box-shadow:0 0 8px #3DDC97;animation:pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+
+    /* What is EDR section */
+    .edr-explainer {
+      padding:5rem 0;
+    }
+    .edr-flow {
+      display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3rem;
+    }
+    @media(max-width:768px){.edr-flow{grid-template-columns:1fr 1fr;}}
+    @media(max-width:480px){.edr-flow{grid-template-columns:1fr;}}
+    .edr-flow-step {
+      background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);
+      border-radius:12px;padding:1.5rem 1.25rem;text-align:center;
+      transition:border-color 0.2s,transform 0.2s;
+    }
+    .edr-flow-step:hover{border-color:rgba(61,220,151,0.3);transform:translateY(-2px);}
+    .edr-flow-icon {
+      width:48px;height:48px;border-radius:12px;margin:0 auto 1rem;
+      display:flex;align-items:center;justify-content:center;
+      background:rgba(61,220,151,0.1);border:1px solid rgba(61,220,151,0.2);
+    }
+    .edr-flow-num {
+      font-family:'Orbitron',monospace;font-size:0.65rem;color:rgba(61,220,151,0.5);
+      letter-spacing:0.1em;margin-bottom:0.5rem;
+    }
+    .edr-flow-title {font-family:'Inter', sans-serif;font-size:0.95rem;font-weight:700;color:#fff;margin-bottom:0.4rem;}
+    .edr-flow-desc {font-size:0.78rem;color:rgba(255,255,255,0.45);line-height:1.6;}
+
+    /* Product cards */
+    .edr-products {
+      padding:0 0 6rem;
+    }
+    .edr-cards {
+      display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem;
+    }
+    @media(max-width:900px){.edr-cards{grid-template-columns:1fr;max-width:480px;margin-left:auto;margin-right:auto;}}
+    .edr-card {
+      background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.08);
+      border-radius:16px;padding:2rem;display:flex;flex-direction:column;
+      transition:border-color 0.2s,transform 0.2s,box-shadow 0.2s;position:relative;overflow:hidden;
+    }
+    .edr-card:hover{transform:translateY(-4px);}
+    .edr-card-glow{position:absolute;top:-40px;left:50%;transform:translateX(-50%);width:200px;height:200px;border-radius:50%;opacity:0.08;filter:blur(40px);pointer-events:none;}
+    .edr-card-badge {
+      display:inline-flex;align-items:center;gap:0.4rem;
+      font-family:'Orbitron',monospace;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;
+      padding:0.3rem 0.75rem;border-radius:999px;border:1px solid;margin-bottom:1.5rem;
+    }
+    .edr-card-name {font-family:'Inter', sans-serif;font-size:1.4rem;font-weight:800;color:#fff;line-height:1.2;margin-bottom:0.5rem;}
+    .edr-card-sub {font-size:0.8rem;color:rgba(255,255,255,0.4);margin-bottom:1rem;letter-spacing:0.04em;}
+    .edr-card-desc {font-size:0.85rem;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:1.5rem;flex:1;}
+    .edr-card-tags {display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.75rem;}
+    .edr-tag {
+      font-size:0.7rem;padding:0.2rem 0.6rem;border-radius:4px;
+      background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);
+      color:rgba(255,255,255,0.5);
+    }
+    .edr-card-btn {
+      display:inline-flex;align-items:center;justify-content:center;gap:0.4rem;
+      font-family:'Orbitron',monospace;font-size:0.75rem;font-weight:700;
+      padding:0.65rem 1.25rem;border-radius:8px;border:1px solid;
+      text-decoration:none;transition:opacity 0.2s,transform 0.15s;
+    }
+    .edr-card-btn:hover{opacity:0.85;transform:translateX(2px);}
+
+    /* Divider */
+    .section-divider{width:48px;height:3px;border-radius:2px;background:#3DDC97;margin:0 auto 1.25rem;}
+
+    /* Why EDR */
+    .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem;}
+    @media(max-width:768px){.why-grid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:480px){.why-grid{grid-template-columns:1fr;}}
+    .why-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:1.25rem;}
+    .why-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:rgba(61,220,151,0.1);border:1px solid rgba(61,220,151,0.2);margin-bottom:0.875rem;}
+    .why-title{font-size:0.875rem;font-weight:700;color:#fff;margin-bottom:0.4rem;}
+    .why-desc{font-size:0.775rem;color:rgba(255,255,255,0.45);line-height:1.6;}
+  </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-78TQ277930"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-78TQ277930');
+</script>
+<script src="/lang.js"></script>
+
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"ホーム","item": "https://hexionnetworks.com/ja/"},
+    {"@type":"ListItem","position":2,"name":"製品","item": "https://hexionnetworks.com/ja/products/"},
+    {"@type":"ListItem","position":3,"name":"EDR エンドポイント保護","item": "https://hexionnetworks.com/ja/products/edr/"}
+  ]
+}
+</script>
+</head>
+<body>
+<div id="page-loader"><img src="/brand_assets/logo.png" alt="" class="loader-logo" /><div class="loader-ring-wrap"><div class="loader-ring loader-ring-outer"></div><div class="loader-ring loader-ring-inner"></div><div class="loader-dot"></div></div></div>
+<div class="topbar">
+  <div class="topbar-social-group"><a href="https://www.facebook.com/profile.php?id=61576794144217" target="_blank" rel="noopener noreferrer" class="topbar-social" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a><a href="https://www.instagram.com/tdb_lab/" target="_blank" rel="noopener noreferrer" class="topbar-social" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a></div><a href="/ja/contact/">お問い合わせ</a>
+  <a href="/ja/blog/" class="topbar-highlight">最新セキュリティレポート →</a>
+  <a href="#" id="zh-toggle" class="lang-btn">中文</a>
+  <a href="#" id="en-toggle" class="lang-btn">EN</a>
+</div>
+<nav>
+  <a href="/ja/" class="nav-logo"><img src="/brand_assets/logo.png" alt="Hexion Networks" /></a>
+  <div class="nav-links">
+    <div class="nav-item"><a href="/ja/services/">サービス</a></div>
+    <div class="nav-item active">
+      <button>
+        製品
+        <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M8 11L3 6h10z"/></svg>
+      </button>
+      <div class="mega" style="width:560px;grid-template-columns:1fr 1fr">
+        <div class="mega-col" style="border-right:1px solid rgba(255,255,255,0.06)">
+          <div class="mega-label" style="color:var(--teal)">LIONIC NGFWシリーズ</div>
+          <a href="/ja/products/pico-utm-100/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.15);color:var(--o)">IT</span>
+            Pico-UTM 100
+          </a>
+          <a href="/ja/products/dual-ark-utm-16/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(0,200,200,0.12);color:var(--teal)">IoT</span>
+            Ark-UTM 16
+          </a>
+          <a href="/ja/products/tera-utm-12/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.12);color:#FF7A45">OT</span>
+            Tera-UTM 12
+          </a>
+          <a href="/ja/products/lionfilter-200/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(167,139,250,0.12);color:#A78BFA">NET</span>
+            Lionfilter 200
+          </a>
+        </div>
+        <div class="mega-col" style="background:rgba(61,220,151,0.025)">
+          <div class="mega-label" style="color:#3DDC97">Endpoint Detection &amp; Response</div>
+          <a href="/ja/products/endblock/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.15);color:#3DDC97">EDR</span>
+            Endblock
+          </a>
+          <a href="/ja/products/teamt5/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.12);color:#3DDC97">TI</span>
+            TeamT5
+          </a>
+          <a href="/ja/products/cycraft/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.1);color:#3DDC97">AI</span>
+            CyCraft AI
+          </a>
+          <a href="/ja/products/defender-xdr/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(0,120,212,0.15);color:#0078D4">XDR</span>
+            Microsoft Defender XDR
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-item" style="display:none"><a href="/ja/research/">調査・研究</a></div>
+    <div class="nav-item"><a href="/ja/blog/">ブログ</a></div>
+    <div class="nav-item"><a href="/ja/about/">会社概要</a></div>
+  </div>
+  <div class="nav-cta">
+    <a href="https://line.me/R/ti/p/@278zhddk" target="_blank" class="nav-line-btn">LINE チャット</a>
+    <a href="/ja/contact/" class="btn btn-orange" style="padding:0.5rem 1.125rem;font-size:0.8125rem;">お見積り →</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="prod-hero">
+  <div class="prod-hero-glow" style="background:radial-gradient(ellipse 60% 50% at 60% 40%,rgba(61,220,151,0.1) 0%,transparent 70%)"></div>
+  <div class="prod-hero-grid" style="background-image:linear-gradient(rgba(61,220,151,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(61,220,151,0.03) 1px,transparent 1px);background-size:48px 48px"></div>
+  <div class="prod-hero-content reveal">
+    <div class="prod-breadcrumb"><a href="/ja/">ホーム</a> / <a href="/ja/products/">製品</a> / EDR Endpoint Protection</div>
+    <div class="edr-hero-badge">
+      <span class="edr-hero-badge-dot"></span>
+      エンドポイント検出・応答
+    </div>
+    <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap">Endpoint Detection & Response</h1>
+    <div class="prod-hero-title">EDR<br><span class="accent" style="color:#3DDC97">エンドポイント検出・応答</span></div>
+    <p class="prod-hero-tagline">攻撃が境界を突破したとき、EDR が最後の防衛線となります。</p>
+    <p class="prod-hero-desc">従来のウイルス対策はファイルレス攻撃・横断移動・メモリインジェクションに無力です。EDR はエンドポイントの行動を継続的に監視し、脅威をリアルタイムで検出・隔離・応答 — 被害が生じる前に対処し、攻撃の影響範囲を最小化します。Hexion Networks は3種類の EDR ソリューションを提供し、お客様の規模と要件に正確に適合させます。</p>
+    <div style="display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap">
+      <a href="#products" class="btn" style="background:#3DDC97;color:#07070F;border:none;font-weight:700;padding:0.75rem 1.5rem;border-radius:8px;font-size:0.9rem;transition:opacity 0.2s;text-decoration:none" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">ソリューション比較</a>
+      <a href="/ja/contact/" class="btn btn-ghost">相談を予約する</a>
+    </div>
+  </div>
+  <div class="prod-hero-visual" style="display:flex;align-items:center;justify-content:center;">
+    <svg viewBox="0 0 400 340" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:85%;max-width:380px;">
+      <defs>
+        <radialGradient id="edrHeroGlow"><stop offset="0%" stop-color="#3DDC97" stop-opacity="0.15"/><stop offset="100%" stop-color="#3DDC97" stop-opacity="0"/></radialGradient>
+        <filter id="edrHeroBlur"><feGaussianBlur stdDeviation="12"/></filter>
+      </defs>
+      <ellipse cx="200" cy="170" rx="170" ry="140" fill="url(#edrHeroGlow)" filter="url(#edrHeroBlur)"/>
+      <!-- Shield -->
+      <path d="M200 55 L270 85 L270 155 Q270 210 200 240 Q130 210 130 155 L130 85 Z" fill="rgba(61,220,151,0.07)" stroke="rgba(61,220,151,0.4)" stroke-width="1.5"/>
+      <path d="M200 75 L252 99 L252 155 Q252 198 200 222 Q148 198 148 155 L148 99 Z" fill="rgba(61,220,151,0.04)" stroke="rgba(61,220,151,0.2)" stroke-width="1"/>
+      <!-- Checkmark -->
+      <path d="M175 155 L192 172 L225 138" stroke="#3DDC97" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Orbiting dots -->
+      <circle cx="200" cy="44" r="5" fill="#3DDC97" opacity="0.8"/>
+      <circle cx="284" cy="100" r="4" fill="#3DDC97" opacity="0.5"/>
+      <circle cx="116" cy="100" r="4" fill="#3DDC97" opacity="0.5"/>
+      <circle cx="200" cy="260" r="5" fill="#3DDC97" opacity="0.6"/>
+      <!-- Labels -->
+      <rect x="78" y="132" width="48" height="18" rx="4" fill="rgba(61,220,151,0.1)" stroke="rgba(61,220,151,0.3)" stroke-width="0.75"/>
+      <text x="102" y="144" text-anchor="middle" font-family="Inter" font-size="6.5" fill="rgba(61,220,151,0.9)" font-weight="600">DETECT</text>
+      <rect x="274" y="132" width="48" height="18" rx="4" fill="rgba(61,220,151,0.1)" stroke="rgba(61,220,151,0.3)" stroke-width="0.75"/>
+      <text x="298" y="144" text-anchor="middle" font-family="Inter" font-size="6.5" fill="rgba(61,220,151,0.9)" font-weight="600">RESPOND</text>
+      <rect x="174" y="268" width="52" height="18" rx="4" fill="rgba(61,220,151,0.1)" stroke="rgba(61,220,151,0.3)" stroke-width="0.75"/>
+      <text x="200" y="280" text-anchor="middle" font-family="Inter" font-size="6.5" fill="rgba(61,220,151,0.9)" font-weight="600">ISOLATE</text>
+      <!-- Threat nodes blocked -->
+      <circle cx="66" cy="200" r="10" fill="rgba(255,80,80,0.12)" stroke="rgba(255,80,80,0.4)" stroke-width="1"/>
+      <text x="66" y="204" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,80,80,0.8)">✕</text>
+      <circle cx="334" cy="200" r="10" fill="rgba(255,80,80,0.12)" stroke="rgba(255,80,80,0.4)" stroke-width="1"/>
+      <text x="334" y="204" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,80,80,0.8)">✕</text>
+      <circle cx="66" cy="140" r="10" fill="rgba(255,80,80,0.1)" stroke="rgba(255,80,80,0.3)" stroke-width="1"/>
+      <text x="66" y="144" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,80,80,0.7)">✕</text>
+      <!-- Lines from threats to shield edge -->
+      <line x1="76" y1="200" x2="128" y2="175" stroke="rgba(61,220,151,0.15)" stroke-width="0.75" stroke-dasharray="3 3"/>
+      <line x1="324" y1="200" x2="272" y2="175" stroke="rgba(61,220,151,0.15)" stroke-width="0.75" stroke-dasharray="3 3"/>
+    </svg>
+  </div>
+</div>
+
+<!-- What is EDR -->
+<section style="background:rgba(255,255,255,0.015);border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);">
+  <div class="edr-explainer">
+    <div style="text-align:center;margin-bottom:1rem;">
+      <div class="section-divider"></div>
+      <div class="sec-tag reveal" style="color:#3DDC97;border-color:rgba(61,220,151,0.3);display:inline-flex;">EDR とは？</div>
+      <h2 class="sec-h reveal" style="margin-top:0.75rem;">エンドポイントの継続的な監視と<br><span style="color:#3DDC97">リアルタイム脅威応答</span></h2>
+      <p class="sec-p reveal" style="max-width:640px;margin:0 auto;">EDR（エンドポイント検出・応答）はすべてのデバイスから行動テレメトリを継続的に収集し、AI とルールベースのエンジンで異常を識別、攻撃が拡散する前に自動応答 — 従来のウイルス対策やファイアウォールでは補えない重要なギャップを埋めます。</p>
+    </div>
+    <div class="edr-flow reveal">
+      <div class="edr-flow-step">
+        <div class="edr-flow-num">01</div>
+        <div class="edr-flow-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#3DDC97" stroke-width="1.5"/><path d="M12 7v5l3 3" stroke="#3DDC97" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="edr-flow-title">継続的な収集</div>
+        <div class="edr-flow-desc">プロセス・ネットワーク接続・レジストリキー・ファイル操作の行動テレメトリをリアルタイム取得</div>
+      </div>
+      <div class="edr-flow-step">
+        <div class="edr-flow-num">02</div>
+        <div class="edr-flow-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" stroke="#3DDC97" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="edr-flow-title">脅威検出</div>
+        <div class="edr-flow-desc">AI 行動分析と MITRE ATT&amp;CK フレームワークを組み合わせてファイルレス攻撃・横断移動・高度な脅威を識別</div>
+      </div>
+      <div class="edr-flow-step">
+        <div class="edr-flow-num">03</div>
+        <div class="edr-flow-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.5 5.5L20 9l-4 4 1 6-5-2.5L7 19l1-6-4-4 5.5-1.5z" stroke="#3DDC97" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="edr-flow-title">調査・分析</div>
+        <div class="edr-flow-desc">完全な攻撃チェーンを自動再構築し、根本原因分析を提供して MTTD / MTTR を大幅短縮</div>
+      </div>
+      <div class="edr-flow-step">
+        <div class="edr-flow-num">04</div>
+        <div class="edr-flow-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4M12 3a9 9 0 1 0 0 18A9 9 0 0 0 12 3z" stroke="#3DDC97" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="edr-flow-title">リアルタイム応答</div>
+        <div class="edr-flow-desc">感染したエンドポイントを自動隔離し、悪意あるプロセスを終了、脅威を排除、横断拡散を阻止</div>
+      </div>
+    </div>
+
+    <!-- Why EDR -->
+    <div style="margin-top:4rem;text-align:center;">
+      <h3 style="font-family:'Inter', sans-serif;font-size:1.3rem;font-weight:800;color:#fff;margin-bottom:0.5rem;">'従来の保護ではなぜ不十分なのか？</h3>
+      <p style="font-size:0.85rem;color:rgba(255,255,255,0.45);margin-bottom:0;">現代の攻撃者はファイアウォールとウイルス対策を回避できます — EDR がこの重要なギャップを埋めます。</p>
+    </div>
+    <div class="why-grid reveal">
+      <div class="why-card">
+        <div class="why-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2L4 7v5c0 5.25 3.5 9.74 8 11 4.5-1.26 8-5.75 8-11V7z" stroke="#3DDC97" stroke-width="1.5"/></svg></div>
+        <div class="why-title">ファイルレス攻撃</div>
+        <div class="why-desc">悪意あるコードがメモリに直接注入され、ディスク上に痕跡を残さない — 従来のウイルス対策には完全に不可視</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M17 8l4 4-4 4M7 8l-4 4 4 4M14 4l-4 16" stroke="#3DDC97" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <div class="why-title">横断移動</div>
+        <div class="why-desc">攻撃者が数週間潜伏し、ネットワーク内をゆっくり横断 — 境界防御では検出不可能</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#3DDC97" stroke-width="1.5"/><path d="M12 8v4M12 16h.01" stroke="#3DDC97" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <div class="why-title">サプライチェーン侵害</div>
+        <div class="why-desc">信頼できるソフトウェアアップデートを通じて埋め込まれたバックドア — シグネチャ検証では行動異常を検出できない</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zM8 12h8M12 8v8" stroke="#3DDC97" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <div class="why-title">ランサムウェア</div>
+        <div class="why-desc">暗号化はミリ秒以内に始まる — 拡散前にブロックできるのは行動検出だけ</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z" stroke="#3DDC97" stroke-width="1.5"/><path d="M12 12h.01" stroke="#3DDC97" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="why-title">内部脅威</div>
+        <div class="why-desc">正規の認証情報を持つ内部者の異常行動 — 行動ベースラインだけが検出できる</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2S9.6 4 8 6.4a13.6 13.6 0 0 0-5 0C1.4 4 .5 6.8.5 6.8A4.2 4.2 0 0 0 0 10c-.1 1.2.4 2.3 1.3 3.2C1.3 18.6 4 19.7 6.8 20c-.6.6-.6 1-.5 2V21" stroke="#3DDC97" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="why-title">APT 持続的脅威</div>
+        <div class="why-desc">国家レベルの攻撃者が長期間持続する — TTP パターンを識別するには継続的な行動監視が必要</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Product Cards -->
+<section id="products">
+  <div class="edr-products">
+    <div style="text-align:center;padding-top:5rem;margin-bottom:0.5rem;">
+      <div class="section-divider"></div>
+      <div class="sec-tag reveal" style="color:#3DDC97;border-color:rgba(61,220,151,0.3);display:inline-flex;">3種類の EDR ソリューション</div>
+      <h2 class="sec-h reveal" style="margin-top:0.75rem;">ニーズに合った<span style="color:#3DDC97">ソリューションを選択</span></h2>
+      <p class="sec-p reveal" style="max-width:560px;margin:0 auto;">Hexion Networks は3つの個性的な EDR ベンダーを取り扱っています —'企業規模・予算・IT 成熟度を問わず、最適なソリューションがあります。</p>
+    </div>
+    <div class="edr-cards reveal">
+
+      <!-- Endblock -->
+      <div class="edr-card" style="border-color:rgba(61,220,151,0.15);" onmouseover="this.style.borderColor='rgba(61,220,151,0.4)';this.style.boxShadow='0 16px 48px rgba(61,220,151,0.08)'" onmouseout="this.style.borderColor='rgba(61,220,151,0.15)';this.style.boxShadow='none'">
+        <div class="edr-card-glow" style="background:#3DDC97;"></div>
+        <div class="edr-card-badge" style="color:#3DDC97;border-color:rgba(61,220,151,0.35);background:rgba(61,220,151,0.08);">
+          <span style="width:5px;height:5px;border-radius:50%;background:#3DDC97;box-shadow:0 0 6px #3DDC97;"></span>
+          EDR · 行動型保護
+        </div>
+        <div class="edr-card-name">Endblock</div>
+        <div class="edr-card-sub">エンタープライズ EDR — 軽量・高効率</div>
+        <div class="edr-card-desc">超軽量エージェント（CPU 1%未満）とリアルタイム行動分析でランサムウェア・ファイルレス攻撃・横断移動をシグネチャ更新なしでブロック。リーンな IT 予算でエンタープライズグレードの保護が必要な中小企業に最適。</div>
+        <div class="edr-card-tags">
+          <span class="edr-tag">ランサムウェアブロック</span>
+          <span class="edr-tag">ファイルレス攻撃防御</span>
+          <span class="edr-tag">軽量エージェント</span>
+          <span class="edr-tag">行動分析</span>
+          <span class="edr-tag">自動隔離</span>
+        </div>
+        <a href="/ja/products/endblock/" class="edr-card-btn" style="color:#3DDC97;border-color:rgba(61,220,151,0.35);background:rgba(61,220,151,0.06);">
+          Learn More About Endblock
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M8.5 3.5L13 8l-4.5 4.5-.707-.707L11.086 8.5H3v-1h8.086L7.793 4.207z"/></svg>
+        </a>
+      </div>
+
+      <!-- TeamT5 -->
+      <div class="edr-card" style="border-color:rgba(61,220,151,0.1);" onmouseover="this.style.borderColor='rgba(100,200,255,0.4)';this.style.boxShadow='0 16px 48px rgba(100,200,255,0.06)'" onmouseout="this.style.borderColor='rgba(61,220,151,0.1)';this.style.boxShadow='none'">
+        <div class="edr-card-glow" style="background:#64C8FF;"></div>
+        <div class="edr-card-badge" style="color:#64C8FF;border-color:rgba(100,200,255,0.35);background:rgba(100,200,255,0.08);">
+          <span style="width:5px;height:5px;border-radius:50%;background:#64C8FF;box-shadow:0 0 6px #64C8FF;"></span>
+          TI · 脅威インテリジェンス
+        </div>
+        <div class="edr-card-name">TeamT5</div>
+        <div class="edr-card-sub">ThreatVision — アジア太平洋 APT インテリジェンス</div>
+        <div class="edr-card-desc">10年以上のアジア太平洋深層研究を持つ脅威インテリジェンスプラットフォーム。台湾を標的とした APT アクターの追跡に特化し、リアルタイム IOC 購読・攻撃者 TTP 分析・脅威ハンティングサービスを提供。積極的な防御が必要な組織向け。</div>
+        <div class="edr-card-tags">
+          <span class="edr-tag">APT 追跡</span>
+          <span class="edr-tag">IOC Intelligence Feed</span>
+          <span class="edr-tag">脅威ハンティング</span>
+          <span class="edr-tag">APAC Threat Perspective</span>
+          <span class="edr-tag">TTP Analysis</span>
+        </div>
+        <a href="/ja/products/teamt5/" class="edr-card-btn" style="color:#64C8FF;border-color:rgba(100,200,255,0.35);background:rgba(100,200,255,0.06);">
+          Learn More About TeamT5
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M8.5 3.5L13 8l-4.5 4.5-.707-.707L11.086 8.5H3v-1h8.086L7.793 4.207z"/></svg>
+        </a>
+      </div>
+
+      <!-- CyCraft -->
+      <div class="edr-card" style="border-color:rgba(167,139,250,0.1);" onmouseover="this.style.borderColor='rgba(167,139,250,0.4)';this.style.boxShadow='0 16px 48px rgba(167,139,250,0.06)'" onmouseout="this.style.borderColor='rgba(167,139,250,0.1)';this.style.boxShadow='none'">
+        <div class="edr-card-glow" style="background:#A78BFA;"></div>
+        <div class="edr-card-badge" style="color:#A78BFA;border-color:rgba(167,139,250,0.35);background:rgba(167,139,250,0.08);">
+          <span style="width:5px;height:5px;border-radius:50%;background:#A78BFA;box-shadow:0 0 6px #A78BFA;"></span>
+          AI · Automated Investigation
+        </div>
+        <div class="edr-card-name">CyCraft AI</div>
+        <div class="edr-card-sub">CyCraft AIR — AI-Driven Security</div>
+        <div class="edr-card-desc">AI-automated security investigations reduce incident response time by 80%. Provides full endpoint visibility, complete attack chain reconstruction, and automated forensic reports — ideal for SOC teams or organizations seeking MDR services.</div>
+        <div class="edr-card-tags">
+          <span class="edr-tag">AI Auto-Investigation</span>
+          <span class="edr-tag">Attack Chain Reconstruction</span>
+          <span class="edr-tag">MDR サービス</span>
+          <span class="edr-tag">MITRE ATT&amp;CK</span>
+          <span class="edr-tag">Auto Forensic Reports</span>
+        </div>
+        <a href="/ja/products/cycraft/" class="edr-card-btn" style="color:#A78BFA;border-color:rgba(167,139,250,0.35);background:rgba(167,139,250,0.06);">
+          Learn More About CyCraft
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M8.5 3.5L13 8l-4.5 4.5-.707-.707L11.086 8.5H3v-1h8.086L7.793 4.207z"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="border-top:1px solid rgba(255,255,255,0.06);padding:5rem 1.5rem;text-align:center;">
+  <div style="max-width:600px;margin:0 auto;" class="reveal">
+    <div class="section-divider"></div>
+    <h2 class="sec-h" style="margin-top:0.75rem;">Not Sure Which Solution<span style="color:#3DDC97"> Is Right for You?</span></h2>
+    <p class="sec-p" style="max-width:480px;margin:0 auto 2rem;">Our security consultants will evaluate your environment size, existing tools, and threat exposure to recommend the best EDR combination for you.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="/ja/contact/" class="btn" style="background:#3DDC97;color:#07070F;border:none;font-weight:700;padding:0.75rem 1.75rem;border-radius:8px;font-size:0.9rem;transition:opacity 0.2s;text-decoration:none" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Book a Free Consultation</a>
+      <a href="https://line.me/R/ti/p/@278zhddk" target="_blank" class="btn btn-ghost">LINE チャット</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-top">
+    <div><a href="/ja/"><img src="/brand_assets/logo.png" alt="Hexion Networks" style="height:36px;filter:brightness(0) invert(1);opacity:0.85" /></a><p class="footer-brand-desc">ビジネス戦略、ブランドコンサルティング、IT、サイバーセキュリティを統合したサービス会社。</p></div>
+    <div><div class="f-col-title">製品</div><a href="/ja/products/pico-utm-100/" class="f-link">Pico-UTM 100</a><a href="/ja/products/dual-ark-utm-16/" class="f-link">Ark-UTM 16</a><a href="/ja/products/tera-utm-12/" class="f-link">Tera-UTM 12</a><a href="/ja/products/lionfilter-200/" class="f-link">Lionfilter 200</a><a href="/ja/products/edr/" class="f-link">EDR Solutions</a></div>
+    <div><div class="f-col-title">サービス</div><a href="/ja/services/" class="f-link">ビジネス戦略</a><a href="/ja/services/" class="f-link">ブランドコンサルティング</a><a href="/ja/services/" class="f-link">セキュリティ評価</a></div>
+    <div><div class="f-col-title">会社情報</div><a href="/ja/about/" class="f-link">会社概要</a><a href="/ja/blog/" class="f-link">ブログ</a><a href="/ja/contact/" class="f-link">お問い合わせ</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 HEXION NETWORKS.</span>
+    <div class="footer-legal"><a href="#">プライバシーポリシー</a><a href="#">利用規約</a></div>
+  </div>
+</footer>
+
+<script>
+// Reveal on scroll
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+}, { threshold: 0.1 });
+revealEls.forEach(el => revealObserver.observe(el));
+
+// Nav dropdown
+document.querySelectorAll('.nav-item > button').forEach(btn => {
+  btn.addEventListener('click', e => {
+    const item = btn.closest('.nav-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+    e.stopPropagation();
+  });
+});
+document.addEventListener('click', () => document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('open')));
+</script>
+<script>var _ls=Date.now();window.addEventListener("load",function(){var l=document.getElementById("page-loader");if(!l)return;var elapsed=Date.now()-_ls,wait=Math.max(0,800-elapsed);setTimeout(function(){l.classList.add("out");setTimeout(function(){l.remove()},520)},wait)});</script>
+</body>
+</html>

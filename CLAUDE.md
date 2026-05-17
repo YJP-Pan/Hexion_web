@@ -128,3 +128,7 @@ git push origin main
 ```
 
 GitHub Pages deploys automatically on push. Deployment typically takes 1–2 minutes.
+
+
+
+

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IoT セキュリティ課題 | OT/IT 統合保護戦略 2026 — Hexion Networks</title>
+  <meta name="description" content="エンタープライズ IoT デバイス数は爆発的に増加していますが、ほとんどのデバイスはセキュリティ設計が脆弱です。本記事はネットワーク分離と異常検出によるリスク低減のための実践的な IoT セキュリティ管理フレームワークを提供します。" />
+  <meta name="keywords" content="IoT security,Internet of Things security,network segmentation,asset inventory,medical IoT,OT security,NGFW,firewall, Hexion Networks" />  <meta name="language" content="ja" />
+  <meta name="geo.region" content="TW-KHH" />
+  <meta name="geo.placename" content="Kaohsiung, Taiwan" />
+  <meta name="geo.position" content="22.627;120.302" />
+  <meta name="ICBM" content="22.627, 120.302" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hexionnetworks.com/ja/blog/iot-security-challenges/" />
+  <link rel="alternate" hreflang="zh-TW" href="https://hexionnetworks.com/blog/iot-security-challenges/" />
+  <link rel="alternate" hreflang="en" href="https://hexionnetworks.com/en/blog/iot-security-challenges/" />
+  <link rel="alternate" hreflang="ja" href="https://hexionnetworks.com/ja/blog/iot-security-challenges/" />
+  <link rel="alternate" hreflang="x-default" href="https://hexionnetworks.com/blog/iot-security-challenges/" />
+  <meta property="og:title" content="IoT セキュリティ課題 | OT/IT 統合保護戦略 2026 — Hexion Networks" />
+  <meta property="og:description" content="エンタープライズ IoT デバイス数は爆発的に増加していますが、ほとんどのデバイスはセキュリティ設計が脆弱です。本記事は効果的なリスク低減のための実践的な IoT セキュリティ管理フレームワークを提供します。" />
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta property="og:url" content="https://hexionnetworks.com/ja/blog/iot-security-challenges/" />
+  <meta property="og:image" content="https://hexionnetworks.com/brand_assets/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="IoT セキュリティ課題 | OT/IT 統合保護戦略 2026 — Hexion Networks" />
+  <meta name="twitter:description" content="エンタープライズ IoT デバイス数は爆発的に増加していますが、ほとんどのデバイスはセキュリティ設計が脆弱です。本記事はネットワーク分離と異常検出によるリスク低減のための実践的な IoT セキュリティ管理フレームワークを提供します。" />
+  <meta name="twitter:image" content="https://hexionnetworks.com/brand_assets/logo.png" />
+  <link rel="icon" href="/brand_assets/favicon.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"IoT セキュリティ課題 | OT/IT 統合保護戦略 2026","datePublished":"2025-09-15","dateModified":"2025-09-15","author":{"@type":"Organization","name":"Hexion Networks"},"publisher":{"@type":"Organization","name":"Hexion Networks","url":"https://hexionnetworks.com"},"url": "https://hexionnetworks.com/ja/blog/iot-security-challenges/"}</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-78TQ277930"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-78TQ277930');
+</script>
+<script src="/lang.js"></script>
+
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"ホーム","item": "https://hexionnetworks.com/ja/"},
+    {"@type":"ListItem","position":2,"name":"セキュリティインテリジェンス","item": "https://hexionnetworks.com/ja/blog/"},
+    {"@type":"ListItem","position":3,"name":"IoT セキュリティ課題","item": "https://hexionnetworks.com/ja/blog/iot-security-challenges/"}
+  ]
+}
+</script>
+</head>
+<body>
+<div id="page-loader"><img src="/brand_assets/logo.png" alt="" class="loader-logo" /><div class="loader-ring-wrap"><div class="loader-ring loader-ring-outer"></div><div class="loader-ring loader-ring-inner"></div><div class="loader-dot"></div></div></div>
+<div class="topbar">
+  <div class="topbar-social-group"><a href="https://www.facebook.com/profile.php?id=61576794144217" target="_blank" rel="noopener noreferrer" class="topbar-social" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a><a href="https://www.instagram.com/tdb_lab/" target="_blank" rel="noopener noreferrer" class="topbar-social" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a></div><a href="/ja/contact/">お問い合わせ</a>
+  <a href="/ja/blog/" class="topbar-highlight">最新セキュリティレポート →</a>
+  <a href="#" id="zh-toggle" class="lang-btn">中文</a>
+  <a href="#" id="en-toggle" class="lang-btn">EN</a>
+</div>
+<nav>
+  <a href="/ja/" class="nav-logo"><img src="/brand_assets/logo.png" alt="Hexion Networks" /></a>
+  <div class="nav-links">
+    <div class="nav-item"><a href="/ja/services/">サービス</a></div>
+    <div class="nav-item">
+      <button>
+        製品
+        <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M8 11L3 6h10z"/></svg>
+      </button>
+      <div class="mega" style="width:560px;grid-template-columns:1fr 1fr">
+        <div class="mega-col" style="border-right:1px solid rgba(255,255,255,0.06)">
+          <div class="mega-label" style="color:var(--teal)">LIONIC NGFWシリーズ</div>
+          <a href="/ja/products/pico-utm-100/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.15);color:var(--o)">IT</span>
+            Pico-UTM 100
+          </a>
+          <a href="/ja/products/dual-ark-utm-16/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(0,200,200,0.12);color:var(--teal)">IoT</span>
+            Ark-UTM 16
+          </a>
+          <a href="/ja/products/tera-utm-12/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.12);color:#FF7A45">OT</span>
+            Tera-UTM 12
+          </a>
+          <a href="/ja/products/lionfilter-200/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(167,139,250,0.12);color:#A78BFA">NET</span>
+            Lionfilter 200
+          </a>
+        </div>
+        <div class="mega-col" style="background:rgba(61,220,151,0.025)">
+          <div class="mega-label" style="color:#3DDC97">Endpoint Detection &amp; Response</div>
+          <a href="/ja/products/endblock/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.15);color:#3DDC97">EDR</span>
+            Endblock
+          </a>
+          <a href="/ja/products/teamt5/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.12);color:#3DDC97">TI</span>
+            TeamT5
+          </a>
+          <a href="/ja/products/cycraft/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.1);color:#3DDC97">AI</span>
+            CyCraft AI
+          </a>
+          <a href="/ja/products/defender-xdr/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(0,120,212,0.15);color:#0078D4">XDR</span>
+            Microsoft Defender XDR
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-item" style="display:none"><a href="/ja/research/">調査・研究</a></div>
+    <div class="nav-item active"><a href="/ja/blog/">ブログ</a></div>
+    <div class="nav-item"><a href="/ja/about/">会社概要</a></div>
+  </div>
+  <div class="nav-cta">
+    <a href="https://line.me/R/ti/p/@278zhddk" target="_blank" class="nav-line-btn">LINE チャット</a>
+    <a href="/ja/contact/" class="btn btn-orange" style="padding:0.5rem 1.125rem;font-size:0.8125rem;">お見積り →</a>
+  </div>
+</nav>
+
+<div class="page-hero" style="padding-bottom:3rem">
+  <div style="padding:0 var(--px)">
+    <div class="reveal" style="display:flex;gap:0.5rem;margin-bottom:1.5rem">
+      <a href="/ja/blog/" style="color:var(--silver);font-size:0.8rem;text-decoration:none">ブログ</a>
+      <span style="color:var(--silver);font-size:0.8rem">/</span>
+      <span style="color:var(--o);font-size:0.8rem">技術ガイド</span>
+    </div>
+    <div class="reveal">
+      <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(250,88,34,0.1);border:1px solid rgba(250,88,34,0.3);border-radius:4px;padding:0.25rem 0.75rem;font-family:'Orbitron',monospace;font-size:0.65rem;color:#FA5822;letter-spacing:0.1em;margin-bottom:1.25rem">技術ガイド</div>
+      <h1 style="font-family:'Inter', sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.025em;line-height:1.15;margin-bottom:1.25rem">IoT デバイスセキュリティ管理：組織の IoT デバイスを保護する方法</h1>
+      <p style="color:var(--silver);font-size:1.0625rem;line-height:1.7;margin-bottom:2rem">エンタープライズ IoT デバイス数は爆発的に増加していますが、ほとんどのデバイスはセキュリティ設計が脆弱です。本記事は実践的な IoT セキュリティ管理フレームワークを提供し、組織が効果的にリスクを低減できるよう支援します。</p>
+      <div style="display:flex;align-items:center;gap:1.5rem;color:var(--silver);font-size:0.8125rem;border-top:1px solid var(--ink-4);padding-top:1.5rem">
+        <span>Hexion Networks セキュリティリサーチチーム</span><span>·</span><span>2025年9月15日</span><span>·</span><span>読了 6分</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="padding:3rem var(--px) 5rem">
+
+  <!-- SVG Banner -->
+  <div class="reveal" style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:12px;overflow:hidden;margin-bottom:3rem;aspect-ratio:16/7;display:flex;align-items:center;justify-content:center">
+    <svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+      <defs>
+        <linearGradient id="iot-bg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#0A0A14"/>
+          <stop offset="100%" stop-color="#11111E"/>
+        </linearGradient>
+      </defs>
+      <rect width="800" height="350" fill="url(#iot-bg)"/>
+      <!-- IoT Zone -->
+      <rect x="20" y="50" width="175" height="250" rx="10" fill="rgba(250,88,34,0.05)" stroke="rgba(250,88,34,0.3)" stroke-width="1" stroke-dasharray="5,3"/>
+      <text x="107" y="75" text-anchor="middle" font-family="'Orbitron',monospace" font-size="9" fill="#FA5822" letter-spacing="1">IoT ZONE</text>
+      <!-- IoT device icons -->
+      <rect x="35" y="90" width="55" height="22" rx="3" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="62" y="105" text-anchor="middle" font-family="monospace" font-size="8" fill="#8B8BA8">IP Camera</text>
+      <rect x="105" y="90" width="55" height="22" rx="3" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="132" y="105" text-anchor="middle" font-family="monospace" font-size="8" fill="#8B8BA8">Sensor</text>
+      <rect x="35" y="130" width="55" height="22" rx="3" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="62" y="145" text-anchor="middle" font-family="monospace" font-size="8" fill="#8B8BA8">Printer</text>
+      <rect x="105" y="130" width="55" height="22" rx="3" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="132" y="145" text-anchor="middle" font-family="monospace" font-size="8" fill="#8B8BA8">HVAC</text>
+      <rect x="35" y="170" width="55" height="22" rx="3" fill="#1A1A2C" stroke="#FA5822" stroke-width="1"/>
+      <text x="62" y="185" text-anchor="middle" font-family="monospace" font-size="8" fill="#FA5822">Badge Rdr</text>
+      <rect x="105" y="170" width="55" height="22" rx="3" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="132" y="185" text-anchor="middle" font-family="monospace" font-size="8" fill="#8B8BA8">PLC</text>
+      <rect x="70" y="220" width="60" height="22" rx="3" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="100" y="235" text-anchor="middle" font-family="monospace" font-size="8" fill="#8B8BA8">Smart TV</text>
+      <!-- NGFW center -->
+      <rect x="240" y="120" width="120" height="110" rx="10" fill="#11111E" stroke="#FA5822" stroke-width="1.5"/>
+      <text x="300" y="148" text-anchor="middle" font-family="'Orbitron',monospace" font-size="10" fill="#FA5822">NGFW</text>
+      <text x="300" y="166" text-anchor="middle" font-family="monospace" font-size="8" fill="#8B8BA8">Segmentation</text>
+      <text x="300" y="182" text-anchor="middle" font-family="monospace" font-size="8" fill="#8B8BA8">Policy Enforce</text>
+      <text x="300" y="198" text-anchor="middle" font-family="monospace" font-size="8" fill="#00C8C8">Anomaly Detect</text>
+      <text x="300" y="214" text-anchor="middle" font-family="monospace" font-size="8" fill="#00C8C8">DPI + IPS</text>
+      <!-- Arrows IoT → NGFW -->
+      <line x1="195" y1="175" x2="240" y2="175" stroke="#FA5822" stroke-width="1.5" stroke-dasharray="4,2" opacity="0.7"/>
+      <!-- Corp Zone -->
+      <rect x="410" y="50" width="175" height="100" rx="10" fill="rgba(0,200,200,0.05)" stroke="rgba(0,200,200,0.3)" stroke-width="1" stroke-dasharray="5,3"/>
+      <text x="497" y="73" text-anchor="middle" font-family="'Orbitron',monospace" font-size="9" fill="#00C8C8" letter-spacing="1">CORP ZONE</text>
+      <rect x="425" y="82" width="65" height="18" rx="3" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="457" y="95" text-anchor="middle" font-family="monospace" font-size="8" fill="#C4C4D8">Servers</text>
+      <rect x="505" y="82" width="65" height="18" rx="3" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="537" y="95" text-anchor="middle" font-family="monospace" font-size="8" fill="#C4C4D8">Workstns</text>
+      <rect x="425" y="112" width="145" height="18" rx="3" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="497" y="125" text-anchor="middle" font-family="monospace" font-size="8" fill="#C4C4D8">ERP / AD / Database</text>
+      <!-- Guest Zone -->
+      <rect x="410" y="200" width="175" height="100" rx="10" fill="rgba(139,139,168,0.05)" stroke="rgba(139,139,168,0.25)" stroke-width="1" stroke-dasharray="5,3"/>
+      <text x="497" y="223" text-anchor="middle" font-family="'Orbitron',monospace" font-size="9" fill="#8B8BA8" letter-spacing="1">GUEST ZONE</text>
+      <rect x="430" y="235" width="135" height="18" rx="3" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="497" y="248" text-anchor="middle" font-family="monospace" font-size="8" fill="#8B8BA8">Mobile / Visitor WiFi</text>
+      <rect x="430" y="265" width="135" height="18" rx="3" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="497" y="278" text-anchor="middle" font-family="monospace" font-size="8" fill="#8B8BA8">Contractor Devices</text>
+      <!-- Arrows NGFW → Zones -->
+      <line x1="360" y1="155" x2="410" y2="105" stroke="#00C8C8" stroke-width="1.5" opacity="0.7"/>
+      <line x1="360" y1="195" x2="410" y2="248" stroke="#8B8BA8" stroke-width="1" stroke-dasharray="3,2" opacity="0.5"/>
+      <!-- Isolated label -->
+      <rect x="610" y="155" width="110" height="30" rx="5" fill="rgba(250,88,34,0.15)" stroke="#FA5822" stroke-width="1.5"/>
+      <text x="665" y="174" text-anchor="middle" font-family="'Orbitron',monospace" font-size="9" fill="#FA5822">ISOLATED ✗</text>
+      <line x1="585" y1="170" x2="610" y2="170" stroke="#FA5822" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.7"/>
+      <text x="400" y="325" text-anchor="middle" font-family="'Orbitron',monospace" font-size="9" fill="#2E2E46" letter-spacing="2">IoT NETWORK SEGMENTATION — ZERO TRUST MODEL</text>
+    </svg>
+  </div>
+
+  <!-- Section 1 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">エンタープライズ IoT セキュリティの現状</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">Gartner の予測によると、2025 年に世界のコネクテッド IoT デバイス数は 300 億台を超えました。企業は急速に拡大する IoT デバイス導入の課題に直面しています：工場のセンサーと PLC、病院の医療機器、オフィスの IP カメラとスマートアクセス制御システム、小売の POS 端末とデジタルサイネージ — すべてが前例のないペースで企業ネットワークに接続されています。</p>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">IoT デバイスのセキュリティ設計は IT デバイスよりもはるかに遅れていることが多いのが問題です。多くのベンダーは市場投入時間とコスト削減を優先し、セキュリティは後回しです。これにより逆説が生まれます：最も保護が困難なデバイスが、最も直接的な物理的アクセス（カメラ、アクセス制御）や最も機密性の高いデータ（医療モニター、産業センサー）を持つことが多いのです。</p>
+    <p style="color:var(--silver);line-height:1.8">2021 年の Oldsmar 水処理場へのサイバー攻撃と、2023 年の台湾半導体メーカーのサプライヤーへの IoT 侵入は、IoT セキュリティが任意ではなく企業セキュリティの重要な構成要素であることを明確に示しています。</p>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">IoT デバイスの 3 つの構造的弱点</h2>
+    <div style="display:flex;flex-direction:column;gap:1rem">
+      <div style="background:var(--ink-2);border-left:3px solid #FA5822;padding:1.25rem 1.5rem;border-radius:0 8px 8px 0">
+        <div style="font-weight:600;color:var(--white);margin-bottom:0.5rem">デフォルト認証情報が変更されない</div>
+        <p style="color:var(--silver);line-height:1.75;font-size:0.9375rem">大量の IoT デバイスが同一のデフォルト認証情報（admin/admin や root/1234 など）で出荷されますが、IT 部門はこれらのデバイスをパスワード管理ポリシーに含めないことが多いです。Shodan 検索エンジンを使えば、インターネット上に露出してデフォルト認証情報を使い続けている台湾企業のデバイスが数万台も簡単に見つかります。</p>
+      </div>
+      <div style="background:var(--ink-2);border-left:3px solid #FA5822;padding:1.25rem 1.5rem;border-radius:0 8px 8px 0">
+        <div style="font-weight:600;color:var(--white);margin-bottom:0.5rem">ファームウェアが更新できないまたはベンダーサポートが終了</div>
+        <p style="color:var(--silver);line-height:1.75;font-size:0.9375rem">多くの IoT デバイスは更新メカニズムの設計が不十分であり、ベンダーがセキュリティパッチの提供を停止している（サポート終了）場合もあります。脆弱性が発見されると、これらのデバイスは交換されるまでリスクにさらされ続けます。予算制約のある中小企業環境では、交換サイクルが 5〜10 年に及ぶことも多いです。</p>
+      </div>
+      <div style="background:var(--ink-2);border-left:3px solid #FA5822;padding:1.25rem 1.5rem;border-radius:0 8px 8px 0">
+        <div style="font-weight:600;color:var(--white);margin-bottom:0.5rem">平文通信と弱い暗号化</div>
+        <p style="color:var(--silver);line-height:1.75;font-size:0.9375rem">一部の IoT デバイスは依然として Telnet、HTTP、FTP などの平文プロトコルで管理やデータ転送を行い、または既知の弱いアルゴリズム（MD5 や RC4 など）を使用しています。攻撃者はネットワーク上でパケットキャプチャを行うだけで、完全な管理認証情報とビジネスデータを取得できます。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">IoT 資産インベントリと発見：把握していなければ保護できない</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">IoT セキュリティ管理の最初のステップは、ネットワーク上に何があるかを把握することです。これは単純に聞こえますが、実際には最大の課題であることが多いです。シャドー IT は IoT 領域で特に深刻で、部門長が IT に通知せずにスマートデバイスを購入して接続することが頻繁にあります。</p>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">効果的な資産インベントリの方法：</p>
+    <ul style="color:var(--silver);line-height:1.8;padding-left:1.5rem;margin-bottom:1rem">
+      <li style="margin-bottom:0.5rem"><strong style="color:var(--white)">パッシブネットワーク探索：</strong> NGFW やネットワークセンサーを通じてトラフィックを分析し、能動的スキャンなしにデバイスの MAC アドレスベンダーと動作特性を識別して、機密デバイスへの影響を回避します。</li>
+      <li style="margin-bottom:0.5rem"><strong style="color:var(--white)">アクティブスキャン：</strong> Nmap や Nessus などのツールで定期スキャンを行いますが、一部の古い IoT デバイスはスキャン負荷に耐えられないことに注意してください。</li>
+      <li style="margin-bottom:0.5rem"><strong style="color:var(--white)">DHCP ログ分析：</strong> DHCP サーバーの記録から新しいデバイスの接続イベントを追跡します。</li>
+      <li style="margin-bottom:0.5rem"><strong style="color:var(--white)">802.1X ネットワークアクセス制御：</strong> すべてのデバイスに接続前の認証を要求し、デバイスインベントリを自動的に構築します。</li>
+    </ul>
+    <p style="color:var(--silver);line-height:1.8">資産インベントリには以下を含める必要があります：デバイス名とモデル、ファームウェアバージョン、管理インターフェースの場所、ビジネス機能、リスクレベル、および担当オーナー。このインベントリは、その後のすべての IoT セキュリティ作業の基盤となります。</p>
+  </div>
+
+  <!-- Section 4 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">ネットワーク分離戦略：信頼するより分離する</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">ネットワーク分離は IoT セキュリティにおいて最も効果的な技術的制御の一つです。コア原則：IoT デバイスが侵害されても、エンタープライズコアネットワークへの横移動ができないようにする。</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:1rem">
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1rem">
+        <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#FA5822;margin-bottom:0.5rem">ZONE 1</div>
+        <div style="font-weight:600;color:var(--white);margin-bottom:0.35rem">IoT 分離ゾーン</div>
+        <p style="color:var(--silver);font-size:0.85rem">カメラ、センサー、プリンター、HVAC — 必要な管理トラフィックのみ許可、横方向通信は禁止。</p>
+      </div>
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1rem">
+        <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#00C8C8;margin-bottom:0.5rem">ZONE 2</div>
+        <div style="font-weight:600;color:var(--white);margin-bottom:0.35rem">エンタープライズコアゾーン</div>
+        <p style="color:var(--silver);font-size:0.85rem">サーバー、ワークステーション、ERP、AD — IoT ゾーンからのトラフィックは厳格に制限。</p>
+      </div>
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1rem">
+        <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#8B8BA8;margin-bottom:0.5rem">ZONE 3</div>
+        <div style="font-weight:600;color:var(--white);margin-bottom:0.35rem">ゲストネットワークゾーン</div>
+        <p style="color:var(--silver);font-size:0.85rem">ゲスト WiFi および委託業者デバイス、すべての内部ネットワークから完全に分離。</p>
+      </div>
+    </div>
+    <p style="color:var(--silver);line-height:1.8">NGFW で各ゾーンに厳格なアクセス制御ポリシー（ACL）を定義し、「デフォルト拒否」ルールを設定します：明示的に必要なトラフィックのみ許可し、他のすべての通信はブロックします。</p>
+  </div>
+
+  <!-- Section 5 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">医療 IoT の特別な課題</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">医療 IoT セキュリティ（IoMT、モノのインターネット・メディカルとも呼ばれる）は、一般的なエンタープライズ環境よりもさらに深刻な課題に直面しています：</p>
+    <ul style="color:var(--silver);line-height:1.8;padding-left:1.5rem;margin-bottom:1rem">
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">セキュリティより可用性を優先：</strong> 心臓モニターや人工呼吸器などの生命維持装置は、容易に再起動やセキュリティパッチ適用ができません。いかなる干渉も患者の生命を危険にさらす可能性があります。医療機能に影響を与えずにセキュリティ対策を実施する必要があります。</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">規制コンプライアンス：</strong> 台湾の医療機関は個人情報保護法および医療法の適用を受けます。NHI（国民健康保険）データの漏洩は深刻な法的責任を引き起こす可能性があります。国際協力のための HIPAA などの国際標準への準拠も必要です。</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">極めて長いデバイスライフサイクル：</strong> 医療機器は通常 15〜20 年間使用され続け、Windows XP またはそれ以前のセキュリティアップデートを受け取れない OS で動作しているものも多いです。</li>
+    </ul>
+    <p style="color:var(--silver);line-height:1.8">Hexion は医療機関に「デバイスマイクロセグメンテーション」アプローチの採用を推奨します：高リスク医療機器ごとに個別の仮想ファイアウォールルールを確立し、デバイスが対応する病院情報システム（HIS）とのみ通信できるようにし、他のデバイスやインターネットへの直接接続を完全に禁止します。</p>
+  </div>
+
+  <!-- Section 6 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">異常行動検出：IoT 脅威に対する最後の防衛線</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">優れた分離とアクセス制御が整っていても、IoT デバイスは攻撃の踏み台として使用される可能性があります。異常行動検出は、すでに侵害されたデバイスを特定するための重要なメカニズムです。</p>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">IoT デバイスの動作は通常非常に予測可能です：IP カメラは NVR（ネットワークビデオレコーダー）とのみ通信すべきで、温湿度センサーは固定の収集サーバーにのみデータを送信すべきです。この「正常行動ベースライン」から逸脱する活動はアラートを発すべきです。例えば：</p>
+    <ul style="color:var(--silver);line-height:1.8;padding-left:1.5rem;margin-bottom:1rem">
+      <li style="margin-bottom:0.5rem">デバイスが突然他の IP アドレスのスキャンを開始する（ボットネットの横方向伝播行動の可能性）</li>
+      <li style="margin-bottom:0.5rem">未知の外部 IP への接続開始（C2 コマンド&コントロール通信の可能性）</li>
+      <li style="margin-bottom:0.5rem">異常な時間帯の高トラフィック量（深夜の大量アップロードはデータ漏洩の可能性）</li>
+      <li style="margin-bottom:0.5rem">予期しないプロトコルやポートの使用試行</li>
+    </ul>
+    <p style="color:var(--silver);line-height:1.8">現代の NGFW の行動ベースライン機能は、各 IoT デバイスの正常な通信パターンを自動的に学習し、異常が検出されるとケースごとに手動でルールを定義することなく、即座にアラートと隔離を行います。</p>
+  </div>
+
+  <!-- Section 7 - Info Box -->
+  <div class="reveal" style="margin-bottom:2.5rem;background:rgba(0,200,200,0.05);border:1px solid rgba(0,200,200,0.2);border-radius:12px;padding:2rem">
+    <div style="font-family:'Orbitron',monospace;font-size:0.7rem;letter-spacing:0.1em;color:var(--teal);margin-bottom:1rem">BEST PRACTICE</div>
+    <div style="font-family:'Inter', sans-serif;font-size:1.125rem;font-weight:700;margin-bottom:1.25rem">IoT セキュリティ管理の 5 ステップ</div>
+    <ol style="color:var(--silver);line-height:1.8;padding-left:1.5rem">
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">完全な資産インベントリ：</strong> パッシブ探索ツールを使用して、ファームウェアバージョンとリスクレベルを含む全 IoT デバイスの完全なインベントリを構築します。</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">ネットワーク分離と隔離：</strong> デバイスの機能とリスクレベルに基づいて専用 VLAN を作成し、NGFW を使用してゾーン間トラフィックを厳格に制御します。</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">認証情報管理の強化：</strong> すべてのデフォルトパスワードをすぐに変更し、定期的なローテーションを含む IoT デバイスのパスワード管理ポリシーを確立します。</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">ファームウェア更新管理：</strong> IoT デバイスのファームウェア更新追跡メカニズムを確立し、更新できないデバイスには補完的制御を実装します。</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">継続的な監視と対応：</strong> 行動ベースライン監視を有効化し、ベンダーの脆弱性通知を購読し、IoT デバイスのインシデント対応手順を確立します。</li>
+    </ol>
+  </div>
+
+  <!-- Tags -->
+  <div class="reveal" style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--ink-4);display:flex;gap:0.5rem;flex-wrap:wrap">
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">IoT セキュリティ</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">ネットワーク分離</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">医療セキュリティ</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">資産インベントリ</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">ゼロトラスト</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">NGFW</span>
+  </div>
+
+  <!-- CTA -->
+  <div class="reveal" style="margin-top:3rem;background:linear-gradient(135deg,rgba(250,88,34,0.08),rgba(0,200,200,0.04));border:1px solid rgba(250,88,34,0.2);border-radius:12px;padding:2rem">
+    <div style="font-family:'Inter', sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:0.75rem">専門的なセキュリティアドバイスが必要ですか？</div>
+    <p style="color:var(--silver);margin-bottom:1.5rem">お客様の組織に合わせたセキュリティ評価とソリューションについて、Hexion Networks にお問い合わせください。</p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap">
+      <a href="/ja/contact/" class="btn btn-orange">お見積りはこちら</a>
+    </div>
+  </div>
+</div>
+<div style="background:var(--ink-2);border-top:1px solid var(--ink-4);padding:2.5rem var(--px) 3rem">
+  <div class="reveal" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem">
+    <span style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--silver);letter-spacing:0.1em">全記事</span>
+    <a href="/ja/blog/" style="font-size:0.8rem;color:var(--teal);text-decoration:none">全て見る →</a>
+  </div>
+  <div class="reveal" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:0.75rem">
+      <a href="/ja/blog/cybersecurity-trends-2026/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#FA582244'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#FA5822;letter-spacing:0.06em;margin-bottom:0.375rem">脅威レポート</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">2026年サイバーセキュリティ脅威トレンド分析</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2026-01-15</div></a>
+      <a href="/ja/blog/zero-trust-implementation/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#00C8C844'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#00C8C8;letter-spacing:0.06em;margin-bottom:0.375rem">技術ガイド</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">ゼロトラストアーキテクチャ導入ロードマップ</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2025-12-10</div></a>
+      <a href="/ja/blog/ransomware-defense/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#FF444444'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#FF4444;letter-spacing:0.06em;margin-bottom:0.375rem">脅威分析</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">2026年ランサムウェア防御戦略</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2025-11-28</div></a>
+      <a href="/ja/blog/semi-e187-compliance/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#3DDC9744'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#3DDC97;letter-spacing:0.06em;margin-bottom:0.375rem">コンプライアンス</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">SEMI E187 半導体セキュリティコンプライアンスガイド</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2025-11-05</div></a>
+      <a href="/ja/blog/social-engineering-attacks/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#FF444444'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#FF4444;letter-spacing:0.06em;margin-bottom:0.375rem">脅威分析</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">ソーシャルエンジニアリング攻撃：フィッシングから AI ディープフェイクまで</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2025-10-20</div></a>
+      <a href="/ja/blog/ot-ics-security-guide/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#A78BFA44'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#A78BFA;letter-spacing:0.06em;margin-bottom:0.375rem">技術ガイド</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">OT/ICS 産業セキュリティ：パデューモデルからゼロトラストへ</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2025-10-08</div></a>
+      <a href="/ja/blog/iot-security-challenges/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#00C8C844'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#00C8C8;letter-spacing:0.06em;margin-bottom:0.375rem">技術ガイド</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">エンタープライズ IoT セキュリティ：課題と防御</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2025-09-15</div></a>
+      <a href="/ja/blog/supply-chain-security/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#FF444444'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#FF4444;letter-spacing:0.06em;margin-bottom:0.375rem">脅威分析</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">ソフトウェアサプライチェーン攻撃：SolarWinds から XZ Utils まで</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2025-09-02</div></a>
+      <a href="/ja/blog/mfa-identity-security/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#00C8C844'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#00C8C8;letter-spacing:0.06em;margin-bottom:0.375rem">技術ガイド</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">MFA とアイデンティティセキュリティ：OTP からパスワードレスへ</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2025-08-18</div></a>
+      <a href="/ja/blog/cloud-security-misconfigurations/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#3DDC9744'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#3DDC97;letter-spacing:0.06em;margin-bottom:0.375rem">技術ガイド</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">クラウドセキュリティ設定ミス：防止ガイド</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2025-08-05</div></a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div><a href="/ja/"><img src="/brand_assets/logo.png" alt="Hexion Networks" style="height:36px;filter:brightness(0) invert(1);opacity:0.85" /></a><p class="footer-brand-desc">統合コンサルティング：ビジネス戦略、ブランドアドバイザリー、IT インフラ、サイバーセキュリティ。</p></div>
+    <div><div class="f-col-title">製品</div><a href="/ja/products/pico-utm-100/" class="f-link">Pico-UTM 100</a><a href="/ja/products/dual-ark-utm-16/" class="f-link">Ark-UTM 16</a><a href="/ja/products/tera-utm-12/" class="f-link">Tera-UTM 12</a><a href="/ja/products/lionfilter-200/" class="f-link">Lionfilter 200</a><a href="/ja/products/endblock/" class="f-link">Endblock</a><a href="/ja/products/teamt5/" class="f-link">TeamT5</a><a href="/ja/products/cycraft/" class="f-link">CyCraft AI</a><a href="/ja/products/defender-xdr/" class="f-link">Defender XDR</a></div>
+    <div><div class="f-col-title">サービス</div><a href="/ja/services/" class="f-link">ビジネス戦略</a><a href="/ja/services/" class="f-link">ブランドアドバイザリー</a><a href="/ja/services/" class="f-link">セキュリティ評価</a></div>
+    <div><div class="f-col-title">会社情報</div><a href="/ja/about/" class="f-link">会社概要</a><a href="/ja/blog/" class="f-link">ブログ</a><a href="/ja/contact/" class="f-link">お問い合わせ</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 HEXION NETWORKS.</span>
+    <div class="footer-legal"><a href="#">プライバシーポリシー</a><a href="#">利用規約</a></div>
+  </div>
+</footer>
+
+<script>const ro=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target)}})},{threshold:0.08});document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));</script>
+<script>var _ls=Date.now();window.addEventListener("load",function(){var l=document.getElementById("page-loader");if(!l)return;var elapsed=Date.now()-_ls,wait=Math.max(0,800-elapsed);setTimeout(function(){l.classList.add("out");setTimeout(function(){l.remove()},520)},wait)});</script>
+</body></html>

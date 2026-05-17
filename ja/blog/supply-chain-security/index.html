@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>サプライチェーンセキュリティ | サードパーティリスク管理完全ガイド — Hexion Networks</title>
+  <meta name="description" content="SolarWinds 事件はサプライチェーン攻撃の破壊力を明らかにしました。グローバルサプライチェーンの中核プレイヤーとして、本記事は SBOM、サードパーティリスク評価、技術的防御措置について深く分析します。" />
+  <meta name="keywords" content="supply chain attack,SolarWinds,SBOM,software bill of materials,third-party risk,3CX attack,cybersecurity,APT, Hexion Networks" />  <meta name="language" content="ja" />
+  <meta name="geo.region" content="TW-KHH" />
+  <meta name="geo.placename" content="Kaohsiung, Taiwan" />
+  <meta name="geo.position" content="22.627;120.302" />
+  <meta name="ICBM" content="22.627, 120.302" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hexionnetworks.com/ja/blog/supply-chain-security/" />
+  <link rel="alternate" hreflang="zh-TW" href="https://hexionnetworks.com/blog/supply-chain-security/" />
+  <link rel="alternate" hreflang="en" href="https://hexionnetworks.com/en/blog/supply-chain-security/" />
+  <link rel="alternate" hreflang="ja" href="https://hexionnetworks.com/ja/blog/supply-chain-security/" />
+  <link rel="alternate" hreflang="x-default" href="https://hexionnetworks.com/blog/supply-chain-security/" />
+  <meta property="og:title" content="サプライチェーンセキュリティ | サードパーティリスク管理完全ガイド — Hexion Networks" />
+  <meta property="og:description" content="SolarWinds 事件はサプライチェーン攻撃の破壊力を明らかにしました。グローバルサプライチェーンの中核プレイヤーとして、組織はこれらの脅威を深く理解し防御する必要があります。" />
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta property="og:url" content="https://hexionnetworks.com/ja/blog/supply-chain-security/" />
+  <meta property="og:image" content="https://hexionnetworks.com/brand_assets/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="サプライチェーンセキュリティ | サードパーティリスク管理完全ガイド — Hexion Networks" />
+  <meta name="twitter:description" content="SolarWinds 事件はサプライチェーン攻撃の破壊力を明らかにしました。本記事は SBOM、サードパーティリスク評価、技術的防御措置について深く分析します。" />
+  <meta name="twitter:image" content="https://hexionnetworks.com/brand_assets/logo.png" />
+  <link rel="icon" href="/brand_assets/favicon.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"サプライチェーンセキュリティ | サードパーティリスク管理完全ガイド","datePublished":"2025-09-02","dateModified":"2025-09-02","author":{"@type":"Organization","name":"Hexion Networks"},"publisher":{"@type":"Organization","name":"Hexion Networks","url":"https://hexionnetworks.com"},"url": "https://hexionnetworks.com/ja/blog/supply-chain-security/"}</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-78TQ277930"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-78TQ277930');
+</script>
+<script src="/lang.js"></script>
+
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"ホーム","item": "https://hexionnetworks.com/ja/"},
+    {"@type":"ListItem","position":2,"name":"セキュリティインテリジェンス","item": "https://hexionnetworks.com/ja/blog/"},
+    {"@type":"ListItem","position":3,"name":"サプライチェーンセキュリティ","item": "https://hexionnetworks.com/ja/blog/supply-chain-security/"}
+  ]
+}
+</script>
+</head>
+<body>
+<div id="page-loader"><img src="/brand_assets/logo.png" alt="" class="loader-logo" /><div class="loader-ring-wrap"><div class="loader-ring loader-ring-outer"></div><div class="loader-ring loader-ring-inner"></div><div class="loader-dot"></div></div></div>
+<div class="topbar">
+  <div class="topbar-social-group"><a href="https://www.facebook.com/profile.php?id=61576794144217" target="_blank" rel="noopener noreferrer" class="topbar-social" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a><a href="https://www.instagram.com/tdb_lab/" target="_blank" rel="noopener noreferrer" class="topbar-social" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a></div><a href="/ja/contact/">お問い合わせ</a>
+  <a href="/ja/blog/" class="topbar-highlight">最新セキュリティレポート →</a>
+  <a href="#" id="zh-toggle" class="lang-btn">中文</a>
+  <a href="#" id="en-toggle" class="lang-btn">EN</a>
+</div>
+<nav>
+  <a href="/ja/" class="nav-logo"><img src="/brand_assets/logo.png" alt="Hexion Networks" /></a>
+  <div class="nav-links">
+    <div class="nav-item"><a href="/ja/services/">サービス</a></div>
+    <div class="nav-item">
+      <button>
+        製品
+        <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M8 11L3 6h10z"/></svg>
+      </button>
+      <div class="mega" style="width:560px;grid-template-columns:1fr 1fr">
+        <div class="mega-col" style="border-right:1px solid rgba(255,255,255,0.06)">
+          <div class="mega-label" style="color:var(--teal)">LIONIC NGFWシリーズ</div>
+          <a href="/ja/products/pico-utm-100/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.15);color:var(--o)">IT</span>
+            Pico-UTM 100
+          </a>
+          <a href="/ja/products/dual-ark-utm-16/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(0,200,200,0.12);color:var(--teal)">IoT</span>
+            Ark-UTM 16
+          </a>
+          <a href="/ja/products/tera-utm-12/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.12);color:#FF7A45">OT</span>
+            Tera-UTM 12
+          </a>
+          <a href="/ja/products/lionfilter-200/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(167,139,250,0.12);color:#A78BFA">NET</span>
+            Lionfilter 200
+          </a>
+        </div>
+        <div class="mega-col" style="background:rgba(61,220,151,0.025)">
+          <div class="mega-label" style="color:#3DDC97">Endpoint Detection &amp; Response</div>
+          <a href="/ja/products/endblock/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.15);color:#3DDC97">EDR</span>
+            Endblock
+          </a>
+          <a href="/ja/products/teamt5/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.12);color:#3DDC97">TI</span>
+            TeamT5
+          </a>
+          <a href="/ja/products/cycraft/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.1);color:#3DDC97">AI</span>
+            CyCraft AI
+          </a>
+          <a href="/ja/products/defender-xdr/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(0,120,212,0.15);color:#0078D4">XDR</span>
+            Microsoft Defender XDR
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-item" style="display:none"><a href="/ja/research/">調査・研究</a></div>
+    <div class="nav-item active"><a href="/ja/blog/">ブログ</a></div>
+    <div class="nav-item"><a href="/ja/about/">会社概要</a></div>
+  </div>
+  <div class="nav-cta">
+    <a href="https://line.me/R/ti/p/@278zhddk" target="_blank" class="nav-line-btn">LINE チャット</a>
+    <a href="/ja/contact/" class="btn btn-orange" style="padding:0.5rem 1.125rem;font-size:0.8125rem;">お見積り →</a>
+  </div>
+</nav>
+
+<div class="page-hero" style="padding-bottom:3rem">
+  <div style="padding:0 var(--px)">
+    <div class="reveal" style="display:flex;gap:0.5rem;margin-bottom:1.5rem">
+      <a href="/ja/blog/" style="color:var(--silver);font-size:0.8rem;text-decoration:none">ブログ</a>
+      <span style="color:var(--silver);font-size:0.8rem">/</span>
+      <span style="color:var(--o);font-size:0.8rem">脅威分析</span>
+    </div>
+    <div class="reveal">
+      <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(250,88,34,0.1);border:1px solid rgba(250,88,34,0.3);border-radius:4px;padding:0.25rem 0.75rem;font-family:'Orbitron',monospace;font-size:0.65rem;color:#FA5822;letter-spacing:0.1em;margin-bottom:1.25rem">脅威分析</div>
+      <h1 style="font-family:'Inter', sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.025em;line-height:1.15;margin-bottom:1.25rem">サプライチェーン攻撃の解剖：サードパーティを介した侵入への防御方法</h1>
+      <p style="color:var(--silver);font-size:1.0625rem;line-height:1.7;margin-bottom:2rem">SolarWinds 事件はサプライチェーン攻撃の破壊力を明らかにしました。グローバルサプライチェーンの中核プレイヤーとして、組織はこれらの脅威を深く理解し防御する必要があります。</p>
+      <div style="display:flex;align-items:center;gap:1.5rem;color:var(--silver);font-size:0.8125rem;border-top:1px solid var(--ink-4);padding-top:1.5rem">
+        <span>Hexion Networks セキュリティリサーチチーム</span><span>·</span><span>2025年9月2日</span><span>·</span><span>読了 8分</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="padding:3rem var(--px) 5rem">
+
+  <!-- SVG Banner: supply chain attack flow -->
+  <div class="reveal" style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:12px;overflow:hidden;margin-bottom:3rem;aspect-ratio:16/7;display:flex;align-items:center;justify-content:center">
+    <svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+      <defs>
+        <linearGradient id="sc-bg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#0A0A14"/>
+          <stop offset="100%" stop-color="#11111E"/>
+        </linearGradient>
+        <marker id="arr-red" markerWidth="8" markerHeight="6" refX="6" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#FA5822"/>
+        </marker>
+      </defs>
+      <rect width="800" height="350" fill="url(#sc-bg)"/>
+      <!-- Step 1: Trusted Vendor -->
+      <rect x="30" y="120" width="130" height="70" rx="8" fill="#1A1A2C" stroke="#00C8C8" stroke-width="1.5"/>
+      <text x="95" y="147" text-anchor="middle" font-family="'Orbitron',monospace" font-size="8" fill="#00C8C8">TRUSTED</text>
+      <text x="95" y="160" text-anchor="middle" font-family="'Orbitron',monospace" font-size="8" fill="#00C8C8">VENDOR</text>
+      <text x="95" y="178" text-anchor="middle" font-family="monospace" font-size="8" fill="#8B8BA8">SolarWinds / 3CX</text>
+      <!-- Attacker -->
+      <rect x="30" y="220" width="130" height="50" rx="8" fill="rgba(250,88,34,0.15)" stroke="#FA5822" stroke-width="1.5"/>
+      <text x="95" y="243" text-anchor="middle" font-family="'Orbitron',monospace" font-size="8" fill="#FA5822">APT ATTACKER</text>
+      <text x="95" y="258" text-anchor="middle" font-family="monospace" font-size="7" fill="#8B8BA8">Nation-state / Cybercrime</text>
+      <!-- Arrow: attacker injects into vendor -->
+      <line x1="95" y1="220" x2="95" y2="190" stroke="#FA5822" stroke-width="1.5" marker-end="url(#arr-red)"/>
+      <text x="107" y="208" font-family="monospace" font-size="7" fill="#FA5822">inject</text>
+      <!-- Step 2: Compromised Update -->
+      <rect x="220" y="120" width="140" height="70" rx="8" fill="#1A1A2C" stroke="#FA5822" stroke-width="1.5"/>
+      <text x="290" y="143" text-anchor="middle" font-family="'Orbitron',monospace" font-size="8" fill="#FA5822">COMPROMISED</text>
+      <text x="290" y="156" text-anchor="middle" font-family="'Orbitron',monospace" font-size="8" fill="#FA5822">SOFTWARE UPDATE</text>
+      <text x="290" y="175" text-anchor="middle" font-family="monospace" font-size="8" fill="#8B8BA8">Signed by vendor cert ✓</text>
+      <!-- Arrow: vendor sends update -->
+      <line x1="160" y1="155" x2="218" y2="155" stroke="#FA5822" stroke-width="1.5" marker-end="url(#arr-red)"/>
+      <text x="176" y="148" font-family="monospace" font-size="7" fill="#FA5822">ships</text>
+      <!-- Step 3: Target pulls update -->
+      <rect x="430" y="80" width="140" height="60" rx="8" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="500" y="104" text-anchor="middle" font-family="monospace" font-size="8" fill="#C4C4D8">Target Corp A</text>
+      <text x="500" y="120" text-anchor="middle" font-family="monospace" font-size="7" fill="#8B8BA8">Fortune 500 / Gov Agency</text>
+      <rect x="430" y="160" width="140" height="60" rx="8" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="500" y="184" text-anchor="middle" font-family="monospace" font-size="8" fill="#C4C4D8">Target Corp B</text>
+      <text x="500" y="200" text-anchor="middle" font-family="monospace" font-size="7" fill="#8B8BA8">18,000+ customers</text>
+      <rect x="430" y="240" width="140" height="60" rx="8" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="500" y="264" text-anchor="middle" font-family="monospace" font-size="8" fill="#C4C4D8">Target Corp C</text>
+      <text x="500" y="280" text-anchor="middle" font-family="monospace" font-size="7" fill="#8B8BA8">Critical Infrastructure</text>
+      <!-- Arrows update → targets -->
+      <line x1="360" y1="145" x2="428" y2="112" stroke="#FA5822" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arr-red)" opacity="0.8"/>
+      <line x1="360" y1="165" x2="428" y2="192" stroke="#FA5822" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arr-red)" opacity="0.8"/>
+      <line x1="360" y1="175" x2="428" y2="265" stroke="#FA5822" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arr-red)" opacity="0.8"/>
+      <!-- Step 4: Exfiltration / Backdoor -->
+      <rect x="635" y="155" width="130" height="50" rx="8" fill="rgba(250,88,34,0.15)" stroke="#FA5822" stroke-width="1.5"/>
+      <text x="700" y="177" text-anchor="middle" font-family="'Orbitron',monospace" font-size="8" fill="#FA5822">C2 / BACKDOOR</text>
+      <text x="700" y="192" text-anchor="middle" font-family="monospace" font-size="7" fill="#8B8BA8">Data exfil / Ransomware</text>
+      <line x1="570" y1="185" x2="633" y2="181" stroke="#FA5822" stroke-width="1.5" marker-end="url(#arr-red)" opacity="0.8"/>
+      <!-- Bottom label -->
+      <text x="400" y="325" text-anchor="middle" font-family="'Orbitron',monospace" font-size="9" fill="#2E2E46" letter-spacing="2">SUPPLY CHAIN ATTACK — TRUSTED UPDATE VECTOR</text>
+    </svg>
+  </div>
+
+  <!-- Section 1 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">サプライチェーン攻撃の定義と種類</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">サプライチェーン攻撃とは、攻撃者が被害組織を直接標的にするのではなく、被害者が信頼するベンダー、ソフトウェアサプライヤー、またはサービスプロバイダーを通じて攻撃する手法です。攻撃者はその「信頼できるサードパーティ」を侵害し、その信頼関係を利用して最終的な標的に侵入します。</p>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">主要なサプライチェーン攻撃の種類：</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem">
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1.25rem">
+        <div style="font-weight:600;color:var(--white);margin-bottom:0.5rem">ソフトウェアアップデートポイズニング</div>
+        <p style="color:var(--silver);font-size:0.875rem;line-height:1.7">攻撃者はベンダーのビルドパイプラインを侵害し、正規のソフトウェアアップデートに悪意あるコードを注入します。アップデートはベンダーのデジタル署名を持つため、セキュリティツールは通常それをブロックしません。</p>
+      </div>
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1.25rem">
+        <div style="font-weight:600;color:var(--white);margin-bottom:0.5rem">オープンソースパッケージポイズニング</div>
+        <p style="color:var(--silver);font-size:0.875rem;line-height:1.7">攻撃者は npm、PyPI、RubyGems などのレジストリに悪意あるパッケージをアップロードしたり、「依存関係混乱（Dependency Confusion）」攻撃を使用して組織が悪意あるバージョンを自動的にダウンロードするよう仕向けます。</p>
+      </div>
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1.25rem">
+        <div style="font-weight:600;color:var(--white);margin-bottom:0.5rem">信頼できるサービスプロバイダーの侵害</div>
+        <p style="color:var(--silver);font-size:0.875rem;line-height:1.7">IT アウトソーサー、システムインテグレーター、またはクラウドサービスプロバイダーを侵害し、それらのベンダーの正規のアクセス権を使用してすべての顧客に侵入します。MSP（マネージドサービスプロバイダー）は主要な標的です。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">3 つの主要なサプライチェーン攻撃事例の分析</h2>
+    <div style="display:flex;flex-direction:column;gap:1.25rem">
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:10px;padding:1.5rem">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.75rem;flex-wrap:wrap;gap:0.5rem">
+          <div style="font-family:'Inter', sans-serif;font-weight:700;color:var(--white)">SolarWinds Orion (2020)</div>
+          <span style="background:rgba(250,88,34,0.15);border:1px solid rgba(250,88,34,0.3);border-radius:4px;padding:0.2rem 0.6rem;font-size:0.75rem;color:#FA5822">Nation-State APT</span>
+        </div>
+        <p style="color:var(--silver);line-height:1.75;font-size:0.9375rem">ロシアの APT29（Cozy Bear）が SolarWinds のソフトウェアビルド環境を侵害し、Orion プラットフォームのアップデート（DLL ファイル）に SUNBURST と呼ばれるバックドアを埋め込みました。アップデートが正規のデジタル署名を持っていたため、18,000 以上の組織が汚染されたアップデートをインストールしました — 被害者には米国財務省、商務省、NASA、数十の Fortune 500 企業が含まれます。攻撃者は 9 ヶ月間発見されることなく潜伏し、その間データを窃取し続けました。</p>
+      </div>
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:10px;padding:1.5rem">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.75rem;flex-wrap:wrap;gap:0.5rem">
+          <div style="font-family:'Inter', sans-serif;font-weight:700;color:var(--white)">3CX Desktop App (2023)</div>
+          <span style="background:rgba(250,88,34,0.15);border:1px solid rgba(250,88,34,0.3);border-radius:4px;padding:0.2rem 0.6rem;font-size:0.75rem;color:#FA5822">Double Supply Chain</span>
+        </div>
+        <p style="color:var(--silver);line-height:1.75;font-size:0.9375rem">北朝鮮の Lazarus グループはまず金融ソフトウェア会社（Trading Technologies）を侵害し、その感染パッケージを使用してさらに 3CX のビルド環境を侵害し、3CX デスクトップ通信ソフトウェアのアップデートを汚染しました。これは歴史上初めて公式に確認された「サプライチェーンの中のサプライチェーン」攻撃で、世界中の 60 万以上のビジネスユーザーに影響を与えました。</p>
+      </div>
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:10px;padding:1.5rem">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.75rem;flex-wrap:wrap;gap:0.5rem">
+          <div style="font-family:'Inter', sans-serif;font-weight:700;color:var(--white)">XZ Utils Backdoor (2024)</div>
+          <span style="background:rgba(250,88,34,0.15);border:1px solid rgba(250,88,34,0.3);border-radius:4px;padding:0.2rem 0.6rem;font-size:0.75rem;color:#FA5822">Open Source</span>
+        </div>
+        <p style="color:var(--silver);line-height:1.75;font-size:0.9375rem">攻撃者「JiaT75」は xz/liblzma 圧縮ライブラリの活発なコントリビューターを装い、2 年間をかけて信頼を構築してメンテナー権限を獲得し、最終的に公式リリースに SSH バックドアを埋め込みました。Microsoft のエンジニアによって偶然発見されなければ、このバックドアは世界中の Linux サーバーに広く展開されていた可能性があります。この事件はオープンソースソフトウェアサプライチェーンの脆弱性を深く露呈しました。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">台湾固有のサプライチェーンリスク</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">台湾はグローバルサプライチェーンにおいて独自の地位を占めています — 半導体製造、PCB 生産、電子部品製造はすべてグローバルに重要です。これにより、台湾組織はサプライチェーン攻撃の非常に魅力的な踏み台となっています：台湾の半導体ファブを一つ侵害するだけで、世界のトップテクノロジー企業への扉が開く可能性があります。</p>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">台湾固有のサプライチェーンリスク要因：</p>
+    <ul style="color:var(--silver);line-height:1.8;padding-left:1.5rem">
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">密な IT アウトソーシング文化：</strong> 多くの中小製造業者は IT メンテナンスを地元の IT 企業に完全アウトソーシングしており、これらの企業は同時に数十のクライアントにサービスを提供していることが多く、セキュリティ管理の質はばらつきが大きいです。</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">機器ベンダーのリモートアクセス：</strong> 日本、米国、欧州の機器ベンダーは工場設備への継続的なリモートアクセスを要求しており、これらの接続は厳格に管理されていないことが多いです。</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">中国サプライチェーンの露出：</strong> 台湾企業と中国本土ベンダーとの深い商業的関係は、潜在的なサプライチェーン介入リスクをもたらします。</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">高まる顧客要件：</strong> TSMC や Foxconn などの台湾の主要企業は、サプライヤーに対してセキュリティ認証の取得を段階的に要求しており、サプライチェーン全体のセキュリティ意識を高めています。</li>
+    </ul>
+  </div>
+
+  <!-- Section 4 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">SBOM：サプライチェーン透明性の基盤としての ソフトウェア部品表</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">SBOM（ソフトウェア部品表）は、ソフトウェア内のすべてのコンポーネント、依存関係、およびそのバージョンの詳細なリストで、食品ラベルの成分表示に例えられます。SolarWinds 事件を受けて、SBOM はグローバルなサプライチェーンセキュリティ管理のコアツールとなっています。</p>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">SBOM の実践的な用途：</p>
+    <ul style="color:var(--silver);line-height:1.8;padding-left:1.5rem;margin-bottom:1rem">
+      <li style="margin-bottom:0.5rem">新しい脆弱性（Log4Shell など）が公開された際、影響を受けるコンポーネントを使用している製品を即座に特定できます。</li>
+      <li style="margin-bottom:0.5rem">ソフトウェア調達時に、デューデリジェンスの一環としてベンダーに SBOM の提供を要求します。</li>
+      <li style="margin-bottom:0.5rem">既知の脆弱性を持つ古いオープンソースパッケージの使用を特定します。</li>
+      <li style="margin-bottom:0.5rem">米国 EO 14028 や EU の CRA（サイバーレジリエンス法）などの規制要件を満たします。</li>
+    </ul>
+    <p style="color:var(--silver);line-height:1.8">主流の SBOM フォーマットには SPDX（Linux Foundation）と CycloneDX（OWASP）があります。組織は Syft や Grype などのオープンソースツールを使用して自社ソフトウェアの SBOM を生成し、サプライヤーに対して製品の SBOM 提供を要求することができます。</p>
+  </div>
+
+  <!-- Section 5 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">サードパーティリスク評価フレームワーク</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">組織は、一回限りのアンケートに依存するのではなく、体系的なサードパーティリスク評価（TPRA）プロセスを確立する必要があります。Hexion が推奨する評価フレームワークは 3 つの次元をカバーします：</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem">
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1.25rem">
+        <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#FA5822;margin-bottom:0.5rem">固有リスク</div>
+        <p style="color:var(--silver);font-size:0.875rem;line-height:1.7">サプライヤーがアクセスするデータの機密性、システムアクセスの深さ、および置き換えの困難さを評価します。高リスクサプライヤーにはより厳格な評価が必要です。</p>
+      </div>
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1.25rem">
+        <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#FA5822;margin-bottom:0.5rem">制御の有効性</div>
+        <p style="color:var(--silver);font-size:0.875rem;line-height:1.7">ISO 27001 や SOC 2 などの認証と実際のペネトレーションテストレポートを含む、サプライヤーが実際に実施しているセキュリティ制御を検証します。</p>
+      </div>
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1.25rem">
+        <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#FA5822;margin-bottom:0.5rem">残存リスク</div>
+        <p style="color:var(--silver);font-size:0.875rem;line-height:1.7">残存リスクが許容できるかを評価し、追加の契約上のセキュリティ要件または技術的補完制御が必要かどうかを判断します。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 6 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">技術的防御措置</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">リスク評価に加えて、組織はサプライチェーン攻撃の被害範囲を制限するための具体的な技術的制御を導入する必要があります：</p>
+    <ul style="color:var(--silver);line-height:1.8;padding-left:1.5rem">
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">最小権限アクセス：</strong> ベンダーのリモートアクセスは必要最小限のスコープに制限し、PAM（特権アクセス管理）システムで細かく管理して、すべてのアクセスに承認と記録を要求します。</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">ネットワーク分離：</strong> ベンダーアクセスは内部ネットワークに直接入るのではなく、専用の DMZ または ZTNA（ゼロトラストネットワークアクセス）チャネルを経由する必要があります。</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">エンドポイント検出（EDR）：</strong> すべてのエンドポイントに EDR を導入し、ソフトウェアアップデートのインストール後の異常行動を継続的に監視します。</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">ソフトウェア署名検証：</strong> ソフトウェアアップデートを展開する際、デジタル署名の検証に加えて、ベンダーのアナウンスメントとハッシュ値を比較してアップデートが改ざんされていないことを確認します。</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">ネットワーク行動監視：</strong> NGFW アプリケーション行動監視は、通常のビジネストラフィックに潜む C2 通信を、隠蔽された HTTPS ベースのチャネルも含めて識別できます。</li>
+    </ul>
+  </div>
+
+  <!-- Section 7 - Highlight Box: Checklist -->
+  <div class="reveal" style="margin-bottom:2.5rem;background:rgba(0,200,200,0.05);border:1px solid rgba(0,200,200,0.2);border-radius:12px;padding:2rem">
+    <div style="font-family:'Orbitron',monospace;font-size:0.7rem;letter-spacing:0.1em;color:var(--teal);margin-bottom:1rem">ASSESSMENT CHECKLIST</div>
+    <div style="font-family:'Inter', sans-serif;font-size:1.125rem;font-weight:700;margin-bottom:1.25rem">サプライチェーンセキュリティ評価チェックリスト（10 項目）</div>
+    <ol style="color:var(--silver);line-height:1.8;padding-left:1.5rem">
+      <li style="margin-bottom:0.5rem">サプライヤーは ISO 27001 または SOC 2 Type II 認証を保有していますか？</li>
+      <li style="margin-bottom:0.5rem">過去 1 年以内のペネトレーションテストレポートを提供できますか？</li>
+      <li style="margin-bottom:0.5rem">ソフトウェア製品に SBOM（ソフトウェア部品表）が含まれていますか？</li>
+      <li style="margin-bottom:0.5rem">ベンダーのリモートアクセスは MFA を使用していますか？アクセスログは完全に保持されていますか？</li>
+      <li style="margin-bottom:0.5rem">明確な脆弱性開示とパッチリリースポリシー（パッチ SLA）がありますか？</li>
+      <li style="margin-bottom:0.5rem">ソフトウェアビルドパイプライン（CI/CD パイプライン）にセキュリティ監査メカニズムがありますか？</li>
+      <li style="margin-bottom:0.5rem">従業員はソーシャルエンジニアリング攻撃に対する定期的なトレーニングを受けていますか？</li>
+      <li style="margin-bottom:0.5rem">明確なクライアント通知義務を含むインシデント対応計画がありますか？</li>
+      <li style="margin-bottom:0.5rem">下流サプライヤー（フォースパーティリスク）もセキュリティ管理に含まれていますか？</li>
+      <li style="margin-bottom:0.5rem">契約にはセキュリティ要件、監査権、違反責任条項が含まれていますか？</li>
+    </ol>
+  </div>
+
+  <!-- Tags -->
+  <div class="reveal" style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--ink-4);display:flex;gap:0.5rem;flex-wrap:wrap">
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">サプライチェーン攻撃</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">SolarWinds</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">SBOM</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">サードパーティリスク</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">APT</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">脅威インテリジェンス</span>
+  </div>
+
+  <!-- CTA -->
+  <div class="reveal" style="margin-top:3rem;background:linear-gradient(135deg,rgba(250,88,34,0.08),rgba(0,200,200,0.04));border:1px solid rgba(250,88,34,0.2);border-radius:12px;padding:2rem">
+    <div style="font-family:'Inter', sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:0.75rem">専門的なセキュリティアドバイスが必要ですか？</div>
+    <p style="color:var(--silver);margin-bottom:1.5rem">お客様の組織に合わせたセキュリティ評価とソリューションについて、Hexion Networks にお問い合わせください。</p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap">
+      <a href="/ja/contact/" class="btn btn-orange">お見積りはこちら</a>
+    </div>
+  </div>
+</div>
+<div style="background:var(--ink-2);border-top:1px solid var(--ink-4);padding:2.5rem var(--px) 3rem">
+  <div class="reveal" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem">
+    <span style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--silver);letter-spacing:0.1em">全記事</span>
+    <a href="/ja/blog/" style="font-size:0.8rem;color:var(--teal);text-decoration:none">全て見る →</a>
+  </div>
+  <div class="reveal" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:0.75rem">
+      <a href="/ja/blog/cybersecurity-trends-2026/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#FA582244'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#FA5822;letter-spacing:0.06em;margin-bottom:0.375rem">脅威レポート</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">2026年サイバーセキュリティ脅威トレンド分析</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2026-01-15</div></a>
+      <a href="/ja/blog/zero-trust-implementation/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#00C8C844'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#00C8C8;letter-spacing:0.06em;margin-bottom:0.375rem">技術ガイド</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">ゼロトラストアーキテクチャ導入ロードマップ</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2025-12-10</div></a>
+      <a href="/ja/blog/ransomware-defense/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#FF444444'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#FF4444;letter-spacing:0.06em;margin-bottom:0.375rem">脅威分析</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">2026年ランサムウェア防御戦略</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2025-11-28</div></a>
+      <a href="/ja/blog/semi-e187-compliance/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#3DDC9744'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#3DDC97;letter-spacing:0.06em;margin-bottom:0.375rem">コンプライアンス</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">SEMI E187 半導体セキュリティコンプライアンスガイド</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2025-11-05</div></a>
+      <a href="/ja/blog/social-engineering-attacks/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#FF444444'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#FF4444;letter-spacing:0.06em;margin-bottom:0.375rem">脅威分析</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">ソーシャルエンジニアリング攻撃：フィッシングから AI ディープフェイクまで</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2025-10-20</div></a>
+      <a href="/ja/blog/ot-ics-security-guide/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#A78BFA44'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#A78BFA;letter-spacing:0.06em;margin-bottom:0.375rem">技術ガイド</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">OT/ICS 産業セキュリティ：パデューモデルからゼロトラストへ</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2025-10-08</div></a>
+      <a href="/ja/blog/iot-security-challenges/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#00C8C844'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#00C8C8;letter-spacing:0.06em;margin-bottom:0.375rem">技術ガイド</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">エンタープライズ IoT セキュリティ：課題と防御</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2025-09-15</div></a>
+      <a href="/ja/blog/supply-chain-security/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#FF444444'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#FF4444;letter-spacing:0.06em;margin-bottom:0.375rem">脅威分析</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">ソフトウェアサプライチェーン攻撃：SolarWinds から XZ Utils まで</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2025-09-02</div></a>
+      <a href="/ja/blog/mfa-identity-security/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#00C8C844'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#00C8C8;letter-spacing:0.06em;margin-bottom:0.375rem">技術ガイド</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">MFA とアイデンティティセキュリティ：OTP からパスワードレスへ</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2025-08-18</div></a>
+      <a href="/ja/blog/cloud-security-misconfigurations/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#3DDC9744'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#3DDC97;letter-spacing:0.06em;margin-bottom:0.375rem">技術ガイド</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">クラウドセキュリティ設定ミス：防止ガイド</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2025-08-05</div></a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div><a href="/ja/"><img src="/brand_assets/logo.png" alt="Hexion Networks" style="height:36px;filter:brightness(0) invert(1);opacity:0.85" /></a><p class="footer-brand-desc">統合コンサルティング：ビジネス戦略、ブランドアドバイザリー、IT インフラ、サイバーセキュリティ。</p></div>
+    <div><div class="f-col-title">製品</div><a href="/ja/products/pico-utm-100/" class="f-link">Pico-UTM 100</a><a href="/ja/products/dual-ark-utm-16/" class="f-link">Ark-UTM 16</a><a href="/ja/products/tera-utm-12/" class="f-link">Tera-UTM 12</a><a href="/ja/products/lionfilter-200/" class="f-link">Lionfilter 200</a><a href="/ja/products/endblock/" class="f-link">Endblock</a><a href="/ja/products/teamt5/" class="f-link">TeamT5</a><a href="/ja/products/cycraft/" class="f-link">CyCraft AI</a><a href="/ja/products/defender-xdr/" class="f-link">Defender XDR</a></div>
+    <div><div class="f-col-title">サービス</div><a href="/ja/services/" class="f-link">ビジネス戦略</a><a href="/ja/services/" class="f-link">ブランドアドバイザリー</a><a href="/ja/services/" class="f-link">セキュリティ評価</a></div>
+    <div><div class="f-col-title">会社情報</div><a href="/ja/about/" class="f-link">会社概要</a><a href="/ja/blog/" class="f-link">ブログ</a><a href="/ja/contact/" class="f-link">お問い合わせ</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 HEXION NETWORKS.</span>
+    <div class="footer-legal"><a href="#">プライバシーポリシー</a><a href="#">利用規約</a></div>
+  </div>
+</footer>
+
+<script>const ro=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target)}})},{threshold:0.08});document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));</script>
+<script>var _ls=Date.now();window.addEventListener("load",function(){var l=document.getElementById("page-loader");if(!l)return;var elapsed=Date.now()-_ls,wait=Math.max(0,800-elapsed);setTimeout(function(){l.classList.add("out");setTimeout(function(){l.remove()},520)},wait)});</script>
+</body></html>

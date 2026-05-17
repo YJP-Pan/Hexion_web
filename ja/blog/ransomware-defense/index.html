@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Complete Guide to Ransomware Defense | Enterprise Protection Strategy 2026 — Hexion Networks</title>
+  <meta name="description" content="Comprehensive analysis of ransomware attack techniques, covering RaaS evolution, the 3-2-1-1-0 backup strategy, EDR defense, network segmentation and incident response planning, with real-world Taiwan manufacturing case studies." />
+  <meta name="keywords" content="ransomware defense, RaaS, ransomware attack, 3-2-1 backup, EDR, incident response, Taiwan cybersecurity, double extortion, Hexion Networks" />  <meta name="language" content="ja" />
+  <meta name="geo.region" content="TW-KHH" />
+  <meta name="geo.placename" content="Kaohsiung, Taiwan" />
+  <meta name="geo.position" content="22.627;120.302" />
+  <meta name="ICBM" content="22.627, 120.302" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hexionnetworks.com/ja/blog/ransomware-defense/" />
+  <link rel="alternate" hreflang="zh-TW" href="https://hexionnetworks.com/blog/ransomware-defense/" />
+  <link rel="alternate" hreflang="en" href="https://hexionnetworks.com/en/blog/ransomware-defense/" />
+  <link rel="alternate" hreflang="ja" href="https://hexionnetworks.com/ja/blog/ransomware-defense/" />
+  <link rel="alternate" hreflang="x-default" href="https://hexionnetworks.com/blog/ransomware-defense/" />
+  <meta property="og:title" content="Complete Guide to Ransomware Defense | Enterprise Protection Strategy 2026 — Hexion Networks" />
+  <meta property="og:description" content="Comprehensive analysis of ransomware attack techniques, covering RaaS evolution, the 3-2-1-1-0 backup strategy, EDR defense, and incident response planning." />
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta property="og:url" content="https://hexionnetworks.com/ja/blog/ransomware-defense/" />
+  <meta property="og:image" content="https://hexionnetworks.com/brand_assets/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Complete Guide to Ransomware Defense | Enterprise Protection Strategy 2026 — Hexion Networks" />
+  <meta name="twitter:description" content="Comprehensive analysis of ransomware attack techniques, covering RaaS evolution, the 3-2-1-1-0 backup strategy, EDR defense, network segmentation and incident response planning, with real-world Taiwan manufacturing case studies." />
+  <meta name="twitter:image" content="https://hexionnetworks.com/brand_assets/logo.png" />
+  <link rel="icon" href="/brand_assets/favicon.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Complete Guide to Ransomware Defense | Enterprise Protection Strategy 2026","datePublished":"2025-11-28","dateModified":"2025-11-28","author":{"@type":"Organization","name":"Hexion Networks"},"publisher":{"@type":"Organization","name":"Hexion Networks","url":"https://hexionnetworks.com"},"url": "https://hexionnetworks.com/ja/blog/ransomware-defense/"}</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-78TQ277930"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-78TQ277930');
+</script>
+<script src="/lang.js"></script>
+
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"ホーム","item": "https://hexionnetworks.com/ja/"},
+    {"@type":"ListItem","position":2,"name":"セキュリティインテリジェンス","item": "https://hexionnetworks.com/ja/blog/"},
+    {"@type":"ListItem","position":3,"name":"Ransomware Defense Guide","item": "https://hexionnetworks.com/ja/blog/ransomware-defense/"}
+  ]
+}
+</script>
+</head>
+<body>
+<div id="page-loader"><img src="/brand_assets/logo.png" alt="" class="loader-logo" /><div class="loader-ring-wrap"><div class="loader-ring loader-ring-outer"></div><div class="loader-ring loader-ring-inner"></div><div class="loader-dot"></div></div></div>
+<div class="topbar">
+  <div class="topbar-social-group"><a href="https://www.facebook.com/profile.php?id=61576794144217" target="_blank" rel="noopener noreferrer" class="topbar-social" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a><a href="https://www.instagram.com/tdb_lab/" target="_blank" rel="noopener noreferrer" class="topbar-social" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a></div><a href="/ja/contact/">お問い合わせ</a>
+  <a href="/ja/blog/" class="topbar-highlight">最新セキュリティレポート →</a>
+  <a href="#" id="zh-toggle" class="lang-btn">中文</a>
+  <a href="#" id="en-toggle" class="lang-btn">EN</a>
+</div>
+<nav>
+  <a href="/ja/" class="nav-logo"><img src="/brand_assets/logo.png" alt="Hexion Networks" /></a>
+  <div class="nav-links">
+    <div class="nav-item"><a href="/ja/services/">サービス</a></div>
+    <div class="nav-item">
+      <button>
+        製品
+        <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M8 11L3 6h10z"/></svg>
+      </button>
+      <div class="mega" style="width:560px;grid-template-columns:1fr 1fr">
+        <div class="mega-col" style="border-right:1px solid rgba(255,255,255,0.06)">
+          <div class="mega-label" style="color:var(--teal)">LIONIC NGFWシリーズ</div>
+          <a href="/ja/products/pico-utm-100/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.15);color:var(--o)">IT</span>
+            Pico-UTM 100
+          </a>
+          <a href="/ja/products/dual-ark-utm-16/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(0,200,200,0.12);color:var(--teal)">IoT</span>
+            Ark-UTM 16
+          </a>
+          <a href="/ja/products/tera-utm-12/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.12);color:#FF7A45">OT</span>
+            Tera-UTM 12
+          </a>
+          <a href="/ja/products/lionfilter-200/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(167,139,250,0.12);color:#A78BFA">NET</span>
+            Lionfilter 200
+          </a>
+        </div>
+        <div class="mega-col" style="background:rgba(61,220,151,0.025)">
+          <div class="mega-label" style="color:#3DDC97">Endpoint Detection &amp; Response</div>
+          <a href="/ja/products/endblock/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.15);color:#3DDC97">EDR</span>
+            Endblock
+          </a>
+          <a href="/ja/products/teamt5/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.12);color:#3DDC97">TI</span>
+            TeamT5
+          </a>
+          <a href="/ja/products/cycraft/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.1);color:#3DDC97">AI</span>
+            CyCraft AI
+          </a>
+          <a href="/ja/products/defender-xdr/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(0,120,212,0.15);color:#0078D4">XDR</span>
+            Microsoft Defender XDR
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-item" style="display:none"><a href="/ja/research/">調査・研究</a></div>
+    <div class="nav-item active"><a href="/ja/blog/">ブログ</a></div>
+    <div class="nav-item"><a href="/ja/about/">会社概要</a></div>
+  </div>
+  <div class="nav-cta">
+    <a href="https://line.me/R/ti/p/@278zhddk" target="_blank" class="nav-line-btn">LINE チャット</a>
+    <a href="/ja/contact/" class="btn btn-orange" style="padding:0.5rem 1.125rem;font-size:0.8125rem;">お見積り →</a>
+  </div>
+</nav>
+
+<div class="page-hero" style="padding-bottom:3rem">
+  <div style="padding:0 var(--px)">
+    <div class="reveal" style="display:flex;gap:0.5rem;margin-bottom:1.5rem;flex-wrap:wrap">
+      <a href="/ja/blog/" style="color:var(--silver);font-size:0.8rem;text-decoration:none">ブログ</a>
+      <span style="color:var(--silver);font-size:0.8rem">/</span>
+      <span style="color:var(--o);font-size:0.8rem">脅威分析</span>
+    </div>
+    <div class="reveal">
+      <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(250,88,34,0.1);border:1px solid rgba(250,88,34,0.3);border-radius:4px;padding:0.25rem 0.75rem;font-family:'Orbitron',monospace;font-size:0.65rem;color:#FA5822;letter-spacing:0.1em;margin-bottom:1.25rem">脅威分析</div>
+      <h1 style="font-family:'Inter', sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.025em;line-height:1.15;margin-bottom:1.25rem">ランサムウェア防御完全プレイブック：防止から迅速な復旧までの全戦略</h1>
+      <p style="color:var(--silver);font-size:1.0625rem;line-height:1.7;margin-bottom:2rem">RaaS の商業化により、誰でも高度なランサムウェア攻撃を仕掛けられるようになりました。本記事では攻撃技術の進化を深掘りし、防止・検出・迅速なビジネス復旧をカバーする完全な防御フレームワークを企業に提供します。</p>
+      <div style="display:flex;align-items:center;gap:1.5rem;color:var(--silver);font-size:0.8125rem;border-top:1px solid var(--ink-4);padding-top:1.5rem;flex-wrap:wrap">
+        <span>Hexion Networks セキュリティリサーチチーム</span>
+        <span>·</span>
+        <span>2025-11-28</span>
+        <span>·</span>
+        <span>読了 9分</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="padding:3rem var(--px) 5rem">
+  <div class="reveal" style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:12px;overflow:hidden;margin-bottom:3rem;aspect-ratio:16/7;display:flex;align-items:center;justify-content:center">
+    <svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+      <defs>
+        <radialGradient id="rw-bg" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="#FA5822" stop-opacity="0.1"/><stop offset="100%" stop-color="#0A0A14" stop-opacity="0"/></radialGradient>
+      </defs>
+      <rect width="800" height="350" fill="#0A0A14"/>
+      <rect width="800" height="350" fill="url(#rw-bg)"/>
+      <!-- Attack chain -->
+      <!-- Stage labels -->
+      <text x="400" y="30" text-anchor="middle" font-family="Orbitron,monospace" font-size="9" fill="#FA5822" letter-spacing="3">RANSOMWARE ATTACK CHAIN + DEFENSE LAYERS</text>
+      <!-- Chain nodes -->
+      <rect x="30" y="80" width="100" height="50" rx="6" fill="rgba(250,88,34,0.12)" stroke="#FA5822" stroke-width="1"/>
+      <text x="80" y="101" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#FA5822" font-weight="600">初始存取</text>
+      <text x="80" y="117" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#8B8BA8">釣魚 / 漏洞</text>
+      <line x1="130" y1="105" x2="165" y2="105" stroke="#FA5822" stroke-width="1.5" marker-end="url(#arr)"/>
+      <rect x="165" y="80" width="100" height="50" rx="6" fill="rgba(250,88,34,0.12)" stroke="#FA5822" stroke-width="1"/>
+      <text x="215" y="101" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#FA5822" font-weight="600">建立據點</text>
+      <text x="215" y="117" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#8B8BA8">後門 / C2</text>
+      <line x1="265" y1="105" x2="300" y2="105" stroke="#FA5822" stroke-width="1.5"/>
+      <rect x="300" y="80" width="100" height="50" rx="6" fill="rgba(250,88,34,0.12)" stroke="#FA5822" stroke-width="1"/>
+      <text x="350" y="101" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#FA5822" font-weight="600">橫向移動</text>
+      <text x="350" y="117" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#8B8BA8">LotL / 竊取</text>
+      <line x1="400" y1="105" x2="435" y2="105" stroke="#FA5822" stroke-width="1.5"/>
+      <rect x="435" y="80" width="100" height="50" rx="6" fill="rgba(250,88,34,0.12)" stroke="#FA5822" stroke-width="1"/>
+      <text x="485" y="101" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#FA5822" font-weight="600">資料竊取</text>
+      <text x="485" y="117" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#8B8BA8">雙重勒索</text>
+      <line x1="535" y1="105" x2="570" y2="105" stroke="#FA5822" stroke-width="1.5"/>
+      <rect x="570" y="80" width="100" height="50" rx="6" fill="rgba(250,88,34,0.2)" stroke="#FA5822" stroke-width="1.5"/>
+      <text x="620" y="101" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#FA5822" font-weight="700">加密部署</text>
+      <text x="620" y="117" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#8B8BA8">所有設備</text>
+      <!-- Defense layers below -->
+      <rect x="30" y="175" width="100" height="45" rx="5" fill="rgba(0,200,200,0.08)" stroke="#00C8C8" stroke-width="1"/>
+      <text x="80" y="196" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#00C8C8" font-weight="600">Email 安全</text>
+      <text x="80" y="210" text-anchor="middle" font-family="Inter,sans-serif" font-size="6.5" fill="#8B8BA8">Web 過濾 · MFA</text>
+      <rect x="165" y="175" width="100" height="45" rx="5" fill="rgba(0,200,200,0.08)" stroke="#00C8C8" stroke-width="1"/>
+      <text x="215" y="196" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#00C8C8" font-weight="600">EDR 防護</text>
+      <text x="215" y="210" text-anchor="middle" font-family="Inter,sans-serif" font-size="6.5" fill="#8B8BA8">行為偵測</text>
+      <rect x="300" y="175" width="100" height="45" rx="5" fill="rgba(0,200,200,0.08)" stroke="#00C8C8" stroke-width="1"/>
+      <text x="350" y="196" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#00C8C8" font-weight="600">微分段</text>
+      <text x="350" y="210" text-anchor="middle" font-family="Inter,sans-serif" font-size="6.5" fill="#8B8BA8">PAM · SIEM</text>
+      <rect x="435" y="175" width="100" height="45" rx="5" fill="rgba(0,200,200,0.08)" stroke="#00C8C8" stroke-width="1"/>
+      <text x="485" y="196" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#00C8C8" font-weight="600">DLP 資料保護</text>
+      <text x="485" y="210" text-anchor="middle" font-family="Inter,sans-serif" font-size="6.5" fill="#8B8BA8">加密 · 分類</text>
+      <rect x="570" y="175" width="100" height="45" rx="5" fill="rgba(0,200,200,0.08)" stroke="#00C8C8" stroke-width="1"/>
+      <text x="620" y="196" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#00C8C8" font-weight="600">3-2-1-1-0</text>
+      <text x="620" y="210" text-anchor="middle" font-family="Inter,sans-serif" font-size="6.5" fill="#8B8BA8">備份恢復</text>
+      <!-- Vertical connectors -->
+      <line x1="80" y1="130" x2="80" y2="175" stroke="#00C8C8" stroke-width="0.75" stroke-dasharray="3,2" opacity="0.5"/>
+      <line x1="215" y1="130" x2="215" y2="175" stroke="#00C8C8" stroke-width="0.75" stroke-dasharray="3,2" opacity="0.5"/>
+      <line x1="350" y1="130" x2="350" y2="175" stroke="#00C8C8" stroke-width="0.75" stroke-dasharray="3,2" opacity="0.5"/>
+      <line x1="485" y1="130" x2="485" y2="175" stroke="#00C8C8" stroke-width="0.75" stroke-dasharray="3,2" opacity="0.5"/>
+      <line x1="620" y1="130" x2="620" y2="175" stroke="#00C8C8" stroke-width="0.75" stroke-dasharray="3,2" opacity="0.5"/>
+      <!-- Labels -->
+      <text x="400" y="255" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#8B8BA8">▲ 攻擊鏈（上）　▼ 防禦層（下）</text>
+      <!-- IR section -->
+      <rect x="220" y="280" width="360" height="48" rx="7" fill="rgba(250,88,34,0.07)" stroke="rgba(250,88,34,0.3)" stroke-width="1"/>
+      <text x="400" y="302" text-anchor="middle" font-family="Orbitron,monospace" font-size="8" fill="#FA5822" font-weight="700">事件回應計畫 (IRP)</text>
+      <text x="400" y="318" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#8B8BA8">隔離 · 鑑識 · 通報 · 恢復 · 事後改善</text>
+    </svg>
+  </div>
+
+  <div class="reveal" style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+    <p>ランサムウェアは無差別的な大規模攻撃の初期段階から、高度に標的を絞った専門的な「ビジネス・アズ・ア・サービス」エコシステムへと進化しました。RaaS（Ransomware as a Service）モデルの成熟により、技術スキルのない犯罪者でも高度なランサムウェアキャンペーンを展開できるようになっています。2025 年、世界的なランサムウェア攻撃による損害額は推定 300 億ドルを超え、台湾の製造業と金融セクターが主要標的となりました。</p>
+    <p style="margin-top:1rem">さらに警戒すべきは「二重恐喝」「三重恐喝」戦術の広範な採用で、「良いバックアップがあればランサムウェアに対抗できる」という旧来の前提を完全に無効化しています。攻撃者は暗号化前に機密データを窃取し、ダークウェブでの公開を脅し、被害者を逃げ場のないジレンマに追い込みます。</p>
+  </div>
+
+  <div class="reveal" style="margin-top:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)"><span style="color:#FA5822">RaaS 攻撃エコシステム</span>と台湾の被害状況</h2>
+    <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+      <p>現代の RaaS エコシステムは 3 つの主要役割で構成されています：ランサムウェアコードと被害者交渉インターフェースを維持する RaaS 開発者、企業ネットワークへの侵入とアクセス販売を専門とするイニシャルアクセスブローカー（IAB）（通常ダークウェブフォーラムで 500〜50,000 ドルで販売）、アクセスを購入して被害者ネットワーク内を横移動し、データを窃取してランサムウェアを展開し、身代金の 70〜80% を得るアフィリエイトです。</p>
+      <p style="margin-top:1rem">Hexion Networks の脅威インテリジェンスによると、2025 年に複数の RaaS グループが台湾の製造業を標的にした特定の戦術を採用しました：重要な顧客納期と重なるタイミングで攻撃して時間的プレッシャーを最大化、繁体字中国語の身代金要求書を提供、セキュリティ態勢の弱いサプライヤーを優先的に標的にして VPN や RDP アクセスを通じて大手顧客に横移動で侵入。</p>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)">第一防衛線：<span style="color:#FA5822">初期アクセスのブロック</span></h2>
+    <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+      <p>ランサムウェア攻撃の大多数はフィッシングメール・脆弱性の悪用・RDP ブルートフォースから始まります。初期アクセスのブロックが最もコスト効果の高い防御戦略です：</p>
+      <ul style="margin-top:1rem;list-style:none;padding:0;display:flex;flex-direction:column;gap:0.75rem">
+        <li style="display:flex;gap:0.75rem"><span style="color:#00C8C8;flex-shrink:0;font-weight:700">→</span><div><strong style="color:var(--white)">セキュアメールゲートウェイ：</strong>サンドボックス分析機能を持つメールセキュリティゲートウェイを導入し、静的シグネチャ検出のみに頼るのではなく、すべての実行可能な添付ファイルと URL を動的分析します。</div></li>
+        <li style="display:flex;gap:0.75rem"><span style="color:#00C8C8;flex-shrink:0;font-weight:700">→</span><div><strong style="color:var(--white)">脆弱性管理：</strong>組織的な脆弱性管理プロセスを確立し、インターネット公開サービス（VPN・RDP・Exchange・Citrix）の高深刻度脆弱性を 72 時間以内にパッチ適用します。</div></li>
+        <li style="display:flex;gap:0.75rem"><span style="color:#00C8C8;flex-shrink:0;font-weight:700">→</span><div><strong style="color:var(--white)">多要素認証：</strong>すべてのリモートアクセスエントリポイント（VPN・RDP・ウェブアプリケーション）に MFA を強制します。これは認証情報窃取後の不正ログインに対する最も有効な制御です。</div></li>
+        <li style="display:flex;gap:0.75rem"><span style="color:#00C8C8;flex-shrink:0;font-weight:700">→</span><div><strong style="color:var(--white)">攻撃対象領域の削減：</strong>不要なインターネット公開サービスを無効化し、RDP を VPN 経由に限定します。非標準ポートの使用だけでは保護として不十分です。</div></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)">第二防衛線：<span style="color:#FA5822">横移動の検出と阻止</span></h2>
+    <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+      <p>初期アクセス防御が突破されても、攻撃者の横移動とデータ持ち出しを阻止することで損害を劇的に削減できます。エンドポイント検出・応答（EDR）がこの段階の中核ツールであり、異常なプロセス実行・不審な PowerShell スクリプト・異常なアカウントログイン行動を検出し、攻撃者がランサムウェアを展開する前に侵害されたエンドポイントを自動隔離します。</p>
+      <p style="margin-top:1rem">ネットワークマイクロセグメンテーションは横移動の爆発半径を制限します。ワークステーション一台が感染しても、サーバーゾーンや OT 環境には容易に拡散できません。特権アクセス管理（PAM）は攻撃者がドメイン管理者権限を取得するのを防ぎます — DA アクセスが拒否されると、大規模なランサムウェア展開の難易度が指数関数的に増加します。</p>
+      <div style="background:rgba(250,88,34,0.06);border-left:3px solid #FA5822;border-radius:0 8px 8px 0;padding:1rem 1.25rem;margin-top:1.25rem">
+        <div style="font-family:'Inter', sans-serif;font-size:0.875rem;font-weight:700;color:#FA5822;margin-bottom:0.5rem">主要指標</div>
+        <p style="font-size:0.9375rem;color:var(--fog)">調査によると、ランサムウェア攻撃者は初期アクセス後、暗号化ツールを展開するまでに平均 4.5 日かかります。これは企業が（適切な検出ツールがあれば）暗号化が発生する前に攻撃を発見して封じ込める十分な時間ウィンドウを持つことを意味します。EDR の平均検出時間（MTTD）がこの能力を評価する重要な指標です。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)">第三防衛線：<span style="color:#FA5822">3-2-1-1-0 バックアップ戦略</span></h2>
+    <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+      <p>最初の 2 つの防衛線が突破されても、堅固なバックアップ戦略により迅速なビジネス復旧を確保できます。現代のバックアップベストプラクティスは従来の 3-2-1 戦略から 3-2-1-1-0 戦略へと進化しています：</p>
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1.25rem;margin-top:1rem">
+        <div style="display:grid;grid-template-columns:auto 1fr;gap:0.5rem 1rem;font-size:0.9375rem">
+          <span style="font-family:'Orbitron',monospace;color:#FA5822;font-size:1.25rem;font-weight:700">3</span><div style="color:var(--fog);padding-top:0.2rem">バックアップコピー（元データを含む）</div>
+          <span style="font-family:'Orbitron',monospace;color:#FA5822;font-size:1.25rem;font-weight:700">2</span><div style="color:var(--fog);padding-top:0.2rem">異なるストレージメディアタイプ（例：ディスクアレイ＋テープ/クラウド）</div>
+          <span style="font-family:'Orbitron',monospace;color:#FA5822;font-size:1.25rem;font-weight:700">1</span><div style="color:var(--fog);padding-top:0.2rem">オフサイトバックアップ（リモートデータセンターまたはクラウド）</div>
+          <span style="font-family:'Orbitron',monospace;color:#FA5822;font-size:1.25rem;font-weight:700">1</span><div style="color:var(--fog);padding-top:0.2rem">オフラインバックアップ（エアギャップ、ランサムウェアがバックアップに感染するのを防ぐ物理的切断）</div>
+          <span style="font-family:'Orbitron',monospace;color:#00C8C8;font-size:1.25rem;font-weight:700">0</span><div style="color:var(--fog);padding-top:0.2rem">バックアップエラー（定期的にバックアップの整合性と復元可能性を検証）</div>
+        </div>
+      </div>
+      <p style="margin-top:1rem">イミュータブルバックアップはランサムウェアがバックアップデータに感染するのを防ぐ重要な技術です。主要なクラウドストレージサービス（AWS S3 Object Lock、Azure Immutable Blob Storage）はネイティブのイミュータブルストレージ機能を提供しています。台湾企業は特にバックアップと主要システムが同じ Active Directory を共有している問題に注意する必要があります — AD が侵害されると、バックアップ管理プラットフォームも同時に感染する可能性があります。</p>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--ink-4)">攻撃後の<span style="color:#FA5822">インシデント対応手順</span></h2>
+    <div style="font-size:1.0625rem;line-height:1.8;color:var(--fog)">
+      <p>組織がランサムウェア攻撃の被害を受けた場合、正しい初期対応が重要です。推奨される即時アクション：</p>
+      <ol style="margin-top:1rem;padding-left:1.25rem;list-style:decimal;display:flex;flex-direction:column;gap:0.75rem">
+        <li><strong style="color:var(--white)">感染したシステムを直ちに隔離する</strong> — ネットワークから切断してさらなる拡散を防ぐ（メモリ上の攻撃痕跡を保全するためシャットダウンより隔離を優先）</li>
+        <li><strong style="color:var(--white)">メモリスナップショットとシステムイメージを保全する</strong>（後の法廷調査分析のため）</li>
+        <li><strong style="color:var(--white)">インシデント対応チームと法律顧問に通知する</strong>（法的義務と報告要件を評価するため）</li>
+        <li><strong style="color:var(--white)">バックアップの整合性を評価する</strong>（復元可能なデータの範囲と推定復旧時間を確認するため）</li>
+        <li><strong style="color:var(--white)">法律に従い規制当局に報告する</strong>（金融業：72 時間以内、個人情報漏洩：72 時間以内）</li>
+        <li><strong style="color:var(--white)">法律顧問の指導のもと攻撃者とのコミュニケーションを取るか評価する</strong> — 事前相談なしに身代金を支払わないこと</li>
+      </ol>
+      <div style="background:rgba(250,88,34,0.06);border-left:3px solid #FA5822;border-radius:0 8px 8px 0;padding:1rem 1.25rem;margin-top:1.25rem">
+        <p style="font-size:0.9375rem;color:var(--fog)">「ランサムウェア防御の本質は防止だけでなく復元力（レジリエンス）にあります。攻撃成功がいつか起こりうると想定した上で、最短時間で最小限の損害でビジネス操業を復旧できることがより重要です。」</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--ink-4);display:flex;gap:0.5rem;flex-wrap:wrap">
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">ランサムウェア</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">RaaS</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">3-2-1-1-0 バックアップ</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">EDR</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">インシデント対応</span>
+    <span style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.625rem;font-size:0.75rem;color:var(--silver)">台湾製造業</span>
+  </div>
+
+  <div class="reveal" style="margin-top:3rem;background:linear-gradient(135deg,rgba(250,88,34,0.08),rgba(0,200,200,0.04));border:1px solid rgba(250,88,34,0.2);border-radius:12px;padding:2rem">
+    <div style="font-family:'Inter', sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:0.75rem">セキュリティ専門家のアドバイスが必要ですか？</div>
+    <p style="color:var(--silver);margin-bottom:1.5rem">お客様の組織に合わせたセキュリティ評価とソリューションについて、今すぐ Hexion Networks にお問い合わせください。</p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap">
+      <a href="/ja/contact/" class="btn btn-orange">無料相談</a>
+
+    </div>
+  </div>
+</div>
+<div style="background:var(--ink-2);border-top:1px solid var(--ink-4);padding:2.5rem var(--px) 3rem">
+  <div class="reveal" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem">
+    <span style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--silver);letter-spacing:0.1em">全記事</span>
+    <a href="/ja/blog/" style="font-size:0.8rem;color:var(--teal);text-decoration:none">全て見る →</a>
+  </div>
+  <div class="reveal" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:0.75rem">
+      <a href="/ja/blog/cybersecurity-trends-2026/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#FA582244'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#FA5822;letter-spacing:0.06em;margin-bottom:0.375rem">脅威レポート</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">2026年サイバーセキュリティ脅威トレンド分析</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2026-01-15</div></a>
+      <a href="/ja/blog/zero-trust-implementation/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#00C8C844'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#00C8C8;letter-spacing:0.06em;margin-bottom:0.375rem">技術ガイド</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">ゼロトラストアーキテクチャ導入ロードマップ</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2025-12-10</div></a>
+      <a href="/ja/blog/ransomware-defense/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#FF444444'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#FF4444;letter-spacing:0.06em;margin-bottom:0.375rem">脅威分析</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">2026年ランサムウェア防御戦略</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2025-11-28</div></a>
+      <a href="/ja/blog/semi-e187-compliance/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#3DDC9744'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#3DDC97;letter-spacing:0.06em;margin-bottom:0.375rem">コンプライアンス</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">SEMI E187 半導体セキュリティコンプライアンスガイド</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2025-11-05</div></a>
+      <a href="/ja/blog/social-engineering-attacks/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#FF444444'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#FF4444;letter-spacing:0.06em;margin-bottom:0.375rem">脅威分析</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">ソーシャルエンジニアリング攻撃：フィッシングから AI ディープフェイクまで</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2025-10-20</div></a>
+      <a href="/ja/blog/ot-ics-security-guide/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#A78BFA44'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#A78BFA;letter-spacing:0.06em;margin-bottom:0.375rem">技術ガイド</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">OT/ICS 産業セキュリティ：パデューモデルからゼロトラストへ</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2025-10-08</div></a>
+      <a href="/ja/blog/iot-security-challenges/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#00C8C844'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#00C8C8;letter-spacing:0.06em;margin-bottom:0.375rem">技術ガイド</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">エンタープライズ IoT セキュリティの課題と対策</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2025-09-15</div></a>
+      <a href="/ja/blog/supply-chain-security/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#FF444444'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#FF4444;letter-spacing:0.06em;margin-bottom:0.375rem">脅威分析</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">ソフトウェアサプライチェーン攻撃：SolarWinds から XZ Utils まで</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2025-09-02</div></a>
+      <a href="/ja/blog/mfa-identity-security/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#00C8C844'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#00C8C8;letter-spacing:0.06em;margin-bottom:0.375rem">技術ガイド</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">MFA・ID セキュリティ：OTP からパスワードレスへ</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2025-08-18</div></a>
+      <a href="/ja/blog/cloud-security-misconfigurations/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#3DDC9744'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#3DDC97;letter-spacing:0.06em;margin-bottom:0.375rem">技術ガイド</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">クラウドセキュリティ設定ミス：防止ガイド</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2025-08-05</div></a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div><a href="/ja/"><img src="/brand_assets/logo.png" alt="Hexion Networks" style="height:36px;filter:brightness(0) invert(1);opacity:0.85" /></a><p class="footer-brand-desc">統合コンサルティング：ビジネス戦略、ブランドアドバイザリー、IT インフラ、サイバーセキュリティ。</p></div>
+    <div><div class="f-col-title">製品</div><a href="/ja/products/pico-utm-100/" class="f-link">Pico-UTM 100</a><a href="/ja/products/dual-ark-utm-16/" class="f-link">Ark-UTM 16</a><a href="/ja/products/tera-utm-12/" class="f-link">Tera-UTM 12</a><a href="/ja/products/lionfilter-200/" class="f-link">Lionfilter 200</a><a href="/ja/products/endblock/" class="f-link">Endblock</a><a href="/ja/products/teamt5/" class="f-link">TeamT5</a><a href="/ja/products/cycraft/" class="f-link">CyCraft AI</a><a href="/ja/products/defender-xdr/" class="f-link">Defender XDR</a></div>
+    <div><div class="f-col-title">サービス</div><a href="/ja/services/" class="f-link">ビジネス戦略</a><a href="/ja/services/" class="f-link">ブランドアドバイザリー</a><a href="/ja/services/" class="f-link">セキュリティ評価</a></div>
+    <div><div class="f-col-title">会社情報</div><a href="/ja/about/" class="f-link">会社概要</a><a href="/ja/blog/" class="f-link">ブログ</a><a href="/ja/contact/" class="f-link">お問い合わせ</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 HEXION NETWORKS.</span>
+    <div class="footer-legal"><a href="#">プライバシーポリシー</a><a href="#">利用規約</a></div>
+  </div>
+</footer>
+
+<script>const ro=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target)}})},{threshold:0.08});document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));</script>
+<script>var _ls=Date.now();window.addEventListener("load",function(){var l=document.getElementById("page-loader");if(!l)return;var elapsed=Date.now()-_ls,wait=Math.max(0,800-elapsed);setTimeout(function(){l.classList.add("out");setTimeout(function(){l.remove()},520)},wait)});</script>
+</body></html>

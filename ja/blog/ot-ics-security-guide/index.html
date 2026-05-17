@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OT/ICS セキュリティ完全ガイド | 産業用制御システム保護 — Hexion Networks</title>
+  <meta name="description" content="IT/OT 統合が加速する中、産業用制御システムは前例のないサイバーセキュリティ脅威に直面しています。本ガイドは、製造業者向けにパデューモデルから IEC 62443 までの完全な OT セキュリティロードマップを網羅します。" />
+  <meta name="keywords" content="OT security,ICS cybersecurity,industrial control systems,Purdue model,IEC 62443,SEMI E187,IT/OT convergence,manufacturing security, Hexion Networks" />  <meta name="language" content="ja" />
+  <meta name="geo.region" content="TW-KHH" />
+  <meta name="geo.placename" content="Kaohsiung, Taiwan" />
+  <meta name="geo.position" content="22.627;120.302" />
+  <meta name="ICBM" content="22.627, 120.302" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hexionnetworks.com/ja/blog/ot-ics-security-guide/" />
+  <link rel="alternate" hreflang="zh-TW" href="https://hexionnetworks.com/blog/ot-ics-security-guide/" />
+  <link rel="alternate" hreflang="en" href="https://hexionnetworks.com/en/blog/ot-ics-security-guide/" />
+  <link rel="alternate" hreflang="ja" href="https://hexionnetworks.com/ja/blog/ot-ics-security-guide/" />
+  <link rel="alternate" hreflang="x-default" href="https://hexionnetworks.com/blog/ot-ics-security-guide/" />
+  <meta property="og:title" content="OT/ICS セキュリティ完全ガイド | 産業用制御システム保護 — Hexion Networks" />
+  <meta property="og:description" content="As IT/OT convergence accelerates, industrial control systems face unprecedented cybersecurity threats. 本ガイドは製造業者向けに完全な OT セキュリティロードマップを提供します。" />
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta property="og:url" content="https://hexionnetworks.com/ja/blog/ot-ics-security-guide/" />
+  <meta property="og:image" content="https://hexionnetworks.com/brand_assets/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="OT/ICS セキュリティ完全ガイド | 産業用制御システム保護 — Hexion Networks" />
+  <meta name="twitter:description" content="As IT/OT convergence accelerates, industrial control systems face unprecedented cybersecurity threats. 本ガイドはパデューモデルから IEC 62443 までの完全な OT セキュリティロードマップを網羅します。" />
+  <meta name="twitter:image" content="https://hexionnetworks.com/brand_assets/logo.png" />
+  <link rel="icon" href="/brand_assets/favicon.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"OT/ICS セキュリティ完全ガイド | 産業用制御システム保護","datePublished":"2025-10-08","dateModified":"2025-10-08","author":{"@type":"Organization","name":"Hexion Networks"},"publisher":{"@type":"Organization","name":"Hexion Networks","url":"https://hexionnetworks.com"},"url": "https://hexionnetworks.com/ja/blog/ot-ics-security-guide/"}</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-78TQ277930"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-78TQ277930');
+</script>
+<script src="/lang.js"></script>
+
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"ホーム","item": "https://hexionnetworks.com/ja/"},
+    {"@type":"ListItem","position":2,"name":"セキュリティインテリジェンス","item": "https://hexionnetworks.com/ja/blog/"},
+    {"@type":"ListItem","position":3,"name":"OT/ICS セキュリティガイド","item": "https://hexionnetworks.com/ja/blog/ot-ics-security-guide/"}
+  ]
+}
+</script>
+</head>
+<body>
+<div id="page-loader"><img src="/brand_assets/logo.png" alt="" class="loader-logo" /><div class="loader-ring-wrap"><div class="loader-ring loader-ring-outer"></div><div class="loader-ring loader-ring-inner"></div><div class="loader-dot"></div></div></div>
+<div class="topbar">
+  <div class="topbar-social-group"><a href="https://www.facebook.com/profile.php?id=61576794144217" target="_blank" rel="noopener noreferrer" class="topbar-social" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a><a href="https://www.instagram.com/tdb_lab/" target="_blank" rel="noopener noreferrer" class="topbar-social" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a></div><a href="/ja/contact/">お問い合わせ</a>
+  <a href="/ja/blog/" class="topbar-highlight">最新セキュリティレポート →</a>
+  <a href="#" id="zh-toggle" class="lang-btn">中文</a>
+  <a href="#" id="en-toggle" class="lang-btn">EN</a>
+</div>
+<nav>
+  <a href="/ja/" class="nav-logo"><img src="/brand_assets/logo.png" alt="Hexion Networks" /></a>
+  <div class="nav-links">
+    <div class="nav-item"><a href="/ja/services/">サービス</a></div>
+    <div class="nav-item">
+      <button>
+        製品
+        <svg class="nav-chevron" viewBox="0 0 16 16" fill="currentColor"><path d="M8 11L3 6h10z"/></svg>
+      </button>
+      <div class="mega" style="width:560px;grid-template-columns:1fr 1fr">
+        <div class="mega-col" style="border-right:1px solid rgba(255,255,255,0.06)">
+          <div class="mega-label" style="color:var(--teal)">LIONIC NGFWシリーズ</div>
+          <a href="/ja/products/pico-utm-100/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.15);color:var(--o)">IT</span>
+            Pico-UTM 100
+          </a>
+          <a href="/ja/products/dual-ark-utm-16/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(0,200,200,0.12);color:var(--teal)">IoT</span>
+            Ark-UTM 16
+          </a>
+          <a href="/ja/products/tera-utm-12/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(250,88,34,0.12);color:#FF7A45">OT</span>
+            Tera-UTM 12
+          </a>
+          <a href="/ja/products/lionfilter-200/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(167,139,250,0.12);color:#A78BFA">NET</span>
+            Lionfilter 200
+          </a>
+        </div>
+        <div class="mega-col" style="background:rgba(61,220,151,0.025)">
+          <div class="mega-label" style="color:#3DDC97">Endpoint Detection &amp; Response</div>
+          <a href="/ja/products/endblock/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.15);color:#3DDC97">EDR</span>
+            Endblock
+          </a>
+          <a href="/ja/products/teamt5/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.12);color:#3DDC97">TI</span>
+            TeamT5
+          </a>
+          <a href="/ja/products/cycraft/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(61,220,151,0.1);color:#3DDC97">AI</span>
+            CyCraft AI
+          </a>
+          <a href="/ja/products/defender-xdr/" class="mega-link mega-link-product">
+            <span class="mega-prod-badge" style="background:rgba(0,120,212,0.15);color:#0078D4">XDR</span>
+            Microsoft Defender XDR
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-item" style="display:none"><a href="/ja/research/">調査・研究</a></div>
+    <div class="nav-item active"><a href="/ja/blog/">ブログ</a></div>
+    <div class="nav-item"><a href="/ja/about/">会社概要</a></div>
+  </div>
+  <div class="nav-cta">
+    <a href="https://line.me/R/ti/p/@278zhddk" target="_blank" class="nav-line-btn">LINE チャット</a>
+    <a href="/ja/contact/" class="btn btn-orange" style="padding:0.5rem 1.125rem;font-size:0.8125rem;">お見積り →</a>
+  </div>
+</nav>
+
+<div class="page-hero" style="padding-bottom:3rem">
+  <div style="padding:0 var(--px)">
+    <div class="reveal" style="display:flex;gap:0.5rem;margin-bottom:1.5rem">
+      <a href="/ja/blog/" style="color:var(--silver);font-size:0.8rem;text-decoration:none">ブログ</a>
+      <span style="color:var(--silver);font-size:0.8rem">/</span>
+      <span style="color:var(--o);font-size:0.8rem">技術ガイド</span>
+    </div>
+    <div class="reveal">
+      <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(250,88,34,0.1);border:1px solid rgba(250,88,34,0.3);border-radius:4px;padding:0.25rem 0.75rem;font-family:'Orbitron',monospace;font-size:0.65rem;color:#FA5822;letter-spacing:0.1em;margin-bottom:1.25rem">技術ガイド</div>
+      <h1 style="font-family:'Inter', sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.025em;line-height:1.15;margin-bottom:1.25rem">OT/ICS セキュリティ保護ガイド：工場自動化時代のサイバーセキュリティ課題とソリューション</h1>
+      <p style="color:var(--silver);font-size:1.0625rem;line-height:1.7;margin-bottom:2rem">IT/OT 統合が加速する中、産業用制御システムは前例のないサイバーセキュリティ脅威に直面しています。本ガイドはパデューモデルから IEC 62443 まですべてをカバーし、製造業者向けの完全な OT セキュリティロードマップを提供します。</p>
+      <div style="display:flex;align-items:center;gap:1.5rem;color:var(--silver);font-size:0.8125rem;border-top:1px solid var(--ink-4);padding-top:1.5rem">
+        <span>Hexion Networks セキュリティリサーチチーム</span><span>·</span><span>2025年10月8日</span><span>·</span><span>読了 9分</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="padding:3rem var(--px) 5rem">
+
+  <!-- SVG Banner: Purdue model layers -->
+  <div class="reveal" style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:12px;overflow:hidden;margin-bottom:3rem;aspect-ratio:16/7;display:flex;align-items:center;justify-content:center">
+    <svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+      <defs>
+        <linearGradient id="ot-bg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#0A0A14"/>
+          <stop offset="100%" stop-color="#11111E"/>
+        </linearGradient>
+      </defs>
+      <rect width="800" height="350" fill="url(#ot-bg)"/>
+      <!-- Purdue Level labels left -->
+      <text x="30" y="62" font-family="'Orbitron',monospace" font-size="8" fill="#8B8BA8">LEVEL 5</text>
+      <text x="30" y="102" font-family="'Orbitron',monospace" font-size="8" fill="#8B8BA8">LEVEL 4</text>
+      <text x="30" y="162" font-family="'Orbitron',monospace" font-size="8" fill="#FA5822">LEVEL 3</text>
+      <text x="30" y="222" font-family="'Orbitron',monospace" font-size="8" fill="#FA5822">LEVEL 2</text>
+      <text x="30" y="272" font-family="'Orbitron',monospace" font-size="8" fill="#FA5822">LEVEL 1</text>
+      <text x="30" y="312" font-family="'Orbitron',monospace" font-size="8" fill="#FA5822">LEVEL 0</text>
+      <!-- IT Zone bar -->
+      <rect x="90" y="40" width="620" height="100" rx="8" fill="rgba(0,200,200,0.04)" stroke="rgba(0,200,200,0.25)" stroke-width="1"/>
+      <text x="400" y="58" text-anchor="middle" font-family="'Orbitron',monospace" font-size="9" fill="#00C8C8" letter-spacing="2">IT ZONE</text>
+      <!-- Level 5 row -->
+      <rect x="110" y="65" width="580" height="22" rx="4" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="400" y="80" text-anchor="middle" font-family="monospace" font-size="9" fill="#C4C4D8">Enterprise Network — ERP / MES / Email / Internet</text>
+      <!-- Level 4 row -->
+      <rect x="110" y="98" width="580" height="22" rx="4" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="400" y="113" text-anchor="middle" font-family="monospace" font-size="9" fill="#C4C4D8">Business Planning Network — Historian / Data Warehouse</text>
+      <!-- DMZ separator -->
+      <rect x="90" y="130" width="620" height="22" rx="4" fill="rgba(250,88,34,0.12)" stroke="#FA5822" stroke-width="1.5"/>
+      <text x="400" y="145" text-anchor="middle" font-family="'Orbitron',monospace" font-size="9" fill="#FA5822" letter-spacing="2">DMZ — NGFW / DATA DIODE / JUMP HOST</text>
+      <!-- OT Zone bar -->
+      <rect x="90" y="158" width="620" height="180" rx="8" fill="rgba(250,88,34,0.04)" stroke="rgba(250,88,34,0.25)" stroke-width="1"/>
+      <text x="400" y="175" text-anchor="middle" font-family="'Orbitron',monospace" font-size="9" fill="#FA5822" letter-spacing="2">OT ZONE</text>
+      <!-- Level 3 row -->
+      <rect x="110" y="180" width="580" height="22" rx="4" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="400" y="195" text-anchor="middle" font-family="monospace" font-size="9" fill="#C4C4D8">Manufacturing Operations — SCADA / DCS / OPC-UA Server</text>
+      <!-- Level 2 row -->
+      <rect x="110" y="215" width="580" height="22" rx="4" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="400" y="230" text-anchor="middle" font-family="monospace" font-size="9" fill="#C4C4D8">Supervisory Control — HMI / Engineering Workstation</text>
+      <!-- Level 1 row -->
+      <rect x="110" y="250" width="580" height="22" rx="4" fill="#1A1A2C" stroke="#2E2E46"/>
+      <text x="400" y="265" text-anchor="middle" font-family="monospace" font-size="9" fill="#C4C4D8">Basic Control — PLC / RTU / Modbus / DNP3</text>
+      <!-- Level 0 row -->
+      <rect x="110" y="285" width="580" height="22" rx="4" fill="#1A1A2C" stroke="rgba(250,88,34,0.4)"/>
+      <text x="400" y="300" text-anchor="middle" font-family="monospace" font-size="9" fill="#FA5822">Physical Process — Sensors / Actuators / Motors / Valves</text>
+      <!-- Label -->
+      <text x="400" y="335" text-anchor="middle" font-family="'Orbitron',monospace" font-size="9" fill="#2E2E46" letter-spacing="2">PURDUE MODEL — IT/OT NETWORK SEGMENTATION</text>
+    </svg>
+  </div>
+
+  <!-- Section 1 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">OT/ICS 環境の固有の特性</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">OT（運用技術）および ICS（産業用制御システム）環境のサイバーセキュリティ課題は、従来の IT 環境とは根本的に異なります。IT の世界では、セキュリティの優先順位は CIA トライアドに従います：機密性、完全性、可用性。OT の世界では、この順序が完全に逆転します：可用性が常に最優先であり、生産を停止させたり機器の異常を引き起こす可能性のあるセキュリティ対策は拒否されることがあります。</p>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">OT 環境の装置 — PLC（プログラマブルロジックコントローラ）、RTU（リモートターミナルユニット）、HMI（ヒューマンマシンインターフェース）など — は通常以下の特性を持ちます：15〜30 年の耐用年数を想定した設計、更新のために容易にオフラインにできない、独自の産業プロトコルの使用、従来のセキュリティエージェントのサポートが困難なほど限られたコンピューティングリソース。</p>
+    <p style="color:var(--silver);line-height:1.8">半導体、電子機器、精密機械施設が集中するグローバル製造大国として、台湾は国家支援型 APT グループにとって高価値な標的となっています。これらの施設への攻撃は企業自体だけでなく、グローバルサプライチェーンに深刻な混乱をもたらす可能性があります。</p>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">IT/OT 統合がもたらす新たな脅威</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">過去、OT ネットワークは「エアギャッピング」— 外部ネットワークからの物理的隔離 — によるセキュリティに依存していました。しかし、スマート製造、インダストリー 4.0 への推進と、COVID-19 後のリモート監視ニーズの爆発的増加が、この最後の防衛線を急速に侵食しています。</p>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">IT/OT 統合の主要リスク：</p>
+    <ul style="color:var(--silver);line-height:1.8;padding-left:1.5rem;margin-bottom:1rem">
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">ベンダーリモートアクセス：</strong> 機器ベンダーが必要とするリモートメンテナンス接続は、セキュリティコントロールを迂回して生産ネットワークに直接アクセスすることが多い。</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">USB メディア侵入：</strong> エンジニアが使用する設定用ラップトップや USB デバイスが IT 側からマルウェアを OT 環境に持ち込む可能性がある。</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">エンジニアリングワークステーション：</strong> Windows ベースの HMI やエンジニアリングワークステーションはネットワーク接続が必要だが、更新やウイルス対策ソフトの実行ができないことが多い。</li>
+      <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">クラウド SCADA：</strong> クラウドアーキテクチャ上に構築された監視システムは、攻撃対象領域を大幅に拡大する。</li>
+    </ul>
+    <p style="color:var(--silver);line-height:1.8">2021 年の Colonial Pipeline ランサムウェア攻撃は、攻撃者が IT 側から侵入し、企業が OT パイプラインを能動的に停止せざるを得なかった教科書的な事例です。台湾でも 2022〜2023 年に半導体メーカーの OT ネットワークを標的にした複数の攻撃が発生しましたが、その一部は機密指定され、公開されることはありませんでした。</p>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">パデューモデルとネットワーク階層アーキテクチャ</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">パデューモデル（Purdue Enterprise Reference Architecture、PERA）は IT/OT ネットワーク階層設計の標準参照フレームワークで、産業ネットワークをレベル 0 からレベル 5 の 6 層に分類します：</p>
+    <div style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:1rem">
+      <div style="background:var(--ink-2);border-left:3px solid #FA5822;padding:1rem 1.25rem;border-radius:0 8px 8px 0">
+        <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:#FA5822;margin-bottom:0.35rem">レベル 0 — 物理プロセス層</div>
+        <p style="color:var(--silver);font-size:0.9rem;line-height:1.7">センサー、アクチュエータ、モーター、バルブなど、生産プロセスを直接制御する物理デバイス。このレイヤーにはソフトウェアエージェントをインストールできない。</p>
+      </div>
+      <div style="background:var(--ink-2);border-left:3px solid #FA5822;padding:1rem 1.25rem;border-radius:0 8px 8px 0">
+        <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:#FA5822;margin-bottom:0.35rem">レベル 1 — 基本制御層</div>
+        <p style="color:var(--silver);font-size:0.9rem;line-height:1.7">Modbus、DNP3、PROFINET などの産業プロトコルを使用してレベル 0 デバイスを直接制御する PLC と RTU。</p>
+      </div>
+      <div style="background:var(--ink-2);border-left:3px solid #FA5822;padding:1rem 1.25rem;border-radius:0 8px 8px 0">
+        <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:#FA5822;margin-bottom:0.35rem">レベル 2 — 監視制御層</div>
+        <p style="color:var(--silver);font-size:0.9rem;line-height:1.7">オペレーターが生産プロセスを監視・制御する HMI と SCADA ワークステーション。</p>
+      </div>
+      <div style="background:var(--ink-2);border-left:3px solid #FA5822;padding:1rem 1.25rem;border-radius:0 8px 8px 0">
+        <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:#FA5822;margin-bottom:0.35rem">レベル 3 — 製造オペレーション層</div>
+        <p style="color:var(--silver);font-size:0.9rem;line-height:1.7">上位 IT 層と下位 OT 層の橋渡しをする MES（製造実行システム）とプラントデータヒストリアン。</p>
+      </div>
+      <div style="background:var(--ink-2);border-left:3px solid #00C8C8;padding:1rem 1.25rem;border-radius:0 8px 8px 0">
+        <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:#00C8C8;margin-bottom:0.35rem">レベル 4-5 — エンタープライズ IT 層</div>
+        <p style="color:var(--silver);font-size:0.9rem;line-height:1.7">ERP、メール、インターネットアクセス。このレイヤーと OT レイヤーの間には厳格な DMZ ファイアウォール分離を確立する必要がある。</p>
+      </div>
+    </div>
+    <p style="color:var(--silver);line-height:1.8">レベル 3 とレベル 4 の間に専用の産業用ファイアウォール（NGFW）を導入して厳格な IT/OT 分離境界を形成し、クロスレイヤーアクセスリクエストを管理するジャンプホストを設置することを推奨します。</p>
+  </div>
+
+  <!-- Section 4 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">産業プロトコルセキュリティ：Modbus、DNP3、OPC-UA</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">産業用制御システムで使用される独自プロトコルは、セキュリティを全く考慮せずに設計されました。これらのプロトコルの弱点を理解することが、保護戦略を策定する基盤となります：</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem">
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1.25rem">
+        <div style="font-weight:600;color:var(--white);margin-bottom:0.5rem">Modbus</div>
+        <p style="color:var(--silver);font-size:0.875rem;line-height:1.7">1979 年に認証や暗号化なしで設計されました。Modbus デバイスに接続できる者は誰でもすべてのレジスタを読み取り、制御コマンドを直接書き込むことさえできます。NGFW は DPI を使用して Modbus ファンクションコードへのアクセスを識別・制限できます。</p>
+      </div>
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1.25rem">
+        <div style="font-weight:600;color:var(--white);margin-bottom:0.5rem">DNP3</div>
+        <p style="color:var(--silver);font-size:0.875rem;line-height:1.7">電力および水処理施設で広く使用されています。Modbus より若干改善されていますが、基本バージョンは依然として認証が欠如しています。Secure Authentication v5（SAv5）は改善を提供しますが、導入率は依然低いままです。</p>
+      </div>
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:8px;padding:1.25rem">
+        <div style="font-weight:600;color:var(--white);margin-bottom:0.5rem">OPC-UA</div>
+        <p style="color:var(--silver);font-size:0.875rem;line-height:1.7">組み込みの TLS 暗号化と X.509 証明書認証を備えた最新の産業プロトコル標準。現在最もセキュアな産業通信プロトコルですが、設定ミス（任意の証明書を受け入れるなど）は依然として脆弱性をもたらす可能性があります。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 5 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">IEC 62443 標準概要</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">IEC 62443 は産業オートメーションおよび制御システム（IACS）向けの国際サイバーセキュリティ標準シリーズで、組織ポリシーからデバイス技術要件までの完全なフレームワークをカバーする 4 つの主要パートに分かれています：</p>
+    <ul style="color:var(--silver);line-height:1.8;padding-left:1.5rem;margin-bottom:1rem">
+      <li style="margin-bottom:0.5rem"><strong style="color:var(--white)">IEC 62443-2：</strong> 資産管理とサプライヤー管理を含む組織のセキュリティポリシーおよび手順要件。</li>
+      <li style="margin-bottom:0.5rem"><strong style="color:var(--white)">IEC 62443-3：</strong> セキュリティレベル 1〜4 とゾーン/コンジットモデルを定義するシステムレベルのセキュリティ要件。</li>
+      <li style="margin-bottom:0.5rem"><strong style="color:var(--white)">IEC 62443-4：</strong> PLC、HMI、その他のデバイスのベンダーに適用されるコンポーネントレベルのセキュアな開発要件。</li>
+    </ul>
+    <p style="color:var(--silver);line-height:1.8">台湾政府および主要な製造コングロマリットは、サプライヤーに IEC 62443 関連の認証提供を段階的に要求しています。組織は専門的なセキュリティコンサルタントに IEC 62443 ギャップ分析の実施とコンプライアンスロードマップの策定を委託できます。</p>
+  </div>
+
+  <!-- Section 6 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">SEMI E187：半導体ファブの特別セキュリティ要件</h2>
+    <p style="color:var(--silver);line-height:1.8;margin-bottom:1rem">SEMI E187 は 2022 年に発効した、半導体製造装置（ウェハー加工装置など）専用に開発されたサイバーセキュリティ仕様です。この標準は半導体機器ベンダーに対して明確な要件を課しています：</p>
+    <ul style="color:var(--silver);line-height:1.8;padding-left:1.5rem;margin-bottom:1rem">
+      <li style="margin-bottom:0.5rem">OS ハードニング：不要なサービスとポートの無効化</li>
+      <li style="margin-bottom:0.5rem">最小権限アカウント権限</li>
+      <li style="margin-bottom:0.5rem">ポータブルメディア制御：不正な USB デバイス接続の禁止</li>
+      <li style="margin-bottom:0.5rem">ネットワーク接続ログ：完全な接続ログと監査メカニズム</li>
+      <li style="margin-bottom:0.5rem">マルウェア保護：エンドポイント保護ソリューションの導入</li>
+    </ul>
+    <p style="color:var(--silver);line-height:1.8">台湾の半導体ファブ（ウェハーファウンドリとそのサプライチェーンを含む）は、機器ベンダーの SEMI E187 準拠を積極的に推進しています。組織は専門的なセキュリティコンサルタントに SEMI E187 コンプライアンスアセスメントの実施を委託し、ギャップを特定して具体的な改善を推奨してもらうことができます。</p>
+  </div>
+
+  <!-- Section 7 -->
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <h2 style="font-family:'Inter', sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--white)">3 フェーズ OT セキュリティ導入パス</h2>
+    <div style="display:flex;flex-direction:column;gap:1rem">
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:10px;padding:1.5rem">
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.75rem">
+          <div style="font-family:'Orbitron',monospace;font-size:1rem;color:#FA5822;font-weight:700;min-width:2.5rem">01</div>
+          <div style="font-weight:700;color:var(--white);font-size:1rem">可視性の確立（1〜3 ヶ月目）</div>
+        </div>
+        <p style="color:var(--silver);line-height:1.75;font-size:0.9375rem">OT 資産探索ツールを導入して完全なデバイスインベントリとネットワークトポロジーマップを構築します。パッシブトラフィック監視を使用してすべての産業プロトコル通信を特定します。このフェーズは観察のみ — 生産への影響を避けるためにブロッキングアクションは取りません。</p>
+      </div>
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:10px;padding:1.5rem">
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.75rem">
+          <div style="font-family:'Orbitron',monospace;font-size:1rem;color:#FA5822;font-weight:700;min-width:2.5rem">02</div>
+          <div style="font-weight:700;color:var(--white);font-size:1rem">ネットワーク分離の実装（4〜9 ヶ月目）</div>
+        </div>
+        <p style="color:var(--silver);line-height:1.75;font-size:0.9375rem">パデューモデルに従って階層型ネットワークアーキテクチャを構築し、IT/OT 境界に NGFW を導入、産業プロトコル DPI（ディープパケットインスペクション）を有効化してアローリストポリシーを設定します。非重要生産ラインから開始してバッチで実装します。</p>
+      </div>
+      <div style="background:var(--ink-2);border:1px solid var(--ink-4);border-radius:10px;padding:1.5rem">
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.75rem">
+          <div style="font-family:'Orbitron',monospace;font-size:1rem;color:#FA5822;font-weight:700;min-width:2.5rem">03</div>
+          <div style="font-weight:700;color:var(--white);font-size:1rem">継続的な監視と対応（10 ヶ月目以降）</div>
+        </div>
+        <p style="color:var(--silver);line-height:1.75;font-size:0.9375rem">OT セキュリティオペレーションセンター（OT-SOC）を確立または既存の SOC と統合し、OT 固有のインシデント対応手順を策定し、定期的な OT セキュリティ訓練を実施し、産業脅威インテリジェンスを継続的に更新します。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tags -->
+  <div class="reveal" style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--ink-4);display:flex;gap:0.5rem;flex-wrap:wrap">
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">OT セキュリティ</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">ICS</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">パデューモデル</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">IEC 62443</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">SEMI E187</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">Ark-UTM</span>
+    <span style="background:var(--ink-3);border:1px solid var(--ink-4);border-radius:4px;padding:0.25rem 0.75rem;font-size:0.8rem;color:var(--silver)">製造セキュリティ</span>
+  </div>
+
+  <!-- CTA -->
+  <div class="reveal" style="margin-top:3rem;background:linear-gradient(135deg,rgba(250,88,34,0.08),rgba(0,200,200,0.04));border:1px solid rgba(250,88,34,0.2);border-radius:12px;padding:2rem">
+    <div style="font-family:'Inter', sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:0.75rem">専門的なセキュリティアドバイスが必要ですか？</div>
+    <p style="color:var(--silver);margin-bottom:1.5rem">お客様の組織に合わせた OT セキュリティアセスメントについては、専門セキュリティコンサルタントにご相談ください。</p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap">
+      <a href="/ja/contact/" class="btn btn-orange">お見積りはこちら</a>
+    </div>
+  </div>
+</div>
+<div style="background:var(--ink-2);border-top:1px solid var(--ink-4);padding:2.5rem var(--px) 3rem">
+  <div class="reveal" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem">
+    <span style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--silver);letter-spacing:0.1em">全記事</span>
+    <a href="/ja/blog/" style="font-size:0.8rem;color:var(--teal);text-decoration:none">全て見る →</a>
+  </div>
+  <div class="reveal" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:0.75rem">
+      <a href="/ja/blog/cybersecurity-trends-2026/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#FA582244'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#FA5822;letter-spacing:0.06em;margin-bottom:0.375rem">脅威レポート</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">2026年サイバーセキュリティ脅威トレンド分析</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2026-01-15</div></a>
+      <a href="/ja/blog/zero-trust-implementation/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#00C8C844'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#00C8C8;letter-spacing:0.06em;margin-bottom:0.375rem">技術ガイド</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">ゼロトラストアーキテクチャ導入ロードマップ</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2025-12-10</div></a>
+      <a href="/ja/blog/ransomware-defense/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#FF444444'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#FF4444;letter-spacing:0.06em;margin-bottom:0.375rem">脅威分析</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">2026年ランサムウェア防御戦略</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2025-11-28</div></a>
+      <a href="/ja/blog/semi-e187-compliance/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#3DDC9744'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#3DDC97;letter-spacing:0.06em;margin-bottom:0.375rem">コンプライアンス</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">SEMI E187 半導体セキュリティコンプライアンスガイド</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2025-11-05</div></a>
+      <a href="/ja/blog/social-engineering-attacks/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#FF444444'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#FF4444;letter-spacing:0.06em;margin-bottom:0.375rem">脅威分析</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">ソーシャルエンジニアリング攻撃：フィッシングから AI ディープフェイクまで</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2025-10-20</div></a>
+      <a href="/ja/blog/ot-ics-security-guide/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#A78BFA44'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#A78BFA;letter-spacing:0.06em;margin-bottom:0.375rem">技術ガイド</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">OT/ICS 産業セキュリティ：パデューモデルからゼロトラストへ</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2025-10-08</div></a>
+      <a href="/ja/blog/iot-security-challenges/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#00C8C844'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#00C8C8;letter-spacing:0.06em;margin-bottom:0.375rem">技術ガイド</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">エンタープライズ IoT セキュリティ：課題と防御</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2025-09-15</div></a>
+      <a href="/ja/blog/supply-chain-security/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#FF444444'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#FF4444;letter-spacing:0.06em;margin-bottom:0.375rem">脅威分析</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">ソフトウェアサプライチェーン攻撃：SolarWinds から XZ Utils まで</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2025-09-02</div></a>
+      <a href="/ja/blog/mfa-identity-security/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#00C8C844'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#00C8C8;letter-spacing:0.06em;margin-bottom:0.375rem">技術ガイド</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">MFA とアイデンティティセキュリティ：OTP からパスワードレスへ</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2025-08-18</div></a>
+      <a href="/ja/blog/cloud-security-misconfigurations/" style="text-decoration:none;background:var(--ink-3);border:1px solid var(--ink-4);border-radius:8px;padding:0.875rem;display:block;transition:border-color 0.2s" onmouseover="this.style.borderColor='#3DDC9744'" onmouseout="this.style.borderColor='var(--ink-4)'"><div style="font-family:'Orbitron',monospace;font-size:0.575rem;color:#3DDC97;letter-spacing:0.06em;margin-bottom:0.375rem">技術ガイド</div><div style="font-size:0.8125rem;font-weight:600;color:var(--white);line-height:1.4">クラウドセキュリティ設定ミス：防止ガイド</div><div style="font-size:0.7rem;color:var(--silver);margin-top:0.375rem">2025-08-05</div></a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div><a href="/ja/"><img src="/brand_assets/logo.png" alt="Hexion Networks" style="height:36px;filter:brightness(0) invert(1);opacity:0.85" /></a><p class="footer-brand-desc">統合コンサルティング：ビジネス戦略、ブランドアドバイザリー、IT インフラ、サイバーセキュリティ。</p></div>
+    <div><div class="f-col-title">製品</div><a href="/ja/products/pico-utm-100/" class="f-link">Pico-UTM 100</a><a href="/ja/products/dual-ark-utm-16/" class="f-link">Ark-UTM 16</a><a href="/ja/products/tera-utm-12/" class="f-link">Tera-UTM 12</a><a href="/ja/products/lionfilter-200/" class="f-link">Lionfilter 200</a><a href="/ja/products/endblock/" class="f-link">Endblock</a><a href="/ja/products/teamt5/" class="f-link">TeamT5</a><a href="/ja/products/cycraft/" class="f-link">CyCraft AI</a><a href="/ja/products/defender-xdr/" class="f-link">Defender XDR</a></div>
+    <div><div class="f-col-title">サービス</div><a href="/ja/services/" class="f-link">ビジネス戦略</a><a href="/ja/services/" class="f-link">ブランドアドバイザリー</a><a href="/ja/services/" class="f-link">セキュリティ評価</a></div>
+    <div><div class="f-col-title">会社情報</div><a href="/ja/about/" class="f-link">会社概要</a><a href="/ja/blog/" class="f-link">ブログ</a><a href="/ja/contact/" class="f-link">お問い合わせ</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 HEXION NETWORKS.</span>
+    <div class="footer-legal"><a href="#">プライバシーポリシー</a><a href="#">利用規約</a></div>
+  </div>
+</footer>
+
+<script>const ro=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target)}})},{threshold:0.08});document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));</script>
+<script>var _ls=Date.now();window.addEventListener("load",function(){var l=document.getElementById("page-loader");if(!l)return;var elapsed=Date.now()-_ls,wait=Math.max(0,800-elapsed);setTimeout(function(){l.classList.add("out");setTimeout(function(){l.remove()},520)},wait)});</script>
+</body></html>
