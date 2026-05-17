@@ -1,54 +1,130 @@
-# CLAUDE.md — Frontend Website Rules
+# CLAUDE.md
 
-## Always Do First
-- **Invoke the `frontend-design` skill** before writing any frontend code, every session, no exceptions.
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Reference Images
-- If a reference image is provided: match layout, spacing, typography, and color exactly. Swap in placeholder content (images via `https://placehold.co/`, generic copy). Do not improve or add to the design.
-- If no reference image: design from scratch with high craft (see guardrails below).
-- Screenshot your output, compare against reference, fix mismatches, re-screenshot. Do at least 2 comparison rounds. Stop only when no visible differences remain or user says so.
+## Project Overview
 
-## Local Server
-- **Always serve on localhost** — never screenshot a `file:///` URL.
-- Start the dev server: `node serve.mjs` (serves the project root at `http://localhost:3000`)
-- `serve.mjs` lives in the project root. Start it in the background before taking any screenshots.
-- If the server is already running, do not start a second instance.
+**Hexion Networks** — static multi-language marketing site for a Taiwan cybersecurity company (LIONIC NGFW distributor + EDR reseller). No build step, no framework. Pure HTML/CSS/JS served from the repo root.
 
-## Screenshot Workflow
-- Puppeteer is installed at `C:/Users/nateh/AppData/Local/Temp/puppeteer-test/`. Chrome cache is at `C:/Users/nateh/.cache/puppeteer/`.
-- **Always screenshot from localhost:** `node screenshot.mjs http://localhost:3000`
-- Screenshots are saved automatically to `./temporary screenshots/screenshot-N.png` (auto-incremented, never overwritten).
-- Optional label suffix: `node screenshot.mjs http://localhost:3000 label` → saves as `screenshot-N-label.png`
-- `screenshot.mjs` lives in the project root. Use it as-is.
-- After screenshotting, read the PNG from `temporary screenshots/` with the Read tool — Claude can see and analyze the image directly.
-- When comparing, be specific: "heading is 32px but reference shows ~24px", "card gap is 16px but should be 24px"
-- Check: spacing/padding, font size/weight/line-height, colors (exact hex), alignment, border-radius, shadows, image sizing
+**Live domain:** `hexionnetworks.com`
+**Repo:** `YJP-Pan/Hexion_web` on GitHub (GitHub Pages)
 
-## Output Defaults
-- Single `index.html` file, all styles inline, unless user says otherwise
-- Tailwind CSS via CDN: `<script src="https://cdn.tailwindcss.com"></script>`
-- Placeholder images: `https://placehold.co/WIDTHxHEIGHT`
-- Mobile-first responsive
+---
 
-## Brand Assets
-- Always check the `brand_assets/` folder before designing. It may contain logos, color guides, style guides, or images.
-- If assets exist there, use them. Do not use placeholders where real assets are available.
-- If a logo is present, use it. If a color palette is defined, use those exact values — do not invent brand colors.
+## Dev Server & Screenshots
 
-## Anti-Generic Guardrails
-- **Colors:** Never use default Tailwind palette (indigo-500, blue-600, etc.). Pick a custom brand color and derive from it.
-- **Shadows:** Never use flat `shadow-md`. Use layered, color-tinted shadows with low opacity.
-- **Typography:** Never use the same font for headings and body. Pair a display/serif with a clean sans. Apply tight tracking (`-0.03em`) on large headings, generous line-height (`1.7`) on body.
-- **Gradients:** Layer multiple radial gradients. Add grain/texture via SVG noise filter for depth.
-- **Animations:** Only animate `transform` and `opacity`. Never `transition-all`. Use spring-style easing.
-- **Interactive states:** Every clickable element needs hover, focus-visible, and active states. No exceptions.
-- **Images:** Add a gradient overlay (`bg-gradient-to-t from-black/60`) and a color treatment layer with `mix-blend-multiply`.
-- **Spacing:** Use intentional, consistent spacing tokens — not random Tailwind steps.
-- **Depth:** Surfaces should have a layering system (base → elevated → floating), not all sit at the same z-plane.
+```bash
+node serve.mjs          # starts at http://localhost:5501
+node screenshot.mjs http://localhost:5501 <label>   # full-page PNG → ./temporary screenshots/
+```
 
-## Hard Rules
-- Do not add sections, features, or content not in the reference
-- Do not "improve" a reference design — match it
-- Do not stop after one screenshot pass
-- Do not use `transition-all`
-- Do not use default Tailwind blue/indigo as primary color
+- Puppeteer Chrome path: `C:/Program Files/Google/Chrome/Application/chrome.exe`
+- Server port is **5501**, not 3000.
+- Check for a running server (`EADDRINUSE: 5501`) before starting a new one.
+- For mobile screenshots, use a custom Puppeteer script with `setViewport({ width: 390, height: 844 })`.
+
+---
+
+## Site Architecture
+
+### Language structure
+| Prefix | Language | hreflang |
+|--------|----------|----------|
+| `/`    | zh-TW (Traditional Chinese) | `zh-TW` |
+| `/en/` | English | `en` |
+
+Every zh page has a mirror under `/en/`. Both sets share the same `style.css`, `lang.js`, and `brand_assets/`.
+
+### Page inventory (57 total)
+- `index.html` — homepage (zh + en)
+- `about/`, `contact/`, `research/` — single pages
+- `blog/` — listing + 10 articles
+- `products/` — listing + 9 product pages (pico-utm-100, dual-ark-utm-16, tera-utm-12, lionfilter-200, endblock, teamt5, cycraft, edr, defender-xdr)
+- `services/` — listing + 6 service pages (ai, brand, cybersecurity, digital, integrated, strategy)
+
+### Shared assets
+- `style.css` — global design system (all pages link `/style.css`)
+- `lang.js` — zh↔en toggle logic (reads `window.location.pathname`)
+- `nav.js` — **legacy inject script** (not used by live pages; nav/footer is now inlined per-page)
+- `brand_assets/logo.png`, `brand_assets/favicon.png`
+
+---
+
+## Design System
+
+**Colors (CSS custom properties in `style.css`):**
+- `--o` / `#FA5822` — primary orange
+- `--teal` / `#00C8C8` — teal accent
+- `--ink` / `#0A0A14` — base background
+- `#3DDC97` — EDR/endpoint green
+- `#0078D4` — Microsoft Defender XDR blue
+- Per-product accent stored as `--accent` in an inline `<style>:root{--accent:…}</style>` on each product page
+
+**Typography:** Inter (body), Orbitron (monospace labels/topbar), Google Fonts loaded per-page.
+
+**Key CSS classes:** `.reveal` (scroll-animate), `.topbar`, `.mega` / `.mega-col` / `.mega-link`, `.mega-prod-badge`, `.prod-hero-title`, `.feat-sec`, `.spec-sec`, `.cta-band`.
+
+---
+
+## Nav / Footer Pattern
+
+Nav and footer are **inlined in every HTML file** (not injected via JS). When changing nav or footer items, you must update all 57 files via PowerShell bulk-replace.
+
+**Standard bulk-replace approach (preserves CJK encoding):**
+```powershell
+$c = [System.IO.File]::ReadAllText($path, [System.Text.Encoding]::UTF8)
+$c = $c -replace "`r`n", "`n"   # normalise line endings first
+$c = $c.Replace($old, $new)
+[System.IO.File]::WriteAllText($path, $c, (New-Object System.Text.UTF8Encoding $false))
+```
+
+**Topbar structure (zh):**
+```html
+<div class="topbar">
+  <div class="topbar-social-group">…FB + IG icons…</div>
+  <a href="/contact/">聯絡我們</a>
+  <a href="/blog/" class="topbar-highlight">最新資安報告 →</a>
+  <a href="#" id="lang-toggle" class="lang-btn">EN</a>
+</div>
+```
+
+**En pages** use `Contact Us` and `id="lang-toggle"` pointing to the zh path.
+
+---
+
+## SEO Checklist (all pages must have)
+
+Every page must include in `<head>`:
+- `<title>` unique per page
+- `meta description`, `meta keywords`
+- `geo.region: TW-KHH`, `geo.placename`, `geo.position: 22.627;120.302`, `ICBM`
+- `meta language: zh-TW` or `en`
+- `og:title`, `og:description`, `og:image`, `og:url`
+- `twitter:card`, `twitter:title`, `twitter:description`, `twitter:image`
+- `rel="canonical"`, `rel="alternate" hreflang` (zh-TW, en, x-default)
+- `application/ld+json` — `WebSite` (homepages only) or `BreadcrumbList` (all sub-pages) + page-specific schema
+
+**BreadcrumbList** must be built with explicit string arrays (not PowerShell array `+` concatenation — that corrupts the JSON). Use a `MakeBC([string[]]$names, [string[]]$urls)` function pattern.
+
+---
+
+## Adding a New Language
+
+Mirror the `en/` directory structure under the new prefix (e.g. `ja/`). For each page:
+1. Translate content
+2. Update `hreflang` alternates on **all** existing pages to include the new language
+3. Update `lang.js` if adding a third-language toggle
+4. Add geo + language meta (`meta name="language" content="ja"`)
+5. Add `BreadcrumbList` with Japanese names
+
+---
+
+## Git
+
+```bash
+git add -A
+git commit -m "message\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>"
+git push origin main
+```
+
+GitHub Pages deploys automatically on push. Deployment typically takes 1–2 minutes.
