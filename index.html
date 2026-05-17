@@ -111,7 +111,8 @@
   .hero-text-col{text-align:left;padding:0 4rem 0 var(--px);max-width:680px;display:flex;flex-direction:column;justify-content:center}
   .hero-text-col .hero-pill{justify-content:flex-start}
   .hero-cta-btns{display:flex;gap:0.875rem;flex-wrap:wrap;margin-top:1.75rem}
-  .hero-illus-col{display:flex;align-items:center;justify-content:center;overflow:visible;width:100%}
+  .hero-illus-col{display:flex;align-items:stretch;justify-content:center;overflow:hidden;width:100%}
+  #constellCanvas{width:100%!important;height:100%!important;display:block}
   @media(max-width:960px){
     .hero-top-row{grid-template-columns:1fr;gap:1.5rem}
     .hero-text-col{text-align:center;order:2;padding:0 var(--px);max-width:100%}
@@ -308,150 +309,9 @@
         </div>
       </div>
 
-      <!-- Right: rabbit mascot -->
+      <!-- Right: constellation animation -->
       <div class="reveal hero-illus-col" style="transition-delay:.18s">
-        <svg id="hexRabbit" viewBox="0 0 420 520" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:420px;display:block;overflow:visible" aria-label="Hexion 品牌兔子吉祥物">
-          <defs>
-            <radialGradient id="rbGlow" cx="50%" cy="60%" r="50%">
-              <stop offset="0%" stop-color="#FA5822" stop-opacity="0.18"/>
-              <stop offset="100%" stop-color="#FA5822" stop-opacity="0"/>
-            </radialGradient>
-            <radialGradient id="rbBodyGrad" cx="50%" cy="40%" r="60%">
-              <stop offset="0%" stop-color="#2a2a3e"/>
-              <stop offset="100%" stop-color="#14141f"/>
-            </radialGradient>
-            <radialGradient id="rbBellyGrad" cx="50%" cy="40%" r="55%">
-              <stop offset="0%" stop-color="#3a3a52"/>
-              <stop offset="100%" stop-color="#22223a"/>
-            </radialGradient>
-            <radialGradient id="rbEarInner" cx="50%" cy="70%" r="55%">
-              <stop offset="0%" stop-color="#FA5822" stop-opacity="0.7"/>
-              <stop offset="100%" stop-color="#c43800" stop-opacity="0.4"/>
-            </radialGradient>
-            <filter id="rbShadow" x="-20%" y="-10%" width="140%" height="140%">
-              <feDropShadow dx="0" dy="8" stdDeviation="18" flood-color="#FA5822" flood-opacity="0.22"/>
-            </filter>
-            <filter id="rbGlowFilter">
-              <feGaussianBlur stdDeviation="3" result="blur"/>
-              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-          </defs>
-
-          <!-- Ambient glow under rabbit -->
-          <ellipse cx="210" cy="490" rx="110" ry="18" fill="url(#rbGlow)" opacity="0.7"/>
-
-          <!-- Main floating group -->
-          <g class="rabbit-float" filter="url(#rbShadow)">
-
-            <!-- ── LEFT EAR ── -->
-            <g class="rabbit-ear-l" style="transform-origin:175px 230px">
-              <ellipse cx="175" cy="155" rx="30" ry="82" fill="url(#rbBodyGrad)" stroke="#FA5822" stroke-width="1.5" stroke-opacity="0.35"/>
-              <ellipse cx="175" cy="162" rx="17" ry="62" fill="url(#rbEarInner)" opacity="0.6"/>
-            </g>
-
-            <!-- ── RIGHT EAR ── -->
-            <g class="rabbit-ear-r" style="transform-origin:245px 230px">
-              <ellipse cx="245" cy="155" rx="30" ry="82" fill="url(#rbBodyGrad)" stroke="#FA5822" stroke-width="1.5" stroke-opacity="0.35"/>
-              <ellipse cx="245" cy="162" rx="17" ry="62" fill="url(#rbEarInner)" opacity="0.6"/>
-            </g>
-
-            <!-- ── HEAD ── -->
-            <ellipse cx="210" cy="258" rx="82" ry="78" fill="url(#rbBodyGrad)" stroke="#FA5822" stroke-width="1.8" stroke-opacity="0.3"/>
-
-            <!-- ── FACE DETAILS ── -->
-            <!-- Hex pattern on forehead -->
-            <polygon points="210,208 222,215 222,229 210,236 198,229 198,215" fill="none" stroke="#FA5822" stroke-width="1.2" stroke-opacity="0.4"/>
-            <circle cx="210" cy="222" r="4" fill="#FA5822" opacity="0.5"/>
-
-            <!-- Eyes -->
-            <g class="rabbit-blink-l" style="transform-origin:188px 262px">
-              <ellipse cx="188" cy="262" rx="11" ry="12" fill="#0A0A14"/>
-              <ellipse cx="188" cy="262" rx="9" ry="10" fill="#1a0800"/>
-              <circle cx="188" cy="262" r="6" fill="#FA5822" opacity="0.9"/>
-              <circle cx="191" cy="259" r="2.5" fill="#fff" opacity="0.9"/>
-            </g>
-            <g class="rabbit-blink-r" style="transform-origin:232px 262px">
-              <ellipse cx="232" cy="262" rx="11" ry="12" fill="#0A0A14"/>
-              <ellipse cx="232" cy="262" rx="9" ry="10" fill="#1a0800"/>
-              <circle cx="232" cy="262" r="6" fill="#FA5822" opacity="0.9"/>
-              <circle cx="235" cy="259" r="2.5" fill="#fff" opacity="0.9"/>
-            </g>
-
-            <!-- Nose -->
-            <ellipse cx="210" cy="284" rx="7" ry="5" fill="#FA5822" opacity="0.8"/>
-            <!-- Mouth -->
-            <path d="M203,291 Q210,298 217,291" fill="none" stroke="#FA5822" stroke-width="1.5" stroke-opacity="0.6" stroke-linecap="round"/>
-            <!-- Cheek blush -->
-            <ellipse cx="174" cy="278" rx="14" ry="8" fill="#FA5822" opacity="0.12"/>
-            <ellipse cx="246" cy="278" rx="14" ry="8" fill="#FA5822" opacity="0.12"/>
-            <!-- Whiskers left -->
-            <line x1="145" y1="282" x2="195" y2="285" stroke="#FA5822" stroke-width="0.8" stroke-opacity="0.3"/>
-            <line x1="143" y1="290" x2="194" y2="289" stroke="#FA5822" stroke-width="0.8" stroke-opacity="0.25"/>
-            <!-- Whiskers right -->
-            <line x1="225" y1="285" x2="275" y2="282" stroke="#FA5822" stroke-width="0.8" stroke-opacity="0.3"/>
-            <line x1="226" y1="289" x2="277" y2="290" stroke="#FA5822" stroke-width="0.8" stroke-opacity="0.25"/>
-
-            <!-- ── BODY ── -->
-            <ellipse cx="210" cy="380" rx="85" ry="95" fill="url(#rbBodyGrad)" stroke="#FA5822" stroke-width="1.5" stroke-opacity="0.2"/>
-            <!-- Belly -->
-            <ellipse cx="210" cy="375" rx="52" ry="62" fill="url(#rbBellyGrad)"/>
-            <!-- Neck join -->
-            <ellipse cx="210" cy="325" rx="52" ry="22" fill="url(#rbBodyGrad)"/>
-
-            <!-- Circuit lines on chest -->
-            <g opacity="0.25" stroke="#FA5822" stroke-width="1" fill="none">
-              <line x1="192" y1="345" x2="192" y2="370"/>
-              <line x1="192" y1="357" x2="184" y2="357"/>
-              <circle cx="184" cy="357" r="2.5" fill="#FA5822"/>
-              <line x1="228" y1="345" x2="228" y2="370"/>
-              <line x1="228" y1="357" x2="236" y2="357"/>
-              <circle cx="236" cy="357" r="2.5" fill="#FA5822"/>
-              <line x1="196" y1="380" x2="224" y2="380"/>
-              <circle cx="210" cy="380" r="3" fill="#FA5822"/>
-            </g>
-
-            <!-- ── ARMS ── -->
-            <!-- Left arm -->
-            <ellipse cx="150" cy="375" rx="22" ry="38" fill="url(#rbBodyGrad)" stroke="#FA5822" stroke-width="1.2" stroke-opacity="0.2" transform="rotate(-15 150 375)"/>
-            <!-- Right arm -->
-            <ellipse cx="270" cy="375" rx="22" ry="38" fill="url(#rbBodyGrad)" stroke="#FA5822" stroke-width="1.2" stroke-opacity="0.2" transform="rotate(15 270 375)"/>
-
-            <!-- ── FEET ── -->
-            <ellipse cx="178" cy="465" rx="32" ry="16" fill="url(#rbBodyGrad)" stroke="#FA5822" stroke-width="1.2" stroke-opacity="0.25"/>
-            <ellipse cx="242" cy="465" rx="32" ry="16" fill="url(#rbBodyGrad)" stroke="#FA5822" stroke-width="1.2" stroke-opacity="0.25"/>
-
-            <!-- ── TAIL ── -->
-            <circle cx="285" cy="430" r="16" fill="url(#rbBellyGrad)" stroke="#FA5822" stroke-width="1" stroke-opacity="0.2"/>
-
-            <!-- Hexion badge on chest -->
-            <g filter="url(#rbGlowFilter)">
-              <polygon points="210,358 220,364 220,376 210,382 200,376 200,364" fill="rgba(250,88,34,0.15)" stroke="#FA5822" stroke-width="1.5"/>
-              <text x="210" y="374" text-anchor="middle" font-family="Orbitron,monospace" font-size="7" fill="#FA5822" font-weight="700">HX</text>
-            </g>
-
-          </g><!-- end rabbit-float -->
-
-          <!-- ── SPARKLES ── -->
-          <g class="rb-spark sp1" style="transform-origin:130px 210px">
-            <polygon points="130,202 132,210 140,210 134,215 136,224 130,218 124,224 126,215 120,210 128,210" fill="#FA5822" opacity="0.7"/>
-          </g>
-          <g class="rb-spark sp2" style="transform-origin:298px 185px">
-            <polygon points="298,179 300,185 306,185 301,189 303,196 298,192 293,196 295,189 290,185 296,185" fill="#00C8C8" opacity="0.65"/>
-          </g>
-          <g class="rb-spark sp3" style="transform-origin:315px 320px">
-            <polygon points="315,316 317,320 321,320 318,323 319,327 315,325 311,327 312,323 309,320 313,320" fill="#FA5822" opacity="0.5"/>
-          </g>
-          <g class="rb-spark sp4" style="transform-origin:105px 340px">
-            <polygon points="105,337 107,340 110,340 108,342 109,346 105,344 101,346 102,342 100,340 103,340" fill="#00C8C8" opacity="0.55"/>
-          </g>
-
-          <!-- ── FLOATING DOTS ── -->
-          <circle class="rb-dot d1" cx="122" cy="165" r="4" fill="#FA5822" opacity="0.6"/>
-          <circle class="rb-dot d2" cx="305" cy="145" r="3" fill="#00C8C8" opacity="0.5"/>
-          <circle class="rb-dot d3" cx="320" cy="270" r="2.5" fill="#FA5822" opacity="0.45"/>
-          <circle class="rb-dot d4" cx="100" cy="300" r="3" fill="#00C8C8" opacity="0.4"/>
-          <circle class="rb-dot d5" cx="330" cy="410" r="2" fill="#FA5822" opacity="0.5"/>
-        </svg>
+        <canvas id="constellCanvas" style="width:100%;max-width:100%;display:block"></canvas>
       </div>
 
     </div>
@@ -1451,8 +1311,8 @@ document.querySelectorAll('.ins-card').forEach(c => c.style.position = 'relative
 <script>var _ls=Date.now();window.addEventListener("load",function(){var l=document.getElementById("page-loader");if(!l)return;var elapsed=Date.now()-_ls,wait=Math.max(0,800-elapsed);setTimeout(function(){l.classList.add("out");setTimeout(function(){l.remove()},520)},wait)});</script>
 <script>
 (function(){
-  /* constellation canvas removed — rabbit mascot replaces it */
-  return;
+  var C=document.getElementById('constellCanvas');
+  if(!C)return;
   var X=C.getContext('2d');
   var W,H;
 
