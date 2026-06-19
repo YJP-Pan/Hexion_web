@@ -1076,9 +1076,9 @@ footer { background: var(--ink-2); padding: 5rem var(--px) 2.25rem; }
 
 /* ── MARKETING SECTION (homepage) ── */
 @media(max-width:1024px){
-  .mktg-head{flex-direction:column;align-items:center;text-align:center;margin-bottom:2.5rem}
-  .mktg-head h2,.mktg-head .sec-h{text-align:center}
-  .mktg-head>div:first-child>div:first-child{justify-content:center}
+  .mktg-head{flex-direction:column!important;align-items:center!important;justify-content:center!important;text-align:center;margin-bottom:2.5rem}
+  .mktg-head h2,.mktg-head .sec-h{text-align:center;max-width:100%!important}
+  .mktg-head>div:first-child>div:first-child{justify-content:center!important}
   .mktg-cols{grid-template-columns:1fr!important}
   .mktg-col{border-right:none!important;padding:2.5rem 0!important;border-bottom:1px solid rgba(255,255,255,0.07)}
   .mktg-col:last-child{border-bottom:none}
