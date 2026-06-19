@@ -1074,6 +1074,15 @@ footer { background: var(--ink-2); padding: 5rem var(--px) 2.25rem; }
 }
 .edr-sec-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative;z-index:2;}
 
+/* ── MARKETING SECTION (homepage) ── */
+@media(max-width:1024px){
+  .mktg-head{flex-direction:column;align-items:flex-start;margin-bottom:2.5rem}
+  .mktg-cols{grid-template-columns:1fr!important}
+  .mktg-col{border-right:none!important;padding:2.5rem 0!important;border-bottom:1px solid rgba(255,255,255,0.07)}
+  .mktg-col:last-child{border-bottom:none}
+  .mktg-num{font-size:3.5rem!important;margin-bottom:1.25rem!important}
+}
+
 /* ── SERVICES GRID ── */
 .svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3rem; }
 @media(max-width:768px){ .svc-grid{grid-template-columns:1fr} }
