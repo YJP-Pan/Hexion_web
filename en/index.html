@@ -103,6 +103,8 @@
   /* ── Gradient heading shimmer ── */
   @keyframes gradShimmer{0%{background-position:0% center}100%{background-position:200% center}}
   .hero h1 .grad{background:linear-gradient(90deg,var(--o) 0%,#FF9A5C 30%,#FFD0A8 50%,var(--o) 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradShimmer 4s linear infinite}
+  .hero h1{font-size:clamp(1.75rem,2.9vw,2.75rem)}
+  .hero h1 .type-cursor{min-height:2.2em;display:block}
   /* ── Abstract illustration animations ── */
   @keyframes hexPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
   @keyframes hexFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
@@ -278,7 +280,7 @@
         </div>
         <h1>
           <span class="glitch" data-text="Six Core Services"><span class="grad">Six Core Services</span></span><br />
-          <span class="type-cursor" style="white-space:nowrap">Driving Business Growth</span>
+          <span class="type-cursor">Driving Business Growth</span>
         </h1>
         <p class="hero-desc">
           From business strategy to cybersecurity, Hexion integrates six consulting domains — each with dedicated solutions and expert teams to support your success.
